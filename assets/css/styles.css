@@ -1,0 +1,29 @@
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  font-size: 10px;
+  margin: auto;
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+}
+
+legend {
+  font-size: 10px;
+}
+
+.col {
+  width: 33%;
+}
+
+button, input {
+  font-size: 10px;
+  width: 100%;
+  height: 30px;
+  border-radius: 0;
+  padding: 0;
+  outline: 0;
+}
+
+#button-drain {
+  background-color: red;
+}
+
