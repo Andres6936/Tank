@@ -24,20 +24,35 @@ class Tank {
         this.updatedLabelLevelTank();
     }
 
+    setSetPointOfTank(_setPoint){
+        this.setPoint = _setPoint;
+    }
+
     updatedLabelLevelTank(){
         let label = document.getElementById("label-level-tank");
 
         // Update the label of level of liquid in tank.
         label.innerText = this.levelOfLiquidInTank;
     }
+
+    updateLabelCapacity(){
+        let inputMax = document.getElementById("input-max-level");
+        let inputMin = document.getElementById("input-min-level");
+
+        console.log("Called.");
+    }
+
+    updateLabelAlarm(){
+        let inputHighAlarm = document.getElementById("input-high-level-alarm");
+        let inputLowAlarm = document.getElementById("input-low-level-alarm");
+    }
 }
 
 var tank = new Tank();
 
 function updateAllLabels() {
-    let input = document.getElementById("input-set-point");
-
-    input.setAttribute("value", tank.setPoint);
+    tank.updateLabelCapacity();
+    tank.updateLabelAlarm();
 }
 
 function addLevelOfLiquidInTank() {
@@ -48,8 +63,12 @@ function subLevelOfLiquidInTank() {
     tank.subLevelOfLiquid();
 }
 
-function checkSetPointOfTank() {
-    let input = document.getElementById("input-set-point").value;
+function setPointOfTank() {
+    let value = document.getElementById("input-set-point").value;
 
-    console.log(input);
+    tank.setSetPointOfTank(value);
 }
+
+window.onload = function () {
+    updateAllLabels();
+};

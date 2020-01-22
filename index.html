@@ -22,7 +22,7 @@
     <header>
         <h1>Tank Utilities</h1>
     </header>
-    <main style="display: block;" onload="updateAllLabels()">
+    <main style="display: block;">
 
         <div id="row-first" class="row">
 
@@ -58,7 +58,7 @@
                             <form id="form-set-point">
                                 <div class="row"><label for="input-set-point">Set Point (Lts)</label></div>
                                 <div class="row"><input id="input-set-point" type="number" name="set-point" min="0" required></div>
-                                <div class="row"><button id="button-set-point" class="btn btn-primary" type="button" onclick="checkSetPointOfTank()">Set</button></div>
+                                <div class="row"><button id="button-set-point" class="btn btn-primary" type="button" onclick="setPointOfTank()">Set</button></div>
                             </form>
                         </div>
 
@@ -84,12 +84,12 @@
                         </fieldset>
                         <div class="row">
                             <div class="col"><label for="input-max-level" class="col-form-label">Maximum</label></div>
-                            <div class="col"><input id="input-max-level" type="number" min="1" max="10"></div>
+                            <div class="col"><input id="input-max-level" type="number" min="0"></div>
                             <div class="col"><label class="col-form-label">Lts</label></div>
                         </div>
                         <div class="row">
-                            <div class="col"><label for="input-min-level" class="col-form-label">Minimun</label></div>
-                            <div class="col"><input id="input-min-level" type="number" min="1" max="10"></div>
+                            <div class="col"><label for="input-min-level" class="col-form-label">Minimum</label></div>
+                            <div class="col"><input id="input-min-level" type="number" min="0"></div>
                             <div class="col"><label class="col-form-label">Lts</label></div>
                         </div>
                     </section>
@@ -99,20 +99,24 @@
                             <legend>Alarms</legend>
                         </fieldset>
                         <div class="row">
-                            <div class="col"><label class="col-form-label">High Level</label></div>
-                            <div class="col"><input type="number"></div>
+                            <div class="col"><label for="input-high-level-alarm" class="col-form-label">High Level</label></div>
+                            <div class="col"><input id="input-high-level-alarm" type="number"></div>
                             <div class="col"><label class="col-form-label">Lts</label></div>
                         </div>
                         <div class="row">
-                            <div class="col"><label class="col-form-label">Low Level</label></div>
-                            <div class="col"><input type="number"></div>
+                            <div class="col"><label for="input-low-level-alarm" class="col-form-label">Low Level</label></div>
+                            <div class="col"><input id="input-low-level-alarm" type="number"></div>
                             <div class="col"><label class="col-form-label">Lts</label></div>
                         </div>
                     </section>
 
                     <section>
                         <div class="row" style="margin: 12px auto;">
-                            <div class="col" style="display: flex;"><button class="btn btn-primary" type="button">Edit</button><button class="btn btn-primary" type="button">Cancel</button><button class="btn btn-primary" type="button">Confirm</button></div>
+                            <div class="col" style="display: flex;">
+                                <button class="btn btn-primary" type="button">Edit</button>
+                                <button class="btn btn-primary" type="button">Cancel</button>
+                                <button class="btn btn-primary" type="button">Confirm</button>
+                            </div>
                         </div>
                     </section>
 
