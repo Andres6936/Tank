@@ -49,5 +49,7 @@ function subLevelOfLiquidInTank() {
 }
 
 function checkSetPointOfTank() {
-    let input = document.getElementById("input-set-point");
+    let input = document.getElementById("input-set-point").value;
+
+    console.log(input);
 }
