@@ -187,6 +187,12 @@ function switchEnableDisableInput(){
         document.getElementById("button-confirm").disabled = false;
         // Enable the button for cancel the changes.
         document.getElementById("button-cancel").disabled = false;
+
+        // Validation H, Point 3
+        document.getElementById("button-add-level").disabled = true;
+        document.getElementById("button-sub-level").disabled = true;
+        document.getElementById("input-set-point").disabled = true;
+        document.getElementById("button-set-point").disabled = true;
     }
     else {
         maxCapacity.disabled = true;
@@ -199,6 +205,12 @@ function switchEnableDisableInput(){
         document.getElementById("button-confirm").disabled = true;
         // Disabled the button of cancel, no is necessary in this part of execution.
         document.getElementById("button-cancel").disabled = true;
+
+        // Validation H, Point 3
+        document.getElementById("button-add-level").disabled = false;
+        document.getElementById("button-sub-level").disabled = false;
+        document.getElementById("input-set-point").disabled = false;
+        document.getElementById("button-set-point").disabled = false;
     }
 }
 
