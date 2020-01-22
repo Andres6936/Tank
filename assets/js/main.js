@@ -201,7 +201,7 @@ function switchEnableDisableInput(){
 }
 
 function drainTank(){
-    if (confirm("Do you are sure want drain the Tank?")){
+    if (confirm("Do you want to drain the Tank?")){
         tank.drainLevelOfTank();
         updateAllLabels();
     }
