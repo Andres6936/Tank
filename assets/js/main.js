@@ -84,6 +84,20 @@ class Tank {
         inputLowAlarm.setAttribute("min", this.minimumLevelOfLiquid);
         inputLowAlarm.value = this.alarmForLowLevel;
     }
+
+    updateImageLevelOfTank(){
+        let image = document.getElementById("img-level-tank");
+
+        if (this.levelOfLiquidInTank >= this.alarmForHighLevel) {
+            image.setAttribute("src", "assets/img/WaterTankRed.png");
+        }
+        else if(this.levelOfLiquidInTank <= this.alarmForLowLevel){
+            image.setAttribute("src", "assets/img/WaterTankYellow.png")
+        }
+        else {
+            image.setAttribute("src", "assets/img/WaterTank.png")
+        }
+    }
 }
 
 var tank = new Tank();
@@ -91,14 +105,17 @@ var tank = new Tank();
 function updateAllLabels() {
     tank.updateLabelCapacity();
     tank.updateLabelAlarm();
+    tank.updateImageLevelOfTank();
 }
 
 function addLevelOfLiquidInTank() {
     tank.addLevelOfLiquid();
+    updateAllLabels();
 }
 
 function subLevelOfLiquidInTank() {
     tank.subLevelOfLiquid();
+    updateAllLabels();
 }
 
 function setPointOfTank() {
