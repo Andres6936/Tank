@@ -158,6 +158,12 @@ function confirmChangeInCapacityAndAlarm(){
 }
 
 function cancelChangesInCapacityAndAlarm(){
+
+    // Only choice a element for verify if all elements are disabled.
+    if (! document.getElementById("input-max-level").disabled){
+        switchEnableDisableInput();
+    }
+
     updateAllLabels();
 }
 
@@ -179,6 +185,7 @@ function switchEnableDisableInput(){
 
         // Enable the button for save the changes.
         document.getElementById("button-confirm").disabled = false;
+        document.getElementById("button-cancel").disabled = false;
     }
     else {
         maxCapacity.disabled = true;
@@ -189,6 +196,7 @@ function switchEnableDisableInput(){
 
         // Disabled the button for avoid accidental changes.
         document.getElementById("button-confirm").disabled = true;
+        document.getElementById("button-cancel").disabled = true;
     }
 }
 
