@@ -10,17 +10,31 @@ class Tank {
 
         this.setPoint = 5;
 
-        this.alarmForHighLevel = 0;
-        this.alarmForLowLevel = 0;
+        this.alarmForHighLevel = 8;
+        this.alarmForLowLevel = 2;
     }
 
     addLevelOfLiquid(){
         this.levelOfLiquidInTank++;
+
+        // Reverse the situation in case of that level of
+        // liquid is more to maximum level
+        if (this.levelOfLiquidInTank > this.maximumLevelOfLiquid){
+            this.levelOfLiquidInTank--;
+        }
+
         this.updatedLabelLevelTank();
     }
 
     subLevelOfLiquid(){
         this.levelOfLiquidInTank--;
+
+        // Reverse the situation in case of that level of
+        // liquid is more to maximum level
+        if (this.levelOfLiquidInTank < this.minimumLevelOfLiquid){
+            this.levelOfLiquidInTank++;
+        }
+
         this.updatedLabelLevelTank();
     }
 
@@ -37,14 +51,22 @@ class Tank {
 
     updateLabelCapacity(){
         let inputMax = document.getElementById("input-max-level");
-        let inputMin = document.getElementById("input-min-level");
+        inputMax.value = this.maximumLevelOfLiquid;
 
-        console.log("Called.");
+        let inputMin = document.getElementById("input-min-level");
+        inputMin.value = this.minimumLevelOfLiquid;
     }
 
     updateLabelAlarm(){
         let inputHighAlarm = document.getElementById("input-high-level-alarm");
+        inputHighAlarm.setAttribute("max", this.maximumLevelOfLiquid);
+        inputHighAlarm.setAttribute("min", this.minimumLevelOfLiquid);
+        inputHighAlarm.value = this.alarmForHighLevel;
+
         let inputLowAlarm = document.getElementById("input-low-level-alarm");
+        inputLowAlarm.setAttribute("max", this.maximumLevelOfLiquid);
+        inputLowAlarm.setAttribute("min", this.minimumLevelOfLiquid);
+        inputLowAlarm.value = this.alarmForLowLevel;
     }
 }
 
@@ -69,6 +91,8 @@ function setPointOfTank() {
     tank.setSetPointOfTank(value);
 }
 
+// When load the page, call the
+// function for update all labels.
 window.onload = function () {
     updateAllLabels();
 };
