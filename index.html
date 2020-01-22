@@ -24,42 +24,54 @@
     </header>
     <main style="display: block;" onload="updateAllLabels()">
 
-        <div class="row">
+        <div id="row-first" class="row">
 
-            <div class="col" style="display: flex;margin: auto;width: 50%;">
-                <section style="width: 70%;">
-                    <fieldset>
-                        <legend>Water Tank</legend>
-                    </fieldset><img src="assets/img/WaterTank.png" alt="Water Tank" style="width: 150px;"></section>
-                <section style="width: 30%;">
-                    <fieldset>
-                        <legend>Options</legend>
-                    </fieldset>
-                    <section>
+            <div id="column-first" class="col">
+
+                <div class="row">
+
+                    <div class="col">
+                        <section>
+                            <fieldset>
+                                <legend>Water Tank</legend>
+                            </fieldset>
+                            <img src="assets/img/WaterTank.png" alt="Water Tank" style="width: 150px;">
+                        </section>
+                    </div>
+
+                    <div class="col" style="width: 30%;">
+
                         <fieldset>
-                            <legend style="font-size: 10px;">Level (Lts)</legend>
+                            <legend>Options</legend>
                         </fieldset>
 
-                        <label id="label-level-tank" style="margin: 0;">5</label>
+                        <div class="row"><label id="label-level-lts">Level (Lts)</label></div>
+                        <div class="row"><label id="label-level-tank">5</label></div>
 
-                        <!-- Area of buttons for control of tank level. -->
-                        <section style="display: flex;margin: auto;">
-                            <button id="button-add-level" class="btn btn-primary" type="button" onclick="addLevelOfLiquidInTank()" style="width: 50%;margin: 4px 0px;padding: 0;">+</button>
-                            <button id="button-sub-level" class="btn btn-primary" type="button" onclick="subLevelOfLiquidInTank()" style="width: 50%;margin: 4px 2px;padding: 0;">-</button>
-                        </section>
+                        <div id="row-buttons-add-sub" class="row">
+                            <!-- Area of buttons for control of tank level. -->
+                            <div class="col"><button id="button-add-level" class="btn btn-primary" type="button" onclick="addLevelOfLiquidInTank()">+</button></div>
+                            <div class="col"><button id="button-sub-level" class="btn btn-primary" type="button" onclick="subLevelOfLiquidInTank()">-</button></div>
+                        </div>
 
-                    </section>
+                        <div id="row-form-set-point" class="row">
+                            <form id="form-set-point" method="get">
+                                <div class="row"><label for="input-set-point">Set Point (Lts)</label></div>
+                                <div class="row"><input id="input-set-point" type="number" name="set-point" min="0" required></div>
+                                <div class="row"><button id="button-set-point" class="btn btn-primary" type="submit" onclick="checkSetPointOfTank()">Set</button></div>
+                            </form>
+                        </div>
 
-                    <form id="form-set-point" method="get">
-                        <label for="input-set-point">Set Point (Lts)</label>
-                        <input id="input-set-point" type="number" name="set-point" min="0" style="width: 100%;" required>
-                        <button id="button-set-point" class="btn btn-primary" type="submit" onclick="checkSetPointOfTank()" style="width: 100%;padding: 0;">Set</button>
-                    </form>
+                    </div>
+                </div>
 
-                </section>
+                <div class="row">
+                    <div class="col"><button class="btn btn-primary" id="button-drain" type="button">Drain</button></div>
+                </div>
+
             </div>
 
-            <div class="col" style="width: 50%;">
+            <div id="column-second" class="col" style="width: 50%;">
                 <section>
 
                     <fieldset>
@@ -98,13 +110,16 @@
                         </div>
                     </section>
 
+                    <section>
+                        <div class="row" style="margin: 12px auto;">
+                            <div class="col" style="display: flex;"><button class="btn btn-primary" type="button">Edit</button><button class="btn btn-primary" type="button">Cancel</button><button class="btn btn-primary" type="button">Confirm</button></div>
+                        </div>
+                    </section>
+
                 </section>
             </div>
         </div>
-        <div class="row" style="margin: 12px auto;">
-            <div class="col"><button class="btn btn-primary" id="button-drain" type="button">Drain</button></div>
-            <div class="col" style="display: flex;"><button class="btn btn-primary" type="button">Edit</button><button class="btn btn-primary" type="button">Cancel</button><button class="btn btn-primary" type="button">Confirm</button></div>
-        </div>
+
     </main>
 </body>
 
