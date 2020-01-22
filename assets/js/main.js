@@ -65,6 +65,11 @@ class Tank {
         label.innerText = this.levelOfLiquidInTank;
     }
 
+    updateLabelForSetPoint(){
+        let inputSetPoint = document.getElementById("input-set-point");
+        inputSetPoint.setAttribute("max", this.maximumLevelOfLiquid);
+    }
+
     updateLabelCapacity(){
         let inputMax = document.getElementById("input-max-level");
         inputMax.value = this.maximumLevelOfLiquid;
@@ -103,6 +108,7 @@ class Tank {
 var tank = new Tank();
 
 function updateAllLabels() {
+    tank.updateLabelForSetPoint();
     tank.updateLabelCapacity();
     tank.updateLabelAlarm();
     tank.updateImageLevelOfTank();
