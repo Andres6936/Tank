@@ -42,6 +42,22 @@ class Tank {
         this.setPoint = _setPoint;
     }
 
+    setMaximumLevelOfLiquid(_level){
+        this.maximumLevelOfLiquid = _level;
+    }
+
+    setMinimumLevelOfLiquid(_level){
+        this.minimumLevelOfLiquid = _level;
+    }
+
+    setHighLevelAlarm(_level){
+        this.alarmForHighLevel = _level;
+    }
+
+    setLowLevelAlarm(_level){
+        this.alarmForLowLevel = _level;
+    }
+
     updatedLabelLevelTank(){
         let label = document.getElementById("label-level-tank");
 
@@ -89,6 +105,29 @@ function setPointOfTank() {
     let value = document.getElementById("input-set-point").value;
 
     tank.setSetPointOfTank(value);
+}
+
+function confirmChangeInCapacityAndAlarm(){
+    // Init with capacity
+    let maxCapacity = document.getElementById("input-max-level").value;
+    let minCapacity = document.getElementById("input-min-level").value;
+
+    tank.setMaximumLevelOfLiquid(maxCapacity);
+    tank.setMinimumLevelOfLiquid(minCapacity);
+
+    // Init with alarm
+    let highAlarm = document.getElementById("input-high-level-alarm").value;
+    let lowAlarm = document.getElementById("input-low-level-alarm").value;
+
+    tank.setHighLevelAlarm(highAlarm);
+    tank.setLowLevelAlarm(lowAlarm);
+
+    // Update All Labels
+    updateAllLabels();
+}
+
+function cancelChangesInCapacityAndAlarm(){
+    updateAllLabels();
 }
 
 // When load the page, call the
