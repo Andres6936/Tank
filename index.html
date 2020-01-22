@@ -85,12 +85,12 @@
                         </fieldset>
                         <div class="row">
                             <div class="col"><label for="input-max-level" class="col-form-label">Maximum</label></div>
-                            <div class="col"><input id="input-max-level" type="number" min="0"></div>
+                            <div class="col"><input id="input-max-level" type="number" min="0" disabled></div>
                             <div class="col"><label class="col-form-label">Lts</label></div>
                         </div>
                         <div class="row">
                             <div class="col"><label for="input-min-level" class="col-form-label">Minimum</label></div>
-                            <div class="col"><input id="input-min-level" type="number" min="0"></div>
+                            <div class="col"><input id="input-min-level" type="number" min="0" disabled></div>
                             <div class="col"><label class="col-form-label">Lts</label></div>
                         </div>
                     </section>
@@ -101,12 +101,12 @@
                         </fieldset>
                         <div class="row">
                             <div class="col"><label for="input-high-level-alarm" class="col-form-label">High Level</label></div>
-                            <div class="col"><input id="input-high-level-alarm" type="number"></div>
+                            <div class="col"><input id="input-high-level-alarm" type="number" disabled></div>
                             <div class="col"><label class="col-form-label">Lts</label></div>
                         </div>
                         <div class="row">
                             <div class="col"><label for="input-low-level-alarm" class="col-form-label">Low Level</label></div>
-                            <div class="col"><input id="input-low-level-alarm" type="number"></div>
+                            <div class="col"><input id="input-low-level-alarm" type="number" disabled></div>
                             <div class="col"><label class="col-form-label">Lts</label></div>
                         </div>
                     </section>
@@ -114,7 +114,7 @@
                     <section>
                         <div class="row" style="margin: 12px auto;">
                             <div class="col" style="display: flex;">
-                                <button class="btn btn-primary" type="button">Edit</button>
+                                <button class="btn btn-primary" type="button" onclick="switchEnableDisableInput()">Edit</button>
                                 <button class="btn btn-primary" type="button" onclick="cancelChangesInCapacityAndAlarm()">Cancel</button>
                                 <button class="btn btn-primary" type="button" onclick="confirmChangeInCapacityAndAlarm()">Confirm</button>
                             </div>

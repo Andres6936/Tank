@@ -153,6 +153,29 @@ function cancelChangesInCapacityAndAlarm(){
     updateAllLabels();
 }
 
+function switchEnableDisableInput(){
+    let maxCapacity = document.getElementById("input-max-level");
+    let minCapacity = document.getElementById("input-min-level");
+
+    let highAlarm = document.getElementById("input-high-level-alarm");
+    let lowAlarm = document.getElementById("input-low-level-alarm");
+
+    if (maxCapacity.disabled) {
+        maxCapacity.disabled = false;
+        minCapacity.disabled = false;
+
+        highAlarm.disabled = false;
+        lowAlarm.disabled = false;
+    }
+    else {
+        maxCapacity.disabled = true;
+        minCapacity.disabled = true;
+
+        highAlarm.disabled = true;
+        lowAlarm.disabled = true;
+    }
+}
+
 // When load the page, call the
 // function for update all labels.
 window.onload = function () {
