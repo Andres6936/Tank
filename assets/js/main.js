@@ -147,6 +147,8 @@ function confirmChangeInCapacityAndAlarm(){
 
     // Update All Labels
     updateAllLabels();
+    // Disabled all labels.
+    switchEnableDisableInput();
 }
 
 function cancelChangesInCapacityAndAlarm(){
@@ -160,12 +162,17 @@ function switchEnableDisableInput(){
     let highAlarm = document.getElementById("input-high-level-alarm");
     let lowAlarm = document.getElementById("input-low-level-alarm");
 
+    // Check only an element, if a element
+    // is disabled, all element too are disabled.
     if (maxCapacity.disabled) {
         maxCapacity.disabled = false;
         minCapacity.disabled = false;
 
         highAlarm.disabled = false;
         lowAlarm.disabled = false;
+
+        // Enable the button for save the changes.
+        document.getElementById("button-confirm").disabled = false;
     }
     else {
         maxCapacity.disabled = true;
@@ -173,6 +180,9 @@ function switchEnableDisableInput(){
 
         highAlarm.disabled = true;
         lowAlarm.disabled = true;
+
+        // Disabled the button for avoid accidental changes.
+        document.getElementById("button-confirm").disabled = true;
     }
 }
 
