@@ -38,6 +38,10 @@ class Tank {
         this.updatedLabelLevelTank();
     }
 
+    drainLevelOfTank(){
+        this.levelOfLiquidInTank = this.minimumLevelOfLiquid;
+    }
+
     setSetPointOfTank(_setPoint){
         this.setPoint = _setPoint;
     }
@@ -68,6 +72,7 @@ class Tank {
     updateLabelForSetPoint(){
         let inputSetPoint = document.getElementById("input-set-point");
         inputSetPoint.setAttribute("max", this.maximumLevelOfLiquid);
+        inputSetPoint.value = this.setPoint;
     }
 
     updateLabelCapacity(){
@@ -108,6 +113,7 @@ class Tank {
 var tank = new Tank();
 
 function updateAllLabels() {
+    tank.updatedLabelLevelTank();
     tank.updateLabelForSetPoint();
     tank.updateLabelCapacity();
     tank.updateLabelAlarm();
@@ -183,6 +189,13 @@ function switchEnableDisableInput(){
 
         // Disabled the button for avoid accidental changes.
         document.getElementById("button-confirm").disabled = true;
+    }
+}
+
+function drainTank(){
+    if (confirm("Do you are sure want drain the Tank?")){
+        tank.drainLevelOfTank();
+        updateAllLabels();
     }
 }
 
