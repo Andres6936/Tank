@@ -110,6 +110,7 @@ class Tank {
     }
 }
 
+// Only instance of tank
 var tank = new Tank();
 
 function updateAllLabels() {
