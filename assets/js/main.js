@@ -185,6 +185,7 @@ function switchEnableDisableInput(){
 
         // Enable the button for save the changes.
         document.getElementById("button-confirm").disabled = false;
+        // Enable the button for cancel the changes.
         document.getElementById("button-cancel").disabled = false;
     }
     else {
@@ -196,6 +197,7 @@ function switchEnableDisableInput(){
 
         // Disabled the button for avoid accidental changes.
         document.getElementById("button-confirm").disabled = true;
+        // Disabled the button of cancel, no is necessary in this part of execution.
         document.getElementById("button-cancel").disabled = true;
     }
 }
