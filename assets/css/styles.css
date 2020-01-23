@@ -1,6 +1,7 @@
 body{
   width: 800px;
-  margin: 0 auto;
+  margin: 20px auto;
+  outline: 1px solid #CCC;
 }
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
