@@ -188,6 +188,8 @@ function switchEnableDisableInput(){
         document.getElementById("button-confirm").disabled = false;
         // Enable the button for cancel the changes.
         document.getElementById("button-cancel").disabled = false;
+        // Disable the button of edit
+        document.getElementById("button-edit").disabled = true;
 
         // Validation H, Point 3
         document.getElementById("button-add-level").disabled = true;
@@ -206,6 +208,8 @@ function switchEnableDisableInput(){
         document.getElementById("button-confirm").disabled = true;
         // Disabled the button of cancel, no is necessary in this part of execution.
         document.getElementById("button-cancel").disabled = true;
+        // Enable the button of edit
+        document.getElementById("button-edit").disabled = false;
 
         // Validation H, Point 3
         document.getElementById("button-add-level").disabled = false;
