@@ -39,7 +39,13 @@ class Tank {
     }
 
     drainLevelOfTank(){
-        this.levelOfLiquidInTank = this.minimumLevelOfLiquid;
+        let clock = setInterval(() => {
+            this.levelOfLiquidInTank--;
+            updateAllLabels();
+            if (this.levelOfLiquidInTank === this.minimumLevelOfLiquid){
+                clearInterval(clock);
+            }
+        }, 500);
     }
 
     setSetPointOfTank(_setPoint){
