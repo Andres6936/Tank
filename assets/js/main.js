@@ -44,6 +44,25 @@ class Tank {
 
     setSetPointOfTank(_setPoint){
         this.setPoint = _setPoint;
+
+        if (this.setPoint > this.levelOfLiquidInTank){
+            let clock = setInterval(() => {
+                this.levelOfLiquidInTank++;
+                updateAllLabels();
+                if (this.levelOfLiquidInTank === this.setPoint){
+                    clearInterval(clock);
+                }
+            }, 500);
+        }
+        else if (this.setPoint < this.levelOfLiquidInTank){
+            let clock = setInterval(() => {
+                this.levelOfLiquidInTank--;
+                updateAllLabels();
+                if (this.levelOfLiquidInTank === this.setPoint){
+                    clearInterval(clock);
+                }
+            }, 500);
+        }
     }
 
     setMaximumLevelOfLiquid(_level){
@@ -132,9 +151,10 @@ function subLevelOfLiquidInTank() {
 }
 
 function setPointOfTank() {
-    let value = document.getElementById("input-set-point").value;
+    let valueOfSetPoint = document.getElementById("input-set-point").value;
 
-    tank.setSetPointOfTank(value);
+    tank.setSetPointOfTank(parseInt(valueOfSetPoint));
+    updateAllLabels();
 }
 
 function confirmChangeInCapacityAndAlarm(){
