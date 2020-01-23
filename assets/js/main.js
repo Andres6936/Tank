@@ -127,10 +127,13 @@ class Tank {
             image.setAttribute("src", "assets/img/WaterTankRed.png");
         }
         else if(this.levelOfLiquidInTank <= this.alarmForLowLevel){
-            image.setAttribute("src", "assets/img/WaterTankYellow.png")
+            image.setAttribute("src", "assets/img/WaterTankYellow.png");
+        }
+        else if (this.levelOfLiquidInTank === 0){
+            image.setAttribute("src", "assets/img/WaterTankEmpty.png");
         }
         else {
-            image.setAttribute("src", "assets/img/WaterTank.png")
+            image.setAttribute("src", "assets/img/WaterTank.png");
         }
     }
 }
@@ -168,15 +171,15 @@ function confirmChangeInCapacityAndAlarm(){
     let maxCapacity = document.getElementById("input-max-level").value;
     let minCapacity = document.getElementById("input-min-level").value;
 
-    tank.setMaximumLevelOfLiquid(maxCapacity);
-    tank.setMinimumLevelOfLiquid(minCapacity);
+    tank.setMaximumLevelOfLiquid(parseInt(maxCapacity));
+    tank.setMinimumLevelOfLiquid(parseInt(minCapacity));
 
     // Init with alarm
     let highAlarm = document.getElementById("input-high-level-alarm").value;
     let lowAlarm = document.getElementById("input-low-level-alarm").value;
 
-    tank.setHighLevelAlarm(highAlarm);
-    tank.setLowLevelAlarm(lowAlarm);
+    tank.setHighLevelAlarm(parseInt(highAlarm));
+    tank.setLowLevelAlarm(parseInt(lowAlarm));
 
     // Update All Labels
     updateAllLabels();
