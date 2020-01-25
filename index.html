@@ -34,105 +34,98 @@
     <main>
 
         <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-4 offset-md-0">
-                    <section class="card"><fieldset><legend>Water Tank</legend></fieldset>
-                        <img class="img-fluid" id="img-level-tank" src="assets/img/WaterTank.png" alt="Water Tank">
-                        <div class="card">
-                            <progress class="progress progress-bar-striped active"
-                                      id="progress-level-tank"
-                                      role="progressbar"
-                                      aria-valuemin="0"
-                                      aria-valuemax="100"
-                                      max="100"></progress>
+            <div class="card-deck">
+                <section class="card"><fieldset><legend>Water Tank</legend></fieldset>
+                    <img class="img-fluid" id="img-level-tank" src="assets/img/WaterTank.png" alt="Water Tank">
+                    <div class="card">
+                        <progress class="progress progress-bar-striped active"
+                                  id="progress-level-tank"
+                                  role="progressbar"
+                                  aria-valuemin="0"
+                                  aria-valuemax="100"
+                                  max="100"></progress>
+                    </div>
+                    <button class="btn btn-danger btn-block btn-sm" id="button-drain" type="button" onclick="drainTank()">Drain</button>
+                </section>
+                <section class="card"><fieldset><legend>Options</legend></fieldset>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 text-center"><label id="label-level-lts">Level (Lts)</label></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 text-center">
+                            <label id="label-level-tank">5</label>
                         </div>
-                        <button class="btn btn-danger btn-block btn-sm" id="button-drain" type="button" onclick="drainTank()">Drain</button>
+                    </div>
+                    <div class="row">
+                        <!-- Area of buttons for control of tank level. -->
+                        <div class="col-xs-6 col-md-4 offset-md-2">
+                            <button class="btn btn-primary btn-block btn-sm" id="button-add-level" type="button" onclick="addLevelOfLiquidInTank()">+</button>
+                        </div>
+                        <div class="col-xs-6 col-md-4 offset-md-0">
+                            <button  class="btn btn-primary btn-block btn-sm" id="button-sub-level" type="button" onclick="subLevelOfLiquidInTank()">-</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Area for control of Set Point of tank. -->
+                        <form>
+                            <div class="form-group row">
+                                <label class="form-control-label col-md-6 offset-md-3" for="input-set-point">Set Point (Lts)</label>
+                                <input class="form-control-sm col-md-6 offset-md-3" id="input-set-point" type="number" name="set-point" min="0" required>
+                                <button class="btn btn-primary btn-block btn-sm col-md-6 offset-md-3" id="button-set-point" type="button" onclick="setPointOfTank()">Set</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+                <section class="card">
+                    <fieldset><legend>Setup</legend></fieldset>
+
+                    <section class="card"><fieldset><legend>Capacity</legend></fieldset>
+                        <form class="form-inline">
+                            <div class="form-group row">
+                                <label class="col-form-label col-md-4" for="input-max-level">Maximum</label>
+                                <input class="form-control-sm col-md-4" id="input-max-level" type="number" min="0" disabled>
+                                <label class="col-form-label col-md-4">Lts</label>
+                            </div>
+                        </form>
+                        <form class="form-inline">
+                            <div class="form-group row">
+                                <label class="col-form-label col-md-4" for="input-min-level">Minimum</label>
+                                <input class="form-control-sm col-md-4" id="input-min-level" type="number" min="0" disabled>
+                                <label class="col-form-label col-md-4">Lts</label>
+                            </div>
+                        </form>
                     </section>
-                </div>
-                <div class="col-xs-12 col-md-4 offset-md-0">
-                    <section class="card"><fieldset><legend>Options</legend></fieldset>
-                        <div class="row">
-                            <div class="col-xs-12 col-md-12 text-center"><label id="label-level-lts">Level (Lts)</label></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-md-12 text-center">
-                                <label id="label-level-tank">5</label>
+
+                    <section class="card"><fieldset><legend>Alarms</legend></fieldset>
+                        <form class="form-inline">
+                            <div class="form-group row">
+                                <label class="col-form-label col-md-4" for="input-high-level-alarm">High Level</label>
+                                <input class="form-control-sm col-md-4" id="input-high-level-alarm" type="number" disabled>
+                                <label class="col-form-label col-md-4">Lts</label>
                             </div>
-                        </div>
-                        <div class="row">
-                            <!-- Area of buttons for control of tank level. -->
-                            <div class="col-xs-6 col-md-4 offset-md-2">
-                                <button class="btn btn-primary btn-block btn-sm" id="button-add-level" type="button" onclick="addLevelOfLiquidInTank()">+</button>
+                        </form>
+                        <form class="form-inline">
+                            <div class="form-group row">
+                                <label class="col-form-label col-md-4" for="input-low-level-alarm">Low Level</label>
+                                <input class="form-control-sm col-md-4" id="input-low-level-alarm" type="number" disabled>
+                                <label class="col-form-label col-md-4">Lts</label>
                             </div>
-                            <div class="col-xs-6 col-md-4 offset-md-0">
-                                <button  class="btn btn-primary btn-block btn-sm" id="button-sub-level" type="button" onclick="subLevelOfLiquidInTank()">-</button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <!-- Area for control of Set Point of tank. -->
-                            <form>
-                                <div class="form-group row">
-                                    <label class="form-control-label col-md-6 offset-md-3" for="input-set-point">Set Point (Lts)</label>
-                                    <input class="form-control-sm col-md-6 offset-md-3" id="input-set-point" type="number" name="set-point" min="0" required>
-                                    <button class="btn btn-primary btn-block btn-sm col-md-6 offset-md-3" id="button-set-point" type="button" onclick="setPointOfTank()">Set</button>
-                                </div>
-                            </form>
-                        </div>
+                        </form>
                     </section>
 
-                </div>
-                <div class="col-xs-12 col-md-4 offset-md-0">
-                    <section class="card">
-                        <fieldset><legend>Setup</legend></fieldset>
-
-                        <section class="card"><fieldset><legend>Capacity</legend></fieldset>
-                            <form class="form-inline">
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-4" for="input-max-level">Maximum</label>
-                                    <input class="form-control-sm col-md-4" id="input-max-level" type="number" min="0" disabled>
-                                    <label class="col-form-label col-md-4">Lts</label>
-                                </div>
-                            </form>
-                            <form class="form-inline">
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-4" for="input-min-level">Minimum</label>
-                                    <input class="form-control-sm col-md-4" id="input-min-level" type="number" min="0" disabled>
-                                    <label class="col-form-label col-md-4">Lts</label>
-                                </div>
-                            </form>
-                        </section>
-
-                        <section class="card"><fieldset><legend>Alarms</legend></fieldset>
-                            <form class="form-inline">
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-4" for="input-high-level-alarm">High Level</label>
-                                    <input class="form-control-sm col-md-4" id="input-high-level-alarm" type="number" disabled>
-                                    <label class="col-form-label col-md-4">Lts</label>
-                                </div>
-                            </form>
-                            <form class="form-inline">
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-4" for="input-low-level-alarm">Low Level</label>
-                                    <input class="form-control-sm col-md-4" id="input-low-level-alarm" type="number" disabled>
-                                    <label class="col-form-label col-md-4">Lts</label>
-                                </div>
-                            </form>
-                        </section>
-
-                        <div class="row">
-                            <div class="col-xs-4 col-md-4">
-                                <button class="btn btn-primary btn-block btn-sm" id="button-edit" type="button" onclick="switchEnableDisableInput()">Edit</button>
-                            </div>
-                            <div class="col-xs-4 col-md-4">
-                                <button class="btn btn-primary btn-block btn-sm" id="button-cancel" type="button" onclick="cancelChangesInCapacityAndAlarm()" disabled>Cancel</button>
-                            </div>
-                            <div class="col-xs-4 col-md-4">
-                                <button class="btn btn-primary btn-block btn-sm" id="button-confirm" type="button" onclick="confirmChangeInCapacityAndAlarm()" disabled>Confirm</button>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-4 col-md-4">
+                            <button class="btn btn-primary btn-block btn-sm" id="button-edit" type="button" onclick="switchEnableDisableInput()">Edit</button>
                         </div>
+                        <div class="col-xs-4 col-md-4">
+                            <button class="btn btn-primary btn-block btn-sm" id="button-cancel" type="button" onclick="cancelChangesInCapacityAndAlarm()" disabled>Cancel</button>
+                        </div>
+                        <div class="col-xs-4 col-md-4">
+                            <button class="btn btn-primary btn-block btn-sm" id="button-confirm" type="button" onclick="confirmChangeInCapacityAndAlarm()" disabled>Confirm</button>
+                        </div>
+                    </div>
 
-                    </section>
-                </div>
+                </section>
             </div>
         </div>
 
