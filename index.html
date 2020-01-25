@@ -48,37 +48,30 @@
                 </section>
                 <section class="card">
                     <div class="card-header text-center">Options</div>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12 text-center"><label id="label-level-lts">Level (Lts)</label></div>
+                    <div class="card-body text-center">Level (Lts)</div>
+                    <div class="card-body text-center">
+                        <label id="label-level-tank">5</label>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12 text-center">
-                            <label id="label-level-tank">5</label>
-                        </div>
-                    </div>
-                    <div class="row">
+                    <div class="card">
                         <!-- Area of buttons for control of tank level. -->
-                        <div class="col-xs-6 col-md-4 offset-md-2">
-                            <button class="btn btn-primary btn-block btn-sm" id="button-add-level" type="button" onclick="addLevelOfLiquidInTank()">+</button>
-                        </div>
-                        <div class="col-xs-6 col-md-4 offset-md-0">
-                            <button  class="btn btn-primary btn-block btn-sm" id="button-sub-level" type="button" onclick="subLevelOfLiquidInTank()">-</button>
-                        </div>
+                        <button class="btn btn-primary btn-block btn-sm" id="button-add-level" type="button" onclick="addLevelOfLiquidInTank()">+</button>
+                        <button  class="btn btn-primary btn-block btn-sm" id="button-sub-level" type="button" onclick="subLevelOfLiquidInTank()">-</button>
                     </div>
-                    <div class="row">
+                    <div class="card">
                         <!-- Area for control of Set Point of tank. -->
-                        <form>
+                        <form class="form-inline">
                             <div class="form-group row">
-                                <label class="form-control-label col-md-6 offset-md-3" for="input-set-point">Set Point (Lts)</label>
-                                <input class="form-control-sm col-md-6 offset-md-3" id="input-set-point" type="number" name="set-point" min="0" required>
-                                <button class="btn btn-primary btn-block btn-sm col-md-6 offset-md-3" id="button-set-point" type="button" onclick="setPointOfTank()">Set</button>
+                                <label class="text-sm-center col-md-4" for="input-set-point">Set Point (Lts)</label>
+                                <input class="form-control-sm col-md-3" id="input-set-point" type="number" name="set-point" min="0" required>
+                                <button class="btn btn-primary btn-block btn-sm col-md-3" id="button-set-point" type="button" onclick="setPointOfTank()">Set</button>
                             </div>
                         </form>
                     </div>
                 </section>
                 <section class="card">
                     <div class="card-header text-center">Setup</div>
-                    <section class="card"><fieldset><legend>Capacity</legend></fieldset>
+                    <section class="card">
+                        <div class="card-header">Capacity</div>
                         <form class="form-inline">
                             <div class="form-group row">
                                 <label class="col-form-label col-md-4" for="input-max-level">Maximum</label>
@@ -94,7 +87,8 @@
                             </div>
                         </form>
                     </section>
-                    <section class="card"><fieldset><legend>Alarms</legend></fieldset>
+                    <section class="card">
+                        <div class="card-header">Alarms</div>
                         <form class="form-inline">
                             <div class="form-group row">
                                 <label class="col-form-label col-md-4" for="input-high-level-alarm">High Level</label>
