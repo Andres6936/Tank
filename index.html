@@ -44,7 +44,7 @@
                     <section><fieldset><legend>Water Tank</legend></fieldset>
                         <img id="img-level-tank" src="assets/img/WaterTank.png" alt="Water Tank" style="width: 150px;">
                     </section>
-                    <button class="btn btn-danger btn-sm" id="button-drain" type="button" onclick="drainTank()">Drain</button>
+                    <button class="btn btn-danger btn-block btn-sm" id="button-drain" type="button" onclick="drainTank()">Drain</button>
                 </div>
                 <div class="col-xs-12 col-md-4 offset-md-0">
 
@@ -61,10 +61,10 @@
                         <div class="row">
                             <!-- Area of buttons for control of tank level. -->
                             <div class="col-xs-6 col-md-4 offset-md-2">
-                                <button class="btn btn-primary btn-sm" id="button-add-level" type="button" onclick="addLevelOfLiquidInTank()">+</button>
+                                <button class="btn btn-primary btn-block btn-sm" id="button-add-level" type="button" onclick="addLevelOfLiquidInTank()">+</button>
                             </div>
                             <div class="col-xs-6 col-md-4 offset-md-0">
-                                <button  class="btn btn-primary btn-sm" id="button-sub-level" type="button" onclick="subLevelOfLiquidInTank()">-</button>
+                                <button  class="btn btn-primary btn-block btn-sm" id="button-sub-level" type="button" onclick="subLevelOfLiquidInTank()">-</button>
                             </div>
                         </div>
                         <div class="row">
@@ -73,7 +73,7 @@
                                 <div class="form-group row">
                                     <label class="form-control-label col-md-6 offset-md-3" for="input-set-point">Set Point (Lts)</label>
                                     <input class="form-control-sm col-md-6 offset-md-3" id="input-set-point" type="number" name="set-point" min="0" required>
-                                    <button class="btn btn-primary btn-sm col-md-6 offset-md-3" id="button-set-point" type="button" onclick="setPointOfTank()">Set</button>
+                                    <button class="btn btn-primary btn-block btn-sm col-md-6 offset-md-3" id="button-set-point" type="button" onclick="setPointOfTank()">Set</button>
                                 </div>
                             </form>
                         </div>
@@ -120,13 +120,13 @@
 
                         <div class="row">
                             <div class="col-xs-4 col-md-4">
-                                <button class="btn btn-primary btn-sm" id="button-edit" type="button" onclick="switchEnableDisableInput()">Edit</button>
+                                <button class="btn btn-primary btn-block btn-sm" id="button-edit" type="button" onclick="switchEnableDisableInput()">Edit</button>
                             </div>
                             <div class="col-xs-4 col-md-4">
-                                <button class="btn btn-primary btn-sm" id="button-cancel" type="button" onclick="cancelChangesInCapacityAndAlarm()" disabled>Cancel</button>
+                                <button class="btn btn-primary btn-block btn-sm" id="button-cancel" type="button" onclick="cancelChangesInCapacityAndAlarm()" disabled>Cancel</button>
                             </div>
                             <div class="col-xs-4 col-md-4">
-                                <button class="btn btn-primary btn-sm" id="button-confirm" type="button" onclick="confirmChangeInCapacityAndAlarm()" disabled>Confirm</button>
+                                <button class="btn btn-primary btn-block btn-sm" id="button-confirm" type="button" onclick="confirmChangeInCapacityAndAlarm()" disabled>Confirm</button>
                             </div>
                         </div>
 

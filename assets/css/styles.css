@@ -7,10 +7,6 @@ form{
   margin: auto;
 }
 
-button, input {
-  width: 100%;
-}
-
 .form-inline{
   display: block;
 }
