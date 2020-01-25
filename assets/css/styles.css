@@ -1,5 +1,4 @@
 body{
-  width: 800px;
   margin: 20px auto;
   outline: 1px solid #CCC;
 }
@@ -41,18 +40,6 @@ button, input {
   margin: auto;
 }
 
-.col {
-  width: 33%;
-}
-
-#row-first{
-  margin: auto;
-}
-
-#column-first{
-  margin: auto;
-  padding-right: 15px;
-}
 
 #button-drain {
   background-color: red;
@@ -62,12 +49,4 @@ button, input {
 #label-level-lts, #label-level-tank{
   margin: auto;
   padding-bottom: 3px;
-}
-
-#row-buttons-add-sub{
-  margin: auto;
-}
-
-#row-form-set-point{
-  padding-top: 10px;
 }
