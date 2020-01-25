@@ -136,6 +136,15 @@ class Tank {
             image.setAttribute("src", "assets/img/WaterTank.png");
         }
     }
+
+    updateProgressBarLevelOfTank(){
+        let progressBar = document.getElementById("progress-level-tank");
+
+        let levelOfLiquid = this.levelOfLiquidInTank / this.maximumLevelOfLiquid * 100;
+
+        progressBar.value = levelOfLiquid;
+        progressBar.setAttribute("aria-valuenow", levelOfLiquid.toString());
+    }
 }
 
 // Only instance of tank
@@ -147,6 +156,7 @@ function updateAllLabels() {
     tank.updateLabelCapacity();
     tank.updateLabelAlarm();
     tank.updateImageLevelOfTank();
+    tank.updateProgressBarLevelOfTank();
 }
 
 function addLevelOfLiquidInTank() {
