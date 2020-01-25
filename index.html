@@ -65,9 +65,13 @@
                         </div>
                         <div class="row">
                             <!-- Area for control of Set Point of tank. -->
-                            <div class="col-xs-12 col-md-12 text-center"><label for="input-set-point">Set Point (Lts)</label></div>
-                            <div class="col-xs-12 col-md-12"><input id="input-set-point" type="number" name="set-point" min="0" required></div>
-                            <div class="col-xs-12 col-md-12"><button id="button-set-point" class="btn btn-primary" type="button" onclick="setPointOfTank()">Set</button></div>
+                            <form>
+                                <div class="form-group">
+                                    <label for="input-set-point">Set Point (Lts)</label>
+                                    <input class="form-control" id="input-set-point" type="number" name="set-point" min="0" required>
+                                    <button id="button-set-point" class="btn btn-primary" type="button" onclick="setPointOfTank()">Set</button>
+                                </div>
+                            </form>
                         </div>
                     </section>
 
@@ -79,29 +83,37 @@
                         <fieldset><legend>Setup</legend></fieldset>
 
                         <section><fieldset><legend>Capacity</legend></fieldset>
-                            <div class="row">
-                                <div class="col-xs-4 col-md-4"><label for="input-max-level" class="col-form-label">Maximum</label></div>
-                                <div class="col-xs-4 col-md-4"><input id="input-max-level" type="number" min="0" disabled></div>
-                                <div class="col-xs-4 col-md-4"><label class="col-form-label">Lts</label></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-4 col-md-4"><label for="input-min-level" class="col-form-label">Minimum</label></div>
-                                <div class="col-xs-4 col-md-4"><input id="input-min-level" type="number" min="0" disabled></div>
-                                <div class="col-xs-4 col-md-4"><label class="col-form-label">Lts</label></div>
-                            </div>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="input-max-level" class="col-form-label">Maximum</label>
+                                    <input class="form-control" id="input-max-level" type="number" min="0" disabled>
+                                    <label class="col-form-label">Lts</label>
+                                </div>
+                            </form>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="input-min-level" class="col-form-label">Minimum</label>
+                                    <input class="form-control" id="input-min-level" type="number" min="0" disabled>
+                                    <label class="col-form-label">Lts</label>
+                                </div>
+                            </form>
                         </section>
 
                         <section><fieldset><legend>Alarms</legend></fieldset>
-                            <div class="row">
-                                <div class="col-xs-4 col-md-4"><label for="input-high-level-alarm" class="col-form-label">High Level</label></div>
-                                <div class="col-xs-4 col-md-4"><input id="input-high-level-alarm" type="number" disabled></div>
-                                <div class="col-xs-4 col-md-4"><label class="col-form-label">Lts</label></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-4 col-md-4"><label for="input-low-level-alarm" class="col-form-label">Low Level</label></div>
-                                <div class="col-xs-4 col-md-4"><input id="input-low-level-alarm" type="number" disabled></div>
-                                <div class="col-xs-4 col-md-4"><label class="col-form-label">Lts</label></div>
-                            </div>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="input-high-level-alarm" class="col-form-label">High Level</label>
+                                    <input class="form-control" id="input-high-level-alarm" type="number" disabled>
+                                    <label class="col-form-label">Lts</label>
+                                </div>
+                            </form>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="input-low-level-alarm" class="col-form-label">Low Level</label>
+                                    <input class="form-control" id="input-low-level-alarm" type="number" disabled>
+                                    <label class="col-form-label">Lts</label>
+                                </div>
+                            </form>
                         </section>
 
                         <div class="row">
