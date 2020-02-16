@@ -61,10 +61,10 @@
                     </div>
                     <div class="card">
                         <!-- Area for control of Set Point of tank. -->
-                        <form class="form-inline">
-                            <div class="form-group row">
+                        <form>
+                            <div class="form-inline">
                                 <label class="text-sm-center col-md-4" for="input-set-point">Set Point (Lts)</label>
-                                <input class="form-control-sm col-md-3" id="input-set-point" type="number" name="set-point" min="0" required>
+                                <input class="form-control-sm col-md-4" id="input-set-point" type="number" name="set-point" min="0" required>
                                 <button class="btn btn-primary btn-block btn-sm col-md-3" id="button-set-point" type="button" onclick="setPointOfTank()">Set</button>
                             </div>
                         </form>
@@ -75,14 +75,14 @@
                     <section class="card">
                         <div class="card-header">Capacity</div>
                         <form class="form-inline">
-                            <div class="form-group row">
+                            <div class="form-group">
                                 <label class="col-form-label col-md-4" for="input-max-level">Maximum</label>
                                 <input class="form-control-sm col-md-4" id="input-max-level" type="number" min="0" disabled>
                                 <label class="col-form-label col-md-4">Lts</label>
                             </div>
                         </form>
                         <form class="form-inline">
-                            <div class="form-group row">
+                            <div class="form-group">
                                 <label class="col-form-label col-md-4" for="input-min-level">Minimum</label>
                                 <input class="form-control-sm col-md-4" id="input-min-level" type="number" min="0" disabled>
                                 <label class="col-form-label col-md-4">Lts</label>
@@ -92,14 +92,14 @@
                     <section class="card">
                         <div class="card-header">Alarms</div>
                         <form class="form-inline">
-                            <div class="form-group row">
+                            <div class="form-group">
                                 <label class="col-form-label col-md-4" for="input-high-level-alarm">High Level</label>
                                 <input class="form-control-sm col-md-4" id="input-high-level-alarm" type="number" disabled>
                                 <label class="col-form-label col-md-4">Lts</label>
                             </div>
                         </form>
                         <form class="form-inline">
-                            <div class="form-group row">
+                            <div class="form-group">
                                 <label class="col-form-label col-md-4" for="input-low-level-alarm">Low Level</label>
                                 <input class="form-control-sm col-md-4" id="input-low-level-alarm" type="number" disabled>
                                 <label class="col-form-label col-md-4">Lts</label>
