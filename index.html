@@ -37,16 +37,18 @@
                         <h4 class="my-0 font-weight-normal">Water Tank</h4>
                     </div>
 
-                    <img class="img-fluid" id="img-level-tank" src="/img/WaterTank.png" alt="Water Tank">
+                    <!-- Body -->
                     <div class="card-body">
+                        <img class="img-fluid" id="img-level-tank" src="img/WaterTank.png" alt="Water Tank">
                         <progress class="progress progress-bar-striped active"
                                   id="progress-level-tank"
                                   role="progressbar"
                                   aria-valuemin="0"
                                   aria-valuemax="100"
-                                  max="100"></progress>
+                                  max="100">
+                        </progress>
+                        <button class="btn btn-danger btn-block btn-sm w-50 mx-auto" id="button-drain" type="button" onclick="drainTank()">Drain</button>
                     </div>
-                    <button class="btn btn-danger btn-block btn-sm w-50 mx-auto" id="button-drain" type="button" onclick="drainTank()">Drain</button>
                 </section>
 
                 <!-- Second Card -->

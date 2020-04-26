@@ -124,16 +124,16 @@ class Tank {
         let image = document.getElementById("img-level-tank");
 
         if (this.levelOfLiquidInTank >= this.alarmForHighLevel) {
-            image.setAttribute("src", "/img/WaterTankRed.png");
+            image.setAttribute("src", "img/WaterTankRed.png");
         }
         else if(this.levelOfLiquidInTank <= this.alarmForLowLevel){
-            image.setAttribute("src", "/img/WaterTankYellow.png");
+            image.setAttribute("src", "img/WaterTankYellow.png");
         }
         else if (this.levelOfLiquidInTank === 0){
-            image.setAttribute("src", "/img/WaterTankEmpty.png");
+            image.setAttribute("src", "img/WaterTankEmpty.png");
         }
         else {
-            image.setAttribute("src", "/img/WaterTank.png");
+            image.setAttribute("src", "img/WaterTank.png");
         }
     }
 
