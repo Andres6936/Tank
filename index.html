@@ -31,9 +31,11 @@
     </header>
     <main>
 
-        <div class="container">
-            <div class="card-deck">
-                <section class="card">
+        <div class="container mt-5">
+            <div class="card-deck text-center">
+
+                <!-- First Card -->
+                <section class="card shadow-sm">
                     <div class="card-header text-center">Water Tank</div>
                     <img class="img-fluid" id="img-level-tank" src="img/WaterTank.png" alt="Water Tank">
                     <div class="card">
@@ -44,9 +46,11 @@
                                   aria-valuemax="100"
                                   max="100"></progress>
                     </div>
-                    <button class="btn btn-danger btn-block btn-sm" id="button-drain" type="button" onclick="drainTank()">Drain</button>
+                    <button class="btn btn-danger btn-block btn-sm w-50 mx-auto" id="button-drain" type="button" onclick="drainTank()">Drain</button>
                 </section>
-                <section class="card">
+
+                <!-- Second Card -->
+                <section class="card shadow-sm">
                     <div class="card-header text-center">Options</div>
                     <div class="card">
                         <div class="card-body text-center">Level (Lts)</div>
@@ -70,7 +74,9 @@
                         </form>
                     </div>
                 </section>
-                <section class="card">
+
+                <!-- Third Card -->
+                <section class="card shadow-sm">
                     <div class="card-header text-center">Setup</div>
                     <section class="card">
                         <div class="card-header">Capacity</div>
