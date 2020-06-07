@@ -25,123 +25,117 @@
     <header class="card">
         <h1 class="text-center card-header">Tank Utilities</h1>
     </header>
-    <main>
+    <div class="container card-deck text-center mx-auto">
 
-        <div class="container mt-5">
-            <div class="card-deck text-center">
-
-                <!-- First Card -->
-                <section class="card shadow-sm">
-                    <!-- Header -->
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">Water Tank</h4>
-                    </div>
-
-                    <!-- Body -->
-                    <div class="card-body">
-                        <!-- Image -->
-                        <img class="img-fluid" id="img-level-tank" src="img/WaterTank.png" alt="Water Tank">
-
-                        <!-- Progress Bar -->
-                        <div class="progress mt-3 mb-4">
-                            <div class="progress-bar-striped active"
-                                 id="progress-level-tank"
-                                 role="progressbar"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100">
-                            </div>
-                        </div>
-
-                        <!-- Button of Drain -->
-                        <button class="btn btn-danger btn-block btn-lg"
-                                id="button-drain" type="button" onclick="drainTank()">Drain</button>
-                    </div>
-                </section>
-
-                <!-- Second Card -->
-                <section class="card shadow-sm">
-                    <!-- Header -->
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">Options</h4>
-                    </div>
-
-                    <div class="card-body">
-                        <div class="card-body text-center">Level (Lts)</div>
-                        <div class="card-body text-center">
-                            <label id="label-level-tank">5</label>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <!-- Area of buttons for control of tank level. -->
-                        <button class="btn btn-primary btn-block btn-sm" id="button-add-level" type="button" onclick="addLevelOfLiquidInTank()">+</button>
-                        <button  class="btn btn-primary btn-block btn-sm" id="button-sub-level" type="button" onclick="subLevelOfLiquidInTank()">-</button>
-                    </div>
-                    <div class="card-body">
-                        <!-- Area for control of Set Point of tank. -->
-                        <form>
-                            <div class="form-inline">
-                                <label class="text-sm-center col-md-4" for="input-set-point">Set Point (Lts)</label>
-                                <input class="form-control-sm col-md-4" id="input-set-point" type="number" name="set-point" min="0" required>
-                                <button class="btn btn-primary btn-block btn-sm col-md-3" id="button-set-point" type="button" onclick="setPointOfTank()">Set</button>
-                            </div>
-                        </form>
-                    </div>
-                </section>
-
-                <!-- Third Card -->
-                <section class="card shadow-sm">
-                    <!-- Header -->
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">Setup</h4>
-                    </div>
-
-                    <section class="card-body">
-                        <h4 class="card-title">Capacity</h4>
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label class="col-form-label col-md-4" for="input-max-level">Maximum</label>
-                                <input class="form-control-sm col-md-4" id="input-max-level" type="number" min="0" disabled>
-                                <label class="col-form-label col-md-4">Lts</label>
-                            </div>
-                        </form>
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label class="col-form-label col-md-4" for="input-min-level">Minimum</label>
-                                <input class="form-control-sm col-md-4" id="input-min-level" type="number" min="0" disabled>
-                                <label class="col-form-label col-md-4">Lts</label>
-                            </div>
-                        </form>
-                    </section>
-
-                    <section class="card-body">
-                        <h4 class="card-title">Alarms</h4>
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label class="col-form-label col-md-4" for="input-high-level-alarm">High Level</label>
-                                <input class="form-control-sm col-md-4" id="input-high-level-alarm" type="number" disabled>
-                                <label class="col-form-label col-md-4">Lts</label>
-                            </div>
-                        </form>
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label class="col-form-label col-md-4" for="input-low-level-alarm">Low Level</label>
-                                <input class="form-control-sm col-md-4" id="input-low-level-alarm" type="number" disabled>
-                                <label class="col-form-label col-md-4">Lts</label>
-                            </div>
-                        </form>
-                    </section>
-
-                    <div class="col-12">
-                        <button class="col-3 btn btn-primary btn-sm" id="button-edit" type="button" onclick="switchEnableDisableInput()">Edit</button>
-                        <button class="col-3 btn btn-primary btn-sm" id="button-cancel" type="button" onclick="cancelChangesInCapacityAndAlarm()" disabled>Cancel</button>
-                        <button class="col-3 btn btn-primary btn-sm" id="button-confirm" type="button" onclick="confirmChangeInCapacityAndAlarm()" disabled>Confirm</button>
-                    </div>
-
-                </section>
+        <!-- First Card -->
+        <section class="card shadow-sm">
+            <!-- Header -->
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Water Tank</h4>
             </div>
-        </div>
 
-    </main>
+            <!-- Body -->
+            <div class="card-body">
+                <!-- Image -->
+                <img class="img-fluid" id="img-level-tank" src="img/WaterTank.png" alt="Water Tank">
+
+                <!-- Progress Bar -->
+                <div class="progress mt-3 mb-4">
+                    <div class="progress-bar-striped active"
+                         id="progress-level-tank"
+                         role="progressbar"
+                         aria-valuemin="0"
+                         aria-valuemax="100">
+                    </div>
+                </div>
+
+                <!-- Button of Drain -->
+                <button class="btn btn-danger btn-block btn-lg"
+                        id="button-drain" type="button" onclick="drainTank()">Drain</button>
+            </div>
+        </section>
+
+        <!-- Second Card -->
+        <section class="card shadow-sm">
+            <!-- Header -->
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Options</h4>
+            </div>
+
+            <div class="card-body">
+                <div class="card-body text-center">Level (Lts)</div>
+                <div class="card-body text-center">
+                    <label id="label-level-tank">5</label>
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- Area of buttons for control of tank level. -->
+                <button class="btn btn-primary btn-block btn-sm" id="button-add-level" type="button" onclick="addLevelOfLiquidInTank()">+</button>
+                <button  class="btn btn-primary btn-block btn-sm" id="button-sub-level" type="button" onclick="subLevelOfLiquidInTank()">-</button>
+            </div>
+            <div class="card-body">
+                <!-- Area for control of Set Point of tank. -->
+                <form>
+                    <div class="form-inline">
+                        <label class="text-sm-center col-md-4" for="input-set-point">Set Point (Lts)</label>
+                        <input class="form-control-sm col-md-4" id="input-set-point" type="number" name="set-point" min="0" required>
+                        <button class="btn btn-primary btn-block btn-sm col-md-3" id="button-set-point" type="button" onclick="setPointOfTank()">Set</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Third Card -->
+        <section class="card shadow-sm">
+            <!-- Header -->
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Setup</h4>
+            </div>
+
+            <section class="row">
+                <h4 class="col-12">Capacity</h4>
+                <form class="form-inline col-12">
+                    <div class="form-group">
+                        <label class="col-form-label col-md-4" for="input-max-level">Maximum</label>
+                        <input class="form-control-sm col-md-4" id="input-max-level" type="number" min="0" disabled>
+                        <label class="col-form-label col-md-4">Lts</label>
+                    </div>
+                </form>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="col-form-label col-md-4" for="input-min-level">Minimum</label>
+                        <input class="form-control-sm col-md-4" id="input-min-level" type="number" min="0" disabled>
+                        <label class="col-form-label col-md-4">Lts</label>
+                    </div>
+                </form>
+            </section>
+
+            <section class="row">
+                <h4 class="col-12">Alarms</h4>
+                <form class="form-inline col-12">
+                    <div class="form-group">
+                        <label class="col-form-label col-md-4" for="input-high-level-alarm">High Level</label>
+                        <input class="form-control-sm col-md-4" id="input-high-level-alarm" type="number" disabled>
+                        <label class="col-form-label col-md-4">Lts</label>
+                    </div>
+                </form>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="col-form-label col-md-4" for="input-low-level-alarm">Low Level</label>
+                        <input class="form-control-sm col-md-4" id="input-low-level-alarm" type="number" disabled>
+                        <label class="col-form-label col-md-4">Lts</label>
+                    </div>
+                </form>
+            </section>
+
+            <div class="col-12">
+                <button class="col-3 btn btn-primary btn-sm" id="button-edit" type="button" onclick="switchEnableDisableInput()">Edit</button>
+                <button class="col-3 btn btn-primary btn-sm" id="button-cancel" type="button" onclick="cancelChangesInCapacityAndAlarm()" disabled>Cancel</button>
+                <button class="col-3 btn btn-primary btn-sm" id="button-confirm" type="button" onclick="confirmChangeInCapacityAndAlarm()" disabled>Confirm</button>
+            </div>
+
+        </section>
+    </div>
 
     <!-- Support to JQuery-->
     <script src="js/jquery.min.js"></script>
