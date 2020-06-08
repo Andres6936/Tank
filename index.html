@@ -75,11 +75,11 @@
             </div>
             <div class="card-body">
                 <!-- Area for control of Set Point of tank. -->
-                <form>
-                    <div class="form-inline">
-                        <label class="text-sm-center col-md-4" for="input-set-point">Set Point (Lts)</label>
-                        <input class="form-control-sm col-md-4" id="input-set-point" type="number" name="set-point" min="0" required>
-                        <button class="btn btn-primary btn-block btn-sm col-md-3" id="button-set-point" type="button" onclick="setPointOfTank()">Set</button>
+                <form class="form-inline">
+                    <div class="form-group col-12">
+                        <label class="col-sm-5 col-xs-12 text-nowrap" for="input-set-point">Set Point (Lts)</label>
+                        <input class="col-sm-3 col-xs-12 form-control mr-sm-3" id="input-set-point" type="number" name="set-point" min="0" required>
+                        <button class="col-sm-3 col-xs-12 btn btn-primary btn-block" id="button-set-point" type="button" onclick="setPointOfTank()">Set</button>
                     </div>
                 </form>
             </div>
