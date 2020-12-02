@@ -57,19 +57,14 @@
             </section>
         </form>
 
-        <section class="row mx-auto">
-            <!-- Area for control of Set Point of tank. -->
-            <form class="form-inline">
-                <div class="form-group col-12">
-                    <label class="col-sm-5 col-xs-12 text-nowrap" for="input-set-point">Set Point (Lts)</label>
-                    <input class="col-sm-3 col-xs-12 form-control mr-sm-3" id="input-set-point" type="number"
-                           name="set-point" min="0" required>
-                    <button class="col-sm-3 col-xs-12 btn btn-primary btn-block" id="button-set-point" type="button"
-                            onclick="setPointOfTank()">Set
-                    </button>
-                </div>
-            </form>
-        </section>
+        <form>
+            <label class="form-label">Set Point (Lts)
+                <input class="form-control" type="number" name="set-point" min="0" required>
+            </label>
+            <button class="btn btn-primary px-4" id="button-set-point" type="button"
+                    onclick="setPointOfTank()">Set
+            </button>
+        </form>
     </div>
 
     <div class="col-5 border py-2">
