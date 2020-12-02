@@ -42,17 +42,21 @@
     <div class="col-2 border py-2">
         <h4 class="small text-muted col-12 my-2 font-weight-normal">Options</h4>
 
-        <section class="row mx-auto py-5">
-            <div class="col-5 text-nowrap">Level (Lts) <span id="label-level-tank">5</span></div>
-        </section>
+        <form>
+            <label class="form-label">Level (Lts)
+                <input id="label-level-tank" class="form-control" type="text">
+            </label>
+        </form>
 
         <section class="row mx-auto py-5">
             <!-- Area of buttons for control of tank level. -->
             <button class="col-5 btn btn-primary" id="button-add-level" type="button"
                     onclick="addLevelOfLiquidInTank()">+
             </button>
-                <button class="col-5 btn btn-primary" id="button-sub-level" type="button" onclick="subLevelOfLiquidInTank()">-</button>
-            </section>
+            <button class="col-5 btn btn-primary" id="button-sub-level" type="button"
+                    onclick="subLevelOfLiquidInTank()">-
+            </button>
+        </section>
 
         <section class="row mx-auto">
             <!-- Area for control of Set Point of tank. -->
