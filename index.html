@@ -70,52 +70,49 @@
     <div class="col-5 border py-2">
         <h4 class="small text-muted col-12 my-2 font-weight-normal">Setup</h4>
 
-        <section class="row mt-3 mx-auto">
-            <h4 class="col-12 mb-3">Capacity</h4>
-            <form class="form-inline">
-                <div class="form-group col-12 mb-3">
-                    <label class="col-sm-5 col-xs-12" for="input-max-level">Maximum</label>
-                    <input class="col-sm-4 col-xs-12 form-control" id="input-max-level" type="number" min="0" disabled>
-                    <small class="col-sm-3 col-xs-12 form-text text-muted">Lts</small>
-                    </div>
-                    <div class="form-group col-12 mb-5">
-                        <label class="col-sm-5 col-xs-12" for="input-min-level">Minimum</label>
-                        <input class="col-sm-4 col-xs-12 form-control" id="input-min-level" type="number" min="0" disabled>
-                        <label class="col-sm-3 col-xs-12 form-text text-muted">Lts</label>
-                    </div>
-                </form>
-            </section>
+        <h4 class="col-12 small text-muted mb-3 pt-3 border-top">Capacity</h4>
 
-            <section class="row mt-3 mx-auto">
-                <h4 class="col-12 mb-3">Alarms</h4>
-                <form class="form-inline col-12">
-                    <div class="form-group col-12 mb-3">
-                        <label class="col-sm-5 col-xs-12" for="input-high-level-alarm">High Level</label>
-                        <input class="col-sm-4 col-xs-12 form-control" id="input-high-level-alarm" type="number" disabled>
-                        <small class="col-sm-3 col-xs-12 form-text text-muted">Lts</small>
-                    </div>
-                    <div class="form-group col-12 mb-5">
-                        <label class="col-sm-5 col-xs-12" for="input-low-level-alarm">Low Level</label>
-                        <input class="col-sm-4 col-xs-12 form-control" id="input-low-level-alarm" type="number" disabled>
-                        <small class="col-sm-3 col-xs-12 form-text text-muted">Lts</small>
-                    </div>
-                </form>
-            </section>
-
-            <div class="col-12">
-                <button class="col-3 btn btn-primary btn-sm"
-                        id="button-edit" type="button"
-                        onclick="switchEnableDisableInput()">Edit
-                </button>
-                <button class="col-3 btn btn-primary btn-sm"
-                        id="button-cancel" type="button"
-                        onclick="cancelChangesInCapacityAndAlarm()" disabled>Cancel
-                </button>
-                <button class="col-3 btn btn-primary btn-sm"
-                        id="button-confirm" type="button"
-                        onclick="confirmChangeInCapacityAndAlarm()" disabled>Confirm
-                </button>
+        <form class="form-inline">
+            <div class="form-group col-12 mb-3">
+                <label class="col-sm-5 col-xs-12" for="input-max-level">Maximum</label>
+                <input class="col-sm-4 col-xs-12 form-control" id="input-max-level" type="number" min="0" disabled>
+                <small class="col-sm-3 col-xs-12 form-text text-muted">Lts</small>
             </div>
+            <div class="form-group col-12 mb-5">
+                <label class="col-sm-5 col-xs-12" for="input-min-level">Minimum</label>
+                <input class="col-sm-4 col-xs-12 form-control" id="input-min-level" type="number" min="0" disabled>
+                <label class="col-sm-3 col-xs-12 form-text text-muted">Lts</label>
+            </div>
+        </form>
+
+        <h4 class="col-12 small text-muted mb-3 pt-3 border-top">Alarms</h4>
+        <form class="form-inline col-12">
+            <div class="form-group col-12 mb-3">
+                <label class="col-sm-5 col-xs-12" for="input-high-level-alarm">High Level</label>
+                <input class="col-sm-4 col-xs-12 form-control" id="input-high-level-alarm" type="number" disabled>
+                <small class="col-sm-3 col-xs-12 form-text text-muted">Lts</small>
+            </div>
+            <div class="form-group col-12 mb-5">
+                <label class="col-sm-5 col-xs-12" for="input-low-level-alarm">Low Level</label>
+                <input class="col-sm-4 col-xs-12 form-control" id="input-low-level-alarm" type="number" disabled>
+                <small class="col-sm-3 col-xs-12 form-text text-muted">Lts</small>
+            </div>
+        </form>
+
+        <div class="col-12">
+            <button class="col-3 btn btn-primary btn-sm"
+                    id="button-edit" type="button"
+                    onclick="switchEnableDisableInput()">Edit
+            </button>
+            <button class="col-3 btn btn-primary btn-sm"
+                    id="button-cancel" type="button"
+                    onclick="cancelChangesInCapacityAndAlarm()" disabled>Cancel
+            </button>
+            <button class="col-3 btn btn-primary btn-sm"
+                    id="button-confirm" type="button"
+                    onclick="confirmChangeInCapacityAndAlarm()" disabled>Confirm
+            </button>
+        </div>
     </div>
 </section>
 
