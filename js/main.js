@@ -91,7 +91,7 @@ class Tank {
         let label = document.getElementById("label-level-tank");
 
         // Update the label of level of liquid in tank.
-        label.innerText = this.levelOfLiquidInTank;
+        label.value = this.levelOfLiquidInTank;
     }
 
     updateLabelForSetPoint(){
