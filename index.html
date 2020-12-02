@@ -27,100 +27,103 @@
     <h1 class="text-center card-header">Tank Utilities</h1>
 </header>
 
-<section class="row row-cols-3 my-4">
-    <div class="col-12 col-md-5 border py-2">
-        <h4 class="small text-muted col-12 my-2 font-weight-normal">Water Tank</h4>
+<main class="container">
+    <section class="row row-cols-3 my-4">
+        <div class="col-12 col-md-5 border py-2">
+            <h4 class="small text-muted col-12 my-2 font-weight-normal">Water Tank</h4>
 
-        <p class="text-center mt-4">
-            <img class="img-thumbnail" id="img-level-tank" src="img/WaterTank.png" alt="Water Tank">
-        </p>
+            <p class="text-center mt-4">
+                <img class="img-thumbnail" id="img-level-tank" src="img/WaterTank.png" alt="Water Tank">
+            </p>
 
-        <div class="offset-1 col-10 d-flex justify-content-end">
-            <button class="btn btn-danger mr-2" id="button-drain" type="button" onclick="drainTank()">Drain</button>
+            <div class="offset-1 col-10 d-flex justify-content-end">
+                <button class="btn btn-danger mr-2" id="button-drain" type="button" onclick="drainTank()">Drain</button>
+            </div>
         </div>
-    </div>
 
-    <div class="col-12 col-md-2 border py-2">
-        <h4 class="small text-muted col-12 my-2 font-weight-normal">Options</h4>
+        <div class="col-12 col-md-2 border py-2">
+            <h4 class="small text-muted col-12 my-2 font-weight-normal">Options</h4>
 
-        <form class="my-4">
-            <label class="form-label col-12">Level (Lts)
-                <input id="label-level-tank" class="form-control" type="text">
-            </label>
-            <section class="d-flex justify-content-center">
-                <!-- Area of buttons for control of tank level. -->
-                <button class="btn btn-primary px-4 mr-2" id="button-add-level" type="button"
-                        onclick="addLevelOfLiquidInTank()">+
+            <form class="my-4">
+                <label class="form-label col-12">Level (Lts)
+                    <input id="label-level-tank" class="form-control" type="text">
+                </label>
+                <section class="d-flex justify-content-center">
+                    <!-- Area of buttons for control of tank level. -->
+                    <button class="btn btn-primary px-4 mr-2" id="button-add-level" type="button"
+                            onclick="addLevelOfLiquidInTank()">+
+                    </button>
+                    <button class="btn btn-primary px-4" id="button-sub-level" type="button"
+                            onclick="subLevelOfLiquidInTank()">-
+                    </button>
+                </section>
+            </form>
+
+            <form>
+                <label class="form-label col-12">Set Point (Lts)
+                    <input id="input-set-point" class="form-control" type="text" name="set-point" min="0" required>
+                </label>
+                <button class="btn btn-primary px-4" id="button-set-point" type="button"
+                        onclick="setPointOfTank()">Set
                 </button>
-                <button class="btn btn-primary px-4" id="button-sub-level" type="button"
-                        onclick="subLevelOfLiquidInTank()">-
-                </button>
-            </section>
-        </form>
-
-        <form>
-            <label class="form-label col-12">Set Point (Lts)
-                <input id="input-set-point" class="form-control" type="text" name="set-point" min="0" required>
-            </label>
-            <button class="btn btn-primary px-4" id="button-set-point" type="button"
-                    onclick="setPointOfTank()">Set
-            </button>
-        </form>
-    </div>
-
-    <div class="col-12 col-md-5 border py-2">
-        <h4 class="small text-muted col-12 my-2 font-weight-normal">Setup</h4>
-
-        <h4 class="col-12 small text-muted mb-3 pt-3 border-top">Capacity</h4>
-
-        <form class="form-inline">
-            <div class="form-group col-12 mb-3">
-                <label class="form-label" for="input-max-level">Maximum</label>
-                <input class="form-control" id="input-max-level" type="number" min="0" disabled>
-                <small class="col-sm-3 col-xs-12 form-text text-muted">Lts</small>
-            </div>
-            <div class="form-group col-12 mb-5">
-                <label class="form-label" for="input-min-level">Minimum</label>
-                <input class="form-control" id="input-min-level" type="number" min="0" disabled>
-                <label class="col-sm-3 col-xs-12 form-text text-muted">Lts</label>
-            </div>
-        </form>
-
-        <h4 class="col-12 small text-muted mb-3 pt-3 border-top">Alarms</h4>
-        <form class="form-inline">
-            <div class="form-group col-12 mb-3">
-                <label class="form-label" for="input-high-level-alarm">High Level</label>
-                <input class="form-control" id="input-high-level-alarm" type="number" disabled>
-                <small class="col-sm-3 col-xs-12 form-text text-muted">Lts</small>
-            </div>
-            <div class="form-group col-12 mb-5">
-                <label class="form-label" for="input-low-level-alarm">Low Level</label>
-                <input class="form-control" id="input-low-level-alarm" type="number" disabled>
-                <small class="col-sm-3 col-xs-12 form-text text-muted">Lts</small>
-            </div>
-        </form>
-
-        <div class="col-12 btn-group" role="group">
-            <button class="btn btn-primary btn-sm"
-                    id="button-edit" type="button"
-                    onclick="switchEnableDisableInput()">Edit
-            </button>
-            <button class="btn btn-primary btn-sm"
-                    id="button-cancel" type="button"
-                    onclick="cancelChangesInCapacityAndAlarm()" disabled>Cancel
-            </button>
-            <button class="btn btn-primary btn-sm"
-                    id="button-confirm" type="button"
-                    onclick="confirmChangeInCapacityAndAlarm()" disabled>Confirm
-            </button>
+            </form>
         </div>
-    </div>
-</section>
 
-<div>Icons made by <a
-        href="https://www.flaticon.com/free-icon/water-tank_1954935?related_item_id=1954974&term=water%20tank"
-        title="Icongeek26">Icongeek26</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-</div>
+        <div class="col-12 col-md-5 border py-2">
+            <h4 class="small text-muted col-12 my-2 font-weight-normal">Setup</h4>
+
+            <h4 class="col-12 small text-muted mb-3 pt-3 border-top">Capacity</h4>
+
+            <form class="form-inline">
+                <div class="form-group col-12 mb-3">
+                    <label class="form-label" for="input-max-level">Maximum</label>
+                    <input class="form-control" id="input-max-level" type="number" min="0" disabled>
+                    <small class="col-sm-3 col-xs-12 form-text text-muted">Lts</small>
+                </div>
+                <div class="form-group col-12 mb-5">
+                    <label class="form-label" for="input-min-level">Minimum</label>
+                    <input class="form-control" id="input-min-level" type="number" min="0" disabled>
+                    <label class="col-sm-3 col-xs-12 form-text text-muted">Lts</label>
+                </div>
+            </form>
+
+            <h4 class="col-12 small text-muted mb-3 pt-3 border-top">Alarms</h4>
+            <form class="form-inline">
+                <div class="form-group col-12 mb-3">
+                    <label class="form-label" for="input-high-level-alarm">High Level</label>
+                    <input class="form-control" id="input-high-level-alarm" type="number" disabled>
+                    <small class="col-sm-3 col-xs-12 form-text text-muted">Lts</small>
+                </div>
+                <div class="form-group col-12 mb-5">
+                    <label class="form-label" for="input-low-level-alarm">Low Level</label>
+                    <input class="form-control" id="input-low-level-alarm" type="number" disabled>
+                    <small class="col-sm-3 col-xs-12 form-text text-muted">Lts</small>
+                </div>
+            </form>
+
+            <div class="col-12 btn-group" role="group">
+                <button class="btn btn-primary btn-sm"
+                        id="button-edit" type="button"
+                        onclick="switchEnableDisableInput()">Edit
+                </button>
+                <button class="btn btn-primary btn-sm"
+                        id="button-cancel" type="button"
+                        onclick="cancelChangesInCapacityAndAlarm()" disabled>Cancel
+                </button>
+                <button class="btn btn-primary btn-sm"
+                        id="button-confirm" type="button"
+                        onclick="confirmChangeInCapacityAndAlarm()" disabled>Confirm
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer>Icons made by <a
+            href="https://www.flaticon.com/free-icon/water-tank_1954935?related_item_id=1954974&term=water%20tank"
+            title="Icongeek26">Icongeek26</a> from <a href="https://www.flaticon.com/"
+                                                      title="Flaticon">www.flaticon.com</a>
+    </footer>
+</main>
 
 <!-- Support to Bootstrap-->
 <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
