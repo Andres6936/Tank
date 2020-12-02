@@ -44,12 +44,12 @@
         <h4 class="small text-muted col-12 my-2 font-weight-normal">Options</h4>
 
         <form class="my-4">
-            <label class="form-label">Level (Lts)
+            <label class="form-label col-12">Level (Lts)
                 <input id="label-level-tank" class="form-control" type="text">
             </label>
-            <section class="d-inline">
+            <section class="d-flex justify-content-center">
                 <!-- Area of buttons for control of tank level. -->
-                <button class="btn btn-primary px-4" id="button-add-level" type="button"
+                <button class="btn btn-primary px-4 mr-2" id="button-add-level" type="button"
                         onclick="addLevelOfLiquidInTank()">+
                 </button>
                 <button class="btn btn-primary px-4" id="button-sub-level" type="button"
@@ -59,7 +59,7 @@
         </form>
 
         <form>
-            <label class="form-label">Set Point (Lts)
+            <label class="form-label col-12">Set Point (Lts)
                 <input id="input-set-point" class="form-control" type="text" name="set-point" min="0" required>
             </label>
             <button class="btn btn-primary px-4" id="button-set-point" type="button"
