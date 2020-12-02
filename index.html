@@ -27,31 +27,27 @@
 </header>
 
 <section class="row row-cols-3">
-    <div class="row">
-        <div class="card-header">
+    <div class="row border">
+        <div class="col-12">
             <h4 class="my-0 font-weight-normal">Water Tank</h4>
         </div>
 
-        <!-- Body -->
-        <div class="card-body">
-            <!-- Image -->
-            <img class="img-fluid" id="img-level-tank" src="img/WaterTank.png" alt="Water Tank">
+        <img class="img-fluid" id="img-level-tank" src="img/WaterTank.png" alt="Water Tank">
 
-            <!-- Progress Bar -->
-                <div class="progress mt-3 mb-4">
-                    <div class="progress-bar-striped active"
-                         id="progress-level-tank"
-                         role="progressbar"
-                         aria-valuemin="0"
-                         aria-valuemax="100">
-                    </div>
-                </div>
-
-            <!-- Button of Drain -->
-            <button class="btn btn-danger btn-block btn-lg"
-                    id="button-drain" type="button" onclick="drainTank()">Drain
-            </button>
+        <!-- Progress Bar -->
+        <div class="progress mt-3 mb-4">
+            <div class="progress-bar-striped active"
+                 id="progress-level-tank"
+                 role="progressbar"
+                 aria-valuemin="0"
+                 aria-valuemax="100">
+            </div>
         </div>
+
+        <!-- Button of Drain -->
+        <button class="btn btn-danger btn-block btn-lg"
+                id="button-drain" type="button" onclick="drainTank()">Drain
+        </button>
     </div>
 
     <div class="row">
