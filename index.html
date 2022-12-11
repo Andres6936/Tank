@@ -19,7 +19,9 @@
     <title>Tank</title>
 
     <link rel="icon" href="/img/Icon.png" type="image/png">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" media="screen">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" crossorigin="anonymous"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC">
 </head>
 
 <body class="bg-light">
@@ -31,45 +33,49 @@
 </nav>
 
 <main class="container bg-light">
-    <section class="row row-cols-3 my-4 px-2">
-        <div class="col-12 col-md-8 col-xxl-5 border py-2 mb-4 bg-white shadow rounded">
-            <h4 class="small text-muted col-12 my-2 font-weight-normal border-bottom pb-2">Water Tank</h4>
+    <section class="row row-cols-2 mt-2 mb-4">
+        <div class="col-12 col-md-8 p-3 ">
+            <div class="border p-2 mb-4 bg-white shadow rounded h-100">
+                <h4 class="small text-muted col-12 my-2 font-weight-normal border-bottom pb-2">Water Tank</h4>
 
-            <p class="text-center mt-4">
-                <img class="img-thumbnail" id="img-level-tank" src="img/WaterTank.png" alt="Water Tank">
-            </p>
+                <p class="text-center mt-4">
+                    <img class="img-thumbnail" id="img-level-tank" src="img/WaterTank.png" alt="Water Tank">
+                </p>
 
-            <div class="offset-1 col-10 d-flex justify-content-end">
-                <button class="btn btn-danger mr-2" id="button-drain" type="button" onclick="drainTank()">Drain</button>
+                <div class="offset-1 col-10 d-flex justify-content-end">
+                    <button class="btn btn-danger mr-2" id="button-drain" type="button" onclick="drainTank()">Drain</button>
+                </div>
             </div>
         </div>
 
-        <div class="col-12 col-md-3 offset-md-1 offset-xxl-0 ml-xxl-4 col-xxl-2 border py-2 mb-4 bg-white shadow rounded">
-            <h4 class="small text-muted col-12 my-2 font-weight-normal border-bottom pb-2">Options</h4>
+        <div class="col-12 col-md-4 col-xxl-2 p-3">
+            <div class="border p-2 mb-4 bg-white shadow rounded h-100">
+                <h4 class="small text-muted col-12 my-2 font-weight-normal border-bottom pb-2">Options</h4>
 
-            <form class="my-4">
-                <label class="form-label col-12">Level (Lts)
-                    <input id="label-level-tank" class="form-control" type="text">
-                </label>
-                <section class="d-flex justify-content-center">
-                    <!-- Area of buttons for control of tank level. -->
-                    <button class="btn btn-primary px-4 mr-2" id="button-add-level" type="button"
-                            onclick="addLevelOfLiquidInTank()">+
-                    </button>
-                    <button class="btn btn-primary px-4" id="button-sub-level" type="button"
-                            onclick="subLevelOfLiquidInTank()">-
-                    </button>
-                </section>
-            </form>
+                <form class="my-4">
+                    <label class="form-label col-12">Level (Lts)
+                        <input id="label-level-tank" class="form-control" type="text">
+                    </label>
+                    <section class="d-flex justify-content-center">
+                        <!-- Area of buttons for control of tank level. -->
+                        <button class="btn btn-primary px-4 mr-2" id="button-add-level" type="button"
+                                onclick="addLevelOfLiquidInTank()">+
+                        </button>
+                        <button class="btn btn-primary px-4" id="button-sub-level" type="button"
+                                onclick="subLevelOfLiquidInTank()">-
+                        </button>
+                    </section>
+                </form>
 
-            <form>
-                <label class="form-label col-12">Set Point (Lts)
-                    <input id="input-set-point" class="form-control" type="text" name="set-point" min="0" required>
-                </label>
-                <button class="btn btn-primary px-4" id="button-set-point" type="button"
-                        onclick="setPointOfTank()">Set
-                </button>
-            </form>
+                <form>
+                    <label class="form-label col-12">Set Point (Lts)
+                        <input id="input-set-point" class="form-control" type="text" name="set-point" min="0" required>
+                    </label>
+                    <button class="btn btn-primary px-4" id="button-set-point" type="button"
+                            onclick="setPointOfTank()">Set
+                    </button>
+                </form>
+            </div>
         </div>
 
         <div class="col-12 col-md-12 ml-xxl-4 col-xxl-4 border py-2 bg-white shadow mb-4 rounded">
