@@ -1,6 +1,6 @@
 
 #em6QcwbDiMu2_to {
-    animation: em6QcwbDiMu2_to__to 8000ms linear 1 normal forwards
+    animation: em6QcwbDiMu2_to__to 8000ms linear infinite normal forwards
 }
 
 @keyframes em6QcwbDiMu2_to__to {
@@ -19,7 +19,7 @@
 }
 
 #em6QcwbDiMu3_to {
-    animation: em6QcwbDiMu3_to__to 8000ms linear 1 normal forwards
+    animation: em6QcwbDiMu3_to__to 8000ms linear infinite normal forwards
 }
 
 @keyframes em6QcwbDiMu3_to__to {
