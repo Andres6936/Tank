@@ -199,7 +199,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section className={"border p-2 bg-white shadow rounded"}>
+            <section className={"border p-2 mb-4 bg-white shadow rounded"}>
                 <WaterAnimation backgroundColor={"white"}/>
             </section>
 
