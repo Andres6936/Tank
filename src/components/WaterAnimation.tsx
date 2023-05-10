@@ -6,7 +6,7 @@ interface Props {
 
 export default function WaterAnimation(props: Props) {
     return (
-        <svg id="em6QcwbDiMu1" xmlns="http://www.w3.org/2000/svg"
+        <svg id="em6QcwbDiMu1" xmlns="http://www.w3.org/2000/svg" stroke={props.backgroundColor}
              viewBox="0 0 300 300" shapeRendering="geometricPrecision" textRendering="geometricPrecision">
             <defs>
                 <radialGradient id="em6QcwbDiMu2-fill" cx="0" cy="0" r="0.5" spreadMethod="pad"
