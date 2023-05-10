@@ -1,3 +1,5 @@
+import WaterAnimation from "./components/WaterAnimation.tsx";
+
 export default function App() {
     return (
         <>
@@ -197,7 +199,7 @@ export default function App() {
                 </div>
             </section>
             <section>
-                <img src="img/Water.svg" />
+                <WaterAnimation/>
             </section>
             <footer className="small text-muted pb-4">
                 Icons made by{" "}
