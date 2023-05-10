@@ -357,14 +357,14 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@master/css.react@^2.0.0-beta.145":
-  version "2.0.0-beta.150"
-  resolved "https://registry.yarnpkg.com/@master/css.react/-/css.react-2.0.0-beta.150.tgz#d5a8cd7b343ecba2175ecf3c1b6aece22c6d2002"
-  integrity sha512-x0JM20AnD+Lwf/kNjlCsasq+pG1X4xZsHF8n2G9nfBymHof7673ltiEBMzI5kZGksi33goGuItT/0hhTuSCjxQ==
+"@master/css.react@2.0.0-beta.145":
+  version "2.0.0-beta.145"
+  resolved "https://registry.yarnpkg.com/@master/css.react/-/css.react-2.0.0-beta.145.tgz#bb768a46959754d52d53f7d0cb52e47e9325b976"
+  integrity sha512-ZhxJxagRgv5a32aqp8FuHgLmuPDx9Ruln7I3LaHhIokYdZ5xykvaA/iNtQ5y5HUZUxTCQ0pxNwjH3BLwxY7gBg==
   dependencies:
-    "@master/css" "^2.0.0-beta.150"
+    "@master/css" "^2.0.0-beta.145"
 
-"@master/css@^2.0.0-beta.150":
+"@master/css@^2.0.0-beta.145":
   version "2.0.0-beta.150"
   resolved "https://registry.yarnpkg.com/@master/css/-/css-2.0.0-beta.150.tgz#776ee5af86d505357d6c4ccb140f604959087a10"
   integrity sha512-a04u90m2jpZ3lm6RPDcUyVY+UcPY/adIg94dusb4k4e45ngbWxnck0vCc7vHyiDAZABLK3YoYbfgzbAhCzJ9hQ==
@@ -941,7 +941,7 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
-react-dom@^18.2.0:
+react-dom@18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -954,7 +954,7 @@ react-refresh@^0.14.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.14.0.tgz#4e02825378a5f227079554d4284889354e5f553e"
   integrity sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==
 
-react@^18.2.0:
+react@18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
