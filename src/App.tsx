@@ -198,9 +198,11 @@ export default function App() {
                     </div>
                 </div>
             </section>
-            <section>
-                <WaterAnimation/>
+
+            <section className={"border p-2 bg-white shadow rounded"}>
+                <WaterAnimation backgroundColor={"white"}/>
             </section>
+
             <footer className="small text-muted pb-4">
                 Icons made by{" "}
                 <a

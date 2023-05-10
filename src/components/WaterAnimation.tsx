@@ -1,6 +1,10 @@
 import './WaterAnimation.css'
 
-export default function WaterAnimation() {
+interface Props {
+    backgroundColor: string
+}
+
+export default function WaterAnimation(props: Props) {
     return (
         <svg id="em6QcwbDiMu1" xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 300 300" shapeRendering="geometricPrecision" textRendering="geometricPrecision">
@@ -30,7 +34,7 @@ export default function WaterAnimation() {
             </g>
             <path
                 d="M5,150C5,69.91871,69.91871,5,150,5s145,64.91871,145,145-64.91871,145-145,145-145-64.91871-145-145ZM300,299.99984L300,0L0,0v299.99984h300Z"
-                stroke="#000"/>
+                 fill={props.backgroundColor}/>
             <text dx="0" dy="0" fontFamily="&quot;em6QcwbDiMu1:::Noto Sans&quot;" fontSize="15" fontWeight="700"
                   transform="translate(142.495081 273.45838)" fill="#ccc" strokeWidth="0">
                 <tspan y="0" fontWeight="700" strokeWidth="0">
