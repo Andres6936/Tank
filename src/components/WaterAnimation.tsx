@@ -2,6 +2,7 @@ import './WaterAnimation.css'
 import {useMemo} from "react";
 
 interface Props {
+    className?: string,
     waterLevel: "low" | "medium" | "hight";
     backgroundColor: string;
 }
@@ -53,7 +54,8 @@ export default function WaterAnimation(props: Props) {
 
     return (
         <svg id="em6QcwbDiMu1" xmlns="http://www.w3.org/2000/svg" stroke={props.backgroundColor}
-             viewBox="0 0 300 300" shapeRendering="geometricPrecision" textRendering="geometricPrecision">
+             className={props.className ?? ''} viewBox="0 0 300 300" shapeRendering="geometricPrecision"
+             textRendering="geometricPrecision">
             <defs>
                 <radialGradient id="em6QcwbDiMu2-fill" cx="0" cy="0" r="0.5" spreadMethod="pad"
                                 gradientUnits="objectBoundingBox" gradientTransform="translate(0.5 0.634547)">
@@ -82,7 +84,7 @@ export default function WaterAnimation(props: Props) {
             </g>
             <path
                 d="M5,150C5,69.91871,69.91871,5,150,5s145,64.91871,145,145-64.91871,145-145,145-145-64.91871-145-145ZM300,299.99984L300,0L0,0v299.99984h300Z"
-                 fill={props.backgroundColor}/>
+                fill={props.backgroundColor}/>
             <text dx="0" dy="0" fontFamily="&quot;em6QcwbDiMu1:::Noto Sans&quot;" fontSize="15" fontWeight="700"
                   transform="translate(142.495081 273.45838)" fill="#ccc" strokeWidth="0">
                 <tspan y="0" fontWeight="700" strokeWidth="0">
