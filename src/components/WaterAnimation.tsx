@@ -1,10 +1,33 @@
 import './WaterAnimation.css'
 
 interface Props {
-    backgroundColor: string
+    waterLevel: "low" | "medium" | "hight";
+    backgroundColor: string;
 }
 
 export default function WaterAnimation(props: Props) {
+    const getHeightSecondWaveByWaterLevel = (): number => {
+        switch (props.waterLevel) {
+            case "hight":
+                return -355.715648
+            case "medium":
+                return -250.715648
+            case "low":
+                return -175.715648;
+        }
+    }
+
+    const getHeightFirstWaveByWaterLevel = (): number => {
+        switch (props.waterLevel) {
+            case "hight":
+                return -300.528168
+            case "medium":
+                return -190.715648
+            case "low":
+                return -120.528168
+        }
+    }
+
     return (
         <svg id="em6QcwbDiMu1" xmlns="http://www.w3.org/2000/svg" stroke={props.backgroundColor}
              viewBox="0 0 300 300" shapeRendering="geometricPrecision" textRendering="geometricPrecision">
@@ -23,13 +46,15 @@ export default function WaterAnimation(props: Props) {
             <g id="em6QcwbDiMu2_to" transform="translate(248.863531,286.366658)">
                 <path
                     d="M45.804677,150c12.718552-.000019,11.859986-24.274962,22.898723-24.292527s11.120882,24.292508,25.758993,24.292506s16.423291-24.292506,28.349506-24.292506c11.603221,0,12.127468,24.292504,27.530444,24.292506s19.166654-24.292506,32.517709-24.292506s19.828213,24.292506,33.120104,24.292524s19.816584-24.283209,32.69507-24.292524s20.968156,32.564005,27.896776,24.292527l.998364,199.723823h-231.765689v-199.723823Z"
-                    transform="scale(2.212934,1) translate(-161.687522,-175.715648)" fill="url(#em6QcwbDiMu2-fill)"
+                    transform={`scale(2.212934,1) translate(-161.687522,${getHeightSecondWaveByWaterLevel()})`}
+                    fill="url(#em6QcwbDiMu2-fill)"
                     strokeWidth="0.6"/>
             </g>
             <g id="em6QcwbDiMu3_to" transform="translate(214.152832,245.574882)">
                 <path
                     d="M45.804677,150c12.718552-.000019,11.859986-24.274962,22.898723-24.292527s11.120882,24.292508,25.758993,24.292506s16.423291-24.292506,28.349506-24.292506c11.603221,0,12.127468,24.292504,27.530444,24.292506s19.166654-24.292506,32.517709-24.292506s19.828213,24.292506,33.120104,24.292524s19.816584-24.283209,32.69507-24.292524s20.968156,32.564005,27.896776,24.292527l.998364,199.723823h-231.765689v-199.723823Z"
-                    transform="scale(2.212934,1) translate(-161.615697,-120.528168)" fill="url(#em6QcwbDiMu3-fill)"
+                    transform={`scale(2.212934,1) translate(-161.615697,${getHeightFirstWaveByWaterLevel()})`}
+                    fill="url(#em6QcwbDiMu3-fill)"
                     strokeWidth="0.6"/>
             </g>
             <path

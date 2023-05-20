@@ -200,7 +200,7 @@ export default function App() {
             </section>
 
             <section className={"border p-2 mb-4 bg-white shadow rounded"}>
-                <WaterAnimation backgroundColor={"white"}/>
+                <WaterAnimation backgroundColor={"white"} waterLevel={"low"}/>
             </section>
 
             <footer className="small text-muted pb-4">
