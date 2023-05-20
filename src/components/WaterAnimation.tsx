@@ -1,4 +1,5 @@
 import './WaterAnimation.css'
+import {useMemo} from "react";
 
 interface Props {
     waterLevel: "low" | "medium" | "hight";
@@ -6,6 +7,28 @@ interface Props {
 }
 
 export default function WaterAnimation(props: Props) {
+    const [leftGradiantSecondWave, rightGradiantSecondWave] = useMemo(() => {
+        switch (props.waterLevel) {
+            case "hight":
+                return ["#ef233c", "#d90429"]
+            case "medium":
+                return ["#1582e9", "#0a5a8b"]
+            case "low":
+                return ["#ffc300", "#ffd60a"];
+        }
+    }, [props.waterLevel])
+
+    const [leftGradiantFirstWave, rightGradiantFirstWave] = useMemo(() => {
+        switch (props.waterLevel) {
+            case "hight":
+                return ["#9d0208", "#d00000"]
+            case "medium":
+                return ["#0a5a8b", "#1582e9"]
+            case "low":
+                return ["#ffaa00", "#ff9500"];
+        }
+    }, [props.waterLevel])
+
     const getHeightSecondWaveByWaterLevel = (): number => {
         switch (props.waterLevel) {
             case "hight":
@@ -34,13 +57,13 @@ export default function WaterAnimation(props: Props) {
             <defs>
                 <radialGradient id="em6QcwbDiMu2-fill" cx="0" cy="0" r="0.5" spreadMethod="pad"
                                 gradientUnits="objectBoundingBox" gradientTransform="translate(0.5 0.634547)">
-                    <stop id="em6QcwbDiMu2-fill-0" offset="40.9299%" stopColor="#1582e9"/>
-                    <stop id="em6QcwbDiMu2-fill-1" offset="100%" stopColor="#0a5a8b"/>
+                    <stop id="em6QcwbDiMu2-fill-0" offset="40.9299%" stopColor={leftGradiantSecondWave}/>
+                    <stop id="em6QcwbDiMu2-fill-1" offset="100%" stopColor={rightGradiantSecondWave}/>
                 </radialGradient>
                 <radialGradient id="em6QcwbDiMu3-fill" cx="0" cy="0" r="0.5" spreadMethod="pad"
                                 gradientUnits="objectBoundingBox" gradientTransform="translate(0.5 0.634547)">
-                    <stop id="em6QcwbDiMu3-fill-0" offset="22%" stopColor="#0a5a8b"/>
-                    <stop id="em6QcwbDiMu3-fill-1" offset="100%" stopColor="#1582e9"/>
+                    <stop id="em6QcwbDiMu3-fill-0" offset="22%" stopColor={leftGradiantFirstWave}/>
+                    <stop id="em6QcwbDiMu3-fill-1" offset="100%" stopColor={rightGradiantFirstWave}/>
                 </radialGradient>
             </defs>
             <g id="em6QcwbDiMu2_to" transform="translate(248.863531,286.366658)">
