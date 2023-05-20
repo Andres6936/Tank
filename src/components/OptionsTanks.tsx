@@ -1,6 +1,6 @@
 export default function OptionsTanks() {
     return (
-        <div className="flex flex:col flex-shrink:0">
+        <div className="flex flex:col flex-shrink:0  flex-basis:99.3%">
             <div className="border px-4 py-2 bg-white shadow mb-4 rounded h-100">
                 <h4 className="small text-muted col-12 my-2 font-weight-normal">
                     Setup

@@ -9,7 +9,7 @@ export default function App() {
         <>
             <Navigator/>
 
-            <main className="flex flex:col">
+            <main className="flex flex:wrap@md flex:col flex:row@sm gap:0.5em">
                 <WaterTank/>
                 <ControlTanks/>
                 <OptionsTanks/>
