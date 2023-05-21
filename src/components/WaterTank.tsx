@@ -3,7 +3,7 @@ import IconDroplet from "../icons/IconDroplet.tsx";
 
 export default function WaterTank() {
     return (
-        <section className={"flex flex:col flex-basis:99.3% flex-shrink:0 flex-basis:49.3%@md position:relative border p:0.5em bg-white shadow rounded"}>
+        <section className={"flex flex:col flex-shrink:0 flex-basis:99.3% flex-basis:49.3%@sm flex-basis:33%@md position:relative border p:0.5em bg-white shadow rounded"}>
             <button
                 className={"position:absolute text-align:center top:15 right:15 bg:#d00000 fg:white font:bold b:none r:50% w:3.5em h:3.5em"}>Drain
             </button>
