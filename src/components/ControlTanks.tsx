@@ -1,7 +1,7 @@
 export default function ControlTanks() {
     return (
-        <div className="flex flex:col flex-shrink:0 flex-basis:49.3%@sm flex-basis:33%@md">
-            <div className="border px-4 py-2 mb-4 bg-white shadow rounded h-100">
+        <div className="flex flex:col flex-shrink:0 flex-basis:49.3%@sm flex-basis:33%@md bg-white shadow rounded">
+            <div className="border px-4 py-2 mb-4  h-100">
                 <h4 className="small text-muted col-12 my-2 font-weight-normal border-bottom pb-2">
                     Options
                 </h4>
