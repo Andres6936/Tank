@@ -1,10 +1,10 @@
-import App from './App'
 import React from 'react'
 import {createRoot} from "react-dom/client";
 import {CSSProvider} from '@master/css.react'
 import config from '../master.css'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import Options from "./routes/Options.tsx";
+import App from './routes/App'
+import Options from "./routes/Options";
 
 
 const router = createBrowserRouter([
