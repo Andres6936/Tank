@@ -5,6 +5,7 @@ import config from '../master.css'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import App from './routes/App'
 import Options from "./routes/Options";
+import WaterContextProvider from "./context/WaterContext.tsx";
 
 
 const router = createBrowserRouter([
@@ -22,7 +23,9 @@ const root = createRoot(document.getElementById("root") as HTMLElement)
 root.render(
     <React.StrictMode>
         <CSSProvider config={config}>
-            <RouterProvider router={router}/>
+            <WaterContextProvider>
+                <RouterProvider router={router}/>
+            </WaterContextProvider>
         </CSSProvider>
     </React.StrictMode>
 )

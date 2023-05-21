@@ -1,4 +1,9 @@
+import {useContext} from "react";
+import {IWaterContext, WaterContext} from "../context/WaterContext.tsx";
+
 export default function ControlTanks() {
+    const waterContext = useContext<IWaterContext>(WaterContext);
+
     return (
         <div className="flex flex:col flex-shrink:0 flex-basis:49.3%@sm flex-basis:33%@md bg-white shadow rounded">
             <div className="border px-4 py-2 mb-4  h-100">
@@ -20,7 +25,7 @@ export default function ControlTanks() {
                             className="btn btn-primary px-4 mr-2"
                             id="button-add-level"
                             type="button"
-                            onclick="addLevelOfLiquidInTank()"
+                            onClick={() => waterContext.incrementWaterLevel()}
                             >
                             +
                         </button>
@@ -28,7 +33,7 @@ export default function ControlTanks() {
                             className="btn btn-primary px-4"
                             id="button-sub-level"
                             type="button"
-                            onclick="subLevelOfLiquidInTank()"
+                            onClick={() => waterContext.decrementWaterLevel()}
                             >
                             -
                         </button>

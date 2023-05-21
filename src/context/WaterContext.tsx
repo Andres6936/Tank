@@ -14,7 +14,7 @@ export const WaterContext = createContext<IWaterContext>({
 
 
 export default function WaterContextProvider (props: {children: ReactNode}) {
-    const [waterLevel, setWaterLevel] = useState<number>(0)
+    const [waterLevel, setWaterLevel] = useState<number>(50)
     
     const incrementWaterLevel = () => setWaterLevel(waterLevel + 10);
     
