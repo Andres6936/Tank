@@ -2,9 +2,20 @@ import WaterAnimation from "./WaterAnimation.tsx";
 import IconDroplet from "../icons/IconDroplet.tsx";
 import {useContext} from "react";
 import {IWaterContext, WaterContext} from "../context/WaterContext.tsx";
+import {WaterLevel} from "../types/WaterLevel.ts";
 
 export default function WaterTank() {
     const waterContext = useContext<IWaterContext>(WaterContext);
+
+    const getCurrentWaterLevel = () : WaterLevel => {
+        if (waterContext.waterLevel >= waterContext.highLevelAlarm) {
+            return "high";
+        } else if (waterContext.waterLevel <= waterContext.lowLevelAlarm) {
+            return "low";
+        } else {
+            return "medium";
+        }
+    }
 
     const onChangeWaterLevel = (value: string) => {
         const valueOfUser = Number(value);
@@ -23,7 +34,7 @@ export default function WaterTank() {
                 className={"position:absolute text-align:center top:15 right:15 bg:#d00000 fg:white font:bold b:none r:50% w:3.5em h:3.5em"}>Drain
             </button>
 
-            <WaterAnimation className={"mt:1em"} backgroundColor={"white"} waterLevel={"hight"}/>
+            <WaterAnimation className={"mt:1em"} backgroundColor={"white"} waterLevel={getCurrentWaterLevel()}/>
 
             <div
                 className={"flex flex:row gap:1em justify-content:center align-items:center bg:#f5f3f4 my:1em r:2em py:0.3em"}>

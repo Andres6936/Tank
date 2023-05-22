@@ -1,16 +1,17 @@
 import './WaterAnimation.css'
 import {useMemo} from "react";
+import {WaterLevel} from "../types/WaterLevel.ts";
 
 interface Props {
     className?: string,
-    waterLevel: "low" | "medium" | "hight";
+    waterLevel: WaterLevel;
     backgroundColor: string;
 }
 
 export default function WaterAnimation(props: Props) {
     const [leftGradiantSecondWave, rightGradiantSecondWave] = useMemo(() => {
         switch (props.waterLevel) {
-            case "hight":
+            case "high":
                 return ["#ef233c", "#d90429"]
             case "medium":
                 return ["#1582e9", "#0a5a8b"]
@@ -21,7 +22,7 @@ export default function WaterAnimation(props: Props) {
 
     const [leftGradiantFirstWave, rightGradiantFirstWave] = useMemo(() => {
         switch (props.waterLevel) {
-            case "hight":
+            case "high":
                 return ["#9d0208", "#d00000"]
             case "medium":
                 return ["#0a5a8b", "#1582e9"]
@@ -32,7 +33,7 @@ export default function WaterAnimation(props: Props) {
 
     const getHeightSecondWaveByWaterLevel = (): number => {
         switch (props.waterLevel) {
-            case "hight":
+            case "high":
                 return -355.715648
             case "medium":
                 return -250.715648
@@ -43,7 +44,7 @@ export default function WaterAnimation(props: Props) {
 
     const getHeightFirstWaveByWaterLevel = (): number => {
         switch (props.waterLevel) {
-            case "hight":
+            case "high":
                 return -300.528168
             case "medium":
                 return -190.715648
