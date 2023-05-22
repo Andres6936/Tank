@@ -1,4 +1,5 @@
 interface Props {
+    value: number | string | readonly string[],
     label: string;
 }
 
@@ -9,6 +10,7 @@ export default function InputLabel (props: Props) {
                 {props.label}
             </label>
             <input
+                value={props.value}
                 className="flex:1 form-control"
                 type="number"
                 min={0}
