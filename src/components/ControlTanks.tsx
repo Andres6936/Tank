@@ -11,14 +11,6 @@ export default function ControlTanks() {
                     Options
                 </h4>
                 <form className="my-4">
-                    <label className="form-label col-12">
-                        Level (Lts)
-                        <input
-                            id="label-level-tank"
-                            className="form-control"
-                            type="text"
-                        />
-                    </label>
                     <div className="col-12 btn-group">
                         {/* Area of buttons for control of tank level. */}
                         <button
