@@ -22,8 +22,8 @@ export default function OptionsTanks() {
                             Alarms
                         </h4>
 
-                        <InputLabel value={0} label={"High Level Liters"}/>
-                        <InputLabel value={0} label={"Low Level Liters"}/>
+                        <InputLabel value={waterContext.highLevelAlarm} label={"High Level Liters"}/>
+                        <InputLabel value={waterContext.lowLevelAlarm} label={"Low Level Liters"}/>
                     </form>
                 </div>
 
