@@ -17,7 +17,9 @@ const router = createBrowserRouter([
         path: "/options",
         element: <Options/>
     }
-])
+], {
+    basename: import.meta.env.BASE_URL
+})
 
 const root = createRoot(document.getElementById("root") as HTMLElement)
 root.render(
