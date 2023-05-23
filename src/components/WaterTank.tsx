@@ -5,6 +5,7 @@ import {IWaterContext, WaterContext} from "../context/WaterContext.tsx";
 import {WaterLevel} from "../types/WaterLevel.ts";
 import CircularButton from "./button/CircularButton.tsx";
 import CircularSlider from '@fseehawer/react-circular-slider';
+import IconGearWide from "../icons/IconGearWide.tsx";
 
 export default function WaterTank() {
     const waterContext = useContext<IWaterContext>(WaterContext);
@@ -35,7 +36,11 @@ export default function WaterTank() {
 
     return (
         <section
-            className={"flex flex:col flex-shrink:0 flex-basis:99.3% flex-basis:49.3%@sm flex-basis:33%@md position:relative border p:0.5em bg-white shadow rounded"}>
+            className={"flex flex:col flex-shrink:0 flex-basis:99.3% flex-basis:49.3%@sm flex-basis:33%@md overflow:hidden position:relative border p:0.5em bg-white shadow rounded"}>
+            <div className={"flex justify-content:center align-items:center position:absolute top:5 right:-1.5em bg:#ef233c fg:white rotate(45deg) w:6em h:2em"}>
+                <IconGearWide/>
+            </div>
+
             <WaterAnimation className={"mt:1em"} backgroundColor={"white"} waterLevel={getCurrentWaterLevel()}/>
 
             <div
