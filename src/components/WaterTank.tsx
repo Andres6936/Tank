@@ -63,6 +63,7 @@ export default function WaterTank() {
                 <CircularSlider
                     min={waterContext.minimumLevel}
                     max={waterContext.maximumLevel}
+                    initialValue={waterContext.waterLevel}
                     onChange={(value: number) => onChangeWaterLevel(value)}
                     knobPosition={"left"}
                     label={"Water Drops"}
