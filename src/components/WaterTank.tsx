@@ -3,6 +3,7 @@ import IconDroplet from "../icons/IconDroplet.tsx";
 import {useContext} from "react";
 import {IWaterContext, WaterContext} from "../context/WaterContext.tsx";
 import {WaterLevel} from "../types/WaterLevel.ts";
+import CircularButton from "./button/CircularButton.tsx";
 
 export default function WaterTank() {
     const waterContext = useContext<IWaterContext>(WaterContext);
@@ -30,6 +31,15 @@ export default function WaterTank() {
     return (
         <section
             className={"flex flex:col flex-shrink:0 flex-basis:99.3% flex-basis:49.3%@sm flex-basis:33%@md position:relative border p:0.5em bg-white shadow rounded"}>
+            <div className="flex flex:col gap:0.5em position:absolute top:15 left:15">
+                <CircularButton onClick={() => waterContext.incrementWaterLevel()}>
+                    <span className={"font:bold font-size:1.5em"}>+</span>
+                </CircularButton>
+                <CircularButton onClick={() => waterContext.decrementWaterLevel()}>
+                    <span className={"font:bold font-size:1.5em"}>-</span>
+                </CircularButton>
+            </div>
+
             <button
                 className={"position:absolute text-align:center top:15 right:15 bg:#d00000 fg:white font:bold b:none r:50% w:3.5em h:3.5em"}>Drain
             </button>

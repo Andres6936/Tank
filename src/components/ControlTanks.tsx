@@ -10,27 +10,6 @@ export default function ControlTanks() {
                 <h4 className="small text-muted col-12 my-2 font-weight-normal border-bottom pb-2">
                     Options
                 </h4>
-                <form className="my-4">
-                    <div className="col-12 btn-group">
-                        {/* Area of buttons for control of tank level. */}
-                        <button
-                            className="btn btn-primary px-4 mr-2"
-                            id="button-add-level"
-                            type="button"
-                            onClick={() => waterContext.incrementWaterLevel()}
-                            >
-                            +
-                        </button>
-                        <button
-                            className="btn btn-primary px-4"
-                            id="button-sub-level"
-                            type="button"
-                            onClick={() => waterContext.decrementWaterLevel()}
-                            >
-                            -
-                        </button>
-                    </div>
-                </form>
                 <form>
                     <label className="form-label col-12">
                         Set Point (Lts)
