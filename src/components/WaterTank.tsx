@@ -4,11 +4,12 @@ import {useContext} from "react";
 import {IWaterContext, WaterContext} from "../context/WaterContext.tsx";
 import {WaterLevel} from "../types/WaterLevel.ts";
 import CircularButton from "./button/CircularButton.tsx";
+import CircularSlider from '@fseehawer/react-circular-slider';
 
 export default function WaterTank() {
     const waterContext = useContext<IWaterContext>(WaterContext);
 
-    const getCurrentWaterLevel = () : WaterLevel => {
+    const getCurrentWaterLevel = (): WaterLevel => {
         if (waterContext.waterLevel >= waterContext.highLevelAlarm) {
             return "high";
         } else if (waterContext.waterLevel <= waterContext.lowLevelAlarm) {
@@ -18,7 +19,11 @@ export default function WaterTank() {
         }
     }
 
-    const onChangeWaterLevel = (value: string) => {
+    const onChangeWaterLevel = (value: string | number) => {
+        if (typeof value === 'number') {
+            waterContext.setWaterLevel(value);
+        }
+
         const valueOfUser = Number(value);
         if (Number.isNaN(valueOfUser)) {
             // Bad Number Formatted
@@ -54,8 +59,18 @@ export default function WaterTank() {
                 <p className={"p:0 m:0 font-size:1.2em font:bold fg:#0096c7"}>{waterContext.waterLevel} Water Drops</p>
             </div>
 
-            <input className={"mb:1em"} type="range" value={waterContext.waterLevel} min={waterContext.minimumLevel}
-                   max={waterContext.maximumLevel} onChange={({target}) =>onChangeWaterLevel(target.value)}/>
+            <div className={"flex justify-content:center align-items:center"}>
+                <CircularSlider
+                    min={waterContext.minimumLevel}
+                    max={waterContext.maximumLevel}
+                    onChange={(value: number) => onChangeWaterLevel(value)}
+                    knobPosition={"left"}
+                    label={"Water Drops"}
+                    labelColor={"#0096c7"}
+                    labelFontSize={"1.8em"}
+
+                />
+            </div>
         </section>
     )
 }
