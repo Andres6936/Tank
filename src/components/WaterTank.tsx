@@ -59,7 +59,7 @@ export default function WaterTank() {
                 <p className={"p:0 m:0 font-size:1.2em font:bold fg:#0096c7"}>{waterContext.waterLevel} Water Drops</p>
             </div>
 
-            <div className={"flex justify-content:center align-items:center"}>
+            <div className={"flex justify-content:center align-items:center my:1em"}>
                 <CircularSlider
                     min={waterContext.minimumLevel}
                     max={waterContext.maximumLevel}
@@ -68,7 +68,6 @@ export default function WaterTank() {
                     label={"Water Drops"}
                     labelColor={"#0096c7"}
                     labelFontSize={"1.8em"}
-
                 />
             </div>
         </section>

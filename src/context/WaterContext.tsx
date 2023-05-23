@@ -14,7 +14,7 @@ export interface IWaterContext {
 }
 
 export const WaterContext = createContext<IWaterContext>({
-    waterLevel: 0,
+    waterLevel: 350,
     maximumLevel: 500,
     minimumLevel: 50,
     lowLevelAlarm: 200,
@@ -28,7 +28,7 @@ export const WaterContext = createContext<IWaterContext>({
 
 
 export default function WaterContextProvider (props: {children: ReactNode}) {
-    const [waterLevel, setWaterLevel] = useState<number>(50)
+    const [waterLevel, setWaterLevel] = useState<number>(350)
     const [maximumLevel, setMaximumLevel] = useState<number>(500);
     const [minimumLevel, setMinimumLevel] = useState<number>(50);
     const [lowLevelAlarm, setLowLevelAlarm] = useState<number>(200);
