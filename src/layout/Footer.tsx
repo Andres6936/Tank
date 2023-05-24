@@ -1,17 +1,7 @@
 export default function Footer(){
     return (
-        <footer className="bottom:0 left:0 right:0 bg:white bt:1px|solid|#CCC small text-muted p:1em">
-            Icons made by{" "}
-            <a
-                href="https://www.flaticon.com/free-icon/water-tank_1954935?related_item_id=1954974&term=water%20tank"
-                title="Icongeek26"
-                >
-                Icongeek26
-            </a>{" "}
-            from{" "}
-            <a href="https://www.flaticon.com/" title="Flaticon">
-                www.flaticon.com
-            </a>
+        <footer className="flex justify-content:end bottom:0 left:0 right:0 p:1em">
+            <p className={" m:0 p:0 font-size:0.8em opacity:0.6"}>Design by Joan Buriticá</p>
         </footer>
     )
 }
