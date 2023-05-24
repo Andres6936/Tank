@@ -28,7 +28,7 @@ export default function OptionsTanks() {
                 </div>
             </div>
 
-            <button className="bg:blue-50 fg:white font:bold py:0.7em r:1.2em mx:1em mt:1em b:none">Apply Changes</button>
+            <button type={"button"} className="bg:blue-50 fg:white font:bold py:0.7em r:1.2em mx:1em mt:1em b:none">Apply Changes</button>
         </div>
     )
 }
