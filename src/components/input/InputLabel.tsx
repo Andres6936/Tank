@@ -11,6 +11,7 @@ export default function InputLabel (props: Props) {
             </label>
             <input
                 value={props.value}
+                onChange={() => {}}
                 className="flex:1 b:1px|solid|#CCC r:1em px:1em py:0.5em"
                 type="number"
                 min={0}
