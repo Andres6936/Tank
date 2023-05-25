@@ -26,7 +26,7 @@ export default function AlertIcons(props: Props) {
     
     const getStyleForHighAlarm = () => {
         if (props.waterLevel === "high") {
-            return "b:2px|solid|#e40b0b fg:#e40b0b font:bold"
+            return "b:2px|solid|#e40b0b fg:#e40b0b font:bold @heart|2s|infinite"
         } else {
             return "b:2px|solid|gray opacity:0.5"
         }
