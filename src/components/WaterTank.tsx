@@ -53,7 +53,7 @@ export default function WaterTank() {
                     <p className={"m:0 p:0 font-size:4em font:sans font:thin line-height:1.5em"}>15</p>
 
                     <div className={"flex justify-content:center align-items:center b:2px|solid|gray w:3.2em h:3.2em r:50%"}>
-                        <IconFlower1 className={"opacity:0.6"} size={28}/>
+                        <IconFlower1 className={"opacity:0.6 animation:rotate|3s|infinite|linear"} size={28}/>
                     </div>
                 </div>
 
