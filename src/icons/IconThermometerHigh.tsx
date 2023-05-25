@@ -2,7 +2,7 @@ import {IconProps} from "../types/Icon.ts";
 
 export default function IconThermometerHigh(props: IconProps) {
     return (
-        <div onClick={props.onClick} className={props.className ?? ''}>
+        <div onClick={props.onClick} className={"flex justify-content:center justify-content:center " + props.className ?? ''}>
             <svg xmlns="http://www.w3.org/2000/svg" width={props.size ?? 16} height={props.size ?? 16}
                  fill="currentColor" viewBox="0 0 16 16">
                 <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V2.5a.5.5 0 0 1 1 0v8.585a1.5 1.5 0 0 1 1 1.415z"/>

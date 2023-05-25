@@ -2,7 +2,7 @@ import {IconProps} from "../types/Icon.ts";
 
 export default function IconGearWide(props: IconProps) {
     return (
-        <div onClick={props.onClick} className={props.className ?? ''}>
+        <div onClick={props.onClick} className={"flex justify-content:center justify-content:center " + props.className ?? ''}>
             <svg xmlns="http://www.w3.org/2000/svg" width={props.size ?? 16} height={props.size ?? 16}
                  fill="currentColor" viewBox="0 0 16 16">
                 <path
