@@ -10,7 +10,7 @@ interface Props {
 export default function AlertIcons(props: Props) {
     const getStyleForLowAlarm = () => {
         if (props.waterLevel === "low") {
-            return "b:2px|solid|#ffd400 fg:#ffd400 font:bold"
+            return "b:2px|solid|#ffd400 fg:#ffd400 font:bold @shake|1s|1"
         } else {
             return "b:2px|solid|gray opacity:0.5"
         }
@@ -18,7 +18,7 @@ export default function AlertIcons(props: Props) {
     
     const getStyleForMediumAlarm = () => {
         if (props.waterLevel === "medium") {
-            return "b:2px|solid|#023e8a fg:#023e8a font:bold"
+            return "b:2px|solid|#023e8a fg:#023e8a font:bold @shake|1s|1"
         } else {
             return "b:2px|solid|gray opacity:0.5"
         }
