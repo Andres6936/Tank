@@ -9,6 +9,10 @@ import AlertIcons from "./AlertIcons.tsx";
 export default function WaterTank() {
     const waterContext = useContext<IWaterContext>(WaterContext);
 
+    const formatWaterLevel = () => new Intl.NumberFormat("es-CO", {maximumFractionDigits: 0})
+        .format(waterContext.waterLevel);
+
+
     const getCurrentWaterLevel = (): WaterLevel => {
         if (waterContext.waterLevel >= waterContext.highLevelAlarm) {
             return "high";
@@ -50,9 +54,13 @@ export default function WaterTank() {
             <div className={"flex position:relative justify-content:center"}>
 
                 <div className={"flex flex:col position:absolute top:5 left:15 gap:0.6em"}>
-                    <p className={"m:0 p:0 font-size:4em font:sans font:thin line-height:1.5em"}>15</p>
+                    <p className={"m:0 p:0 font-size:4em font:sans font:thin line-height:1.2em"}>
+                        {formatWaterLevel()}
+                        <span className={"pl:0.1em font-size:0.4em"}>%</span>
+                    </p>
 
-                    <div className={"flex justify-content:center align-items:center b:2px|solid|gray w:3.2em h:3.2em r:50%"}>
+                    <div
+                        className={"flex justify-content:center align-items:center b:2px|solid|gray w:3.2em h:3.2em r:50%"}>
                         <IconFlower1 className={"opacity:0.6 animation:rotate|3s|infinite|linear"} size={28}/>
                     </div>
                 </div>
@@ -61,13 +69,13 @@ export default function WaterTank() {
 
                 <Thermostat
                     size={300}
-                    valueSuffix={"%"}
+                    valueSuffix={""}
                     value={waterContext.waterLevel}
                     min={waterContext.minimumLevel}
                     max={waterContext.maximumLevel}
                     onChange={newValue => onChangeWaterLevel(newValue)}
                     track={{
-                    colors: [rightGradiantFirstWave, leftGradiantFirstWave]
+                        colors: [rightGradiantFirstWave, leftGradiantFirstWave]
                     }}
                 />
             </div>
