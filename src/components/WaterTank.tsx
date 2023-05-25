@@ -2,11 +2,9 @@ import {useContext, useMemo} from "react";
 import {IWaterContext, WaterContext} from "../context/WaterContext.tsx";
 import {WaterLevel} from "../types/WaterLevel.ts";
 import {Thermostat} from "react-thermostat";
-import IconThermometer from "../icons/IconThermometer.tsx";
-import IconThermometerHalf from "../icons/IconThermometerHalf.tsx";
-import IconThermometerHigh from "../icons/IconThermometerHigh.tsx";
 import IconSpeedometer2 from "../icons/IconSpeedometer2.tsx";
 import IconFlower1 from "../icons/IconFlower1.tsx";
+import AlertIcons from "./AlertIcons.tsx";
 
 export default function WaterTank() {
     const waterContext = useContext<IWaterContext>(WaterContext);
@@ -59,19 +57,7 @@ export default function WaterTank() {
                     </div>
                 </div>
 
-                <div className={"flex flex:col position:absolute top:5 right:15 gap:0.6em"}>
-                    <div className={"flex justify-content:center align-items:center b:2px|solid|gray w:3.2em h:3.2em r:50%"}>
-                        <IconThermometer className={"opacity:0.6"} size={40}/>
-                    </div>
-
-                    <div className={"flex justify-content:center align-items:center b:2px|solid|gray w:3.2em h:3.2em r:50%"}>
-                        <IconThermometerHalf className={"opacity:0.6"} size={40}/>
-                    </div>
-
-                    <div className={"flex justify-content:center align-items:center b:2px|solid|gray w:3.2em h:3.2em r:50%"}>
-                        <IconThermometerHigh className={"opacity:0.6"} size={40}/>
-                    </div>
-                </div>
+                <AlertIcons waterLevel={getCurrentWaterLevel()}/>
 
                 <Thermostat
                     size={300}
