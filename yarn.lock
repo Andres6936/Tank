@@ -491,6 +491,11 @@
     fast-glob "^3.2.12"
     techor "^2.1.15"
 
+"@master/keyframes.css@^2.0.0-beta.84":
+  version "2.0.0-beta.84"
+  resolved "https://registry.yarnpkg.com/@master/keyframes.css/-/keyframes.css-2.0.0-beta.84.tgz#fa4607f919a7ca9fc9b795aaa7602f9083470cf1"
+  integrity sha512-mFjgzNV9iFfxiFixhrXICJhiO1ezDIAuY4d0ziOjULXQFukxOXxJCzoUO6MhrYdADPcdWl97QVsgwpk+czr/1A==
+
 "@master/normal.css@^2.0.0-beta.150":
   version "2.0.0-beta.150"
   resolved "https://registry.yarnpkg.com/@master/normal.css/-/normal.css-2.0.0-beta.150.tgz#b14d2cb9e094dbfd672137f041b8c15e09e42e71"
