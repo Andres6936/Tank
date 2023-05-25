@@ -3,15 +3,11 @@ import {IWaterContext, WaterContext} from "../context/WaterContext.tsx";
 import {WaterLevel} from "../types/WaterLevel.ts";
 import {Thermostat} from "react-thermostat";
 import IconSpeedometer2 from "../icons/IconSpeedometer2.tsx";
-import IconFlower1 from "../icons/IconFlower1.tsx";
 import AlertIcons from "./AlertIcons.tsx";
+import InfoIcons from "./InfoIcons.tsx";
 
 export default function WaterTank() {
     const waterContext = useContext<IWaterContext>(WaterContext);
-
-    const formatWaterLevel = () => new Intl.NumberFormat("es-CO", {maximumFractionDigits: 0})
-        .format(waterContext.waterLevel);
-
 
     const getCurrentWaterLevel = (): WaterLevel => {
         if (waterContext.waterLevel >= waterContext.highLevelAlarm) {
@@ -53,18 +49,7 @@ export default function WaterTank() {
             className={"flex flex:col flex-shrink:0 flex-basis:99.3% flex-basis:49.3%@sm flex-basis:33%@md p:0.5em py:2em"}>
             <div className={"flex position:relative justify-content:center"}>
 
-                <div className={"flex flex:col position:absolute top:5 left:15 gap:0.6em"}>
-                    <p className={"m:0 p:0 font-size:4em font:sans font:thin line-height:1.2em"}>
-                        {formatWaterLevel()}
-                        <span className={"pl:0.1em font-size:0.4em"}>%</span>
-                    </p>
-
-                    <div
-                        className={"flex justify-content:center align-items:center b:2px|solid|gray w:3.2em h:3.2em r:50%"}>
-                        <IconFlower1 className={"opacity:0.6 animation:rotate|3s|infinite|linear"} size={28}/>
-                    </div>
-                </div>
-
+                <InfoIcons waterLevel={getCurrentWaterLevel()}/>
                 <AlertIcons waterLevel={getCurrentWaterLevel()}/>
 
                 <Thermostat
