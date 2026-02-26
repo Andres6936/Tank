@@ -72,16 +72,6 @@ export default function WaterTank() {
           }}
         />
       </div>
-
-      <div className={"flex justify-content:center align-items:center mt:3em"}>
-        <div
-          className={
-            "flex justify-content:center align-items:center b:2px|solid|gray w:4em h:4em r:50%"
-          }
-        >
-          <IconSpeedometer2 className={"opacity:0.6"} size={40} />
-        </div>
-      </div>
     </section>
   );
 }
