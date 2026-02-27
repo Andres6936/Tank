@@ -128,7 +128,7 @@ export default function OptionsTanks() {
         onApplyChanges,
       }}
     >
-      <div className="flex flex-col flex-shrink:0  flex-basis:99.3%@xs flex-basis:50%@sm flex-basis:32.5%@md ">
+      <div className="flex flex-col flex-shrink:0  flex-basis:99.3%@xs flex-basis:50%@sm justify-content:center flex-basis:32.5%@md max-w:30rem max-h:35rem">
         <div className=" r:1em b:1px|solid|#CCC px:2em py:1em  mb:2em h:100%">
           <div className="flex flex-col">
             <form className="flex flex-col gap:0.7em pb:1em">

@@ -47,7 +47,7 @@ export default function WaterTank() {
   return (
     <section
       className={
-        "flex flex-col flex-shrink:0 flex-basis:99.3% flex-basis:49.3%@sm flex-basis:33%@md justify-content:center align-items:center p:0.5em py:2em"
+        "flex flex-col flex-shrink:0 flex-basis:99.3% flex-basis:49.3%@sm flex-basis:33%@md justify-content:center align-items:center p:0.5em py:2em max-w:35rem"
       }
     >
       <div
