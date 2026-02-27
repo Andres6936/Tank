@@ -3,6 +3,7 @@ import InputLabel from "./input/InputLabel.tsx";
 import { IWaterContext, WaterContext } from "../context/WaterContext.tsx";
 
 type ContextRootProps = {
+  isDirty: boolean;
   maximumLevel: number;
   onChangeMaximumLevel: (value: number) => void;
   minimumLevel: number;
@@ -71,6 +72,20 @@ const FieldLowLevelLeters = () => {
   );
 };
 
+const ActionApply = () => {
+  const { isDirty } = useContextRoot();
+
+  return (
+    <button
+      type={"button"}
+      disabled={!isDirty}
+      className="bg:blue-50 fg:white font:bold py:0.7em r:1.2em mx:1em mt:1em b:none opacity:.7:disabled"
+    >
+      Apply Changes
+    </button>
+  );
+};
+
 export default function OptionsTanks() {
   const waterContext = useContext<IWaterContext>(WaterContext);
 
@@ -83,9 +98,16 @@ export default function OptionsTanks() {
     waterContext.lowLevelAlarm,
   );
 
+  const isDirty =
+    maximumLevel !== waterContext.maximumLevel ||
+    minimumLevel !== waterContext.minimumLevel ||
+    highLevelAlarm !== waterContext.highLevelAlarm ||
+    lowLevelAlarm !== waterContext.lowLevelAlarm;
+
   return (
     <ContextRoot.Provider
       value={{
+        isDirty,
         maximumLevel,
         onChangeMaximumLevel: setMaximumLevel,
         minimumLevel,
@@ -115,12 +137,7 @@ export default function OptionsTanks() {
           </div>
         </div>
 
-        <button
-          type={"button"}
-          className="bg:blue-50 fg:white font:bold py:0.7em r:1.2em mx:1em mt:1em b:none"
-        >
-          Apply Changes
-        </button>
+        <ActionApply />
       </div>
     </ContextRoot.Provider>
   );
