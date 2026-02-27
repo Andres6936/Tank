@@ -19,12 +19,17 @@ jobs:
           persist-credentials: false
           submodules: true
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
       - name: Install 🔧
-        run: yarn install
+        run: bun install
 
       - name: Build
         run: |
-          yarn build --base='/${{ github.event.repository.name }}/'
+          bun run build --base='/${{ github.event.repository.name }}/'
       - name: Deploy to GH Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
