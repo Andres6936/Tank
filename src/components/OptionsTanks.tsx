@@ -7,6 +7,10 @@ type ContextRootProps = {
   onChangeMaximumLevel: (value: number) => void;
   minimumLevel: number;
   onChangeMinimumLevel: (value: number) => void;
+  highLevelAlarm: number;
+  onChangeHighLevelAlarm: (value: number) => void;
+  lowLevelAlarm: number;
+  onChangeLowLevelAlarm: (value: number) => void;
 };
 
 const ContextRoot = React.createContext<ContextRootProps | null>(null);
@@ -43,11 +47,29 @@ const FieldMinimumLiters = () => {
   );
 };
 
+const FieldHighLevelLeters = () => {
+  const { highLevelAlarm, onChangeHighLevelAlarm } = useContextRoot();
+
+  return (
+    <InputLabel
+      value={highLevelAlarm}
+      onChange={(e) => onChangeHighLevelAlarm(e.target.valueAsNumber)}
+      label={"High Level Liters"}
+    />
+  );
+};
+
 export default function OptionsTanks() {
   const waterContext = useContext<IWaterContext>(WaterContext);
 
   const [maximumLevel, setMaximumLevel] = useState(waterContext.maximumLevel);
   const [minimumLevel, setMinimumLevel] = useState(waterContext.minimumLevel);
+  const [highLevelAlarm, setHighLevelAlarm] = useState(
+    waterContext.highLevelAlarm,
+  );
+  const [lowLevelAlarm, setLowLevelAlarm] = useState(
+    waterContext.lowLevelAlarm,
+  );
 
   return (
     <ContextRoot.Provider
@@ -56,24 +78,27 @@ export default function OptionsTanks() {
         onChangeMaximumLevel: setMaximumLevel,
         minimumLevel,
         onChangeMinimumLevel: setMinimumLevel,
+        highLevelAlarm,
+        onChangeHighLevelAlarm: setHighLevelAlarm,
+        lowLevelAlarm,
+        onChangeLowLevelAlarm: setLowLevelAlarm,
       }}
     >
       <div className="flex flex-col flex-shrink:0  flex-basis:99.3%@xs flex-basis:50%@sm flex-basis:32.5%@md ">
         <div className=" r:1em b:1px|solid|#CCC px:2em py:1em  mb:2em h:100%">
           <div className="flex flex-col">
             <form className="flex flex-col gap:0.7em pb:1em">
-              <h4 className="col-12 small mb-3 pt-3">Capacity</h4>
+              <h4 className="col-12 small mb-3 font:semibold pt-3">Capacity</h4>
               <FieldMaximumLiters />
               <FieldMinimumLiters />
             </form>
 
             <form className="flex flex-col gap:0.7em pb:1em">
-              <h4 className="col-12 small mb-3 pt-3 border-top">Alarms</h4>
+              <h4 className="col-12 small mb-3 pt-3 font:semibold border-top">
+                Alarms
+              </h4>
+              <FieldHighLevelLeters />
 
-              <InputLabel
-                value={waterContext.highLevelAlarm}
-                label={"High Level Liters"}
-              />
               <InputLabel
                 value={waterContext.lowLevelAlarm}
                 label={"Low Level Liters"}
