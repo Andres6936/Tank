@@ -12,6 +12,7 @@ type ContextRootProps = {
   onChangeHighLevelAlarm: (value: number) => void;
   lowLevelAlarm: number;
   onChangeLowLevelAlarm: (value: number) => void;
+  onApplyChanges: () => void;
 };
 
 const ContextRoot = React.createContext<ContextRootProps | null>(null);
@@ -73,12 +74,13 @@ const FieldLowLevelLeters = () => {
 };
 
 const ActionApply = () => {
-  const { isDirty } = useContextRoot();
+  const { isDirty, onApplyChanges } = useContextRoot();
 
   return (
     <button
       type={"button"}
       disabled={!isDirty}
+      onClick={onApplyChanges}
       className="bg:blue-50 fg:white font:bold py:0.7em r:1.2em mx:1em mt:1em b:none opacity:.7:disabled"
     >
       Apply Changes
@@ -98,6 +100,13 @@ export default function OptionsTanks() {
     waterContext.lowLevelAlarm,
   );
 
+  const onApplyChanges = () => {
+    waterContext.setMaximumLevel(maximumLevel);
+    waterContext.setMinimumLevel(minimumLevel);
+    waterContext.setHighLevelAlarm(highLevelAlarm);
+    waterContext.setLowLevelAlarm(lowLevelAlarm);
+  };
+
   const isDirty =
     maximumLevel !== waterContext.maximumLevel ||
     minimumLevel !== waterContext.minimumLevel ||
@@ -116,6 +125,7 @@ export default function OptionsTanks() {
         onChangeHighLevelAlarm: setHighLevelAlarm,
         lowLevelAlarm,
         onChangeLowLevelAlarm: setLowLevelAlarm,
+        onApplyChanges,
       }}
     >
       <div className="flex flex-col flex-shrink:0  flex-basis:99.3%@xs flex-basis:50%@sm flex-basis:32.5%@md ">
