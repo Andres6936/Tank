@@ -59,6 +59,18 @@ const FieldHighLevelLeters = () => {
   );
 };
 
+const FieldLowLevelLeters = () => {
+  const { lowLevelAlarm, onChangeLowLevelAlarm } = useContextRoot();
+
+  return (
+    <InputLabel
+      value={lowLevelAlarm}
+      onChange={(e) => onChangeLowLevelAlarm(e.target.valueAsNumber)}
+      label={"Low Level Liters"}
+    />
+  );
+};
+
 export default function OptionsTanks() {
   const waterContext = useContext<IWaterContext>(WaterContext);
 
@@ -98,11 +110,7 @@ export default function OptionsTanks() {
                 Alarms
               </h4>
               <FieldHighLevelLeters />
-
-              <InputLabel
-                value={waterContext.lowLevelAlarm}
-                label={"Low Level Liters"}
-              />
+              <FieldLowLevelLeters />
             </form>
           </div>
         </div>
