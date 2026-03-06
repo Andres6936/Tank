@@ -14,7 +14,6 @@ import { createClient } from "@libsql/client";
 
 const file = Bun.file("private.pem");
 const privateKey = await importPKCS8(await file.text(), "EdDSA");
-console.log(privateKey);
 
 const payload = {
   sub: "user123",
@@ -26,22 +25,24 @@ const jwt = await new SignJWT(payload)
   .setProtectedHeader({ alg: "EdDSA" })
   .sign(privateKey); // Pass the private key object
 
-const client = createClient({
-  // Conectamos a la IP directa para que Bun/Windows no busquen en el DNS
-  url: "https://turso.andres6936.dev/",
-  authToken: jwt,
-});
+await Bun.write("token.txt", jwt);
 
-await client.batch(
-  [
-    "CREATE TABLE IF NOT EXISTS users (email TEXT)",
-    "INSERT INTO users VALUES ('XXX@example.com')",
-    "INSERT INTO users VALUES ('YYYd@example.com')",
-    "INSERT INTO users VALUES ('QQQ@example.com')",
-  ],
-  "write",
-);
+// const client = createClient({
+//   // Conectamos a la IP directa para que Bun/Windows no busquen en el DNS
+//   url: "https://turso.andres6936.dev/",
+//   authToken: jwt,
+// });
 
-const result = await client.execute("SELECT * FROM users");
+// await client.batch(
+//   [
+//     "CREATE TABLE IF NOT EXISTS users (email TEXT)",
+//     "INSERT INTO users VALUES ('XXX@example.com')",
+//     "INSERT INTO users VALUES ('YYYd@example.com')",
+//     "INSERT INTO users VALUES ('QQQ@example.com')",
+//   ],
+//   "write",
+// );
 
-console.log("Users:", result.rows);
+// const result = await client.execute("SELECT * FROM users");
+
+// console.log("Users:", result.rows);
