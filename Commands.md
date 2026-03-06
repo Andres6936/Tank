@@ -148,6 +148,20 @@ const pubPem = publicKey.export({ format: "pem", type: "spki" });
 await Bun.write("public.pem", pubPem);
 ```
 
+#### Download Extensions
+
+```bash
+curl -OL https://github.com/nalgeon/sqlean/releases/download/0.28.1/sqlean-linux-x64.zip
+```
+
+Create a trusted extensions list file (`trusted.lst`) and add the extensions you
+want to trust, the file should be containing the sha256 and name of each extension,
+one per line.
+
+```
+02de1662cfeb91ba89e9b75158c085650f819f546508044d6d8f98456c8328bf  uuid.so
+```
+
 Script used for execute the binary:
 
 ```bash
@@ -163,7 +177,7 @@ cd "$TURSO_DIR" || { echo "Directory not found"; exit 1; }
 # Execute the Turso server.
 # The 'exec' command ensures the Vault process replaces the current Bash shell,
 # making it easier for process managers to handle it cleanly.
-exec ./sqld --auth-jwt-key-file public.pem
+exec ./sqld --auth-jwt-key-file public.pem --extensions-path ./extensions
 ```
 
 Apply the permissions to make the script executable:
