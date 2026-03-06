@@ -7,9 +7,6 @@ const client = new S3Client({
   bucket: "private",
   // sessionToken: "..."
   // acl: "public-read",
-  // endpoint: "https://<account-id>.r2.cloudflarestorage.com", // Cloudflare R2
-  // endpoint: "https://<region>.digitaloceanspaces.com", // DigitalOcean Spaces
-  // endpoint: "http://localhost:9000", // MinIO
 });
 
 const file = client.file("Hello-2.txt");
