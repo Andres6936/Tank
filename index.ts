@@ -12,7 +12,7 @@
 import { importPKCS8, SignJWT } from "jose";
 import { createClient } from "@libsql/client";
 
-const file = Bun.file("private.pem");
+const file = Bun.file("private/private.pem");
 const privateKey = await importPKCS8(await file.text(), "EdDSA");
 
 const payload = {
@@ -25,7 +25,7 @@ const jwt = await new SignJWT(payload)
   .setProtectedHeader({ alg: "EdDSA" })
   .sign(privateKey); // Pass the private key object
 
-await Bun.write("token.txt", jwt);
+await Bun.write("private/token.txt", jwt);
 
 // const client = createClient({
 //   // Conectamos a la IP directa para que Bun/Windows no busquen en el DNS
