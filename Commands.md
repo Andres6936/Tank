@@ -117,6 +117,8 @@ num target prot opt source destination
 
 #### Modify the Caddy File
 
+Command: `sudo nano /etc/caddy/Caddyfile`
+
 ```caddy
 vault.andres6936.dev {
     # Assuming your S3 service runs on port 9000
