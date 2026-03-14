@@ -11,15 +11,17 @@
 
 import { importPKCS8, SignJWT } from "jose";
 import { createClient } from "@libsql/client";
+import { add } from "date-fns";
 
 const file = Bun.file("private/private.pem");
 const privateKey = await importPKCS8(await file.text(), "EdDSA");
+const expirationTime = add(new Date(), { months: 3 });
 
 const payload = {
-  sub: "user123",
-  name: "John Doe",
+  sub: "Andres6936",
+  name: "Joan Buriticá",
   iat: Math.floor(Date.now() / 1000), // Issued At
-  exp: Math.floor(Date.now() / 1000) + 60 * 60, // Expiration time (1 hour)
+  exp: Math.floor(expirationTime.getTime() / 1000), // Expiration time
 };
 const jwt = await new SignJWT(payload)
   .setProtectedHeader({ alg: "EdDSA" })
