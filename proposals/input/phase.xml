@@ -1,0 +1,306 @@
+<Fragment>
+    <IndicatorHeader />
+    <Section marginTop="0" gap="0.1cm">
+        <Paragraph>
+            <Paragraph bold="1">
+                Fecha:
+                <S />
+            </Paragraph>
+            28 de enero de 2026
+        </Paragraph>
+
+        <Paragraph>
+            <Paragraph bold="1">
+                Dirigido a:
+                <S />
+            </Paragraph>
+            FEDELTA HOLDING S.A.S.
+        </Paragraph>
+    </Section>
+
+    <Section>
+        <Title size='xs' textAlign='left'>
+            Introducción
+        </Title>
+
+        <TextJustify>
+            La Fase I de Fedelta ha concluido y la plataforma es funcional. El objetivo ahora debe ser extender lo
+            que tenemos, transformar esta plataforma en un ecosistema robusto que soporte el crecimiento real del
+            negocio y las necesidades de comercio electrónico a nivel global. Propongo una ruta técnica para
+            complementar
+            el mostrador digital y hacer de la plataforma un modelo de operación automatizada, escalable y rentable.
+        </TextJustify>
+
+        <TextJustify>
+            En resumen, esta nueva etapa se centra en cinco ejes críticos:
+        </TextJustify>
+
+        <Indent>
+            <TextJustify>
+                <Paragraph
+                    bold="1"
+                >Eficiencia Operativa</Paragraph>: Implementación de una aplicación dedicada para
+                vendedores (tiendas y/o comercios) y un control de inventarios real que elimine errores de stock.
+            </TextJustify>
+        </Indent>
+
+        <Indent>
+            <TextJustify>
+                <Paragraph
+                    bold="1"
+                >Escalabilidad Global</Paragraph>: Preparación técnica para la internacionalización
+                con soporte multimoneda e idiomas.
+            </TextJustify>
+        </Indent>
+
+        <Indent>
+            <TextJustify>
+                <Paragraph
+                    bold="1"
+                >Venta Inteligente</Paragraph>: Uso de Business Intelligence e Inteligencia
+                Artificial
+                para recomendar productos y entender qué está pasando dentro de la plataforma: qué tendencias se están
+                formando, qué productos son los más apetecidos, vistos o deseados.
+            </TextJustify>
+        </Indent>
+
+        <Indent>
+            <TextJustify>
+                <Paragraph
+                    bold="1"
+                >Fidelización Agresiva</Paragraph>: Evolución hacia un sistema de
+                gamificación (puntos, niveles y retos) que obligue al cliente a volver.
+            </TextJustify>
+        </Indent>
+
+        <Indent>
+            <TextJustify>
+                <Paragraph
+                    bold="1"
+                >Automatización y Fintech</Paragraph>: Reducción de carga operativa mediante chatbots
+                con IA y la creación de una billetera digital propia para gestionar pagos de forma autónoma.
+            </TextJustify>
+        </Indent>
+
+        <TextJustify>
+            Esta propuesta busca que la plataforma sea capaz de procesar un volumen
+            alto de ventas con la menor intervención humana posible, facilitando al usuario final la completitud de la
+            transacción.
+        </TextJustify>
+    </Section>
+
+    <Section wrap="1">
+        <Title size='xs' textAlign='left'>
+            Control de Inventario y Operación para Vendedores
+        </Title>
+
+        <TextJustify>
+            El sistema actual funciona como un estante estático (vitrina digital). Para que el negocio pueda
+            evolucionar, se necesita control real sobre la mercancía.
+        </TextJustify>
+
+        <BulletText>
+            <Paragraph
+                bold="1"
+                opacity="0.8"
+            >Gestión de Inventario Dinámico</Paragraph>:
+            Si un producto se agota, el sistema debe saberlo al instante. Vender lo que no hay genera reclamos y mata la
+            reputación de la plataforma. El sistema enviará notificaciones al comercio cuando un producto se encuentre
+            bajo de stock, además de mostrar una ventana donde el comercio pueda consultar el stock disponible.
+        </BulletText>
+
+        <BulletText>
+            <Paragraph
+                bold="1"
+                opacity="0.8"
+            >Contenido de Alto Impacto</Paragraph>:
+            Implementaremos los textos, datos de contacto (teléfonos, correos, ubicación, política de devolución y
+            envío) y elementos visuales (videos o animaciones) para que la experiencia del usuario sea dinámica y
+            atractiva.
+        </BulletText>
+
+        <BulletText>
+            <Paragraph bold="1" opacity="0.8">App para Vendedores</Paragraph>:
+            El Dashboard actual no está optimizado para el ritmo de una tienda física al retail. Se desarrollará una
+            herramienta móvil ágil: el vendedor toma una foto, asigna stock y el producto queda disponible. Menos
+            burocracia, más productos a la venta.
+        </BulletText>
+    </Section>
+
+    <Section wrap="1">
+        <Title size='xs' textAlign='left'>
+            Expansión Internacional
+        </Title>
+
+        <TextJustify>
+            Si el plan es escalar fuera del país, la arquitectura debe estar lista hoy, no cuando surja el problema.
+        </TextJustify>
+
+        <TextJustify>
+            <Paragraph bold="1">Idiomas y Multimoneda</Paragraph>:
+            Se ajustará el núcleo del sistema para que soporte diferentes divisas y lenguajes. El cliente debe ver los
+            precios en su moneda local y en su idioma de forma nativa (una propuesta de internacionalización fue enviada
+            en su momento, se puede trabajar sobre esa propuesta).
+        </TextJustify>
+    </Section>
+
+    <Section wrap="1">
+        <Title size='xs' textAlign='left'>
+            Inteligencia de Datos (BI)
+        </Title>
+
+        <TextJustify>
+            Los datos guardados en la base de datos son irrelevantes si no se transforman en decisiones.
+        </TextJustify>
+
+        <TextJustify>
+            <Paragraph bold="1">Análisis de Métricas</Paragraph>:
+            Se implementará una capa de análisis para que vean, en gráficas crudas, qué se vende, quién compra y dónde
+            se abandona el proceso. No se trata de adivinar, sino de leer la realidad del negocio.
+        </TextJustify>
+    </Section>
+
+    <Section wrap="1">
+        <Title size='xs' textAlign='left'>
+            Retención y Gamificación
+        </Title>
+
+        <TextJustify>
+            Hacer que un cliente regrese es más barato que conseguir uno nuevo. Usaremos el concepto de gamificación
+            para convertir la compra en un hábito.
+        </TextJustify>
+
+        <TextJustify>
+            <Paragraph bold="1">Programa de Lealtad</Paragraph>:
+            No solo puntos. Implementaré un sistema de "Estatus" que otorgue beneficios reales según el uso de la app.
+        </TextJustify>
+
+        <Paragraph bold="1">Ejemplos de Gamificación</Paragraph>
+
+        <Indent>
+            <TextJustify>
+                <Paragraph bold="1">Niveles de Usuario</Paragraph>:
+                Un cliente "Plata" puede tener envíos gratis, mientras que un "Diamante" accede a lanzamientos
+                exclusivos 24 horas antes que el resto.
+            </TextJustify>
+        </Indent>
+
+        <Indent>
+            <TextJustify>
+                <Paragraph bold="1">Misiones y Desafíos</Paragraph>:
+                "Realiza 3 compras en la categoría Supermercados este mes y desbloquea un cupón de descuento". Esto
+                obliga al usuario a explorar nuevas secciones.
+            </TextJustify>
+        </Indent>
+
+        <Indent>
+            <TextJustify>
+                <Paragraph bold="1">Insignias de Logro</Paragraph>:
+                Premiar comportamientos específicos, como el "Cazador de Ofertas" (por comprar en rebajas) o el
+                "Explorador de Centros Comerciales" (por visitar tiendas de distintas regiones).
+            </TextJustify>
+        </Indent>
+
+        <Indent>
+            <TextJustify>
+                <Paragraph bold="1">Redención Directa</Paragraph>:
+                Los puntos acumulados se verán reflejados como saldo real para futuras compras, cerrando el ciclo de
+                consumo.
+            </TextJustify>
+        </Indent>
+    </Section>
+
+    <Section wrap="1">
+        <Title size='xs' textAlign='left'>
+            Automatización de Ventas y Soporte
+        </Title>
+
+        <TextJustify>
+            Optimizaremos el tiempo del personal derivando tareas repetitivas a un sistema automatizado que responda al
+            usuario.
+        </TextJustify>
+
+        <TextJustify>
+            <Paragraph bold="1">Asistente con IA</Paragraph>:
+            Un chatbot que resuelva dudas sobre envíos, pagos y horarios 24/7. Filtrará el 80% de las consultas
+            repetitivas para que el personal solo atienda problemas reales.
+        </TextJustify>
+
+        <TextJustify>
+            <Paragraph bold="1">Marketing Automático</Paragraph>:
+            El sistema trabajará de forma autónoma. Si alguien deja un carrito olvidado, la app enviará un recordatorio
+            automático. Es dinero que hoy están dejando ir por falta de seguimiento.
+        </TextJustify>
+    </Section>
+
+    <Section wrap="1">
+        <Title size='xs' textAlign='left'>
+            Billetera Digital (Wallet) y Pagos
+        </Title>
+
+        <TextJustify>
+            El pago contraentrega es un método de entrada, pero no es escalable a largo plazo.
+        </TextJustify>
+
+        <TextJustify>
+            <Paragraph bold="1">Wallet Fedelta</Paragraph>:
+            Se implementará una billetera dentro de la app donde el usuario pueda cargar saldo y recibir reembolsos.
+            Esto amarra al cliente al ecosistema: si tiene dinero en la Wallet, lo gastará en la plataforma. Además,
+            automatiza el reparto de pagos a los comercios sin intervención manual.
+        </TextJustify>
+    </Section>
+
+    <Section wrap="1">
+        <Title size='xs' textAlign='left'>
+            Disponibilidad y Modelo de Vinculación
+        </Title>
+
+        <TextJustify>
+            Agradezco muchísimo el interés en contar conmigo para formar parte de FEDELTA HOLDING S.A.S. Estaría
+            encantado de integrarme al equipo; sin embargo, por ética y responsabilidad profesional, mi prioridad
+            actual es concluir satisfactoriamente los proyectos y compromisos técnicos que tengo en marcha con otros
+            clientes.
+        </TextJustify>
+
+        <TextJustify>
+            Con el fin de asegurar que la evolución de la plataforma no se detenga y garantizar una transición
+            organizada, propongo el siguiente esquema de vinculación:
+        </TextJustify>
+
+        <BulletText>
+            <Paragraph
+                bold="1"
+                opacity="0.8"
+            >Fase de Colaboración Externa (Hasta finales de abril)</Paragraph>:
+            Trabajaremos bajo la modalidad de prestación de servicios. Durante este
+            periodo, los honorarios se definirán de manera independiente, ajustándose al alcance, complejidad e hitos de
+            cada proyecto específico que se ejecute.
+        </BulletText>
+
+        <BulletText>
+            <Paragraph
+                bold="1"
+                opacity="0.8"
+            >Incorporación a Nómina (A partir de mayo)</Paragraph>:
+            Una vez finalizados mis compromisos previos, realizaré la transición a un contrato por
+            nómina con dedicación exclusiva. Para este modelo, propongo un punto de partida salarial de
+            <Paragraph bold="1"><S />$7.000.000
+            </Paragraph>
+            .
+        </BulletText>
+
+        <TextJustify>
+            Con el esquema propuesto se podrá avanzar de inmediato en los objetivos de la plataforma, asegurando
+            que, al momento de mi vinculación definitiva, pueda volcar el 100% de mis capacidades en la
+            visión de Fedelta.
+        </TextJustify>
+
+        <TextJustify>
+            Nota sobre la Ejecución de Proyectos (Fase de Colaboración Externa): Con el fin de garantizar la precisión
+            técnica y financiera, cada uno de los ejes propuestos en esta segunda fase se abordará de manera individual.
+            Antes del inicio de cada desarrollo, se realizará una sesión de definición técnica para establecer
+            formalmente el alcance, los objetivos específicos y los entregables. Una vez definidos estos parámetros, se
+            procederá a la asignación de un presupuesto detallado para dicho proyecto.
+        </TextJustify>
+    </Section>
+</Fragment>
