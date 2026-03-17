@@ -19,24 +19,11 @@ function Section(props: React.PropsWithChildren<{}>) {
   );
 }
 
-function Root(props: React.ComponentPropsWithRef<typeof View>) {
-  return (
-    <View
-      wrap={false}
-      {...props}
-      style={mergeStyles({ flex: 1, justifyContent: "flex-end" }, props.style)}
-    />
-  );
-}
-
 function Row(props: React.ComponentPropsWithRef<typeof View>) {
   return (
     <View
       {...props}
-      style={mergeStyles(
-        { flexDirection: "row", gap: "25pt", height: "120pt" },
-        props.style,
-      )}
+      style={flatten({ flexDirection: "row", ...props.style })}
     />
   );
 }
@@ -53,92 +40,7 @@ function Pad(props: React.ComponentPropsWithRef<typeof View>) {
   );
 }
 
-type PadProps =
-  | {
-      empty?: false;
-      signBy: string;
-      withSign?: string | undefined | null;
-      withSignStyle?: StylesNode | undefined | null;
-    }
-  | {
-      empty: true;
-    };
-
-function PadLeft(props: PadProps) {
-  if (props.empty) {
-    return <Pad />;
-  }
-
-  return (
-    <Pad>
-      {props.withSign && (
-        <Text style={mergeStyles({ textAlign: "left" }, props.withSignStyle)}>
-          {props.withSign}
-        </Text>
-      )}
-
-      <Text
-        style={{
-          fontSize: "10pt",
-          paddingTop: "5pt",
-          ...(props.withSign
-            ? {}
-            : { borderColor: "gray", borderTop: "0.5pt" }),
-        }}
-      >
-        {props.signBy}
-      </Text>
-    </Pad>
-  );
-}
-
-function PadRight(props: PadProps) {
-  if (props.empty) {
-    return <Pad />;
-  }
-
-  return (
-    <Pad>
-      {props.withSign && (
-        <Text style={mergeStyles({ textAlign: "right" }, props.withSignStyle)}>
-          {props.withSign}
-        </Text>
-      )}
-
-      <Text
-        style={{
-          fontSize: "10pt",
-          paddingTop: "5pt",
-          textAlign: "right",
-          ...(props.withSign
-            ? {}
-            : { borderColor: "gray", borderTop: "0.5pt" }),
-        }}
-      >
-        {props.signBy}
-      </Text>
-    </Pad>
-  );
-}
-
-function Own() {
-  return (
-    <View
-      style={[
-        {
-          flex: 1,
-          gap: "2pt",
-          justifyContent: "flex-end",
-          alignItems: "flex-end",
-        },
-      ]}
-    >
-      <OwnSign />
-    </View>
-  );
-}
-
-function OwnSign() {
+function SignMe() {
   return (
     <View
       style={[
@@ -159,4 +61,4 @@ function OwnSign() {
   );
 }
 
-export { Section, Root, Row, Own, OwnSign, Pad, PadLeft, PadRight };
+export { Section, Row, SignMe, Pad };

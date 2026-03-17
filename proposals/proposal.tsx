@@ -18,12 +18,8 @@ import IndicatorHeader from "~/pdf/components/indicator-header";
 // Sign Component
 import {
   Section as SignSection,
-  Own as SignOwn,
-  OwnSign,
+  SignMe,
   Pad as SignPad,
-  PadLeft as SignPadLeft,
-  PadRight as SignPadRight,
-  Root as SignRoot,
   Row as SignRow,
 } from "~/pdf/components/signs/sign-components";
 
@@ -102,7 +98,7 @@ const withBook = async (
         {nodes}
 
         <SignSection>
-          <Section flexDirection="row">
+          <SignRow>
             <Section flex="1" gap="2pt" justifyContent="flex-end">
               <Seal
                 seal={buffers.seal}
@@ -115,9 +111,9 @@ const withBook = async (
             </Section>
 
             <Section flex="1" gap="2pt" justifyContent="flex-end">
-              <OwnSign />
+              <SignMe />
             </Section>
-          </Section>
+          </SignRow>
         </SignSection>
       </Paginate>
     </Document>
