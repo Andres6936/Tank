@@ -2,7 +2,7 @@ import "konva/canvas-backend";
 import "~/pdf/utility/register-fonts";
 
 import React, { Fragment } from "react";
-import ReactPDF, { Document, Text, View } from "@react-pdf/renderer";
+import ReactPDF, { Document } from "@react-pdf/renderer";
 import { type ComponentMap, xmlFileToReactTree } from "~/lib/node.factory";
 
 // Text Component
