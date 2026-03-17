@@ -1,4 +1,8 @@
-<Fragment>
+<Proposal
+    type="Propuesta Económica"
+    title="Segunda Fase Fedelta Mall"
+    month="Enero 2026"
+>
     <IndicatorHeader />
     <Section marginTop="0" gap="0.1cm">
         <Paragraph>
@@ -303,4 +307,4 @@
             procederá a la asignación de un presupuesto detallado para dicho proyecto.
         </TextJustify>
     </Section>
-</Fragment>
+</Proposal>

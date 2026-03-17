@@ -62,15 +62,30 @@ const components: ComponentMap = {
 };
 
 const getTreeNode = async (xmlPath: string) => {
-  return await xmlFileToReactTree(xmlPath, components, {
+  const properties: Record<string, unknown> = {};
+  const nodes = await xmlFileToReactTree(xmlPath, components, {
+    interceptTags: ["Proposal"],
+    onInterceptTag: (tagName, props) => {
+      if (tagName === "Proposal") {
+        properties.title = props.title;
+        properties.type = props.type;
+        properties.month = props.month;
+        return null;
+      }
+      return null;
+    },
     onUnknownTag: (tagName) => {
       if (tagName === "Fragment") return Fragment;
       return null; // null = unwrap, deja sólo los children
     },
   });
+  return { nodes, properties };
 };
 
-const withBook = async (nodes: React.ReactNode) => {
+const withBook = async (
+  nodes: React.ReactNode,
+  properties: Record<string, unknown>,
+) => {
   const buffers = await getBufferSeals({
     seal: "blue",
   });
@@ -83,9 +98,9 @@ const withBook = async (nodes: React.ReactNode) => {
         code={buffers.code}
         text={buffers.text}
         barcode={buffers.barcode}
-        type="Propuesta Económica"
-        title="Segunda Fase Fedelta Mall"
-        month="Enero 2026"
+        type={properties.type as string}
+        title={properties.title as string}
+        month={properties.month as string}
       />
 
       <Paginate>
@@ -136,7 +151,6 @@ const config = run(parser, {
 
 (async () => {
   const file = config.file;
-  const node = await getTreeNode(file);
-
-  ReactPDF.render(await withBook(node), `./book-x.pdf`);
+  const { nodes, properties } = await getTreeNode(file);
+  ReactPDF.render(await withBook(nodes, properties), `./book-x.pdf`);
 })();
