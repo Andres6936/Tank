@@ -18,7 +18,8 @@ import IndicatorHeader from "~/pdf/components/indicator-header";
 // Sign Component
 import {
   Section as SignSection,
-  SignMe,
+  SignMeLeft,
+  SignMeRight,
   Pad as SignPad,
   Row as SignRow,
 } from "~/pdf/components/signs/sign-components";
@@ -99,18 +100,12 @@ const withBook = async (
 
         <SignSection>
           <SignRow>
-            <SignPad side="left">
-              <Seal
-                seal={buffers.seal}
-                code={buffers.code}
-                text={buffers.text}
-                style={{ marginTop: 0, marginBottom: "0.5cm" }}
-              />
-              <Text>Teléfono: +57 319 (656) 94-58</Text>
-              <Text>Contacto: andres6936@live.com</Text>
-            </SignPad>
-
-            <SignMe />
+            <SignMeLeft
+              seal={buffers.seal}
+              code={buffers.code}
+              text={buffers.text}
+            />
+            <SignMeRight />
           </SignRow>
         </SignSection>
       </Paginate>

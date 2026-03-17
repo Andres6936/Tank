@@ -5,6 +5,7 @@ import { flatten } from "@react-pdf/stylesheet";
 import { type StylesNode } from "~/pdf/utility/merge-props";
 import { Section as SectionView } from "~/pdf/components/section";
 import { Title } from "~/pdf/components/rule-content";
+import Seal from "~/pdf/components/cover/seal";
 
 function Section(props: React.PropsWithChildren<{}>) {
   return (
@@ -41,7 +42,7 @@ function Pad(
     <View
       {...props}
       style={flatten({
-        gap: "2pt",
+        gap: "1.5pt",
         flex: 1,
         ...withSideStyle,
         ...props.style,
@@ -50,7 +51,7 @@ function Pad(
   );
 }
 
-function SignMe() {
+function SignMeRight() {
   return (
     <Pad side="right">
       <Text style={{ fontFamily: "MonsieurLaDoulaise", fontSize: "27pt" }}>
@@ -62,4 +63,14 @@ function SignMe() {
   );
 }
 
-export { Section, Row, SignMe, Pad };
+function SignMeLeft(props: React.ComponentPropsWithRef<typeof Seal>) {
+  return (
+    <Pad side="left">
+      <Seal {...props} style={{ marginTop: 0, marginBottom: "0.5cm" }} />
+      <Text>Teléfono: +57 319 (656) 94-58</Text>
+      <Text>Contacto: andres6936@live.com</Text>
+    </Pad>
+  );
+}
+
+export { Section, Row, SignMeRight, SignMeLeft, Pad };
