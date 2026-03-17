@@ -45,8 +45,8 @@ function SignMe() {
     <View
       style={[
         {
+          flex: 1,
           gap: "2pt",
-          paddingTop: "1cm",
           justifyContent: "flex-end",
           alignItems: "flex-end",
         },

@@ -110,9 +110,7 @@ const withBook = async (
               <Text>Contacto: andres6936@live.com</Text>
             </Section>
 
-            <Section flex="1" gap="2pt" justifyContent="flex-end">
-              <SignMe />
-            </Section>
+            <SignMe />
           </SignRow>
         </SignSection>
       </Paginate>
