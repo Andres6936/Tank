@@ -19,7 +19,7 @@ export interface XmlToReactOptions {
     tagName: string,
     props: Record<string, unknown>,
     node: Element,
-  ) => React.ComponentType<any> | null | undefined;
+  ) => React.ReactNode | null | undefined;
   // Transforma atributos (p.ej. "true"/"false" a boolean, números a number, etc.)
   attributeTransform?: (name: string, value: string) => any;
 }
@@ -102,8 +102,11 @@ export function xmlToReactTree(
       const intercept: boolean = interceptTags
         ? interceptTags.includes(tag)
         : false;
-      if (!Comp && intercept && onInterceptTag) {
-        Comp = onInterceptTag(tag, props, el) || undefined;
+      if (intercept && onInterceptTag) {
+        const node = onInterceptTag(tag, props, el) || undefined;
+        if (!node)
+          return React.createElement(React.Fragment, null, ...children);
+        return node;
       }
 
       if (!Comp) {

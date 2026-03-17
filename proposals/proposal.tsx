@@ -20,7 +20,6 @@ import {
   Section as SignSection,
   SignMeLeft,
   SignMeRight,
-  Pad as SignPad,
   Row as SignRow,
 } from "~/pdf/components/signs/sign-components";
 
@@ -32,19 +31,22 @@ import { object } from "@optique/core/constructs";
 import { option } from "@optique/core/primitives";
 import { path } from "@optique/run/valueparser";
 import { run } from "@optique/run";
-import Seal from "~/pdf/components/cover/seal";
 
 const components: ComponentMap = {
   Document,
 
   // Complex Component
   IndicatorHeader,
+  Paginate,
 
   // Sign Component
+  SignSection,
+  SignRow,
+  SignMeLeft,
+  SignMeRight,
 
   // General Text Component
   Section,
-  Paginate,
   Indent,
   TextJustify,
   Title,
@@ -53,16 +55,46 @@ const components: ComponentMap = {
   S,
 };
 
-const getTreeNode = async (xmlPath: string) => {
+const getTreeNode = async (
+  xmlPath: string,
+  buffers: Awaited<ReturnType<typeof getBufferSeals>>,
+) => {
   const properties: Record<string, unknown> = {};
   const nodes = await xmlFileToReactTree(xmlPath, components, {
-    interceptTags: ["Proposal"],
+    interceptTags: ["Proposal", "Cover", "SignMeLeft"],
     onInterceptTag: (tagName, props) => {
       if (tagName === "Proposal") {
         properties.title = props.title;
         properties.type = props.type;
         properties.month = props.month;
         return null;
+      }
+      if (tagName === "Cover") {
+        return React.createElement(
+          Cover,
+          {
+            uuid: buffers.uuid,
+            seal: buffers.seal,
+            code: buffers.code,
+            text: buffers.text,
+            barcode: buffers.barcode,
+            type: props.type as string,
+            title: props.title as string,
+            month: props.month as string,
+          },
+          [],
+        );
+      }
+      if (tagName === "SignMeLeft") {
+        return React.createElement(
+          SignMeLeft,
+          {
+            seal: buffers.seal,
+            code: buffers.code,
+            text: buffers.text,
+          },
+          [],
+        );
       }
       return null;
     },
@@ -77,36 +109,7 @@ const getTreeNode = async (xmlPath: string) => {
 const withBook = async (
   nodes: React.ReactNode,
   properties: Record<string, unknown>,
-  buffers: Awaited<ReturnType<typeof getBufferSeals>>,
-) => (
-  <Document>
-    <Cover
-      uuid={buffers.uuid}
-      seal={buffers.seal}
-      code={buffers.code}
-      text={buffers.text}
-      barcode={buffers.barcode}
-      type={properties.type as string}
-      title={properties.title as string}
-      month={properties.month as string}
-    />
-
-    <Paginate>
-      {nodes}
-
-      <SignSection>
-        <SignRow>
-          <SignMeLeft
-            seal={buffers.seal}
-            code={buffers.code}
-            text={buffers.text}
-          />
-          <SignMeRight />
-        </SignRow>
-      </SignSection>
-    </Paginate>
-  </Document>
-);
+) => <Document>{nodes}</Document>;
 
 const parser = object({
   file: option(
@@ -124,9 +127,9 @@ const config = run(parser, {
 
 (async () => {
   const file = config.file;
-  const { nodes, properties } = await getTreeNode(file);
   const buffers = await getBufferSeals({
     seal: "blue",
   });
-  ReactPDF.render(await withBook(nodes, properties, buffers), `./book-x.pdf`);
+  const { nodes, properties } = await getTreeNode(file, buffers);
+  ReactPDF.render(await withBook(nodes, properties), `./book-x.pdf`);
 })();
