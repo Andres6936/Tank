@@ -99,7 +99,7 @@ const withBook = async (
 
         <SignSection>
           <SignRow>
-            <Section flex="1" gap="2pt" justifyContent="flex-end">
+            <SignPad side="left">
               <Seal
                 seal={buffers.seal}
                 code={buffers.code}
@@ -108,7 +108,7 @@ const withBook = async (
               />
               <Text>Teléfono: +57 319 (656) 94-58</Text>
               <Text>Contacto: andres6936@live.com</Text>
-            </Section>
+            </SignPad>
 
             <SignMe />
           </SignRow>

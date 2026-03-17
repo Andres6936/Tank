@@ -1,7 +1,8 @@
 import React from "react";
 import { Text, View } from "@react-pdf/renderer";
 import { flatten } from "@react-pdf/stylesheet";
-import { mergeStyles, type StylesNode } from "~/pdf/utility/merge-props";
+
+import { type StylesNode } from "~/pdf/utility/merge-props";
 import { Section as SectionView } from "~/pdf/components/section";
 import { Title } from "~/pdf/components/rule-content";
 
@@ -28,36 +29,36 @@ function Row(props: React.ComponentPropsWithRef<typeof View>) {
   );
 }
 
-function Pad(props: React.ComponentPropsWithRef<typeof View>) {
+function Pad(
+  props: React.ComponentPropsWithRef<typeof View> & { side: "left" | "right" },
+) {
+  const withSideStyle: StylesNode =
+    props.side === "left"
+      ? { justifyContent: "flex-start", alignItems: "flex-start" }
+      : { justifyContent: "flex-end", alignItems: "flex-end" };
+
   return (
     <View
       {...props}
-      style={mergeStyles(
-        { gap: "5pt", flex: 1, justifyContent: "flex-end" },
-        props.style,
-      )}
+      style={flatten({
+        gap: "2pt",
+        flex: 1,
+        ...withSideStyle,
+        ...props.style,
+      })}
     />
   );
 }
 
 function SignMe() {
   return (
-    <View
-      style={[
-        {
-          flex: 1,
-          gap: "2pt",
-          justifyContent: "flex-end",
-          alignItems: "flex-end",
-        },
-      ]}
-    >
+    <Pad side="right">
       <Text style={{ fontFamily: "MonsieurLaDoulaise", fontSize: "27pt" }}>
         Andrés Salazar
       </Text>
       <Text>Ingeniero, Joan A. Buriticá S.</Text>
       <Text>Licencia Profesional: 171122-0620819 VLL</Text>
-    </View>
+    </Pad>
   );
 }
 
