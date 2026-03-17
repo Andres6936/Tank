@@ -17,6 +17,7 @@ import IndicatorHeader from "~/pdf/components/indicator-header";
 
 // Sign Component
 import {
+  Section as SignSection,
   Own as SignOwn,
   OwnSign,
   Pad as SignPad,
@@ -43,12 +44,6 @@ const components: ComponentMap = {
   IndicatorHeader,
 
   // Sign Component
-  SignRoot,
-  SignRow,
-  SignOwn,
-  SignPad,
-  SignPadLeft,
-  SignPadRight,
 
   // General Text Component
   Section,
@@ -106,30 +101,24 @@ const withBook = async (
       <Paginate>
         {nodes}
 
-        <Section style={{ flex: 1 }} wrap={false}>
-          <Title size="xs" style={{ marginVertical: "1cm" }}>
-            Elaborado y Firmado
-          </Title>
-
-          <View style={{ flex: 1, justifyContent: "flex-end" }}>
-            <Section flexDirection="row">
-              <Section flex="1" gap="2pt" justifyContent="flex-end">
-                <Seal
-                  seal={buffers.seal}
-                  code={buffers.code}
-                  text={buffers.text}
-                  style={{ marginTop: 0, marginBottom: "0.5cm" }}
-                />
-                <Text>Teléfono: +57 319 (656) 94-58</Text>
-                <Text>Contacto: andres6936@live.com</Text>
-              </Section>
-
-              <Section flex="1" gap="4pt" justifyContent="flex-end">
-                <OwnSign />
-              </Section>
+        <SignSection>
+          <Section flexDirection="row">
+            <Section flex="1" gap="2pt" justifyContent="flex-end">
+              <Seal
+                seal={buffers.seal}
+                code={buffers.code}
+                text={buffers.text}
+                style={{ marginTop: 0, marginBottom: "0.5cm" }}
+              />
+              <Text>Teléfono: +57 319 (656) 94-58</Text>
+              <Text>Contacto: andres6936@live.com</Text>
             </Section>
-          </View>
-        </Section>
+
+            <Section flex="1" gap="2pt" justifyContent="flex-end">
+              <OwnSign />
+            </Section>
+          </Section>
+        </SignSection>
       </Paginate>
     </Document>
   );
