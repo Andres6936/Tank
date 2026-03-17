@@ -63,9 +63,9 @@ const getTreeNode = async (
     interceptTags: ["Proposal", "Cover", "SignMeLeft"],
     onInterceptTag: (tagName, props) => {
       if (tagName === "Proposal") {
-        properties.title = props.title;
-        properties.type = props.type;
-        properties.month = props.month;
+        for (const [key, value] of Object.entries(props)) {
+          properties[key] = value;
+        }
         return null;
       }
       if (tagName === "Cover") {
@@ -108,7 +108,7 @@ const getTreeNode = async (
 const withBook = async (
   nodes: React.ReactNode,
   properties: Record<string, unknown>,
-) => <Document>{nodes}</Document>;
+) => <Document {...properties}>{nodes}</Document>;
 
 const parser = object({
   file: option(

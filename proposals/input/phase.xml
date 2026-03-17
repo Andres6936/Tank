@@ -1,7 +1,11 @@
 <Proposal
-    type="Propuesta Económica"
+    subject="Propuesta Económica"
     title="Segunda Fase Fedelta Mall"
-    month="Enero 2026"
+    author="Joan Andrés Buriticá Salazar"
+    keywords="Proposal, Phase, Fedelta Mall"
+    creator="Joan Andrés Buriticá Salazar"
+    producer="React PDF with Bun"
+    language="es"
 >
     <Cover
         type="Propuesta Económica"

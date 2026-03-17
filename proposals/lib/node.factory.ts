@@ -103,7 +103,9 @@ export function xmlToReactTree(
         ? interceptTags.includes(tag)
         : false;
       if (intercept && onInterceptTag) {
-        const node = onInterceptTag(tag, props, el) || undefined;
+        // Use the spread operator for delete the 'key' property
+        const { key, ...propsWithoutKey } = props;
+        const node = onInterceptTag(tag, propsWithoutKey, el) || undefined;
         if (!node)
           return React.createElement(React.Fragment, null, ...children);
         return node;
