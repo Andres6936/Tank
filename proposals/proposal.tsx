@@ -42,7 +42,6 @@ const components: ComponentMap = {
   // Sign Component
   SignSection,
   SignRow,
-  SignMeLeft,
   SignMeRight,
 
   // General Text Component
