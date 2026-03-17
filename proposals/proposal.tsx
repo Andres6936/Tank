@@ -77,41 +77,36 @@ const getTreeNode = async (xmlPath: string) => {
 const withBook = async (
   nodes: React.ReactNode,
   properties: Record<string, unknown>,
-) => {
-  const buffers = await getBufferSeals({
-    seal: "blue",
-  });
+  buffers: Awaited<ReturnType<typeof getBufferSeals>>,
+) => (
+  <Document>
+    <Cover
+      uuid={buffers.uuid}
+      seal={buffers.seal}
+      code={buffers.code}
+      text={buffers.text}
+      barcode={buffers.barcode}
+      type={properties.type as string}
+      title={properties.title as string}
+      month={properties.month as string}
+    />
 
-  return (
-    <Document>
-      <Cover
-        uuid={buffers.uuid}
-        seal={buffers.seal}
-        code={buffers.code}
-        text={buffers.text}
-        barcode={buffers.barcode}
-        type={properties.type as string}
-        title={properties.title as string}
-        month={properties.month as string}
-      />
+    <Paginate>
+      {nodes}
 
-      <Paginate>
-        {nodes}
-
-        <SignSection>
-          <SignRow>
-            <SignMeLeft
-              seal={buffers.seal}
-              code={buffers.code}
-              text={buffers.text}
-            />
-            <SignMeRight />
-          </SignRow>
-        </SignSection>
-      </Paginate>
-    </Document>
-  );
-};
+      <SignSection>
+        <SignRow>
+          <SignMeLeft
+            seal={buffers.seal}
+            code={buffers.code}
+            text={buffers.text}
+          />
+          <SignMeRight />
+        </SignRow>
+      </SignSection>
+    </Paginate>
+  </Document>
+);
 
 const parser = object({
   file: option(
@@ -130,5 +125,8 @@ const config = run(parser, {
 (async () => {
   const file = config.file;
   const { nodes, properties } = await getTreeNode(file);
-  ReactPDF.render(await withBook(nodes, properties), `./book-x.pdf`);
+  const buffers = await getBufferSeals({
+    seal: "blue",
+  });
+  ReactPDF.render(await withBook(nodes, properties, buffers), `./book-x.pdf`);
 })();
