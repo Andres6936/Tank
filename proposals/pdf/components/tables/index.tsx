@@ -27,7 +27,15 @@ const Body = (props: React.PropsWithChildren<{}>) => {
 };
 
 const Footer = (props: React.PropsWithChildren<{}>) => {
-  return <View>{props.children}</View>;
+  return (
+    <View
+      style={flatten({
+        backgroundColor: "#00000011",
+      })}
+    >
+      {props.children}
+    </View>
+  );
 };
 
 const Row = (props: React.PropsWithChildren<{}>) => {
@@ -46,19 +54,8 @@ const Row = (props: React.PropsWithChildren<{}>) => {
   );
 };
 
-const Cell = (
-  props: React.PropsWithChildren<StylesNode & { bold?: boolean }>,
-) => {
-  const defaultStyles = {
-    flex: 1,
-    ...(props.bold ? { fontWeight: "semibold", opacity: 0.9 } : {}),
-  } satisfies StylesNode;
-
-  return (
-    <Text style={flatten({ ...defaultStyles, ...props })}>
-      {props.children}
-    </Text>
-  );
+const Cell = (props: React.PropsWithChildren<StylesNode>) => {
+  return <Text style={flatten({ flex: 1, ...props })}>{props.children}</Text>;
 };
 
 export { Table, Header, Body, Footer, Row, Cell };
