@@ -9,7 +9,17 @@ const Table = (props: React.PropsWithChildren<{}>) => {
 };
 
 const Header = (props: React.PropsWithChildren<{}>) => {
-  return <View>{props.children}</View>;
+  return (
+    <View
+      style={flatten({
+        backgroundColor: "#00000011",
+        borderTopLeftRadius: "5pt",
+        borderTopRightRadius: "5pt",
+      })}
+    >
+      {props.children}
+    </View>
+  );
 };
 
 const Body = (props: React.PropsWithChildren<{}>) => {
@@ -27,6 +37,7 @@ const Row = (props: React.PropsWithChildren<{}>) => {
         flexDirection: "row",
         borderBottomWidth: "0.3pt",
         borderBottomColor: "#14192f",
+        paddingHorizontal: "5pt",
         paddingVertical: "5pt",
       })}
     >
