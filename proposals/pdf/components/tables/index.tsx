@@ -5,7 +5,18 @@ import { flatten } from "@react-pdf/stylesheet";
 type StylesNode = Exclude<NodeProps["style"], undefined>;
 
 const Table = (props: React.PropsWithChildren<{}>) => {
-  return <View>{props.children}</View>;
+  return (
+    <View
+      style={flatten({
+        borderLeftWidth: "0.3pt",
+        borderLeftColor: "#14192f",
+        borderRightWidth: "0.3pt",
+        borderRightColor: "#14192f",
+      })}
+    >
+      {props.children}
+    </View>
+  );
 };
 
 const Header = (props: React.PropsWithChildren<{}>) => {
@@ -13,8 +24,8 @@ const Header = (props: React.PropsWithChildren<{}>) => {
     <View
       style={flatten({
         backgroundColor: "#00000011",
-        borderTopLeftRadius: "5pt",
-        borderTopRightRadius: "5pt",
+        borderTopWidth: "0.3pt",
+        borderTopColor: "#14192f",
       })}
     >
       {props.children}
