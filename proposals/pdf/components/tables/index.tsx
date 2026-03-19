@@ -54,7 +54,11 @@ const Cell = (
     ...(props.bold ? { fontWeight: "semibold", opacity: 0.9 } : {}),
   } satisfies StylesNode;
 
-  return <Text style={flatten(defaultStyles, props)}>{props.children}</Text>;
+  return (
+    <Text style={flatten({ ...defaultStyles, ...props })}>
+      {props.children}
+    </Text>
+  );
 };
 
 export { Table, Header, Body, Footer, Row, Cell };
