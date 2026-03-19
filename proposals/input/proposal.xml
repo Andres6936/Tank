@@ -1,0 +1,178 @@
+<Proposal
+    subject="Propuesta Económica"
+    title="Landing Page"
+    author="Joan Andrés Buriticá Salazar"
+    keywords="Proposal, Phase, Fedelta Mall"
+    creator="Joan Andrés Buriticá Salazar"
+    producer="React PDF with Bun"
+    language="es"
+>
+    <Cover
+        type="Propuesta Económica"
+        title="Propuesta de Valor, Landing Page"
+        month="Marzo 2026"
+    />
+
+    <Paginate>
+        <IndicatorHeader value="Ing. Joan A. Buriticá S." />
+        <Section marginTop="0" gap="0.1cm">
+            <Paragraph>
+                <Paragraph bold="1">
+                    Fecha:
+                    <S />
+                </Paragraph>
+                Enero, 28 de 2026
+            </Paragraph>
+
+            <Paragraph>
+                <Paragraph bold="1">
+                    Dirigido a:
+                    <S />
+                </Paragraph>
+                FEDELTA HOLDING S.A.S.
+            </Paragraph>
+        </Section>
+
+        <Section>
+            <Title size='xs' textAlign='left'>
+                Introducción
+            </Title>
+
+            <TextJustify>
+            He seguido de cerca el progreso de las propuestas enviadas en enero, y sobre la propuesta de la Landing Page,
+            desearía que esta tuviera un camino sin obstáculos. Por ende, he decidido asumir este proyecto como una
+            iniciativa de valor agregado para fortalecer nuestra alianza comercial y laboral, permitiéndoles a ustedes,
+            Fedelta, contar con una herramienta de presencia profesional sin que esto represente una carga financiera o
+            administrativa. Mi propuesta hoy se centra en asumir el costo de la Landing Page, cualquiera que sea el
+            objetivo original de la misma.
+            </TextJustify>
+        </Section>
+
+        <Section wrap="1">
+            <Title size='xs' textAlign='left'>
+                Valor Estratégico: Tu Identidad Digital sin Restricciones
+            </Title>
+
+            <TextJustify>
+            Independientemente de si el objetivo final es puramente informativo, de posicionamiento de marca o de captación,
+            la solución se centrará en entregar una plataforma de alta gama técnica que soporte la visión de Fedelta:
+            </TextJustify>
+
+            <BulletText>
+                <Paragraph
+                    bold="1"
+                    opacity="0.8"
+                >Legitimidad y Profesionalismo</Paragraph>:
+                Transformaremos la identidad de su marca en una página funcional que sirva como su carta de presentación
+                oficial ante clientes y aliados.
+            </BulletText>
+
+            <BulletText>
+                <Paragraph
+                    bold="1"
+                    opacity="0.8"
+                >Adaptabilidad Total (Responsive)</Paragraph>:
+                La página se ajustará automáticamente para que la información se lea perfectamente en cualquier dispositivo,
+                desde celulares hasta computadores de escritorio.
+            </BulletText>
+
+            <BulletText>
+                <Paragraph
+                    bold="1"
+                    opacity="0.8"
+                >Velocidad de Respuesta</Paragraph>:
+                Optimizaremos el rendimiento para garantizar que el acceso a la información sea instantáneo, evitando que
+                los usuarios abandonen el sitio por lentitud técnica.
+            </BulletText>
+
+            <BulletText>
+                <Paragraph bold="1" opacity="0.8">Fidelidad Visual</Paragraph>:
+                El desarrollo será un reflejo exacto de la línea gráfica que ustedes deseen proyectar, garantizando
+                consistencia en su imagen institucional.
+            </BulletText>
+        </Section>
+
+        <Section wrap="1">
+            <Title size='xs' textAlign='left'>
+                Alcance y Entregables
+            </Title>
+
+            <TextJustify>
+                Organizaré la ejecución técnica para que el proceso sea ágil y no demande tiempo adicional de su parte:
+            </TextJustify>
+
+            <TextJustify>
+                <Paragraph
+                    bold="1"
+                >Implementación de Contenido Dinámico</Paragraph>:
+                Integración de textos, datos de contacto, ubicación y elementos visuales de alto impacto.
+            </TextJustify>
+
+            <TextJustify>
+                <Paragraph bold="1">Infraestructura de Alto Nivel</Paragraph>:
+                Despliegue sobre la configuración de Vercel que ya tenemos operativa, eliminando cualquier costo de servidor adicional.
+            </TextJustify>
+
+            <TextJustify>
+                <Paragraph bold="1">Autonomía Técnica</Paragraph>:
+                Entrega de una solución de "contenido estable", lo que significa que la página funcionará de forma permanente
+                sin requerir mantenimientos complejos o actualizaciones constantes.
+            </TextJustify>
+        </Section>
+
+        <Section wrap="1">
+            <Title size='xs' textAlign='left'>
+            Cronograma e Inversión
+            </Title>
+
+            <TextJustify>
+                Para asegurar que este proyecto avance sin fricciones, los términos de mi compromiso son:
+            </TextJustify>
+
+            <Table>
+                <Header>
+                    <Row>
+                        <Cell flex="2">Concepto</Cell>
+                        <Cell>Inversión Anterior</Cell>
+                        <Cell>Nueva Inversión</Cell>
+                    </Row>
+                </Header>
+                <Body>
+                    <Row>
+                        <Cell
+                            flex="2"
+                        >Programación, Optimización y Pruebas</Cell>
+                        <Cell>840.000 COP</Cell>
+                        <Cell>0 COP</Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">Alojamiento y Despliegue Técnico</Cell>
+                        <Cell>Incluido</Cell>
+                        <Cell>0 COP</Cell>
+                    </Row>
+
+                </Body>
+                <Footer>
+                    <Row>
+                        <Cell flex="2">Inversión Total Fedelta</Cell>
+                        <Cell />
+                        <Cell>0 COP</Cell>
+                    </Row>
+                </Footer>
+            </Table>
+
+            <TextJustify>
+                <Paragraph bold="1">Tiempo de Entrega</Paragraph>:
+                El sitio estará funcional en un plazo de 1 a 2 semanas hábiles, dependiendo de la agilidad en
+                la definición de la estructura base.
+            </TextJustify>
+        </Section>
+
+        <SignSection>
+          <SignRow>
+            <SignMeLeft />
+            <SignMeRight />
+          </SignRow>
+        </SignSection>
+    </Paginate>
+</Proposal>
