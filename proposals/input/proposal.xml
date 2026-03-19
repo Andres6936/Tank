@@ -14,7 +14,7 @@
     />
 
     <Paginate>
-        <IndicatorHeader value="Ing. Joan A. Buriticá S." />
+        <IndicatorHeader value="Ing. Joan A. Buriticá" />
         <Section marginTop="0" gap="0.1cm">
             <Paragraph>
                 <Paragraph bold="1">
