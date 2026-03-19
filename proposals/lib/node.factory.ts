@@ -107,7 +107,7 @@ export function xmlToReactTree(
         const { key, ...propsWithoutKey } = props;
         const node = onInterceptTag(tag, propsWithoutKey, el) || undefined;
         if (!node)
-          return React.createElement(React.Fragment, null, ...children);
+          return React.createElement(React.Fragment, { key: tag }, ...children);
         return node;
       }
 
