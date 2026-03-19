@@ -154,9 +154,9 @@
                 </Body>
                 <Footer>
                     <Row>
-                        <Cell flex="2">Inversión Total Fedelta</Cell>
+                        <Cell flex="2" bold="1">Inversión Total Fedelta</Cell>
                         <Cell />
-                        <Cell>0 COP</Cell>
+                        <Cell bold="1">0 COP</Cell>
                     </Row>
                 </Footer>
             </Table>
