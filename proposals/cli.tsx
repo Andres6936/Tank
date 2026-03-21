@@ -11,12 +11,11 @@ import { Table, Row, Cell, Header, Footer } from "~/pdf/components/tables";
 // Text Component
 import { Indent, Paginate, Section } from "~/pdf/components/section";
 import { TextJustify, Title } from "~/pdf/components/rule-content";
-import { BulletText } from "~/pdf/components/bullet-text";
-import { Paragraph, S } from "~/pdf/components/paragraph";
+import { BulletText, Paragraph, S } from "~/pdf/components/text";
 
 // Complex Component
 import Cover from "~/pdf/components/cover";
-import IndicatorHeader from "~/pdf/components/indicator-header";
+import IndicatorHeader from "~/pdf/components/cover/indicator-header";
 
 // Sign Component
 import {
