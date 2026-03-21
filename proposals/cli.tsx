@@ -10,8 +10,13 @@ import { Table, Row, Cell, Header, Footer } from "~/pdf/components/tables";
 
 // Text Component
 import { Indent, Paginate, Section } from "~/pdf/components/section";
-import { TextJustify, Title } from "~/pdf/components/rule-content";
-import { BulletText, Paragraph, S } from "~/pdf/components/text";
+import {
+  BulletText,
+  Paragraph,
+  S,
+  TextJustify,
+  Title,
+} from "~/pdf/components/text";
 
 // Complex Component
 import Cover from "~/pdf/components/cover";
