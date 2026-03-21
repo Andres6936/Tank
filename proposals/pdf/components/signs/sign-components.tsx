@@ -4,8 +4,8 @@ import { flatten } from "@react-pdf/stylesheet";
 
 import { type StylesNode } from "~/pdf/utility/merge-props";
 import { Section as SectionView } from "~/pdf/components/section";
-import { Title } from "~/pdf/components/rule-content";
-import Seal from "~/pdf/components/cover/seal";
+import { Title } from "~/pdf/components/text";
+import Seal from "~/pdf/components/seal";
 
 function Section(props: React.PropsWithChildren<{}>) {
   return (

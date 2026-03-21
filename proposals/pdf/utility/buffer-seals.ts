@@ -35,11 +35,6 @@ const getBufferSeals = async (args?: { seal?: "red" | "green" | "blue" }) => {
       light: "#00000000",
     },
   });
-  const logoFile = Bun.file("./public/trademarks/Logo.svg");
-  const logoBuffer = await sharp(await logoFile.bytes(), { density: 300 })
-    .resize({ width: 720 })
-    .toFormat("png")
-    .toBuffer();
 
   const canvas = new Canvas(550, 550);
   barcode(canvas, uuid.short, {
@@ -55,7 +50,6 @@ const getBufferSeals = async (args?: { seal?: "red" | "green" | "blue" }) => {
     // Remove the first 22 characters, equivalent to: << data:image/png;base64, >>
     code: codeBuffer.slice(22),
     text: buffer.slice(22),
-    logo: logoBuffer.toBase64(),
     barcode: canvas.toBuffer().toBase64(),
   };
 };

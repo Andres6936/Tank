@@ -37,8 +37,6 @@ import { path } from "@optique/run/valueparser";
 import { run } from "@optique/run";
 
 const components: ComponentMap = {
-  Document,
-
   // Complex Component
   IndicatorHeader,
 
