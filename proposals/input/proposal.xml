@@ -16,21 +16,21 @@
     <Paginate>
         <IndicatorHeader value="Ing. Joan A. Buriticá" />
         <Section marginTop="0" gap="0.1cm">
-            <Paragraph>
-                <Paragraph bold="1">
+            <Text>
+                <Text bold="1">
                     Fecha:
                     <S />
-                </Paragraph>
+                </Text>
                 Marzo, 13 de 2026
-            </Paragraph>
+            </Text>
 
-            <Paragraph>
-                <Paragraph bold="1">
+            <Text>
+                <Text bold="1">
                     Dirigido a:
                     <S />
-                </Paragraph>
+                </Text>
                 FEDELTA HOLDING S.A.S.
-            </Paragraph>
+            </Text>
         </Section>
 
         <Section>
@@ -59,34 +59,31 @@
             </TextJustify>
 
             <BulletText>
-                <Paragraph
+                <Text
                     bold="1"
                     opacity="0.8"
-                >Legitimidad y Profesionalismo</Paragraph>:
+                >Legitimidad y Profesionalismo</Text>:
                 Transformaré la identidad de su marca en una página funcional que sirva como su carta de presentación
                 oficial ante clientes y aliados.
             </BulletText>
 
             <BulletText>
-                <Paragraph
+                <Text
                     bold="1"
                     opacity="0.8"
-                >Adaptabilidad Total (Responsive)</Paragraph>:
+                >Adaptabilidad Total (Responsive)</Text>:
                 La página se ajustará automáticamente para que la información se lea perfectamente en cualquier dispositivo,
                 desde celulares hasta computadores de escritorio.
             </BulletText>
 
             <BulletText>
-                <Paragraph
-                    bold="1"
-                    opacity="0.8"
-                >Velocidad de Respuesta</Paragraph>:
+                <Text bold="1" opacity="0.8">Velocidad de Respuesta</Text>:
                 Optimizaré el rendimiento para garantizar que el acceso a la información sea instantáneo, evitando que
                 los usuarios abandonen el sitio por lentitud técnica.
             </BulletText>
 
             <BulletText>
-                <Paragraph bold="1" opacity="0.8">Fidelidad Visual</Paragraph>:
+                <Text bold="1" opacity="0.8">Fidelidad Visual</Text>:
                 El desarrollo será un reflejo exacto de la línea gráfica que ustedes deseen proyectar, garantizando
                 consistencia en su imagen organizacional.
             </BulletText>
@@ -102,19 +99,17 @@
             </TextJustify>
 
             <TextJustify>
-                <Paragraph
-                    bold="1"
-                >Implementación de Contenido Dinámico</Paragraph>:
+                <Text bold="1">Implementación de Contenido Dinámico</Text>:
                 Integración de textos, datos de contacto, ubicación y elementos visuales de alto impacto.
             </TextJustify>
 
             <TextJustify>
-                <Paragraph bold="1">Infraestructura de Alto Nivel</Paragraph>:
+                <Text bold="1">Infraestructura de Alto Nivel</Text>:
                 Despliegue sobre la configuración de Vercel que ya tenemos operativa, eliminando cualquier costo de servidor adicional.
             </TextJustify>
 
             <TextJustify>
-                <Paragraph bold="1">Autonomía Técnica</Paragraph>:
+                <Text bold="1">Autonomía Técnica</Text>:
                 Entrega de una solución de "contenido estable", lo que significa que la página funcionará de forma permanente
                 sin requerir mantenimientos complejos o actualizaciones constantes.
             </TextJustify>
@@ -162,7 +157,7 @@
             </Table>
 
             <TextJustify>
-                <Paragraph bold="1">Tiempo de Entrega</Paragraph>:
+                <Text bold="1">Tiempo de Entrega</Text>:
                 El sitio estará funcional en un plazo de 1 a 2 semanas hábiles, dependiendo de la agilidad en
                 la definición de la estructura base.
             </TextJustify>
