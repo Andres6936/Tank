@@ -38,14 +38,14 @@
                 Introducción
             </Title>
 
-            <TextJustify>
+            <Paragraph>
             He seguido de cerca el progreso de las propuestas enviadas en enero, y sobre la propuesta de la Landing Page,
             desearía que esta tuviera un camino sin obstáculos. Por ende, he decidido asumir este proyecto como una
             iniciativa de valor agregado para fortalecer nuestra alianza, permitiéndoles a ustedes,
             Fedelta, contar con una herramienta de presencia profesional sin que esto represente una carga financiera o
             administrativa. Mi propuesta hoy se centra en asumir el costo de la Landing Page, cualquiera que sea el
             objetivo original de la misma.
-            </TextJustify>
+            </Paragraph>
         </Section>
 
         <Section wrap="1">
@@ -53,10 +53,10 @@
                 Valor Estratégico: Identidad Digital sin Restricciones
             </Title>
 
-            <TextJustify>
+            <Paragraph>
             Independientemente de si el objetivo final es puramente informativo, de posicionamiento de marca o de captación,
             la solución se centrará en entregar una plataforma de alta gama técnica que soporte la visión de Fedelta:
-            </TextJustify>
+            </Paragraph>
 
             <BulletText>
                 <Text
@@ -94,25 +94,25 @@
                 Alcance y Entregables
             </Title>
 
-            <TextJustify>
+            <Paragraph>
                 Organizaré la ejecución técnica y de diseño para que el proceso sea ágil y no demande tiempo adicional de su parte:
-            </TextJustify>
+            </Paragraph>
 
-            <TextJustify>
+            <Paragraph>
                 <Text bold="1">Implementación de Contenido Dinámico</Text>:
                 Integración de textos, datos de contacto, ubicación y elementos visuales de alto impacto.
-            </TextJustify>
+            </Paragraph>
 
-            <TextJustify>
+            <Paragraph>
                 <Text bold="1">Infraestructura de Alto Nivel</Text>:
                 Despliegue sobre la configuración de Vercel que ya tenemos operativa, eliminando cualquier costo de servidor adicional.
-            </TextJustify>
+            </Paragraph>
 
-            <TextJustify>
+            <Paragraph>
                 <Text bold="1">Autonomía Técnica</Text>:
                 Entrega de una solución de "contenido estable", lo que significa que la página funcionará de forma permanente
                 sin requerir mantenimientos complejos o actualizaciones constantes.
-            </TextJustify>
+            </Paragraph>
         </Section>
 
         <Section wrap="1">
@@ -120,9 +120,9 @@
             Cronograma e Inversión
             </Title>
 
-            <TextJustify>
+            <Paragraph>
                 Para asegurar que este proyecto avance sin fricciones, los términos de mi compromiso son:
-            </TextJustify>
+            </Paragraph>
 
             <Table>
                 <Header>
@@ -156,11 +156,11 @@
                 </Footer>
             </Table>
 
-            <TextJustify>
+            <Paragraph>
                 <Text bold="1">Tiempo de Entrega</Text>:
                 El sitio estará funcional en un plazo de 1 a 2 semanas hábiles, dependiendo de la agilidad en
                 la definición de la estructura base.
-            </TextJustify>
+            </Paragraph>
         </Section>
 
         <SignSection>

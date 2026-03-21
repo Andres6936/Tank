@@ -7,7 +7,7 @@ import { type ComponentMap, xmlFileToReactTree } from "~/lib/node.factory";
 
 import { Table, Row, Cell, Header, Footer } from "~/pdf/components/table";
 import { Indent, Paginate, Section } from "~/pdf/components/section";
-import { BulletText, Text, S, TextJustify, Title } from "~/pdf/components/text";
+import { BulletText, Text, S, Paragraph, Title } from "~/pdf/components/text";
 
 // Complex Component
 import Cover from "~/pdf/components/cover";
@@ -52,7 +52,7 @@ const components: ComponentMap = {
   Indent,
 
   // Text Component
-  TextJustify,
+  Paragraph,
   Title,
   BulletText,
   Text,

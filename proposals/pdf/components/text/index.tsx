@@ -112,7 +112,7 @@ const Title = (
   );
 };
 
-const TextJustify = (props: React.ComponentPropsWithRef<typeof PDFText>) => {
+const Paragraph = (props: React.ComponentPropsWithRef<typeof PDFText>) => {
   return (
     <PDFText
       {...props}
@@ -135,4 +135,4 @@ const RuleContent = (props: React.ComponentPropsWithRef<typeof PDFText>) => {
   );
 };
 
-export { BulletText, Text, S, P, Title, TextJustify, RuleContent };
+export { BulletText, Text, S, P, Title, Paragraph, RuleContent };
