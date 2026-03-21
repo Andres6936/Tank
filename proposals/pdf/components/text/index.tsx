@@ -1,8 +1,8 @@
 import React from "react";
-import { Text, View } from "@react-pdf/renderer";
+import { Text as PDFText, View } from "@react-pdf/renderer";
 import { mergeStyles, type StylesNode } from "~/pdf/utility/merge-props";
 
-const BulletText = (props: React.ComponentPropsWithRef<typeof Text>) => {
+const BulletText = (props: React.ComponentPropsWithRef<typeof PDFText>) => {
   return (
     <View style={{ flexDirection: "row", gap: "12pt" }} wrap={false}>
       <View
@@ -15,7 +15,7 @@ const BulletText = (props: React.ComponentPropsWithRef<typeof Text>) => {
           marginTop: "5pt",
         }}
       />
-      <Text
+      <PDFText
         {...props}
         hyphenationCallback={(word) => [word]}
         style={mergeStyles({ flex: 1, textAlign: "justify" }, props.style)}
@@ -33,7 +33,7 @@ type ParagraphProps = {
 };
 
 const Paragraph = (
-  props: React.ComponentPropsWithRef<typeof Text> & ParagraphProps,
+  props: React.ComponentPropsWithRef<typeof PDFText> & ParagraphProps,
 ) => {
   const getSize = (size: ParagraphProps["size"]) => {
     switch (size) {
@@ -56,18 +56,20 @@ const Paragraph = (
     ...(props.opacity ? { opacity: props.opacity } : {}),
   } as StylesNode;
 
-  return <Text {...props} style={mergeStyles(defaultStyles, props.style)} />;
+  return <PDFText {...props} style={mergeStyles(defaultStyles, props.style)} />;
 };
 
-type Props = React.PropsWithChildren<React.ComponentPropsWithRef<typeof Text>>;
+type Props = React.PropsWithChildren<
+  React.ComponentPropsWithRef<typeof PDFText>
+>;
 
 const P = ({ children, style, ...props }: Props & StylesNode) => {
   return (
-    <Text {...props} children={children} style={mergeStyles(style, props)} />
+    <PDFText {...props} children={children} style={mergeStyles(style, props)} />
   );
 };
 
-const S = () => <Text> </Text>;
+const S = () => <PDFText> </PDFText>;
 
 type TitleProps = {
   size?: "xs" | "md" | "lg" | "xl";
@@ -75,7 +77,7 @@ type TitleProps = {
 };
 
 const Title = (
-  props: React.ComponentPropsWithRef<typeof Text> & TitleProps,
+  props: React.ComponentPropsWithRef<typeof PDFText> & TitleProps,
 ) => {
   const getSize = (size: TitleProps["size"] = "xl") => {
     switch (size) {
@@ -91,7 +93,7 @@ const Title = (
   };
 
   return (
-    <Text
+    <PDFText
       {...props}
       hyphenationCallback={(word) => [word]}
       style={mergeStyles(
@@ -110,9 +112,9 @@ const Title = (
   );
 };
 
-const TextJustify = (props: React.ComponentPropsWithRef<typeof Text>) => {
+const TextJustify = (props: React.ComponentPropsWithRef<typeof PDFText>) => {
   return (
-    <Text
+    <PDFText
       {...props}
       hyphenationCallback={(word) => [word]}
       style={mergeStyles({ textAlign: "justify" }, props.style)}
@@ -120,9 +122,9 @@ const TextJustify = (props: React.ComponentPropsWithRef<typeof Text>) => {
   );
 };
 
-const RuleContent = (props: React.ComponentPropsWithRef<typeof Text>) => {
+const RuleContent = (props: React.ComponentPropsWithRef<typeof PDFText>) => {
   return (
-    <Text
+    <PDFText
       {...props}
       hyphenationCallback={(word) => [word]}
       style={mergeStyles(
