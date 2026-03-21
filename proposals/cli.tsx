@@ -5,10 +5,7 @@ import React, { Fragment } from "react";
 import ReactPDF, { Document } from "@react-pdf/renderer";
 import { type ComponentMap, xmlFileToReactTree } from "~/lib/node.factory";
 
-// Table Component
-import { Table, Row, Cell, Header, Footer } from "~/pdf/components/tables";
-
-// Text Component
+import { Table, Row, Cell, Header, Footer } from "~/pdf/components/table";
 import { Indent, Paginate, Section } from "~/pdf/components/section";
 import {
   BulletText,
