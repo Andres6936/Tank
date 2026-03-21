@@ -41,7 +41,6 @@ const components: ComponentMap = {
 
   // Complex Component
   IndicatorHeader,
-  Paginate,
 
   // Sign Component
   SignSection,
@@ -55,9 +54,12 @@ const components: ComponentMap = {
   Header,
   Footer,
 
-  // General Text Component
+  // Section Component
+  Paginate,
   Section,
   Indent,
+
+  // Text Component
   TextJustify,
   Title,
   BulletText,
