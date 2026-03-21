@@ -24,7 +24,7 @@ const BulletText = (props: React.ComponentPropsWithRef<typeof PDFText>) => {
   );
 };
 
-type ParagraphProps = {
+type TextProps = {
   bold?: boolean;
   italic?: boolean;
   size?: "xs" | "md" | "lg" | "xl";
@@ -32,10 +32,10 @@ type ParagraphProps = {
   opacity?: number;
 };
 
-const Paragraph = (
-  props: React.ComponentPropsWithRef<typeof PDFText> & ParagraphProps,
+const Text = (
+  props: React.ComponentPropsWithRef<typeof PDFText> & TextProps,
 ) => {
-  const getSize = (size: ParagraphProps["size"]) => {
+  const getSize = (size: TextProps["size"]) => {
     switch (size) {
       case "xs":
         return "7pt";
@@ -135,4 +135,4 @@ const RuleContent = (props: React.ComponentPropsWithRef<typeof PDFText>) => {
   );
 };
 
-export { BulletText, Paragraph, S, P, Title, TextJustify, RuleContent };
+export { BulletText, Text, S, P, Title, TextJustify, RuleContent };
