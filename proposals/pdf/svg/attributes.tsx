@@ -40,5 +40,10 @@ export const attributeToNumber = (
     return px;
   }
 
+  if (value.includes("%")) {
+    const num = +value.replace("%", "");
+    return num / 100;
+  }
+
   return Number(value);
 };
