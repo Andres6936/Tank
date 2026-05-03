@@ -49,6 +49,7 @@ const getBufferSeals = async (args?: { seal?: "red" | "green" | "blue" }) => {
     background: "#00000000",
     color: "#14192f",
     showText: false,
+    margin: 0,
   });
 
   return {
