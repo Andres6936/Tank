@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, View } from "@react-pdf/renderer";
+import { Image, View, type SVGProps } from "@react-pdf/renderer";
 import { isEmptyNullOrUndefined } from "~/lib/utils";
 import { mergeStyles } from "~/pdf/utility/merge-props";
 import { flatten } from "@react-pdf/stylesheet";
@@ -50,10 +50,14 @@ function BufferImage(props: BufferImageProps) {
   );
 }
 
-function SvgBuffer(props: { svg: string | undefined | null }) {
-  if (!props.svg) return null;
-  return fromSvg(props.svg, {
-    style: { width: "100%", height: "100%" },
+function SvgBuffer({
+  svg,
+  ...props
+}: SVGProps & { svg: string | undefined | null }) {
+  if (!svg) return null;
+  return fromSvg(svg, {
+    ...props,
+    style: flatten({ width: "100%", height: "100%", ...props.style }),
   });
 }
 
@@ -99,4 +103,4 @@ function AbsoluteCenter(props: React.ComponentPropsWithRef<typeof View>) {
   );
 }
 
-export { Square, BufferImage, AbsoluteCenter };
+export { Square, SvgBuffer, BufferImage, AbsoluteCenter };

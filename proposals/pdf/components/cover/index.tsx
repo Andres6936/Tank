@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Image, Page, Text, View } from "@react-pdf/renderer";
-import Seal from "~/pdf/components/seal";
+import Seal, { SvgBuffer } from "~/pdf/components/seal";
 
 import * as UUIDLines from "~/pdf/components/cover/uuid-lines";
 import * as MonthLines from "~/pdf/components/cover/month-lines";
@@ -95,12 +95,7 @@ export default function Component(props: Props) {
             alignItems: "center",
           }}
         >
-          <Image
-            style={{
-              width: "160pt",
-            }}
-            src={Buffer.from(props.barcode || "", "base64")}
-          />
+          <SvgBuffer svg={props.barcode} style={{ width: "160pt" }} />
           <UUIDLines.Line>{props.uuid.short}</UUIDLines.Line>
         </View>
       </View>

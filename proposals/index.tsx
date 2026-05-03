@@ -1,4 +1,4 @@
-import { qrcode } from "etiket";
+import { qrcode, barcode } from "etiket";
 import { fromSvg } from "./pdf/svg/parser";
 
 import ReactPDF, { Document, Page } from "@react-pdf/renderer";
@@ -31,14 +31,18 @@ const svg = qrcode(url, {
   },
 });
 
+const bar = barcode(url, {});
+
 // await Bun.write("etiket.svg", svg);
 // await sharp("etiket.svg").png().toFile("etiket.png");
 
 const nodes = fromSvg(svg);
+const barNodes = fromSvg(bar);
 
 const Leaf = () => (
   <Document>
     <Page size="A4">{nodes}</Page>
+    <Page size="A4">{barNodes}</Page>
   </Document>
 );
 
