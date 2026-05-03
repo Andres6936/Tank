@@ -28,7 +28,10 @@ const parser = object({
     optional(option("-s", "--seal", choice(["blue", "red", "green"]))),
     "blue",
   ),
-  output: withDefault(option("-o", "--output", string()), "./output.pdf"),
+  output: withDefault(
+    option("-o", "--output", path({ type: "file" })),
+    "./output.pdf",
+  ),
 });
 
 const config = run(parser, {
@@ -42,5 +45,5 @@ const config = run(parser, {
   });
   const document = await proposal({ file, buffers });
   ReactPDF.render(document, output);
-  print(message`PDF generated successfully to ${output}`);
+  print(message`Document generated successfully to ${output}`);
 })();
