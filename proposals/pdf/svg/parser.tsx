@@ -179,7 +179,7 @@ export const getPresentationAtributes = (item: Element, props: any): void => {
 };
 
 export const fromSvg = (item: Element): React.JSX.Element => {
-  const props: SVGProps & { key: string } = { key: randomUUID() };
+  const { key, ...props }: SVGProps & { key: string } = { key: randomUUID() };
   getAttributes(
     item,
     [
@@ -191,7 +191,11 @@ export const fromSvg = (item: Element): React.JSX.Element => {
     props,
   );
 
-  return <Svg {...props}>{getChildren(item)}</Svg>;
+  return (
+    <Svg key={key} {...props}>
+      {getChildren(item)}
+    </Svg>
+  );
 };
 
 /**
@@ -200,7 +204,7 @@ export const fromSvg = (item: Element): React.JSX.Element => {
  * @returns Line
  */
 export const fromLine = (item: Element): React.JSX.Element => {
-  const props: LineProps & { key: string } = {
+  const { key, ...props }: LineProps & { key: string } = {
     key: randomUUID(),
     x1: 0,
     x2: 0,
@@ -219,7 +223,11 @@ export const fromLine = (item: Element): React.JSX.Element => {
     props,
   );
 
-  return <Line {...props}>{getChildren(item)}</Line>;
+  return (
+    <Line key={key} {...props}>
+      {getChildren(item)}
+    </Line>
+  );
 };
 
 /**
@@ -228,14 +236,18 @@ export const fromLine = (item: Element): React.JSX.Element => {
  * @returns Polyline
  */
 export const fromPolyline = (item: Element): React.JSX.Element => {
-  const props: PolylineProps & { key: string } = {
+  const { key, ...props }: PolylineProps & { key: string } = {
     key: randomUUID(),
     points: "",
   };
   getPresentationAtributes(item, props);
   getAttributes(item, [{ key: "points", type: "string" }], props);
 
-  return <Polyline {...props}>{getChildren(item)}</Polyline>;
+  return (
+    <Polyline key={key} {...props}>
+      {getChildren(item)}
+    </Polyline>
+  );
 };
 
 /**
@@ -244,14 +256,18 @@ export const fromPolyline = (item: Element): React.JSX.Element => {
  * @returns Polygon
  */
 export const fromPolygon = (item: Element): React.JSX.Element => {
-  const props: PolygonProps & { key: string } = {
+  const { key, ...props }: PolygonProps & { key: string } = {
     key: randomUUID(),
     points: "",
   };
   getPresentationAtributes(item, props);
   getAttributes(item, [{ key: "points", type: "string" }], props);
 
-  return <Polygon {...props}>{getChildren(item)}</Polygon>;
+  return (
+    <Polygon key={key} {...props}>
+      {getChildren(item)}
+    </Polygon>
+  );
 };
 
 /**
@@ -260,13 +276,20 @@ export const fromPolygon = (item: Element): React.JSX.Element => {
  * @returns Path
  */
 export const fromPath = (item: Element): React.JSX.Element => {
-  const props: PathProps & { key: string } = { key: randomUUID(), d: "" };
+  const { key, ...props }: PathProps & { key: string } = {
+    key: randomUUID(),
+    d: "",
+  };
   getPresentationAtributes(item, props);
   getAttributes(item, [{ key: "d", type: "string" }], props);
 
   if (!props.fill) props.fill = "#abc";
 
-  return <Path {...props}>{getChildren(item)}</Path>;
+  return (
+    <Path key={key} {...props}>
+      {getChildren(item)}
+    </Path>
+  );
 };
 
 /**
@@ -275,10 +298,8 @@ export const fromPath = (item: Element): React.JSX.Element => {
  * @returns Rect
  */
 export const fromRect = (item: Element): React.JSX.Element => {
-  const props: RectProps & { key: string } = {
+  const { key, ...props }: RectProps & { key: string } = {
     key: randomUUID(),
-    x: 0,
-    y: 0,
     width: 0,
     height: 0,
   };
@@ -296,7 +317,11 @@ export const fromRect = (item: Element): React.JSX.Element => {
     props,
   );
 
-  return <Rect {...props}>{getChildren(item)}</Rect>;
+  return (
+    <Rect key={key} {...props}>
+      {getChildren(item)}
+    </Rect>
+  );
 };
 
 /**
@@ -305,10 +330,8 @@ export const fromRect = (item: Element): React.JSX.Element => {
  * @returns Circle
  */
 export const fromCircle = (item: Element): React.JSX.Element => {
-  const props: CircleProps & { key: string } = {
+  const { key, ...props }: CircleProps & { key: string } = {
     key: randomUUID(),
-    cx: 0,
-    cy: 0,
     r: 0,
   };
   getPresentationAtributes(item, props);
@@ -322,7 +345,11 @@ export const fromCircle = (item: Element): React.JSX.Element => {
     props,
   );
 
-  return <Circle {...props}>{getChildren(item)}</Circle>;
+  return (
+    <Circle key={key} {...props}>
+      {getChildren(item)}
+    </Circle>
+  );
 };
 
 /**
@@ -331,10 +358,8 @@ export const fromCircle = (item: Element): React.JSX.Element => {
  * @returns Ellipse
  */
 export const fromEllipse = (item: Element): React.JSX.Element => {
-  const props: EllipseProps & { key: string } = {
+  const { key, ...props }: EllipseProps & { key: string } = {
     key: randomUUID(),
-    cx: 0,
-    cy: 0,
     rx: 0,
     ry: 0,
   };
@@ -350,7 +375,11 @@ export const fromEllipse = (item: Element): React.JSX.Element => {
     props,
   );
 
-  return <Ellipse {...props}>{getChildren(item)}</Ellipse>;
+  return (
+    <Ellipse key={key} {...props}>
+      {getChildren(item)}
+    </Ellipse>
+  );
 };
 
 /**
@@ -359,7 +388,7 @@ export const fromEllipse = (item: Element): React.JSX.Element => {
  * @returns Text
  */
 export const fromText = (item: Element): React.JSX.Element => {
-  const props: SVGTextProps & { key: string } = {
+  const { key, ...props }: SVGTextProps & { key: string } = {
     key: randomUUID(),
     x: 0,
     y: 0,
@@ -382,9 +411,13 @@ export const fromText = (item: Element): React.JSX.Element => {
     for (const child of children) {
       texts.push(fromTspan(child, item));
     }
-    return <Fragment key={randomUUID()}>{texts}</Fragment>;
+    return <Fragment key={key}>{texts}</Fragment>;
   } else {
-    return <Text {...props}>{item.innerHTML}</Text>;
+    return (
+      <Text key={key} {...props}>
+        {item.innerHTML}
+      </Text>
+    );
   }
 };
 
@@ -413,7 +446,7 @@ export const fromTspan = (
     props,
   );
 
-  const parentProps: SVGTextProps & { key: string } = {
+  const { key, ...parentProps }: SVGTextProps & { key: string } = {
     key: randomUUID(),
     x: 0,
     y: 0,
@@ -431,7 +464,11 @@ export const fromTspan = (
   parentProps.x = +parentProps.x + (props.dx ?? 0);
   parentProps.y = +parentProps.y + (props.dy ?? 0);
 
-  return <Text {...parentProps}>{item.innerHTML}</Text>;
+  return (
+    <Text key={key} {...parentProps}>
+      {item.innerHTML}
+    </Text>
+  );
 };
 
 /**
@@ -440,10 +477,14 @@ export const fromTspan = (
  * @returns G
  */
 export const fromG = (item: Element): React.JSX.Element => {
-  const props: GProps & { key: string } = { key: randomUUID() };
+  const { key, ...props }: GProps & { key: string } = { key: randomUUID() };
   getPresentationAtributes(item, props);
 
-  return <G {...props}>{getChildren(item)}</G>;
+  return (
+    <G key={key} {...props}>
+      {getChildren(item)}
+    </G>
+  );
 };
 
 /**
@@ -452,7 +493,7 @@ export const fromG = (item: Element): React.JSX.Element => {
  * @returns Stop
  */
 export const fromStop = (item: Element): React.JSX.Element => {
-  const props: StopProps & { key: string } = {
+  const { key, ...props }: StopProps & { key: string } = {
     key: randomUUID(),
     offset: 0,
     stopColor: "",
@@ -467,7 +508,11 @@ export const fromStop = (item: Element): React.JSX.Element => {
     props,
   );
 
-  return <Stop {...props}>{getChildren(item)}</Stop>;
+  return (
+    <Stop key={key} {...props}>
+      {getChildren(item)}
+    </Stop>
+  );
 };
 
 /**
@@ -476,9 +521,13 @@ export const fromStop = (item: Element): React.JSX.Element => {
  * @returns Defs
  */
 export const fromDefs = (item: Element): React.JSX.Element => {
-  const props = { key: randomUUID() };
+  const { key, ...props } = { key: randomUUID() };
 
-  return <Defs {...props}>{getChildren(item)}</Defs>;
+  return (
+    <Defs key={key} {...props}>
+      {getChildren(item)}
+    </Defs>
+  );
 };
 
 /**
@@ -487,9 +536,15 @@ export const fromDefs = (item: Element): React.JSX.Element => {
  * @returns ClipPath
  */
 export const fromClipPath = (item: Element): React.JSX.Element => {
-  const props: ClipPathProps & { key: string } = { key: randomUUID() };
+  const { key, ...props }: ClipPathProps & { key: string } = {
+    key: randomUUID(),
+  };
 
-  return <ClipPath {...props}>{getChildren(item)}</ClipPath>;
+  return (
+    <ClipPath key={key} {...props}>
+      {getChildren(item)}
+    </ClipPath>
+  );
 };
 
 /**
@@ -498,13 +553,9 @@ export const fromClipPath = (item: Element): React.JSX.Element => {
  * @returns LinearGradient
  */
 export const fromLinearGradient = (item: Element): React.JSX.Element => {
-  const props: LinearGradientProps & { key: string } = {
+  const { key, ...props }: LinearGradientProps & { key: string } = {
     key: randomUUID(),
     id: "",
-    x1: 0,
-    x2: 0,
-    y1: 0,
-    y2: 0,
   };
   getAttributes(
     item,
@@ -514,11 +565,17 @@ export const fromLinearGradient = (item: Element): React.JSX.Element => {
       { key: "x2", type: "number" },
       { key: "y1", type: "number" },
       { key: "y2", type: "number" },
+      { key: "gradientTransform", type: "string" },
+      { key: "gradientUnits", type: "string" },
     ],
     props,
   );
 
-  return <LinearGradient {...props}>{getChildren(item)}</LinearGradient>;
+  return (
+    <LinearGradient key={key} {...props}>
+      {getChildren(item)}
+    </LinearGradient>
+  );
 };
 
 /**
@@ -527,14 +584,9 @@ export const fromLinearGradient = (item: Element): React.JSX.Element => {
  * @returns RadialGradient
  */
 export const fromRadialGradient = (item: Element): React.JSX.Element => {
-  const props: RadialGradientProps & { key: string } = {
+  const { key, ...props }: RadialGradientProps & { key: string } = {
     key: randomUUID(),
     id: "",
-    cx: 0,
-    cy: 0,
-    fr: 0,
-    fx: 0,
-    fy: 0,
   };
   getPresentationAtributes(item, props);
   getAttributes(
@@ -543,12 +595,19 @@ export const fromRadialGradient = (item: Element): React.JSX.Element => {
       { key: "id", type: "string" },
       { key: "cx", type: "number" },
       { key: "cy", type: "number" },
+      { key: "r", type: "number" },
       { key: "fr", type: "number" },
       { key: "fx", type: "number" },
       { key: "fy", type: "number" },
+      { key: "gradientTransform", type: "string" },
+      { key: "gradientUnits", type: "string" },
     ],
     props,
   );
 
-  return <RadialGradient {...props}>{getChildren(item)}</RadialGradient>;
+  return (
+    <RadialGradient key={key} {...props}>
+      {getChildren(item)}
+    </RadialGradient>
+  );
 };
