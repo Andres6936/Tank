@@ -283,8 +283,6 @@ export const fromPath = (item: Element): React.JSX.Element => {
   getPresentationAtributes(item, props);
   getAttributes(item, [{ key: "d", type: "string" }], props);
 
-  if (!props.fill) props.fill = "#abc";
-
   return (
     <Path key={key} {...props}>
       {getChildren(item)}
