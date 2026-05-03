@@ -55,7 +55,7 @@ export const getChildren = (parent: Element): React.JSX.Element[] => {
     // Switch
     switch (type) {
       case "svg":
-        children.push(svgToSvg(item));
+        children.push(fromSvg(item));
         break;
       case "line":
         children.push(lineToLine(item));
@@ -181,7 +181,7 @@ export const getPresentationAtributes = (item: Element, props: any): void => {
   getAttributes(item, presentationAttributes, props);
 };
 
-export const svgToSvg = (item: Element): React.JSX.Element => {
+export const fromSvg = (item: Element): React.JSX.Element => {
   const props: SVGProps & { key: string } = { key: randomUUID() };
   getAttributes(
     item,
