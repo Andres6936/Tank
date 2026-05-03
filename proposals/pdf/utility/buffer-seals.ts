@@ -1,7 +1,6 @@
-import sharp from "sharp";
-import QRCode from "qrcode";
 import barcode from "jsbarcode";
 import { Canvas } from "canvas";
+import { qrcode } from "etiket";
 
 import {
   getCircleTextBuffer,
@@ -27,12 +26,23 @@ const getBufferSeals = async (args?: { seal?: "red" | "green" | "blue" }) => {
 
   const sealFile = getSealFile(args?.seal ?? "red");
   const sealBuffer = Buffer.from(await sealFile.bytes());
-  const codeBuffer = await QRCode.toDataURL("https://andres6936.dev/", {
-    quality: 1,
+  const svg = qrcode("https://andres6936.dev/", {
     margin: 0,
-    color: {
-      dark: "#f8f4e3",
-      light: "#00000000",
+    color: "#f8f4e3",
+    background: "#00000000",
+    corners: {
+      topLeft: {
+        innerShape: "rounded",
+        outerShape: "rounded",
+      },
+      topRight: {
+        innerShape: "rounded",
+        outerShape: "rounded",
+      },
+      bottomLeft: {
+        innerShape: "rounded",
+        outerShape: "rounded",
+      },
     },
   });
 
@@ -48,7 +58,7 @@ const getBufferSeals = async (args?: { seal?: "red" | "green" | "blue" }) => {
     uuid,
     seal: sealBuffer.toBase64(),
     // Remove the first 22 characters, equivalent to: << data:image/png;base64, >>
-    code: codeBuffer.slice(22),
+    code: svg,
     text: buffer.slice(22),
     barcode: canvas.toBuffer().toBase64(),
   };

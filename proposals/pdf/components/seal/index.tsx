@@ -3,6 +3,7 @@ import { Image, View } from "@react-pdf/renderer";
 import { isEmptyNullOrUndefined } from "~/lib/utils";
 import { mergeStyles } from "~/pdf/utility/merge-props";
 import { flatten } from "@react-pdf/stylesheet";
+import { fromSvg } from "~/pdf/svg/parser";
 
 type Props = React.ComponentPropsWithRef<typeof View> & {
   seal: string | undefined | null;
@@ -23,7 +24,9 @@ export default function Component(props: Props) {
       <BufferImage buffer={props.seal} />
       <AbsoluteCenter>
         <Square size={48}>
-          <BufferImage buffer={props.code} />
+          {fromSvg(props.code || "", {
+            style: { width: "100%", height: "100%" },
+          })}
         </Square>
       </AbsoluteCenter>
 

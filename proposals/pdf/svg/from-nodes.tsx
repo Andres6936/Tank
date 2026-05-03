@@ -32,6 +32,7 @@ import type {
   LinearGradientProps,
   RadialGradientProps,
   PolylineProps,
+  NodeProps,
 } from "@react-pdf/renderer";
 import { randomUUID } from "crypto";
 
@@ -178,8 +179,14 @@ export const getPresentationAtributes = (item: Element, props: any): void => {
   getAttributes(item, presentationAttributes, props);
 };
 
-export const fromSvg = (item: Element): React.JSX.Element => {
-  const { key, ...props }: SVGProps & { key: string } = { key: randomUUID() };
+export const fromSvg = (
+  item: Element,
+  properties?: NodeProps,
+): React.JSX.Element => {
+  const { key, ...props }: SVGProps & { key: string } = {
+    key: randomUUID(),
+    ...properties,
+  };
   getAttributes(
     item,
     [
