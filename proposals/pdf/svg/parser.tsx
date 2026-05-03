@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {
   Circle,
   ClipPath,
@@ -35,21 +35,18 @@ import type {
 } from "@react-pdf/renderer";
 import { randomUUID } from "crypto";
 
-import { Fragment } from "react";
-
 import { attributeToNumber, cssToCamelCase } from "./attributes";
 
-/**
- * Get children
- * @param parent Parent
- * @returns Children
- */
+function isElement(node: ChildNode): node is Element {
+  return node.nodeType === 1;
+}
+
 export const getChildren = (parent: Element): React.JSX.Element[] => {
   const children = [];
 
   // Iterate children
-  for (let item of Array.from(parent.children)) {
-    // Type
+  for (let item of Array.from(parent.childNodes)) {
+    if (!isElement(item)) continue;
     const type = item.tagName.toLowerCase();
 
     // Switch
