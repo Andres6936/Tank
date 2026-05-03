@@ -24,9 +24,7 @@ export default function Component(props: Props) {
       <BufferImage buffer={props.seal} />
       <AbsoluteCenter>
         <Square size={48}>
-          {fromSvg(props.code || "", {
-            style: { width: "100%", height: "100%" },
-          })}
+          <SvgBuffer svg={props.code} />
         </Square>
       </AbsoluteCenter>
 
@@ -50,6 +48,13 @@ function BufferImage(props: BufferImageProps) {
       style={{ width: "100%", height: "100%" }}
     />
   );
+}
+
+function SvgBuffer(props: { svg: string | undefined | null }) {
+  if (!props.svg) return null;
+  return fromSvg(props.svg, {
+    style: { width: "100%", height: "100%" },
+  });
 }
 
 type SquareProps = {
