@@ -55,49 +55,49 @@ export const getChildren = (parent: Element): React.JSX.Element[] => {
         children.push(fromSvg(item));
         break;
       case "line":
-        children.push(lineToLine(item));
+        children.push(fromLine(item));
         break;
       case "polyline":
-        children.push(polylineToPolyline(item));
+        children.push(fromPolyline(item));
         break;
       case "polygon":
-        children.push(polygonToPolygon(item));
+        children.push(fromPolygon(item));
         break;
       case "path":
-        children.push(pathToPath(item));
+        children.push(fromPath(item));
         break;
       case "rect":
-        children.push(rectToRect(item));
+        children.push(fromRect(item));
         break;
       case "circle":
-        children.push(circleToCircle(item));
+        children.push(fromCircle(item));
         break;
       case "ellipse":
-        children.push(ellipseToEllipse(item));
+        children.push(fromEllipse(item));
         break;
       case "text":
-        children.push(textToText(item));
+        children.push(fromText(item));
         break;
       case "tspan":
-        children.push(tspanToTspan(item, parent));
+        children.push(fromTspan(item, parent));
         break;
       case "g":
-        children.push(gToG(item));
+        children.push(fromG(item));
         break;
       case "stop":
-        children.push(stopToStop(item));
+        children.push(fromStop(item));
         break;
       case "defs":
-        children.push(defsToDefs(item));
+        children.push(fromDefs(item));
         break;
       case "clippath":
-        children.push(clipPathToClipPath(item));
+        children.push(fromClipPath(item));
         break;
       case "lineargradient":
-        children.push(linearGradientToLinearGradient(item));
+        children.push(fromLinearGradient(item));
         break;
       case "radialgradient":
-        children.push(radialGradientToRadialGradient(item));
+        children.push(fromRadialGradient(item));
         break;
       default:
         console.error("Skip item", item);
@@ -199,7 +199,7 @@ export const fromSvg = (item: Element): React.JSX.Element => {
  * @param item Item
  * @returns Line
  */
-export const lineToLine = (item: Element): React.JSX.Element => {
+export const fromLine = (item: Element): React.JSX.Element => {
   const props: LineProps & { key: string } = {
     key: randomUUID(),
     x1: 0,
@@ -227,7 +227,7 @@ export const lineToLine = (item: Element): React.JSX.Element => {
  * @param item Item
  * @returns Polyline
  */
-export const polylineToPolyline = (item: Element): React.JSX.Element => {
+export const fromPolyline = (item: Element): React.JSX.Element => {
   const props: PolylineProps & { key: string } = {
     key: randomUUID(),
     points: "",
@@ -243,7 +243,7 @@ export const polylineToPolyline = (item: Element): React.JSX.Element => {
  * @param item Item
  * @returns Polygon
  */
-export const polygonToPolygon = (item: Element): React.JSX.Element => {
+export const fromPolygon = (item: Element): React.JSX.Element => {
   const props: PolygonProps & { key: string } = {
     key: randomUUID(),
     points: "",
@@ -259,7 +259,7 @@ export const polygonToPolygon = (item: Element): React.JSX.Element => {
  * @param item Item
  * @returns Path
  */
-export const pathToPath = (item: Element): React.JSX.Element => {
+export const fromPath = (item: Element): React.JSX.Element => {
   const props: PathProps & { key: string } = { key: randomUUID(), d: "" };
   getPresentationAtributes(item, props);
   getAttributes(item, [{ key: "d", type: "string" }], props);
@@ -274,7 +274,7 @@ export const pathToPath = (item: Element): React.JSX.Element => {
  * @param item Item
  * @returns Rect
  */
-export const rectToRect = (item: Element): React.JSX.Element => {
+export const fromRect = (item: Element): React.JSX.Element => {
   const props: RectProps & { key: string } = {
     key: randomUUID(),
     x: 0,
@@ -304,7 +304,7 @@ export const rectToRect = (item: Element): React.JSX.Element => {
  * @param item Item
  * @returns Circle
  */
-export const circleToCircle = (item: Element): React.JSX.Element => {
+export const fromCircle = (item: Element): React.JSX.Element => {
   const props: CircleProps & { key: string } = {
     key: randomUUID(),
     cx: 0,
@@ -330,7 +330,7 @@ export const circleToCircle = (item: Element): React.JSX.Element => {
  * @param item Item
  * @returns Ellipse
  */
-export const ellipseToEllipse = (item: Element): React.JSX.Element => {
+export const fromEllipse = (item: Element): React.JSX.Element => {
   const props: EllipseProps & { key: string } = {
     key: randomUUID(),
     cx: 0,
@@ -358,7 +358,7 @@ export const ellipseToEllipse = (item: Element): React.JSX.Element => {
  * @param item Item
  * @returns Text
  */
-export const textToText = (item: Element): React.JSX.Element => {
+export const fromText = (item: Element): React.JSX.Element => {
   const props: SVGTextProps & { key: string } = {
     key: randomUUID(),
     x: 0,
@@ -380,7 +380,7 @@ export const textToText = (item: Element): React.JSX.Element => {
   if (children.length) {
     const texts: React.JSX.Element[] = [];
     for (const child of children) {
-      texts.push(tspanToTspan(child, item));
+      texts.push(fromTspan(child, item));
     }
     return <Fragment key={randomUUID()}>{texts}</Fragment>;
   } else {
@@ -393,7 +393,7 @@ export const textToText = (item: Element): React.JSX.Element => {
  * @param item Item
  * @returns Tspan
  */
-export const tspanToTspan = (
+export const fromTspan = (
   item: Element,
   parent: Element,
 ): React.JSX.Element => {
@@ -439,7 +439,7 @@ export const tspanToTspan = (
  * @param item Item
  * @returns G
  */
-export const gToG = (item: Element): React.JSX.Element => {
+export const fromG = (item: Element): React.JSX.Element => {
   const props: GProps & { key: string } = { key: randomUUID() };
   getPresentationAtributes(item, props);
 
@@ -451,7 +451,7 @@ export const gToG = (item: Element): React.JSX.Element => {
  * @param item Item
  * @returns Stop
  */
-export const stopToStop = (item: Element): React.JSX.Element => {
+export const fromStop = (item: Element): React.JSX.Element => {
   const props: StopProps & { key: string } = {
     key: randomUUID(),
     offset: 0,
@@ -475,7 +475,7 @@ export const stopToStop = (item: Element): React.JSX.Element => {
  * @param item Item
  * @returns Defs
  */
-export const defsToDefs = (item: Element): React.JSX.Element => {
+export const fromDefs = (item: Element): React.JSX.Element => {
   const props = { key: randomUUID() };
 
   return <Defs {...props}>{getChildren(item)}</Defs>;
@@ -486,7 +486,7 @@ export const defsToDefs = (item: Element): React.JSX.Element => {
  * @param item Item
  * @returns ClipPath
  */
-export const clipPathToClipPath = (item: Element): React.JSX.Element => {
+export const fromClipPath = (item: Element): React.JSX.Element => {
   const props: ClipPathProps & { key: string } = { key: randomUUID() };
 
   return <ClipPath {...props}>{getChildren(item)}</ClipPath>;
@@ -497,9 +497,7 @@ export const clipPathToClipPath = (item: Element): React.JSX.Element => {
  * @param item Item
  * @returns LinearGradient
  */
-export const linearGradientToLinearGradient = (
-  item: Element,
-): React.JSX.Element => {
+export const fromLinearGradient = (item: Element): React.JSX.Element => {
   const props: LinearGradientProps & { key: string } = {
     key: randomUUID(),
     id: "",
@@ -528,9 +526,7 @@ export const linearGradientToLinearGradient = (
  * @param item Item
  * @returns RadialGradient
  */
-export const radialGradientToRadialGradient = (
-  item: Element,
-): React.JSX.Element => {
+export const fromRadialGradient = (item: Element): React.JSX.Element => {
   const props: RadialGradientProps & { key: string } = {
     key: randomUUID(),
     id: "",
