@@ -5,8 +5,8 @@
     "": {
       "name": "proposals",
       "dependencies": {
-        "@optique/core": "^0.10.7",
-        "@optique/run": "^0.10.7",
+        "@optique/core": "1.0.2",
+        "@optique/run": "1.0.2",
         "@react-pdf/renderer": "^4.3.2",
         "@xmldom/xmldom": "^0.8.11",
         "canvas": "^3.2.1",
@@ -80,9 +80,9 @@
 
     "@img/sharp-win32-x64": ["@img/sharp-win32-x64@0.34.5", "", { "os": "win32", "cpu": "x64" }, "sha512-+29YMsqY2/9eFEiW93eqWnuLcWcufowXewwSNIT6UwZdUUCrM3oFjMWH/Z6/TMmb4hlFenmfAVbpWeup2jryCw=="],
 
-    "@optique/core": ["@optique/core@0.10.7", "", {}, "sha512-FwSX8ILFqzcCqZi6Xetsa4flJp/yyqFG4d4eFD98BtqdzxxuylzdrKvsXj/ow8mcoVjYkTuaIkqHSBxonqMcQg=="],
+    "@optique/core": ["@optique/core@1.0.2", "", {}, "sha512-znsqMmjAdeOgSJzdJlpZpgAscojwQmeQYXzYnuEKllz5VCj6WyEkdzU4QuvJQtWQY3ve2taXwudEBRur0VHBOQ=="],
 
-    "@optique/run": ["@optique/run@0.10.7", "", { "dependencies": { "@optique/core": "0.10.7" } }, "sha512-1CVdH8uyptj1nFGS2MLacSmZceRClez4LD/G/Gm38wrAVnJq6I+9Fvyh2bVHErsZLQzR0a12CYMUWIgDKY3X1w=="],
+    "@optique/run": ["@optique/run@1.0.2", "", { "dependencies": { "@optique/core": "1.0.2" } }, "sha512-0Wc+zC8SLGV8zXQX+pk+o0c6wE/ddx/36CHZ0toTh5lApsjruUuGhqbxvljerAAG5un1xQbOLxzksBVC6UPgSg=="],
 
     "@react-pdf/fns": ["@react-pdf/fns@3.1.2", "", {}, "sha512-qTKGUf0iAMGg2+OsUcp9ffKnKi41RukM/zYIWMDJ4hRVYSr89Q7e3wSDW/Koqx3ea3Uy/z3h2y3wPX6Bdfxk6g=="],
 

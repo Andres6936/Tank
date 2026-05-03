@@ -10,8 +10,8 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@optique/core": "^0.10.7",
-    "@optique/run": "^0.10.7",
+    "@optique/core": "1.0.2",
+    "@optique/run": "1.0.2",
     "@react-pdf/renderer": "^4.3.2",
     "@xmldom/xmldom": "^0.8.11",
     "canvas": "^3.2.1",
