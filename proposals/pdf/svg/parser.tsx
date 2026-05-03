@@ -38,7 +38,7 @@ import { randomUUID } from "crypto";
 import { attributeToNumber, cssToCamelCase } from "./attributes";
 
 function isElement(node: ChildNode): node is Element {
-  return node.nodeType === 1;
+  return node.nodeType === node.ELEMENT_NODE;
 }
 
 export const getChildren = (parent: Element): React.JSX.Element[] => {
