@@ -93,6 +93,7 @@ export default function Component(props: Props) {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            gap: "2pt",
           }}
         >
           <SvgBuffer svg={props.barcode} style={{ width: "160pt" }} />
