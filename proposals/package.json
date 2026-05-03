@@ -15,11 +15,8 @@
     "@optique/run": "1.0.2",
     "@react-pdf/renderer": "^4.3.2",
     "@xmldom/xmldom": "^0.8.11",
-    "canvas": "^3.2.1",
     "etiket": "^0.11.0",
-    "jsbarcode": "^3.12.3",
     "konva": "^10.2.1",
-    "qrcode": "^1.5.4",
     "react": "^19.2.4",
     "sharp": "^0.34.5",
     "tailwind-merge": "^3.5.0"
