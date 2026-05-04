@@ -32,7 +32,7 @@ const parser = object({
   ),
   seal: withDefault(
     optional(option("-s", "--seal", choice(["blue", "red", "green"]))),
-    "blue",
+    "red",
   ),
   output: withDefault(
     option("-o", "--output", path({ type: "file" })),
