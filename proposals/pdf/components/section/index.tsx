@@ -50,10 +50,13 @@ type IndentProps = React.ComponentPropsWithRef<typeof View> & {
   level?: number | undefined;
 };
 
-const Indent = (props: IndentProps) => (
+const Indent = ({ style, ...props }: IndentProps & StylesNode) => (
   <View
-    style={flatten({ marginLeft: `${props.level || 1}cm`, ...props.style })}
     {...props}
+    style={mergeStyles(
+      { marginLeft: `${props.level || 1}cm` },
+      { ...style, ...props },
+    )}
   />
 );
 

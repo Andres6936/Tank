@@ -95,7 +95,7 @@
             <BulletText size="md" marginBottom="0.3cm">
                 Si desea verificar la veracidad de esta información, puede comunicarse con la Sucursal Telefónica Bancolombia en los siguientes números:
             </BulletText>
-            <Indent>
+            <Indent marginBottom="0.3cm">
                 <BulletText size="sm">
                     Medellín - Local: (57-4) 510 90 00
                 </BulletText>
@@ -112,7 +112,7 @@
                     Resto del país: 01800 09 12345
                 </BulletText>
             </Indent>
-            <BulletText size="md" marginVertical="0.3cm">
+            <BulletText size="md" marginBottom="0.3cm">
                 Sucursales Telefónicas en el exterior:
             </BulletText>
             <Indent>
