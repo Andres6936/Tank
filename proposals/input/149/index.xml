@@ -124,5 +124,20 @@
                 </BulletText>
             </Indent>
         </Section>
+
+        <Section gap="0.1cm" marginTop="2cm">
+            <Title size="xs" textAlign="left">Descargos</Title>
+
+            <BulletText size="md">
+                Contribuyente inscrito en el Régimen Simple de Tributación (RST).
+                De conformidad con el artículo 911 del Estatuto Tributario, no sujeto a
+                retención en la fuente a título del impuesto sobre la renta.
+                Actividad Económica CIIU 6201.
+            </BulletText>
+
+            <BulletText size="md">
+                No responsable del Impuesto sobre las Ventas (IVA) - Artículo 437 del E.T.
+            </BulletText>
+        </Section>
     </Page>
 </Invoice>
