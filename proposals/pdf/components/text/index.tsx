@@ -2,7 +2,10 @@ import React from "react";
 import { Text as PDFText, View } from "@react-pdf/renderer";
 import { mergeStyles, type StylesNode } from "~/pdf/utility/merge-props";
 
-const BulletText = (props: React.ComponentPropsWithRef<typeof PDFText>) => {
+const BulletText = ({
+  style,
+  ...props
+}: React.ComponentPropsWithRef<typeof PDFText> & TextProps) => {
   return (
     <View style={{ flexDirection: "row", gap: "12pt" }} wrap={false}>
       <View
@@ -15,10 +18,10 @@ const BulletText = (props: React.ComponentPropsWithRef<typeof PDFText>) => {
           marginTop: "5pt",
         }}
       />
-      <PDFText
+      <Text
         {...props}
         hyphenationCallback={(word) => [word]}
-        style={mergeStyles({ flex: 1, textAlign: "justify" }, props.style)}
+        style={{ flex: 1, textAlign: "justify" }}
       />
     </View>
   );
@@ -27,7 +30,7 @@ const BulletText = (props: React.ComponentPropsWithRef<typeof PDFText>) => {
 type TextProps = StylesNode & {
   bold?: boolean;
   italic?: boolean;
-  size?: "xs" | "md" | "lg" | "xl";
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
   textAlign?: "center" | "left" | "right";
   opacity?: number;
 };
@@ -40,10 +43,12 @@ const Text = ({
     switch (size) {
       case "xs":
         return "7pt";
-      case "md":
+      case "sm":
         return "8pt";
+      case "md":
+        return "9pt";
       case "lg":
-        return "10t";
+        return "10pt";
       case "xl":
         return "12pt";
     }
@@ -107,7 +112,7 @@ const Title = (
           fontFamily: "Merriweather",
           fontWeight: "bold",
           textAlign: props.textAlign || "center",
-          transform: "scaleY(1.4), scaleX(0.9)",
+          transform: "scaleY(1.4), scaleX(0.95)",
           fontSize: getSize(props.size),
           marginBottom: "0.4cm",
           color: "#14192f",
@@ -118,12 +123,14 @@ const Title = (
   );
 };
 
-const Paragraph = (props: React.ComponentPropsWithRef<typeof PDFText>) => {
+const Paragraph = (
+  props: React.ComponentPropsWithRef<typeof PDFText> & TextProps,
+) => {
   return (
-    <PDFText
+    <Text
       {...props}
       hyphenationCallback={(word) => [word]}
-      style={mergeStyles({ textAlign: "justify" }, props.style)}
+      style={{ textAlign: "justify" }}
     />
   );
 };
