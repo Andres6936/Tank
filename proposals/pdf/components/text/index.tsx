@@ -24,7 +24,7 @@ const BulletText = (props: React.ComponentPropsWithRef<typeof PDFText>) => {
   );
 };
 
-type TextProps = {
+type TextProps = StylesNode & {
   bold?: boolean;
   italic?: boolean;
   size?: "xs" | "md" | "lg" | "xl";
@@ -32,9 +32,10 @@ type TextProps = {
   opacity?: number;
 };
 
-const Text = (
-  props: React.ComponentPropsWithRef<typeof PDFText> & TextProps,
-) => {
+const Text = ({
+  style,
+  ...props
+}: React.ComponentPropsWithRef<typeof PDFText> & TextProps) => {
   const getSize = (size: TextProps["size"]) => {
     switch (size) {
       case "xs":
@@ -56,7 +57,12 @@ const Text = (
     ...(props.opacity ? { opacity: props.opacity } : {}),
   } as StylesNode;
 
-  return <PDFText {...props} style={mergeStyles(defaultStyles, props.style)} />;
+  return (
+    <PDFText
+      {...props}
+      style={mergeStyles(defaultStyles, { ...style, ...props } as StylesNode)}
+    />
+  );
 };
 
 type Props = React.PropsWithChildren<
