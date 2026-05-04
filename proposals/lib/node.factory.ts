@@ -134,11 +134,19 @@ export function xmlToReactTree(
 }
 
 // Helper para leer desde archivo usando Bun
-export async function xmlFileToReactTree(
+export async function fromFile(
   filePath: string,
   components: ComponentMap,
   options?: XmlToReactOptions,
 ): Promise<React.ReactNode[]> {
   const xml = await Bun.file(filePath).text();
+  return xmlToReactTree(xml, components, options);
+}
+
+export async function fromString(
+  xml: string,
+  components: ComponentMap,
+  options?: XmlToReactOptions,
+): Promise<React.ReactNode[]> {
   return xmlToReactTree(xml, components, options);
 }
