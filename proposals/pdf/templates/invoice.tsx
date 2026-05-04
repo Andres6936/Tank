@@ -20,31 +20,13 @@ import {
   Sign,
 } from "~/pdf/components/invoices";
 
-// Complex Component
-import Cover from "~/pdf/components/cover";
-import IndicatorHeader from "~/pdf/components/cover/indicator-header";
-
-// Sign Component
-import {
-  Section as SignSection,
-  SignMeLeft,
-  SignMeRight,
-  Row as SignRow,
-} from "~/pdf/components/signs/sign-components";
-
 // Utility Seals Buffers
 import { getBufferSeals } from "~/pdf/utility/buffer-seals";
 
 const components: ComponentMap = {
-  // Complex Component
-  IndicatorHeader,
-
   // Sign Component
   Line,
   SansLine,
-  SignSection,
-  SignRow,
-  SignMeRight,
   VerticalLetter,
   Seal,
   Sign,
@@ -73,7 +55,7 @@ const getTreeNode = async (
 ) => {
   const properties: Record<string, unknown> = {};
   const nodes = await fromString(xml, components, {
-    interceptTags: ["Invoice", "Seal", "Cover", "SignMeLeft"],
+    interceptTags: ["Invoice", "Seal"],
     onInterceptTag: (tagName, props) => {
       if (tagName === "Invoice") {
         for (const [key, value] of Object.entries(props)) {
@@ -84,33 +66,6 @@ const getTreeNode = async (
       if (tagName === "Seal") {
         return React.createElement(
           Seal,
-          {
-            seal: buffers.seal,
-            code: buffers.code,
-            text: buffers.text,
-          },
-          [],
-        );
-      }
-      if (tagName === "Cover") {
-        return React.createElement(
-          Cover,
-          {
-            uuid: buffers.uuid,
-            seal: buffers.seal,
-            code: buffers.code,
-            text: buffers.text,
-            barcode: buffers.barcode,
-            type: props.type as string,
-            title: props.title as string,
-            month: props.month as string,
-          },
-          [],
-        );
-      }
-      if (tagName === "SignMeLeft") {
-        return React.createElement(
-          SignMeLeft,
           {
             seal: buffers.seal,
             code: buffers.code,
