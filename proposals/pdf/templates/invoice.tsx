@@ -5,10 +5,12 @@ import React, { Fragment } from "react";
 import { Document } from "@react-pdf/renderer";
 import { type ComponentMap, fromString } from "~/lib/node.factory";
 
+import { Indent } from "~/pdf/components/section";
 import { Line, SansLine } from "~/pdf/components/cover/uuid-lines";
 import { VerticalLetter } from "~/pdf/components/cover/vertical-letter";
-import { Text, S } from "~/pdf/components/text";
 import { Page, Seal, Section, Sign } from "~/pdf/components/invoices";
+import { Table, Row, Cell, Header, Footer } from "~/pdf/components/table";
+import { Paragraph, Title, BulletText, Text, S } from "~/pdf/components/text";
 
 // Utility Seals Buffers
 import { getBufferSeals } from "~/pdf/utility/buffer-seals";
@@ -21,11 +23,22 @@ const components: ComponentMap = {
   SansLine,
   VerticalLetter,
 
+  // Table Component
+  Table,
+  Row,
+  Cell,
+  Header,
+  Footer,
+
   // Section Component
   Page,
   Section,
+  Indent,
 
   // Text Component
+  BulletText,
+  Paragraph,
+  Title,
   Text,
   S,
 };

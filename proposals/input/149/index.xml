@@ -51,4 +51,78 @@
             </Section>
         </Section>
     </Page>
+
+    <Page>
+        <VerticalLetter>
+            {{UUID.Long}}
+        </VerticalLetter>
+
+        <Section>
+            <Title size="xs" textAlign="left">Referencia Bancaria</Title>
+
+            <Paragraph marginTop="0.7cm">
+                BANCOLOMBIA S.A. se permite informar que JOAN ANDRES BURITICA SALAZAR identificado(a) con CC 1.143.995.473,
+                a la fecha de expedición de esta certificación, tiene con el Banco los siguientes productos:
+            </Paragraph>
+
+            <Section paddingVertical="0.7cm">
+                <Table>
+                    <Header>
+                        <Row>
+                            <Cell flex="2">Nombre Producto</Cell>
+                            <Cell>No. Producto</Cell>
+                            <Cell>Estado</Cell>
+                        </Row>
+                    </Header>
+                    <Body>
+                        <Row>
+                            <Cell flex="2">Cuenta de Ahorros</Cell>
+                            <Cell>91218898063</Cell>
+                            <Cell>Activa</Cell>
+                        </Row>
+                        <Row>
+                            <Cell flex="2">Llave Bre-B</Cell>
+                            <Cell>1143995473</Cell>
+                            <Cell>Activa</Cell>
+                        </Row>
+                    </Body>
+                </Table>
+            </Section>
+
+            <BulletText size="md">
+                Importante Esta constancia solo hace referencia a los productos mencionados anteriormente.
+            </BulletText>
+            <BulletText size="md" marginBottom="0.3cm">
+                Si desea verificar la veracidad de esta información, puede comunicarse con la Sucursal Telefónica Bancolombia en los siguientes números:
+            </BulletText>
+            <Indent>
+                <BulletText size="sm">
+                    Medellín - Local: (57-4) 510 90 00
+                </BulletText>
+                <BulletText size="sm">
+                    Bogotá - Local: (57-1) 343 00 00
+                </BulletText>
+                <BulletText size="sm">
+                    Barranquilla - Local: (57-5) 361 88 88
+                </BulletText>
+                <BulletText size="sm">
+                    Cali - Local: (57-2) 554 05 05
+                </BulletText>
+                <BulletText size="sm">
+                    Resto del país: 01800 09 12345
+                </BulletText>
+            </Indent>
+            <BulletText size="md" marginVertical="0.3cm">
+                Sucursales Telefónicas en el exterior:
+            </BulletText>
+            <Indent>
+                <BulletText size="sm">
+                    España (34) 900 995 717
+                </BulletText>
+                <BulletText size="sm">
+                    Estados Unidos (1) 1 866 379 97 14
+                </BulletText>
+            </Indent>
+        </Section>
+    </Page>
 </Invoice>
