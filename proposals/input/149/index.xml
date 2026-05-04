@@ -68,9 +68,9 @@
         <Section>
             <Title size="xs" textAlign="left">Referencia Bancaria</Title>
 
-            <Paragraph marginTop="0.7cm">
-                BANCOLOMBIA S.A. se permite informar que JOAN ANDRES BURITICA SALAZAR identificado(a) con CC 1.143.995.473,
-                a la fecha de expedición de esta certificación, tiene con el Banco los siguientes productos:
+            <Paragraph size="lg" marginTop="0.7cm">
+                BANCOLOMBIA S.A. informa que JOAN ANDRES BURITICA SALAZAR identificado con CC 1.143.995.473
+                a la fecha de expedición de esta cuenta de cobro, tiene con el Banco los siguientes productos:
             </Paragraph>
 
             <Section paddingVertical="0.7cm">
