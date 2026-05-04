@@ -1,12 +1,23 @@
 import React from "react";
-import { type NodeProps, Page, View, Text } from "@react-pdf/renderer";
+import {
+  type NodeProps,
+  Page as PDFPage,
+  View,
+  Text,
+} from "@react-pdf/renderer";
 
 import { mergeStyles } from "~/pdf/utility/merge-props";
 import * as SealComponent from "~/pdf/components/seal";
 
+const Page = ({ children }: React.PropsWithChildren<{}>) => (
+  <Pagination>
+    <Container>{children}</Container>
+  </Pagination>
+);
+
 const Pagination = (props: React.ComponentPropsWithRef<typeof Page>) => {
   return (
-    <Page
+    <PDFPage
       {...props}
       size="A4"
       style={{
@@ -80,10 +91,6 @@ const Body = (props: React.ComponentPropsWithRef<typeof View>) => {
   );
 };
 
-const Footer = (props: React.ComponentPropsWithRef<typeof View>) => {
-  return <View {...props} />;
-};
-
 type StylesNode = NodeProps["style"];
 
 const Section = ({
@@ -117,4 +124,4 @@ function Sign() {
   );
 }
 
-export { Pagination, Container, Seal, Header, Body, Footer, Section, Sign };
+export { Page, Seal, Header, Body, Section, Sign };

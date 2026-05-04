@@ -5,16 +5,13 @@ import React, { Fragment } from "react";
 import { Document } from "@react-pdf/renderer";
 import { type ComponentMap, fromString } from "~/lib/node.factory";
 
-import { Indent, Paginate } from "~/pdf/components/section";
 import { Line, SansLine } from "~/pdf/components/cover/uuid-lines";
 import { VerticalLetter } from "~/pdf/components/cover/vertical-letter";
-import { BulletText, Text, S, Paragraph, Title } from "~/pdf/components/text";
+import { Text } from "~/pdf/components/text";
 import {
+  Page,
   Body,
-  Container,
-  Footer,
   Header,
-  Pagination,
   Seal,
   Section,
   Sign,
@@ -32,21 +29,13 @@ const components: ComponentMap = {
   Sign,
 
   // Section Component
-  Paginate,
+  Page,
   Section,
-  Indent,
   Header,
-  Footer,
   Body,
-  Container,
-  Pagination,
 
   // Text Component
-  Paragraph,
-  Title,
-  BulletText,
   Text,
-  S,
 };
 
 const getTreeNode = async (
