@@ -3,7 +3,7 @@ import "~/pdf/utility/register-fonts";
 
 import React, { Fragment } from "react";
 import { Document } from "@react-pdf/renderer";
-import { type ComponentMap, xmlFileToReactTree } from "~/lib/node.factory";
+import { type ComponentMap, fromFile } from "~/lib/node.factory";
 
 import { Table, Row, Cell, Header, Footer } from "~/pdf/components/table";
 import { Indent, Paginate, Section } from "~/pdf/components/section";
@@ -58,7 +58,7 @@ const getTreeNode = async (
   buffers: Awaited<ReturnType<typeof getBufferSeals>>,
 ) => {
   const properties: Record<string, unknown> = {};
-  const nodes = await xmlFileToReactTree(xmlPath, components, {
+  const nodes = await fromFile(xmlPath, components, {
     interceptTags: ["Proposal", "Cover", "SignMeLeft"],
     onInterceptTag: (tagName, props) => {
       if (tagName === "Proposal") {
