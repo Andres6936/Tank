@@ -1,0 +1,28 @@
+{
+  "Date": "2026-04-06",
+  "AccountNumber": 149,
+  "Value": 1480166,
+  "Currency": "COP",
+  "Parameters": [
+    {
+      "Key": "DebtorName",
+      "Type": "String",
+      "Value": "Residuos Ambientales SAS"
+    },
+    {
+      "Key": "DebtorTypeId",
+      "Type": "String",
+      "Value": "NIT"
+    },
+    {
+      "Key": "DebtorId",
+      "Type": "String",
+      "Value": "901.747.145-4"
+    },
+    {
+      "Key": "Concept",
+      "Type": "String",
+      "Value": "- Desarrollo de plataforma - Marzo 2026"
+    }
+  ]
+}
