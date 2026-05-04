@@ -74,23 +74,6 @@ const Seal = (props: SealProps) => {
   );
 };
 
-const Header = (props: React.ComponentPropsWithRef<typeof View>) => {
-  return <View {...props} style={{ alignItems: "flex-end" }} />;
-};
-
-const Body = (props: React.ComponentPropsWithRef<typeof View>) => {
-  return (
-    <View
-      {...props}
-      style={{
-        flexGrow: 1,
-        justifyContent: "center",
-        alignContent: "center",
-      }}
-    />
-  );
-};
-
 type StylesNode = NodeProps["style"];
 
 const Section = ({
@@ -124,4 +107,4 @@ function Sign() {
   );
 }
 
-export { Page, Seal, Header, Body, Section, Sign };
+export { Page, Seal, Section, Sign };

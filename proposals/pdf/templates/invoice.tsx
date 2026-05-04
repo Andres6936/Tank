@@ -7,15 +7,8 @@ import { type ComponentMap, fromString } from "~/lib/node.factory";
 
 import { Line, SansLine } from "~/pdf/components/cover/uuid-lines";
 import { VerticalLetter } from "~/pdf/components/cover/vertical-letter";
-import { Text } from "~/pdf/components/text";
-import {
-  Page,
-  Body,
-  Header,
-  Seal,
-  Section,
-  Sign,
-} from "~/pdf/components/invoices";
+import { Text, S } from "~/pdf/components/text";
+import { Page, Seal, Section, Sign } from "~/pdf/components/invoices";
 
 // Utility Seals Buffers
 import { getBufferSeals } from "~/pdf/utility/buffer-seals";
@@ -23,19 +16,18 @@ import { getBufferSeals } from "~/pdf/utility/buffer-seals";
 const components: ComponentMap = {
   // Sign Component
   Line,
-  SansLine,
-  VerticalLetter,
   Seal,
   Sign,
+  SansLine,
+  VerticalLetter,
 
   // Section Component
   Page,
   Section,
-  Header,
-  Body,
 
   // Text Component
   Text,
+  S,
 };
 
 const getTreeNode = async (

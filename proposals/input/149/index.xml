@@ -5,11 +5,12 @@
             {{UUID.Long}}
         </VerticalLetter>
 
-        <Header>
+        <Section alignItems="flex-end">
             <Text bold="1">{{Date.Speech}} ({{Date}})</Text>
             <Text>Santiago de Cali, Colombia (760001)</Text>
-        </Header>
-        <Body>
+        </Section>
+
+        <Section flexGrow="1" justifyContent="center" alignContent="center">
             <Section textAlign='center' marginBottom="2cm" gap="4pt">
                 <Line>
                     {{UUID.Short}}
@@ -31,7 +32,8 @@
                 <Text>La suma de: {{Value}} {{Currency}}</Text>
                 <Text>{{Value.Speech}}</Text>
             </Section>
-        </Body>
+        </Section>
+
         <Section>
             <Section gap="4pt" marginBottom="2cm">
                 <Text>Por concepto de:</Text>
