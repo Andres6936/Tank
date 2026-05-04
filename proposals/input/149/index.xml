@@ -1,4 +1,12 @@
-<Invoice>
+<Invoice
+    title="Cuenta de Cobro - {{AccountNumber}} - Ref: {{UUID.Long}}"
+    author="Joan Andrés Buritica Salazar"
+    subject="Cuenta de Cobro - {{AccountNumber}} - Ref: {{UUID.Long}}"
+    keywords="Account, Bill"
+    creator="Joan Andrés Buritica Salazar"
+    producer="Joan Andrés Buriticá Salazar"
+    language="es"
+>
     <Page>
         <Seal />
         <VerticalLetter>
