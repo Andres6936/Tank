@@ -3,7 +3,7 @@ import "~/pdf/utility/register-fonts";
 
 import React, { Fragment } from "react";
 import { Document } from "@react-pdf/renderer";
-import { type ComponentMap, xmlFileToReactTree } from "~/lib/node.factory";
+import { type ComponentMap, fromString } from "~/lib/node.factory";
 
 import { Indent, Paginate } from "~/pdf/components/section";
 import { Line, SansLine } from "~/pdf/components/cover/uuid-lines";
@@ -68,13 +68,13 @@ const components: ComponentMap = {
 };
 
 const getTreeNode = async (
-  xmlPath: string,
+  xml: string,
   buffers: Awaited<ReturnType<typeof getBufferSeals>>,
 ) => {
   const properties: Record<string, unknown> = {};
-  const nodes = await xmlFileToReactTree(xmlPath, components, {
+  const nodes = await fromString(xml, components, {
     interceptTags: ["Invoice", "Seal", "Cover", "SignMeLeft"],
-    onInterceptTag: (tagName, props, children) => {
+    onInterceptTag: (tagName, props) => {
       if (tagName === "Invoice") {
         for (const [key, value] of Object.entries(props)) {
           properties[key] = value;
@@ -135,10 +135,10 @@ const withBook = async (
 ) => <Document {...properties}>{nodes}</Document>;
 
 const run = async (args: {
-  file: string;
+  xml: string;
   buffers: Awaited<ReturnType<typeof getBufferSeals>>;
 }) => {
-  const { nodes, properties } = await getTreeNode(args.file, args.buffers);
+  const { nodes, properties } = await getTreeNode(args.xml, args.buffers);
   return await withBook(nodes, properties);
 };
 
