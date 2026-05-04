@@ -125,7 +125,7 @@
             </Indent>
         </Section>
 
-        <Section gap="0.1cm" marginTop="2cm">
+        <Section gap="0.1cm" marginTop="1cm">
             <Title size="xs" textAlign="left">Descargos</Title>
 
             <BulletText size="md">
@@ -138,6 +138,21 @@
             <BulletText size="md">
                 No responsable del Impuesto sobre las Ventas (IVA) - Artículo 437 del E.T.
             </BulletText>
+        </Section>
+
+        <Section
+            flexGrow="1"
+            flexDirection='row'
+            alignItems="flex-end"
+            justifyContent="space-between"
+        >
+             <Section alignItems="center">
+                 <BreBCode />
+                 <Text size="sm" marginTop="0.3cm">
+                     LLave Bre-B: 1143995473
+                 </Text>
+             </Section>
+             <Sign />
         </Section>
     </Page>
 </Invoice>

@@ -74,6 +74,14 @@ const Seal = (props: SealProps) => {
   );
 };
 
+const BreBCode = ({ code }: { code: string | undefined | null }) => {
+  return (
+    <SealComponent.Square size={148}>
+      <SealComponent.SvgBuffer svg={code} />
+    </SealComponent.Square>
+  );
+};
+
 type StylesNode = NodeProps["style"];
 
 const Section = ({
@@ -107,4 +115,4 @@ function Sign() {
   );
 }
 
-export { Page, Seal, Section, Sign };
+export { Page, Seal, Section, Sign, BreBCode };

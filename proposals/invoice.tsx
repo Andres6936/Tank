@@ -13,13 +13,14 @@ import { run, print } from "@optique/run";
 import { path } from "@optique/run/valueparser";
 
 // Utility Seals Buffers
-import { getBufferSeals } from "~/pdf/utility/buffer-seals";
+import { getBufferSeals, getBreBCode } from "~/pdf/utility/buffer-seals";
 
 // Formatters
 import { formatMoney, formatSpanishDate } from "~/lib/utils";
 
 // Tempaltes
 import { run as invoice } from "~/pdf/templates/invoice";
+import { get } from "node:https";
 
 const parser = object({
   input: option(
@@ -67,9 +68,10 @@ const config = run(parser, {
     reference: pathSystem.join(inputDirectory, "reference.xml"),
   };
 
-  const [content, params, buffers] = await Promise.all([
+  const [content, params, breBCode, buffers] = await Promise.all([
     Bun.file(paths.template).text(),
     Bun.file(paths.parameters).json(),
+    getBreBCode(),
     getBufferSeals({
       seal,
     }),
@@ -101,7 +103,7 @@ const config = run(parser, {
     }
   }
 
-  const document = await invoice({ xml: parsed, buffers });
+  const document = await invoice({ xml: parsed, breBCode, buffers });
   ReactPDF.render(document, output);
   await Bun.write(paths.reference, parsed);
 

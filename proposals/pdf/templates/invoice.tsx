@@ -8,12 +8,12 @@ import { type ComponentMap, fromString } from "~/lib/node.factory";
 import { Indent } from "~/pdf/components/section";
 import { Line, SansLine } from "~/pdf/components/cover/uuid-lines";
 import { VerticalLetter } from "~/pdf/components/cover/vertical-letter";
-import { Page, Seal, Section, Sign } from "~/pdf/components/invoices";
+import { Page, Seal, Section, Sign, BreBCode } from "~/pdf/components/invoices";
 import { Table, Row, Cell, Header, Footer } from "~/pdf/components/table";
 import { Paragraph, Title, BulletText, Text, S } from "~/pdf/components/text";
 
 // Utility Seals Buffers
-import { getBufferSeals } from "~/pdf/utility/buffer-seals";
+import { getBreBCode, getBufferSeals } from "~/pdf/utility/buffer-seals";
 
 const components: ComponentMap = {
   // Sign Component
@@ -45,11 +45,12 @@ const components: ComponentMap = {
 
 const getTreeNode = async (
   xml: string,
+  breBCode: Awaited<ReturnType<typeof getBreBCode>>,
   buffers: Awaited<ReturnType<typeof getBufferSeals>>,
 ) => {
   const properties: Record<string, unknown> = {};
   const nodes = await fromString(xml, components, {
-    interceptTags: ["Invoice", "Seal"],
+    interceptTags: ["Invoice", "Seal", "BreBCode"],
     onInterceptTag: (tagName, props) => {
       if (tagName === "Invoice") {
         for (const [key, value] of Object.entries(props)) {
@@ -68,6 +69,9 @@ const getTreeNode = async (
           [],
         );
       }
+      if (tagName === "BreBCode") {
+        return React.createElement(BreBCode, { code: breBCode }, []);
+      }
       return null;
     },
     onUnknownTag: (tagName) => {
@@ -85,9 +89,14 @@ const withBook = async (
 
 const run = async (args: {
   xml: string;
+  breBCode: Awaited<ReturnType<typeof getBreBCode>>;
   buffers: Awaited<ReturnType<typeof getBufferSeals>>;
 }) => {
-  const { nodes, properties } = await getTreeNode(args.xml, args.buffers);
+  const { nodes, properties } = await getTreeNode(
+    args.xml,
+    args.breBCode,
+    args.buffers,
+  );
   return await withBook(nodes, properties);
 };
 
