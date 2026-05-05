@@ -18,7 +18,10 @@ import {
   Section as SignSection,
   SignMeLeft,
   SignMeRight,
+  Pad as SignPad,
   Row as SignRow,
+  PadLeft as SignPadLeft,
+  PadRight as SignPadRight,
 } from "~/pdf/components/signs/sign-components";
 
 // Utility Seals Buffers
@@ -32,6 +35,9 @@ const components: ComponentMap = {
   SignSection,
   SignRow,
   SignMeRight,
+  SignPad,
+  SignPadLeft,
+  SignPadRight,
 
   // Table Component
   Table,

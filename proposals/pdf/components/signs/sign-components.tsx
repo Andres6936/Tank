@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View } from "@react-pdf/renderer";
 import { flatten } from "@react-pdf/stylesheet";
 
-import { type StylesNode } from "~/pdf/utility/merge-props";
+import { mergeStyles, type StylesNode } from "~/pdf/utility/merge-props";
 import { Section as SectionView } from "~/pdf/components/section";
 import { Title } from "~/pdf/components/text";
 import Seal from "~/pdf/components/seal";
@@ -21,11 +21,14 @@ function Section(props: React.PropsWithChildren<{}>) {
   );
 }
 
-function Row(props: React.ComponentPropsWithRef<typeof View>) {
+function Row({
+  style,
+  ...props
+}: React.ComponentPropsWithRef<typeof View> & StylesNode) {
   return (
     <View
       {...props}
-      style={flatten({ flexDirection: "row", ...props.style })}
+      style={mergeStyles({ flexDirection: "row" }, { ...style, ...props })}
     />
   );
 }
@@ -35,7 +38,7 @@ function Pad(
 ) {
   const withSideStyle: StylesNode =
     props.side === "left"
-      ? { justifyContent: "flex-start", alignItems: "flex-start" }
+      ? { justifyContent: "flex-end", alignItems: "flex-start" }
       : { justifyContent: "flex-end", alignItems: "flex-end" };
 
   return (
@@ -73,4 +76,72 @@ function SignMeLeft(props: React.ComponentPropsWithRef<typeof Seal>) {
   );
 }
 
-export { Section, Row, SignMeRight, SignMeLeft, Pad };
+type PadProps =
+  | {
+      empty?: false;
+      signBy: string;
+      withSign?: string | undefined | null;
+      withSignStyle?: StylesNode | undefined | null;
+    }
+  | {
+      empty: true;
+    };
+
+function PadLeft(props: PadProps) {
+  if (props.empty) {
+    return <Pad side="left" />;
+  }
+
+  return (
+    <Pad side="left">
+      {props.withSign && (
+        <Text style={mergeStyles({ textAlign: "left" }, props.withSignStyle)}>
+          {props.withSign}
+        </Text>
+      )}
+
+      <Text
+        style={{
+          fontSize: "10pt",
+          paddingTop: "5pt",
+          ...(props.withSign
+            ? {}
+            : { borderColor: "gray", borderTop: "0.5pt" }),
+        }}
+      >
+        {props.signBy}
+      </Text>
+    </Pad>
+  );
+}
+
+function PadRight(props: PadProps) {
+  if (props.empty) {
+    return <Pad side="right" />;
+  }
+
+  return (
+    <Pad side="right">
+      {props.withSign && (
+        <Text style={mergeStyles({ textAlign: "right" }, props.withSignStyle)}>
+          {props.withSign}
+        </Text>
+      )}
+
+      <Text
+        style={{
+          fontSize: "10pt",
+          paddingTop: "5pt",
+          textAlign: "right",
+          ...(props.withSign
+            ? {}
+            : { borderColor: "gray", borderTop: "0.5pt" }),
+        }}
+      >
+        {props.signBy}
+      </Text>
+    </Pad>
+  );
+}
+
+export { Section, Row, SignMeRight, SignMeLeft, Pad, PadRight, PadLeft };

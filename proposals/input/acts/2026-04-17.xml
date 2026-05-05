@@ -1,0 +1,225 @@
+<Act
+    subject="Acta de Reunión"
+    title="Plataforma Residuos Ambientales"
+    author="Joan Andrés Buriticá Salazar"
+    keywords="Act, Meet, Compromises"
+    creator="Joan Andrés Buriticá Salazar"
+    producer="React PDF with Bun"
+    language="es"
+>
+    <Cover
+        type="Acta de Reunión"
+        title="Plataforma Residuos Ambientales"
+        month="Abril 2026"
+    />
+
+    <Paginate>
+        <IndicatorHeader value="Ing. Joan A. Buriticá" />
+        <Section marginTop="0" gap="0.1cm">
+            <Text>
+                <Text bold="1">
+                    Fecha de la Reunión:
+                    <S />
+                </Text>
+                17 de abril de 2026
+            </Text>
+
+            <Text>
+                <Text bold="1">
+                    Hora de Inicio:
+                    <S />
+                </Text>
+                10:00 AM
+            </Text>
+
+            <Text>
+                <Text bold="1">
+                    Hora de Finalización:
+                    <S />
+                </Text>
+                10:42 AM
+            </Text>
+
+            <Text>
+                <Text bold="1">
+                    Lugar:
+                    <S />
+                </Text>
+                Videoconferencia vía Google Meet
+            </Text>
+        </Section>
+
+        <Section gap="0.3cm">
+            <Title>Asistentes:</Title>
+
+            <BulletText>Joan Andrés Buriticá (El Proveedor)</BulletText>
+            <BulletText>Liz Alexandra, Responsable REAM</BulletText>
+            <BulletText>Ricardo Suarez, Responsable REAM</BulletText>
+        </Section>
+
+        <Section>
+            <Title>
+                Orden del Día:
+            </Title>
+
+            <Paragraph>
+                Renovación de UI del Dashboard
+            </Paragraph>
+
+            <Paragraph>
+                Finalización del módulo de programación
+            </Paragraph>
+
+            <Paragraph>
+                Eliminación del módulo de procesos
+            </Paragraph>
+
+            <Paragraph>
+                Explicación del funcionamiento de los Cron Jobs
+            </Paragraph>
+
+            <Paragraph>
+                Inicio de pruebas
+            </Paragraph>
+
+            <Paragraph>
+                Cierre de módulos base
+            </Paragraph>
+
+            <Paragraph>
+                Extensión contractual
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title>1. Cierre de Controversias (Acta 31 de Marzo)</Title>
+            <Paragraph>
+                Se declara formalmente el cierre y la resolución definitiva de los Puntos 1 y 2 pertenecientes al acta
+                del 31 de marzo de 2026. Tras las entregas funcionales presentadas en la presente reunión y los
+                compromisos ejecutados desde el 10 de abril, se concluye que no es necesaria ninguna modificación a
+                dicha acta, quedando el alcance del algoritmo y la arquitectura geográfica totalmente consensuados.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title>
+                2. Presentación de Entregables y Actualizaciones de UI
+            </Title>
+
+            <Paragraph
+            >Se presentaron y aprobaron las siguientes actualizaciones en la plataforma:</Paragraph>
+            <BulletText>
+                <Text bold="1">Módulo de Configuración Global de Rutas:</Text>
+                <S />
+                Se presentó finalizado y con los ajustes acordados. Se impartió la inducción de uso. A partir de esta
+                fecha, recae sobre REAM la responsabilidad exclusiva de configurar y mantener las rutas en el sistema.
+            </BulletText>
+            <BulletText>
+                <Text bold="1">Renovación UI Dashboard y Camiones:</Text>
+                <S />
+                Se implementó un diseño tipo infografía para la interfaz de Camiones, optimizando la visualización de
+                rutas asignadas, suspendidas, completadas y pendientes.
+            </BulletText>
+            <BulletText>
+                <Text bold="1">Módulo de Servicios:</Text>
+                <S />
+                Se demostró la funcionalidad para añadir/modificar rutas desde la pestaña de configuración, así como la
+                nueva interfaz que unifica la visualización de la ruta y el estado de pago del registro.
+            </BulletText>
+            <BulletText>
+                <Text bold="1">Eliminación de Módulo Redundante:</Text>
+                <S />
+                Se aprobó la eliminación del módulo de "Procesos" para simplificar la navegación y evitar duplicidad de
+                flujos con los módulos principales.
+            </BulletText>
+        </Section>
+
+        <Section wrap="1">
+            <Title>3. Automatización (Cron Jobs) y Nuevos Estados</Title>
+            <Paragraph>
+                Durante la explicación técnica de las tareas automatizadas (Cron Jobs), REAM solicitó la inclusión de un
+                nuevo estado transaccional denominado
+                <Text bold="1"><S />"Suspendido"
+                </Text>
+                .
+            </Paragraph>
+            <BulletText>
+                <Text bold="1">Regla de Negocio:</Text>
+                <S />
+                Este estado se aplicará automáticamente el día 5 de cada mes a los servicios que presenten facturas "En
+                Mora".
+            </BulletText>
+            <BulletText>
+                <Text bold="1">Comportamiento:</Text>
+                <S />
+                Actuará con la misma lógica del estado "Retiro Temporal", suspendiendo el registro y excluyéndolo de la
+                programación de los ciclos siguientes hasta su regularización.
+            </BulletText>
+        </Section>
+
+        <Section wrap="1">
+            <Title
+            >4. Plan de Pruebas (20 y 21 de Abril) y Cierre de Módulos</Title>
+            <Paragraph>
+                Se declara el cierre de desarrollo y el inicio de la fase de pruebas para los módulos de Programación,
+                Servicios, Pagos y Manifiestos.
+            </Paragraph>
+            <Paragraph>
+                Los días 20 y 21 de abril, REAM ejecutará una simulación de operación real que concluirá con la
+                simulación del ciclo de facturación de mayo, con el objetivo de validar la exactitud de los valores
+                generados.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title>5. Extensión Contractual y Módulo de Certificados</Title>
+            <Paragraph>
+                Se acuerda una extensión del plazo del contrato por treinta (30) días calendario, contados a partir del
+                vencimiento original (20 de abril de 2026).
+            </Paragraph>
+            <Paragraph>
+                Se deja constancia de que este tiempo de extensión será utilizado única y exclusivamente para el
+                desarrollo y entrega del
+                <Text bold="1"><S />Módulo de Certificados
+                </Text>
+                . Los demás módulos
+                se consideran en etapa de prueba final según el cronograma de los días 20 y 21 de abril.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title>6. Compromisos Pendientes (Desarrollo)</Title>
+            <BulletText>
+                Implementar el envío de notificaciones por correo electrónico para los estados "En Mora" y "Retiro
+                Temporal". Este desarrollo se entregará una vez finalizado a cabalidad el ciclo de pruebas en curso.
+            </BulletText>
+        </Section>
+
+        <Section>
+            <Paragraph>
+                <Text size="xs" opacity="0.7">
+                    Nota Legal de Aceptación Tácita: Según la CLÁUSULA SEGUNDA, Numeral 14 del contrato, el CONTRATANTE
+                    dispone de cinco (5) días hábiles tras el envío de este documento para manifestar inconformidades.
+                    Vencido este plazo sin notificación formal, el acta y su contenido se considerarán aceptados de
+                    manera definitiva.
+                </Text>
+            </Paragraph>
+        </Section>
+
+        <SignSection>
+            <SignRow gap="25pt" height="120pt">
+                <SignPad />
+                <SignPadRight
+                    signBy="Firma Liz Alexandra, Representante REAM"
+                />
+            </SignRow>
+
+            <SignRow gap="25pt" height="120pt">
+                <SignPadLeft
+                    signBy="Firma Ricardo Suarez, Representante REAM"
+                />
+                <SignMeRight />
+            </SignRow>
+        </SignSection>
+    </Paginate>
+</Act>
