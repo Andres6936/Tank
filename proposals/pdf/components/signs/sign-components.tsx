@@ -108,7 +108,7 @@ function PadLeft(props: PadProps) {
       <Text
         style={{
           fontSize: "10pt",
-          paddingTop: "5pt",
+          paddingTop: "3pt",
         }}
       >
         {props.signBy}
@@ -134,7 +134,7 @@ function PadRight(props: PadProps) {
       <Text
         style={{
           fontSize: "10pt",
-          paddingTop: "5pt",
+          paddingTop: "3pt",
           textAlign: "right",
         }}
       >
