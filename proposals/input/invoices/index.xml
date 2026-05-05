@@ -69,28 +69,36 @@
             <Title size="xs" textAlign="left">Referencia Bancaria</Title>
 
             <Paragraph size="lg" marginTop="0.7cm">
-                BANCOLOMBIA S.A. informa que JOAN ANDRES BURITICA SALAZAR identificado con CC 1.143.995.473
-                a la fecha de expedición de esta cuenta de cobro, tiene con el Banco los siguientes productos:
+                Se certifica a la fecha de expedición de esta cuenta de cobro que JOAN ANDRES BURITICA SALAZAR identificado con CC 1.143.995.473
+                tiene los siguientes productos bancarios:
             </Paragraph>
 
             <Section paddingVertical="0.7cm">
                 <Table>
                     <Header>
                         <Row>
-                            <Cell flex="2">Nombre Producto</Cell>
+                            <Cell flex="1.5">Producto</Cell>
+                            <Cell>Entidad</Cell>
                             <Cell>No. Producto</Cell>
                             <Cell>Estado</Cell>
                         </Row>
                     </Header>
                     <Body>
                         <Row>
-                            <Cell flex="2">Cuenta de Ahorros</Cell>
+                            <Cell flex="1.5">Cuenta de Ahorros</Cell>
+                            <Cell>Bancolombia</Cell>
                             <Cell>91218898063</Cell>
                             <Cell>Activa</Cell>
                         </Row>
                         <Row>
-                            <Cell flex="2">Llave Bre-B</Cell>
+                            <Cell flex="1.5">Llave Bre-B</Cell>
+                            <Cell>Interbancaria</Cell>
                             <Cell>1143995473</Cell>
+                            <Cell>Activa</Cell>
+                        </Row>
+                        <Row>
+                            <Cell flex="1.5">Paypal</Cell>
+                            <Cell flex="2">andres6936@live.com</Cell>
                             <Cell>Activa</Cell>
                         </Row>
                     </Body>
