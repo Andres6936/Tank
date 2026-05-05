@@ -30,7 +30,7 @@ const parser = or(
         }),
       ),
       seal: withDefault(
-        optional(option("-s", "--seal", choice(["blue", "red", "green"]))),
+        option("-s", "--seal", choice(["blue", "red", "green"])),
         "blue",
       ),
       output: withDefault(
