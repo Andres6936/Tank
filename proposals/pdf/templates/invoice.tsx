@@ -5,6 +5,9 @@ import React, { Fragment } from "react";
 import { Document } from "@react-pdf/renderer";
 import { type ComponentMap, fromString } from "~/lib/node.factory";
 
+// Bun/Node Utility
+import * as pathSystem from "node:path";
+
 import { Indent } from "~/pdf/components/section";
 import { Line, SansLine } from "~/pdf/components/cover/uuid-lines";
 import { VerticalLetter } from "~/pdf/components/cover/vertical-letter";
@@ -14,6 +17,9 @@ import { Paragraph, Title, BulletText, Text, S } from "~/pdf/components/text";
 
 // Utility Seals Buffers
 import { getBreBCode, getBufferSeals } from "~/pdf/utility/buffer-seals";
+
+// Formatters
+import { formatMoney, formatSpanishDate } from "~/lib/utils";
 
 const components: ComponentMap = {
   // Sign Component
@@ -100,4 +106,73 @@ const run = async (args: {
   return await withBook(nodes, properties);
 };
 
-export { run };
+type ParameterType =
+  | { Key: string; Type: "String"; Value: string }
+  | { Key: string; Type: "Number"; Value: number };
+
+type ParamsFileType = {
+  Date: string;
+  AccountNumber: number;
+  Value: number;
+  Currency: string;
+  Parameters: ParameterType[];
+};
+
+const transform = async (config: {
+  input: string;
+  seal: "blue" | "red" | "green";
+}) => {
+  const { input, seal } = config;
+  const inputDirectory = input;
+
+  const paths = {
+    template: pathSystem.join(inputDirectory, "index.xml"),
+    parameters: pathSystem.join(inputDirectory, "index.json"),
+    pdf: pathSystem.join(inputDirectory, "index.pdf"),
+    reference: pathSystem.join(inputDirectory, "reference.xml"),
+  };
+
+  const [content, params, breBCode, buffers] = await Promise.all([
+    Bun.file(paths.template).text(),
+    Bun.file(paths.parameters).json(),
+    getBreBCode(),
+    getBufferSeals({
+      seal,
+    }),
+  ]);
+
+  const valueSpeech =
+    "Un millón cuatrocientos ochenta mil ciento sesenta y seis pesos colombianos";
+  let parsed = content
+    .replaceAll("{{UUID.Short}}", buffers.uuid.short)
+    .replaceAll("{{UUID.Long}}", buffers.uuid.long)
+    .replaceAll("{{Value}}", formatMoney(params.Value, params.Currency))
+    .replaceAll("{{Currency}}", params.Currency)
+    .replaceAll("{{Value.Speech}}", valueSpeech)
+    .replaceAll(
+      "{{AccountNumber}}",
+      `x${Number(params.AccountNumber).toString(16).toUpperCase()}`,
+    )
+    .replaceAll("{{Date}}", params.Date)
+    .replaceAll("{{Date.Speech}}", formatSpanishDate(params.Date));
+
+  for (let parameter of (params as ParamsFileType).Parameters) {
+    if (parameter.Type === "String") {
+      parsed = parsed.replaceAll(`{{${parameter.Key}}}`, parameter.Value);
+    } else if (parameter.Type === "Number") {
+      parsed = parsed.replaceAll(
+        `{{${parameter.Key}}}`,
+        parameter.Value.toString(),
+      );
+    }
+  }
+
+  return {
+    xml: parsed,
+    paths,
+    breBCode,
+    buffers,
+  };
+};
+
+export { transform, run };
