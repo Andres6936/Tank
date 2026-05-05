@@ -85,13 +85,12 @@ type PadProps =
       empty?: false;
       signBy: string;
       withSign?: string | undefined | null;
-      withSignStyle?: StylesNode | undefined | null;
     }
   | {
       empty: true;
     };
 
-function PadLeft(props: PadProps) {
+function PadLeft(props: PadProps & StylesNode) {
   if (props.empty) {
     return <Pad side="left" />;
   }
@@ -99,9 +98,7 @@ function PadLeft(props: PadProps) {
   return (
     <Pad side="left">
       {props.withSign && (
-        <Text style={mergeStyles({ textAlign: "left" }, props.withSignStyle)}>
-          {props.withSign}
-        </Text>
+        <Text style={{ textAlign: "left", ...props }}>{props.withSign}</Text>
       )}
 
       {!props.withSign && <SignLine />}
@@ -117,7 +114,7 @@ function PadLeft(props: PadProps) {
   );
 }
 
-function PadRight(props: PadProps) {
+function PadRight(props: PadProps & StylesNode) {
   if (props.empty) {
     return <Pad side="right" />;
   }
@@ -125,9 +122,7 @@ function PadRight(props: PadProps) {
   return (
     <Pad side="right">
       {props.withSign && (
-        <Text style={mergeStyles({ textAlign: "right" }, props.withSignStyle)}>
-          {props.withSign}
-        </Text>
+        <Text style={{ textAlign: "right", ...props }}>{props.withSign}</Text>
       )}
 
       {!props.withSign && <SignLine />}
