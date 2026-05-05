@@ -12,8 +12,9 @@ import { path } from "@optique/run/valueparser";
 // Utility Seals Buffers
 import { getBufferSeals } from "~/pdf/utility/buffer-seals";
 
-// Tempaltes
+// Templates
 import { run as proposal } from "~/pdf/templates/proposal";
+import { run as invoice, transform } from "~/pdf/templates/invoice";
 
 const parser = or(
   command(
@@ -51,7 +52,7 @@ const parser = or(
         }),
       ),
       seal: withDefault(
-        optional(option("-s", "--seal", choice(["blue", "red", "green"]))),
+        option("-s", "--seal", choice(["blue", "red", "green"])),
         "red",
       ),
       output: withDefault(
@@ -77,6 +78,12 @@ const config = run(parser, {
   }
 
   if (config.type === "invoice") {
+    const { output } = config;
+    const { xml, paths, breBCode, buffers } = await transform(config);
+
+    const document = await invoice({ xml, breBCode, buffers });
+    ReactPDF.render(document, output);
+    await Bun.write(paths.reference, xml);
   }
 
   print(message`Document generated successfully to ${config.output}`);
