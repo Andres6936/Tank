@@ -50,7 +50,7 @@
         </Section>
 
         <Section gap="0.3cm">
-            <Title>Asistentes:</Title>
+            <Title size="xs" textAlign="left">Asistentes:</Title>
 
             <BulletText>Joan Andrés Buriticá (El Proveedor)</BulletText>
             <BulletText>Liz Alexandra, Responsable REAM</BulletText>
@@ -58,7 +58,7 @@
         </Section>
 
         <Section>
-            <Title>
+            <Title size="xs" textAlign="left">
                 Orden del Día:
             </Title>
 
@@ -92,7 +92,9 @@
         </Section>
 
         <Section wrap="1">
-            <Title>1. Cierre de Controversias (Acta 31 de Marzo)</Title>
+            <Title size="xs" textAlign="left">
+                1. Cierre de Controversias (Acta 31 de Marzo)
+            </Title>
             <Paragraph>
                 Se declara formalmente el cierre y la resolución definitiva de los Puntos 1 y 2 pertenecientes al acta
                 del 31 de marzo de 2026. Tras las entregas funcionales presentadas en la presente reunión y los
@@ -102,7 +104,7 @@
         </Section>
 
         <Section wrap="1">
-            <Title>
+            <Title size="xs" textAlign="left">
                 2. Presentación de Entregables y Actualizaciones de UI
             </Title>
 
@@ -135,7 +137,9 @@
         </Section>
 
         <Section wrap="1">
-            <Title>3. Automatización (Cron Jobs) y Nuevos Estados</Title>
+            <Title size="xs" textAlign="left">
+                3. Automatización (Cron Jobs) y Nuevos Estados
+            </Title>
             <Paragraph>
                 Durante la explicación técnica de las tareas automatizadas (Cron Jobs), REAM solicitó la inclusión de un
                 nuevo estado transaccional denominado
@@ -158,8 +162,9 @@
         </Section>
 
         <Section wrap="1">
-            <Title
-            >4. Plan de Pruebas (20 y 21 de Abril) y Cierre de Módulos</Title>
+            <Title size="xs" textAlign="left">
+                4. Plan de Pruebas (20 y 21 de Abril) y Cierre de Módulos
+            </Title>
             <Paragraph>
                 Se declara el cierre de desarrollo y el inicio de la fase de pruebas para los módulos de Programación,
                 Servicios, Pagos y Manifiestos.
@@ -172,7 +177,9 @@
         </Section>
 
         <Section wrap="1">
-            <Title>5. Extensión Contractual y Módulo de Certificados</Title>
+            <Title size="xs" textAlign="left">
+                5. Extensión Contractual y Módulo de Certificados
+            </Title>
             <Paragraph>
                 Se acuerda una extensión del plazo del contrato por treinta (30) días calendario, contados a partir del
                 vencimiento original (20 de abril de 2026).
@@ -188,7 +195,10 @@
         </Section>
 
         <Section wrap="1">
-            <Title>6. Compromisos Pendientes (Desarrollo)</Title>
+            <Title size="xs" textAlign="left">
+                6. Compromisos Pendientes (Desarrollo)
+            </Title>
+
             <BulletText>
                 Implementar el envío de notificaciones por correo electrónico para los estados "En Mora" y "Retiro
                 Temporal". Este desarrollo se entregará una vez finalizado a cabalidad el ciclo de pruebas en curso.
