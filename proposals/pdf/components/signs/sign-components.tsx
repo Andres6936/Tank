@@ -1,10 +1,10 @@
 import React from "react";
-import { Text, View } from "@react-pdf/renderer";
+import { View } from "@react-pdf/renderer";
 import { flatten } from "@react-pdf/stylesheet";
 
 import { mergeStyles, type StylesNode } from "~/pdf/utility/merge-props";
 import { Section as SectionView } from "~/pdf/components/section";
-import { Title } from "~/pdf/components/text";
+import { Title, Text } from "~/pdf/components/text";
 import Seal from "~/pdf/components/seal";
 
 function Section(props: React.PropsWithChildren<{}>) {
@@ -76,6 +76,10 @@ function SignMeLeft(props: React.ComponentPropsWithRef<typeof Seal>) {
   );
 }
 
+const SignLine = () => (
+  <Text style={{ width: "100%", borderColor: "gray", borderTop: "0.5pt" }} />
+);
+
 type PadProps =
   | {
       empty?: false;
@@ -100,13 +104,11 @@ function PadLeft(props: PadProps) {
         </Text>
       )}
 
+      {!props.withSign && <SignLine />}
       <Text
         style={{
           fontSize: "10pt",
           paddingTop: "5pt",
-          ...(props.withSign
-            ? {}
-            : { borderColor: "gray", borderTop: "0.5pt" }),
         }}
       >
         {props.signBy}
@@ -128,14 +130,12 @@ function PadRight(props: PadProps) {
         </Text>
       )}
 
+      {!props.withSign && <SignLine />}
       <Text
         style={{
           fontSize: "10pt",
           paddingTop: "5pt",
           textAlign: "right",
-          ...(props.withSign
-            ? {}
-            : { borderColor: "gray", borderTop: "0.5pt" }),
         }}
       >
         {props.signBy}
