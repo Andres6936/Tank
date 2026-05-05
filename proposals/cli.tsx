@@ -13,14 +13,14 @@ import { path } from "@optique/run/valueparser";
 import { getBufferSeals } from "~/pdf/utility/buffer-seals";
 
 // Templates
-import { run as proposal } from "~/pdf/templates/proposal";
+import { run as document } from "~/pdf/templates/document";
 import { run as invoice, transform } from "~/pdf/templates/invoice";
 
 const parser = or(
   command(
-    "proposal",
+    "document",
     object({
-      type: constant("proposal"),
+      type: constant("document"),
       file: option(
         "-f",
         "--file",
@@ -68,13 +68,13 @@ const config = run(parser, {
 });
 
 (async () => {
-  if (config.type === "proposal") {
+  if (config.type === "document") {
     const { file, seal, output } = config;
     const buffers = await getBufferSeals({
       seal,
     });
-    const document = await proposal({ file, buffers });
-    ReactPDF.render(document, output);
+    const doc = await document({ file, buffers });
+    ReactPDF.render(doc, output);
   }
 
   if (config.type === "invoice") {

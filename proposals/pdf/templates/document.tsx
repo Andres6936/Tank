@@ -65,9 +65,9 @@ const getTreeNode = async (
 ) => {
   const properties: Record<string, unknown> = {};
   const nodes = await fromFile(xmlPath, components, {
-    interceptTags: ["Proposal", "Cover", "SignMeLeft"],
+    interceptTags: ["Document", "Cover", "SignMeLeft"],
     onInterceptTag: (tagName, props) => {
-      if (tagName === "Proposal") {
+      if (tagName === "Document") {
         for (const [key, value] of Object.entries(props)) {
           properties[key] = value;
         }
