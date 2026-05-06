@@ -57,9 +57,10 @@ const server = Bun.serve({
             });
           }
 
-          await vault.write(schema.Path, await schema.Blob.arrayBuffer());
-          const result = await insertFile(schema);
-
+          const [_, result] = await Promise.all([
+            vault.write(schema.Path, await schema.Blob.arrayBuffer()),
+            insertFile(schema),
+          ]);
           const [row] = result;
           if (!row) {
             return asJson(500, { message: "Failed to create file" });
