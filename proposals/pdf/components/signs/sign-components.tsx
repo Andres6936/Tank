@@ -7,12 +7,14 @@ import { Section as SectionView } from "~/pdf/components/section";
 import { Title, Text } from "~/pdf/components/text";
 import Seal from "~/pdf/components/seal";
 
-function Section(props: React.PropsWithChildren<{}>) {
+function Section(props: React.PropsWithChildren<{ hiddenTitle?: boolean }>) {
   return (
     <SectionView style={{ flex: 1 }} wrap={false}>
-      <Title size="xs" style={{ marginVertical: "1cm" }}>
-        Elaborado y Firmado
-      </Title>
+      {!props.hiddenTitle && (
+        <Title size="xs" style={{ marginVertical: "1cm" }}>
+          Elaborado y Firmado
+        </Title>
+      )}
 
       <View style={{ flex: 1, justifyContent: "flex-end" }}>
         {props.children}
@@ -66,7 +68,9 @@ function SignMeRight() {
   );
 }
 
-function SignMeLeft(props: React.ComponentPropsWithRef<typeof Seal>) {
+function SignMeLeft(
+  props: React.ComponentPropsWithRef<typeof Seal> & { shrinkScale?: number },
+) {
   return (
     <Pad side="left">
       <Seal {...props} style={{ marginTop: 0, marginBottom: "0.5cm" }} />

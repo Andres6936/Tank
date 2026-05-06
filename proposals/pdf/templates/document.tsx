@@ -85,6 +85,7 @@ const getTreeNode = async (
             type: props.type as string,
             title: props.title as string,
             month: props.month as string,
+            ...props,
           },
           [],
         );
@@ -96,6 +97,7 @@ const getTreeNode = async (
             seal: buffers.seal,
             code: buffers.code,
             text: buffers.text,
+            ...props,
           },
           [],
         );
