@@ -1,10 +1,7 @@
 const file = Bun.file("README.md");
 
 const formData = new FormData();
-formData.append("Name", "Output.txt");
 formData.append("Path", "/Readme.txt");
-formData.append("Bucket", "private");
-formData.append("Mimetype", "text/plain");
 formData.append("Blob", file);
 
 const result = await fetch("http://localhost:3000/api/documents/private/save", {

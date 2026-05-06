@@ -52,23 +52,24 @@ const server = Bun.serve({
           const schema = SaveFileSchema.parse(
             Object.fromEntries(await req.formData()),
           );
-          const [exists, id] = await alreadyExistPath(schema.Path);
+          const Path = path.posix.normalize(schema.Path);
+          const [exists, id] = await alreadyExistPath(Path);
           if (exists) {
             return asJson(409, {
               message: `File already exists with Id: ${id}`,
             });
           }
 
-          const Name = path.basename(schema.Path);
-          const Mimetype = schema.Blob.type ?? mime.lookup(schema.Path);
+          const Name = path.posix.basename(Path);
+          const Mimetype = schema.Blob.type ?? mime.lookup(Path);
 
           const [_, result] = await Promise.all([
-            vault.write(schema.Path, await schema.Blob.arrayBuffer()),
+            vault.write(Path, await schema.Blob.arrayBuffer()),
             insertFile({
-              ...schema,
-              Bucket: req.params.bucket,
               Name,
+              Path,
               Mimetype,
+              Bucket: req.params.bucket,
             }),
           ]);
           const [row] = result;
