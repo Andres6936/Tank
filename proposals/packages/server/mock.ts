@@ -2,9 +2,9 @@ const file = Bun.file("README.md");
 
 const formData = new FormData();
 formData.append("Name", "Output.txt");
-formData.append("Path", "/Output/sdsad.txt");
+formData.append("Path", "/Output/sdsaaad.txt");
 formData.append("Bucket", "private");
-formData.append("File", file);
+formData.append("Blob", file);
 
 const result = await fetch("http://localhost:3000/api/documents/save", {
   method: "POST",
