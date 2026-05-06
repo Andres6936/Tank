@@ -9,15 +9,15 @@ type Props = React.ComponentPropsWithRef<typeof View> & {
   seal: string | undefined | null;
   code: string | undefined | null;
   text: string | undefined | null;
-  shrinkScale?: number;
+  scale?: number;
 };
 
 export default function Component(props: Props) {
-  const shirinkScale = props.shrinkScale ?? 1;
+  const scale = props.scale ?? 1;
 
   return (
     <Square
-      size={148 / shirinkScale}
+      size={148 * scale}
       style={flatten({
         marginTop: "1.5cm",
         marginBottom: "2cm",
@@ -26,7 +26,7 @@ export default function Component(props: Props) {
     >
       <BufferImage buffer={props.seal} />
       <AbsoluteCenter>
-        <Square size={52 / shirinkScale}>
+        <Square size={52 * scale}>
           <SvgBuffer svg={props.code} />
         </Square>
       </AbsoluteCenter>

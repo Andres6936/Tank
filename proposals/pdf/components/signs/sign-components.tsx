@@ -9,7 +9,7 @@ import Seal from "~/pdf/components/seal";
 
 function Section(props: React.PropsWithChildren<{ hiddenTitle?: boolean }>) {
   return (
-    <SectionView style={{ flex: 1 }} wrap={false}>
+    <SectionView {...props} style={{ flex: 1 }} wrap={false}>
       {!props.hiddenTitle && (
         <Title size="xs" style={{ marginVertical: "1cm" }}>
           Elaborado y Firmado
@@ -69,7 +69,7 @@ function SignMeRight() {
 }
 
 function SignMeLeft(
-  props: React.ComponentPropsWithRef<typeof Seal> & { shrinkScale?: number },
+  props: React.ComponentPropsWithRef<typeof Seal> & { scale?: number },
 ) {
   return (
     <Pad side="left">

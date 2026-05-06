@@ -34,7 +34,7 @@
             </Paragraph>
         </Section>
 
-        <Section wrap="1">
+        <Section wrap="1" paddingBottom="0" marginBottom="0">
             <Paragraph>
                 Cordial saludo:
             </Paragraph>
@@ -76,9 +76,9 @@
             </Paragraph>
         </Section>
 
-        <SignSection hiddenTitle="1">
+        <SignSection hiddenTitle="1" marginTop="0" paddingTop="0">
             <SignRow>
-                <SignMeLeft shrinkScale="1.5" />
+                <SignMeLeft scale="0.8" />
                 <SignMeRight />
             </SignRow>
         </SignSection>
