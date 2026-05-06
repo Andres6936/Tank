@@ -1,5 +1,5 @@
 import { SaveFileSchema } from "./src/schemas/validate";
-import { FilesTable } from "./src/db/schema";
+import { FilesTable, type FilesTableInsert } from "./src/db/schema";
 import { z } from "zod";
 import { eq } from "drizzle-orm";
 import { asJson } from "./src/utility/response";
@@ -26,6 +26,18 @@ const hasErrorMessage = (error: unknown): error is { message: string } => {
   return typeof error === "object" && error !== null && "message" in error;
 };
 
+const insertFile = async (schema: FilesTableInsert) => {
+  return await sql
+    .insert(FilesTable)
+    .values({
+      Name: schema.Name,
+      Path: schema.Path,
+      Bucket: schema.Bucket,
+      Mimetype: schema.Mimetype,
+    })
+    .returning({ Id: FilesTable.Id });
+};
+
 const server = Bun.serve({
   // `routes` requires Bun v1.2.3+
   routes: {
@@ -46,15 +58,8 @@ const server = Bun.serve({
           }
 
           await vault.write(schema.Path, await schema.Blob.arrayBuffer());
-          const result = await sql
-            .insert(FilesTable)
-            .values({
-              Name: schema.Name,
-              Path: schema.Path,
-              Bucket: schema.Bucket,
-              Mimetype: schema.Mimetype,
-            })
-            .returning({ Id: FilesTable.Id });
+          const result = await insertFile(schema);
+
           const [row] = result;
           if (!row) {
             return asJson(500, { message: "Failed to create file" });
