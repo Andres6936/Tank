@@ -4,6 +4,7 @@ import { drizzle } from "drizzle-orm/libsql";
 import { FilesTable } from "./src/db/schema";
 import { z } from "zod";
 import { eq } from "drizzle-orm";
+import { asJson } from "./src/utility/response";
 
 const client = createClient({
   url: process.env.LIBSQL_URL!,
@@ -40,13 +41,9 @@ const server = Bun.serve({
           );
           const [exists, id] = await alreadyExistPath(schema.Path);
           if (exists) {
-            return Response.json(
-              {
-                statusCode: 409,
-                body: { message: `File already exists with Id: ${id}` },
-              },
-              { status: 409 },
-            );
+            return asJson(409, {
+              message: `File already exists with Id: ${id}`,
+            });
           }
 
           const result = await db
@@ -60,36 +57,20 @@ const server = Bun.serve({
             .returning({ Id: FilesTable.Id });
           const [row] = result;
           if (!row) {
-            return Response.json(
-              {
-                statusCode: 500,
-                body: { message: "Failed to create file" },
-              },
-              { status: 500 },
-            );
+            return asJson(500, { message: "Failed to create file" });
           }
-          return Response.json(
-            { statusCode: 200, body: { Id: row.Id } },
-            { status: 200 },
-          );
+          return asJson(200, { Id: row.Id });
         } catch (error) {
           if (error instanceof z.ZodError) {
-            return Response.json(
-              {
-                statusCode: 403,
-                body: { message: "Validation Error", issues: error.issues },
-              },
-              { status: 403 },
-            );
+            return asJson(403, {
+              message: "Validation Error",
+              issues: error.issues,
+            });
           }
-
-          return Response.json(
-            {
-              statusCode: 501,
-              body: { message: "Server Error", error },
-            },
-            { status: 501 },
-          );
+          return asJson(501, {
+            message: "Server Error",
+            error,
+          });
         }
       },
     },
