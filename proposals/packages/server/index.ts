@@ -1,30 +1,16 @@
 import { SaveFileSchema } from "./src/schemas/validate";
-import { createClient } from "@libsql/client";
-import { drizzle } from "drizzle-orm/libsql";
 import { FilesTable } from "./src/db/schema";
 import { z } from "zod";
 import { eq } from "drizzle-orm";
 import { asJson } from "./src/utility/response";
+import { getClients } from "./src/config/clients";
 
-import { S3Client } from "bun";
-
-const clientS3 = new S3Client({
-  endpoint: "https://s3sea.andres6936.dev/",
-  accessKeyId: process.env.SEAWEEDFS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.SEAWEEDFS_ACCESS_SECRET_KEY,
-  bucket: "private",
-});
-
-const client = createClient({
-  url: process.env.LIBSQL_URL!,
-  authToken: process.env.LIBSQL_AUTH_TOKEN!,
-});
-const db = drizzle({ client });
+const { vault, sql } = getClients();
 
 const alreadyExistPath = async (
   path: string,
 ): Promise<[true, string] | [false, null]> => {
-  const result = await db
+  const result = await sql
     .select({ Id: FilesTable.Id })
     .from(FilesTable)
     .where(eq(FilesTable.Path, path))
@@ -59,8 +45,8 @@ const server = Bun.serve({
             });
           }
 
-          await clientS3.write(schema.Path, await schema.Blob.arrayBuffer());
-          const result = await db
+          await vault.write(schema.Path, await schema.Blob.arrayBuffer());
+          const result = await sql
             .insert(FilesTable)
             .values({
               Name: schema.Name,
