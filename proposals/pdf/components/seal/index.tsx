@@ -26,7 +26,7 @@ export default function Component(props: Props) {
     >
       <BufferImage buffer={props.seal} />
       <AbsoluteCenter>
-        <Square size={48 / shirinkScale}>
+        <Square size={52 / shirinkScale}>
           <SvgBuffer svg={props.code} />
         </Square>
       </AbsoluteCenter>
