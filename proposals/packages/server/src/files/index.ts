@@ -20,14 +20,19 @@ const alreadyExistPath = async (
   return [false, null];
 };
 
-const existFile = async (id: string): Promise<boolean> => {
+const getFileMaybe = async (id: string) => {
   const result = await sql
-    .select({ Id: FilesTable.Id })
+    .select()
     .from(FilesTable)
     .where(eq(FilesTable.Id, id))
     .limit(1);
 
-  return result.length > 0;
+  if (result.length === 0) {
+    return null;
+  }
+
+  const [row] = result;
+  return row;
 };
 
-export { alreadyExistPath, existFile };
+export { alreadyExistPath, getFileMaybe };

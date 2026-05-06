@@ -5,7 +5,7 @@ import path from "node:path";
 import { asJson } from "./src/utility/response";
 import { getClients } from "./src/config/clients";
 import { SaveFileSchema } from "./src/schemas/validate";
-import { alreadyExistPath } from "./src/files";
+import { alreadyExistPath, getFileMaybe } from "./src/files";
 import { FilesTable, type FilesTableInsert } from "./src/db/schema";
 
 const { vault, sql } = getClients();
@@ -80,7 +80,18 @@ const server = Bun.serve({
 
     // Per-HTTP method handlers
     "/api/documents/:bucket/:id": {
-      GET: (req) => new Response(`List posts for ${req.params.id}`),
+      GET: async (req) => {
+        const { id } = req.params;
+        const file = await getFileMaybe(id);
+        if (!file) {
+          return asJson(404, { message: "Not found" });
+        }
+        const link = vault.presign(file.Path, {
+          expiresIn: 3500,
+          contentDisposition: `attachment; filename="${file.Name}"`,
+        });
+        return asJson(200, { link });
+      },
       PUT: async (req) => {
         const body = await req.json();
         return Response.json({ updated: true, ...body });
