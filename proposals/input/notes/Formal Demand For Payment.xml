@@ -1,6 +1,8 @@
 <Document>
     <Paginate>
         <IndicatorHeader value="Ing. Joan Buriticá" />
+        <VerticalSerial />
+
         <Section marginTop="0.3cm" gap="0.1cm">
             <Text>
                 <Text bold="1">

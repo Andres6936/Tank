@@ -11,6 +11,7 @@ import { BulletText, Text, S, Paragraph, Title } from "~/pdf/components/text";
 
 // Complex Component
 import Cover from "~/pdf/components/cover";
+import { VerticalLetter } from "../components/cover/vertical-letter";
 import IndicatorHeader from "~/pdf/components/cover/indicator-header";
 
 // Sign Component
@@ -65,7 +66,7 @@ const getTreeNode = async (
 ) => {
   const properties: Record<string, unknown> = {};
   const nodes = await fromFile(xmlPath, components, {
-    interceptTags: ["Document", "Cover", "SignMeLeft"],
+    interceptTags: ["Document", "Cover", "VerticalSerial", "SignMeLeft"],
     onInterceptTag: (tagName, props) => {
       if (tagName === "Document") {
         for (const [key, value] of Object.entries(props)) {
@@ -89,6 +90,9 @@ const getTreeNode = async (
           },
           [],
         );
+      }
+      if (tagName === "VerticalSerial") {
+        return React.createElement(VerticalLetter, {}, [buffers.uuid.long]);
       }
       if (tagName === "SignMeLeft") {
         return React.createElement(
