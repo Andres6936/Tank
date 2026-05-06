@@ -3,12 +3,28 @@ import { createClient } from "@libsql/client";
 import { drizzle } from "drizzle-orm/libsql";
 import { FilesTable } from "./src/db/schema";
 import { z } from "zod";
+import { eq } from "drizzle-orm";
 
 const client = createClient({
   url: process.env.LIBSQL_URL!,
   authToken: process.env.LIBSQL_AUTH_TOKEN!,
 });
 const db = drizzle({ client });
+
+const alreadyExistPath = async (
+  path: string,
+): Promise<[true, string] | [false, null]> => {
+  const result = await db
+    .select({ Id: FilesTable.Id })
+    .from(FilesTable)
+    .where(eq(FilesTable.Path, path))
+    .limit(1);
+
+  if (result.length > 0) {
+    return [true, result[0]!.Id];
+  }
+  return [false, null];
+};
 
 const server = Bun.serve({
   // `routes` requires Bun v1.2.3+
@@ -22,6 +38,17 @@ const server = Bun.serve({
           const schema = SaveFileSchema.parse(
             Object.fromEntries(await req.formData()),
           );
+          const [exists, id] = await alreadyExistPath(schema.Path);
+          if (exists) {
+            return Response.json(
+              {
+                statusCode: 409,
+                body: { message: `File already exists with Id: ${id}` },
+              },
+              { status: 409 },
+            );
+          }
+
           const result = await db
             .insert(FilesTable)
             .values({
