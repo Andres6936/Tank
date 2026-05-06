@@ -1,10 +1,7 @@
 import { z } from "zod";
 
 const SaveFileSchema = z.object({
-  Name: z.string(),
   Path: z.string(),
-  Bucket: z.string(),
-  Mimetype: z.string(),
   Blob: z.instanceof(Blob).refine(
     (it) => it.size <= 5 * 1024 * 1024, // 5MB
     { message: "File must be less than 5MB" },

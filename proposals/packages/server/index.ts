@@ -1,3 +1,5 @@
+import mime from "mime-types";
+import path from "node:path";
 import { SaveFileSchema } from "./src/schemas/validate";
 import { FilesTable, type FilesTableInsert } from "./src/db/schema";
 import { z } from "zod";
@@ -44,7 +46,7 @@ const server = Bun.serve({
     // Static routes
     "/api/status": new Response("OK"),
 
-    "/api/documents/save": {
+    "/api/documents/:bucket/save": {
       POST: async (req) => {
         try {
           const schema = SaveFileSchema.parse(
@@ -57,9 +59,17 @@ const server = Bun.serve({
             });
           }
 
+          const Name = path.basename(schema.Path);
+          const Mimetype = schema.Blob.type ?? mime.lookup(schema.Path);
+
           const [_, result] = await Promise.all([
             vault.write(schema.Path, await schema.Blob.arrayBuffer()),
-            insertFile(schema),
+            insertFile({
+              ...schema,
+              Bucket: req.params.bucket,
+              Name,
+              Mimetype,
+            }),
           ]);
           const [row] = result;
           if (!row) {
@@ -82,7 +92,7 @@ const server = Bun.serve({
     },
 
     // Per-HTTP method handlers
-    "/api/documents/:id": {
+    "/api/documents/:bucket/:id": {
       GET: (req) => new Response(`List posts for ${req.params.id}`),
       PUT: async (req) => {
         const body = await req.json();
