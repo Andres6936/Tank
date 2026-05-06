@@ -2,7 +2,7 @@ const file = Bun.file("README.md");
 
 const formData = new FormData();
 formData.append("Name", "Output.txt");
-formData.append("Path", "/Output/sdsaaad.txt");
+formData.append("Path", "/Output/Readme.txt");
 formData.append("Bucket", "private");
 formData.append("Mimetype", "text/plain");
 formData.append("Blob", file);
