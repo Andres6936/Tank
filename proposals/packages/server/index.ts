@@ -28,6 +28,7 @@ const server = Bun.serve({
               Name: schema.Name,
               Path: schema.Path,
               Bucket: schema.Bucket,
+              Mimetype: schema.Mimetype,
             })
             .returning({ Id: FilesTable.Id });
           const [row] = result;

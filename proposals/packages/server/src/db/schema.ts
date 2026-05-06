@@ -16,6 +16,7 @@ export const FilesTable = sqliteTable("Files", {
   Id: defaultId,
   Name: text().notNull(),
   Bucket: text().notNull(),
+  Mimetype: text().notNull(),
   Path: text().notNull().unique(),
   ...defaultColumns,
 });
