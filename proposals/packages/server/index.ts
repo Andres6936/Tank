@@ -27,6 +27,10 @@ const alreadyExistPath = async (
   return [false, null];
 };
 
+const hasErrorMessage = (error: unknown): error is { message: string } => {
+  return typeof error === "object" && error !== null && "message" in error;
+};
+
 const server = Bun.serve({
   // `routes` requires Bun v1.2.3+
   routes: {
@@ -69,7 +73,7 @@ const server = Bun.serve({
           }
           return asJson(501, {
             message: "Server Error",
-            error,
+            error: hasErrorMessage(error) ? error.message : "None message",
           });
         }
       },
