@@ -1,0 +1,33 @@
+import { eq } from "drizzle-orm";
+
+import { getClients } from "../config/clients";
+import { FilesTable } from "../db/schema";
+
+const { sql } = getClients();
+
+const alreadyExistPath = async (
+  path: string,
+): Promise<[true, string] | [false, null]> => {
+  const result = await sql
+    .select({ Id: FilesTable.Id })
+    .from(FilesTable)
+    .where(eq(FilesTable.Path, path))
+    .limit(1);
+
+  if (result.length > 0) {
+    return [true, result[0]!.Id];
+  }
+  return [false, null];
+};
+
+const existFile = async (id: string): Promise<boolean> => {
+  const result = await sql
+    .select({ Id: FilesTable.Id })
+    .from(FilesTable)
+    .where(eq(FilesTable.Id, id))
+    .limit(1);
+
+  return result.length > 0;
+};
+
+export { alreadyExistPath, existFile };

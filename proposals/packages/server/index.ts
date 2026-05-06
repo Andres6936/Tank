@@ -1,28 +1,14 @@
+import { z } from "zod";
 import mime from "mime-types";
 import path from "node:path";
-import { SaveFileSchema } from "./src/schemas/validate";
-import { FilesTable, type FilesTableInsert } from "./src/db/schema";
-import { z } from "zod";
-import { eq } from "drizzle-orm";
+
 import { asJson } from "./src/utility/response";
 import { getClients } from "./src/config/clients";
+import { SaveFileSchema } from "./src/schemas/validate";
+import { alreadyExistPath } from "./src/files";
+import { FilesTable, type FilesTableInsert } from "./src/db/schema";
 
 const { vault, sql } = getClients();
-
-const alreadyExistPath = async (
-  path: string,
-): Promise<[true, string] | [false, null]> => {
-  const result = await sql
-    .select({ Id: FilesTable.Id })
-    .from(FilesTable)
-    .where(eq(FilesTable.Path, path))
-    .limit(1);
-
-  if (result.length > 0) {
-    return [true, result[0]!.Id];
-  }
-  return [false, null];
-};
 
 const hasErrorMessage = (error: unknown): error is { message: string } => {
   return typeof error === "object" && error !== null && "message" in error;
