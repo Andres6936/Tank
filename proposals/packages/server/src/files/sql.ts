@@ -1,9 +1,9 @@
 import { eq } from "drizzle-orm";
 
-import { getClients } from "../config/clients";
+import { getSQLClients } from "../config/clients";
 import { FilesTable, type FilesTableInsert } from "../db/schema";
 
-const { sql } = getClients();
+const { sql } = getSQLClients();
 
 const existPath = async (
   path: string,
