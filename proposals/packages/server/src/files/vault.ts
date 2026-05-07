@@ -2,6 +2,14 @@ import { getVaultsClients } from "../config/clients";
 
 const { privateVault, ephemeralVault } = getVaultsClients();
 
+const getLinkFile = async (args: { Path: string; Name: string }) => {
+  const link = privateVault.presign(args.Path, {
+    expiresIn: 3500,
+    contentDisposition: `attachment; filename="${args.Name}"`,
+  });
+  return link;
+};
+
 const writeFile = async (args: { Path: string; Blob: Blob }) => {
   return await privateVault.write(args.Path, await args.Blob.arrayBuffer());
 };
@@ -38,4 +46,4 @@ const deleteFile = async (args: { Path: string }) => {
   return await file.delete();
 };
 
-export { writeFile, updateFile, deleteFile };
+export { getLinkFile, writeFile, updateFile, deleteFile };
