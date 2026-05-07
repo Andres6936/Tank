@@ -2,18 +2,18 @@ import { expect, test, describe, beforeAll } from "bun:test";
 
 const BASE_URL = "http://localhost:3000/";
 
-beforeAll(
-  async () => {
-    const url = new URL("/api/status", BASE_URL);
-    const result = await fetch(url);
-    expect(result.ok).toBe(true);
-  },
-  {
-    timeout: 1000, // 1 Second to check if the server is running
-  },
-);
-
 describe("Server Flow File", async () => {
+  beforeAll(
+    async () => {
+      const url = new URL("/api/status", BASE_URL);
+      const result = await fetch(url);
+      expect(result.ok).toBe(true);
+    },
+    {
+      timeout: 1000, // 1 Second to check if the server is running
+    },
+  );
+
   let FileId = "";
 
   test("Save File", async () => {
