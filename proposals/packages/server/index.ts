@@ -5,6 +5,7 @@ import { handle, asJson } from "./src/utility/response";
 import { getClients } from "./src/config/clients";
 import { SaveFileSchema } from "./src/schemas/validate";
 import {
+  deleteFile,
   existFile,
   existPath,
   getFileMaybe,
@@ -101,7 +102,22 @@ const server = Bun.serve({
           }
           return asJson(200, { Id: row.Id });
         }),
-      DELETE: () => new Response("Deleted"),
+      DELETE: async (req) => {
+        const { id } = req.params;
+        const file = await getFileMaybe(id);
+        if (!file) {
+          return asJson(404, { message: "Not found" });
+        }
+
+        const [_, result] = await Promise.all([
+          vault.delete(file.Path),
+          deleteFile(id),
+        ]);
+        if (!result) {
+          return asJson(500, { message: "Failed to delete file" });
+        }
+        return asJson(200, { Id: result.Id });
+      },
     },
 
     // Wildcard route for all routes that start with "/api/" and aren't otherwise matched

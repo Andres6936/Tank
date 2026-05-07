@@ -69,4 +69,25 @@ const updateFile = async (id: string, schema: FilesTableInsert) => {
     .returning({ Id: FilesTable.Id });
 };
 
-export { existPath, existFile, getFileMaybe, insertFile, updateFile };
+const deleteFile = async (id: string) => {
+  const result = await sql
+    .delete(FilesTable)
+    .where(eq(FilesTable.Id, id))
+    .returning({ Id: FilesTable.Id });
+
+  if (result.length === 0) {
+    return null;
+  }
+
+  const [row] = result;
+  return row;
+};
+
+export {
+  existPath,
+  existFile,
+  getFileMaybe,
+  insertFile,
+  updateFile,
+  deleteFile,
+};
