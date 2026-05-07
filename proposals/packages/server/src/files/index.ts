@@ -44,4 +44,4 @@ const getFileMaybe = async (id: string) => {
   return row;
 };
 
-export { alreadyExistPath, existFile, getFileMaybe };
+export { alreadyExistPath as existPath, existFile, getFileMaybe };

@@ -5,7 +5,7 @@ import path from "node:path";
 import { asJson } from "./src/utility/response";
 import { getClients } from "./src/config/clients";
 import { SaveFileSchema } from "./src/schemas/validate";
-import { alreadyExistPath, getFileMaybe } from "./src/files";
+import { existPath, getFileMaybe } from "./src/files";
 import { FilesTable, type FilesTableInsert } from "./src/db/schema";
 
 const { vault, sql } = getClients();
@@ -39,7 +39,7 @@ const server = Bun.serve({
             Object.fromEntries(await req.formData()),
           );
           const Path = path.posix.normalize(schema.Path);
-          const [exists, id] = await alreadyExistPath(Path);
+          const [exists, id] = await existPath(Path);
           if (exists) {
             return asJson(409, {
               message: `File already exists with Id: ${id}`,
