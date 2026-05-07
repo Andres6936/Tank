@@ -5,7 +5,7 @@ import { FilesTable } from "../db/schema";
 
 const { sql } = getClients();
 
-const alreadyExistPath = async (
+const existPath = async (
   path: string,
 ): Promise<[true, string] | [false, null]> => {
   const result = await sql
@@ -44,4 +44,4 @@ const getFileMaybe = async (id: string) => {
   return row;
 };
 
-export { alreadyExistPath as existPath, existFile, getFileMaybe };
+export { existPath, existFile, getFileMaybe };
