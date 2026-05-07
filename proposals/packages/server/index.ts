@@ -11,7 +11,7 @@ import {
   getFileMaybe,
   insertFile,
   updateFile,
-} from "./src/files";
+} from "./src/files/sql";
 
 const { vault } = getClients();
 
