@@ -12,7 +12,7 @@ import {
   insertFile,
   updateFile,
 } from "./src/files/sql";
-import { writeFile } from "./src/files/vault";
+import { writeFile, updateFile as updateFileVault } from "./src/files/vault";
 
 const { vault } = getSQLClients();
 
@@ -85,11 +85,12 @@ const server = Bun.serve({
           const Name = path.posix.basename(Path);
           const Mimetype = schema.Blob.type ?? mime.lookup(Path);
 
-          const isDifferentPath = OldPath !== Path;
-
-          const [_, __, result] = await Promise.all([
-            isDifferentPath ? vault.delete(OldPath) : null,
-            vault.write(Path, await schema.Blob.arrayBuffer()),
+          const [_, result] = await Promise.all([
+            updateFileVault({
+              OldPath,
+              NewPath: Path,
+              Blob: schema.Blob,
+            }),
             updateFile(req.params.id, {
               Name,
               Path,
