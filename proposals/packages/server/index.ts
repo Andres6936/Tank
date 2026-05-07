@@ -2,23 +2,20 @@ import mime from "mime-types";
 import path from "node:path";
 
 import { handle, asJson } from "./src/utility/response";
-import { getSQLClients } from "./src/config/clients";
 import { SaveFileSchema } from "./src/schemas/validate";
 import {
-  deleteFile,
-  existFile,
   existPath,
   getFileMaybe,
+  deleteFile,
   insertFile,
   updateFile,
 } from "./src/files/sql";
 import {
+  getLinkFile,
   writeFile,
   updateFile as updateFileVault,
   deleteFile as deleteFileVault,
 } from "./src/files/vault";
-
-const { vault } = getSQLClients();
 
 const server = Bun.serve({
   // `routes` requires Bun v1.2.3+
@@ -68,9 +65,9 @@ const server = Bun.serve({
         if (!file) {
           return asJson(404, { message: "Not found" });
         }
-        const link = vault.presign(file.Path, {
-          expiresIn: 3500,
-          contentDisposition: `attachment; filename="${file.Name}"`,
+        const link = await getLinkFile({
+          Path: file.Path,
+          Name: file.Name,
         });
         return asJson(200, { link });
       },
@@ -116,7 +113,7 @@ const server = Bun.serve({
         }
 
         const [_, result] = await Promise.all([
-          deleteFileVault({Path: file.Path}),
+          deleteFileVault({ Path: file.Path }),
           deleteFile(id),
         ]);
         if (!result) {
