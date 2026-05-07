@@ -1,0 +1,19 @@
+{
+  "name": "workflow",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@openworkflow/cli": "^0.4.4",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "openworkflow": "^0.9.0"
+  },
+  "scripts": {
+    "worker": "npx @openworkflow/cli worker start"
+  }
+}
