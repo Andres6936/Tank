@@ -19,6 +19,23 @@ const hasErrorMessage = (error: unknown): error is { message: string } => {
   return typeof error === "object" && error !== null && "message" in error;
 };
 
+const handle = async (fn: () => Promise<Response> | Response) => {
+  try {
+    return await fn();
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return asJson(403, {
+        message: "Validation Error",
+        issues: error.issues,
+      });
+    }
+    return asJson(501, {
+      message: "Server Error",
+      error: hasErrorMessage(error) ? error.message : "None message",
+    });
+  }
+};
+
 const server = Bun.serve({
   // `routes` requires Bun v1.2.3+
   routes: {
@@ -26,8 +43,8 @@ const server = Bun.serve({
     "/api/status": new Response("OK"),
 
     "/api/documents/:bucket/save": {
-      POST: async (req) => {
-        try {
+      POST: async (req) =>
+        await handle(async () => {
           const schema = SaveFileSchema.parse(
             Object.fromEntries(await req.formData()),
           );
@@ -56,19 +73,7 @@ const server = Bun.serve({
             return asJson(500, { message: "Failed to create file" });
           }
           return asJson(200, { Id: row.Id });
-        } catch (error) {
-          if (error instanceof z.ZodError) {
-            return asJson(403, {
-              message: "Validation Error",
-              issues: error.issues,
-            });
-          }
-          return asJson(501, {
-            message: "Server Error",
-            error: hasErrorMessage(error) ? error.message : "None message",
-          });
-        }
-      },
+        }),
     },
 
     // Per-HTTP method handlers
@@ -85,34 +90,35 @@ const server = Bun.serve({
         });
         return asJson(200, { link });
       },
-      PUT: async (req) => {
-        const schema = SaveFileSchema.parse(
-          Object.fromEntries(await req.formData()),
-        );
-        const file = await getFileMaybe(req.params.id);
-        if (!file) {
-          return asJson(404, { message: "Not found" });
-        }
+      PUT: async (req) =>
+        await handle(async () => {
+          const schema = SaveFileSchema.parse(
+            Object.fromEntries(await req.formData()),
+          );
+          const file = await getFileMaybe(req.params.id);
+          if (!file) {
+            return asJson(404, { message: "Not found" });
+          }
 
-        const Path = path.posix.normalize(schema.Path);
-        const Name = path.posix.basename(Path);
-        const Mimetype = schema.Blob.type ?? mime.lookup(Path);
+          const Path = path.posix.normalize(schema.Path);
+          const Name = path.posix.basename(Path);
+          const Mimetype = schema.Blob.type ?? mime.lookup(Path);
 
-        const [_, result] = await Promise.all([
-          vault.write(Path, await schema.Blob.arrayBuffer()),
-          updateFile(req.params.id, {
-            Name,
-            Path,
-            Mimetype,
-            Bucket: req.params.bucket,
-          }),
-        ]);
-        const [row] = result;
-        if (!row) {
-          return asJson(500, { message: "Failed to update file" });
-        }
-        return asJson(200, { Id: row.Id });
-      },
+          const [_, result] = await Promise.all([
+            vault.write(Path, await schema.Blob.arrayBuffer()),
+            updateFile(req.params.id, {
+              Name,
+              Path,
+              Mimetype,
+              Bucket: req.params.bucket,
+            }),
+          ]);
+          const [row] = result;
+          if (!row) {
+            return asJson(500, { message: "Failed to update file" });
+          }
+          return asJson(200, { Id: row.Id });
+        }),
       DELETE: () => new Response("Deleted"),
     },
 
