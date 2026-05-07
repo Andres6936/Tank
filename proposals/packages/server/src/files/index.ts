@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 
 import { getClients } from "../config/clients";
-import { FilesTable } from "../db/schema";
+import { FilesTable, type FilesTableInsert } from "../db/schema";
 
 const { sql } = getClients();
 
@@ -44,4 +44,29 @@ const getFileMaybe = async (id: string) => {
   return row;
 };
 
-export { existPath, existFile, getFileMaybe };
+const insertFile = async (schema: FilesTableInsert) => {
+  return await sql
+    .insert(FilesTable)
+    .values({
+      Name: schema.Name,
+      Path: schema.Path,
+      Bucket: schema.Bucket,
+      Mimetype: schema.Mimetype,
+    })
+    .returning({ Id: FilesTable.Id });
+};
+
+const updateFile = async (id: string, schema: FilesTableInsert) => {
+  return await sql
+    .update(FilesTable)
+    .set({
+      Name: schema.Name,
+      Path: schema.Path,
+      Bucket: schema.Bucket,
+      Mimetype: schema.Mimetype,
+    })
+    .where(eq(FilesTable.Id, id))
+    .returning({ Id: FilesTable.Id });
+};
+
+export { existPath, existFile, getFileMaybe, insertFile, updateFile };

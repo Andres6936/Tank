@@ -5,25 +5,18 @@ import path from "node:path";
 import { asJson } from "./src/utility/response";
 import { getClients } from "./src/config/clients";
 import { SaveFileSchema } from "./src/schemas/validate";
-import { existPath, getFileMaybe } from "./src/files";
-import { FilesTable, type FilesTableInsert } from "./src/db/schema";
+import {
+  existFile,
+  existPath,
+  getFileMaybe,
+  insertFile,
+  updateFile,
+} from "./src/files";
 
 const { vault, sql } = getClients();
 
 const hasErrorMessage = (error: unknown): error is { message: string } => {
   return typeof error === "object" && error !== null && "message" in error;
-};
-
-const insertFile = async (schema: FilesTableInsert) => {
-  return await sql
-    .insert(FilesTable)
-    .values({
-      Name: schema.Name,
-      Path: schema.Path,
-      Bucket: schema.Bucket,
-      Mimetype: schema.Mimetype,
-    })
-    .returning({ Id: FilesTable.Id });
 };
 
 const server = Bun.serve({
@@ -93,8 +86,32 @@ const server = Bun.serve({
         return asJson(200, { link });
       },
       PUT: async (req) => {
-        const body = await req.json();
-        return Response.json({ updated: true, ...body });
+        const schema = SaveFileSchema.parse(
+          Object.fromEntries(await req.formData()),
+        );
+        const file = await getFileMaybe(req.params.id);
+        if (!file) {
+          return asJson(404, { message: "Not found" });
+        }
+
+        const Path = path.posix.normalize(schema.Path);
+        const Name = path.posix.basename(Path);
+        const Mimetype = schema.Blob.type ?? mime.lookup(Path);
+
+        const [_, result] = await Promise.all([
+          vault.write(Path, await schema.Blob.arrayBuffer()),
+          updateFile(req.params.id, {
+            Name,
+            Path,
+            Mimetype,
+            Bucket: req.params.bucket,
+          }),
+        ]);
+        const [row] = result;
+        if (!row) {
+          return asJson(500, { message: "Failed to update file" });
+        }
+        return asJson(200, { Id: row.Id });
       },
       DELETE: () => new Response("Deleted"),
     },
