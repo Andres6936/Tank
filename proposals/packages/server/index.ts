@@ -2,7 +2,7 @@ import mime from "mime-types";
 import path from "node:path";
 
 import { handle, asJson } from "./src/utility/response";
-import { getClients } from "./src/config/clients";
+import { getSQLClients } from "./src/config/clients";
 import { SaveFileSchema } from "./src/schemas/validate";
 import {
   deleteFile,
@@ -12,8 +12,9 @@ import {
   insertFile,
   updateFile,
 } from "./src/files/sql";
+import { writeFile } from "./src/files/vault";
 
-const { vault } = getClients();
+const { vault } = getSQLClients();
 
 const server = Bun.serve({
   // `routes` requires Bun v1.2.3+
@@ -39,7 +40,7 @@ const server = Bun.serve({
           const Mimetype = schema.Blob.type ?? mime.lookup(Path);
 
           const [_, result] = await Promise.all([
-            vault.write(Path, await schema.Blob.arrayBuffer()),
+            writeFile({ Path, Blob: schema.Blob }),
             insertFile({
               Name,
               Path,
