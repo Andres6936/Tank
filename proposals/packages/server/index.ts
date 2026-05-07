@@ -78,11 +78,15 @@ const server = Bun.serve({
             return asJson(404, { message: "Not found" });
           }
 
+          const OldPath = file.Path;
           const Path = path.posix.normalize(schema.Path);
           const Name = path.posix.basename(Path);
           const Mimetype = schema.Blob.type ?? mime.lookup(Path);
 
-          const [_, result] = await Promise.all([
+          const isDifferentPath = OldPath !== Path;
+
+          const [_, __, result] = await Promise.all([
+            isDifferentPath ? vault.delete(OldPath) : null,
             vault.write(Path, await schema.Blob.arrayBuffer()),
             updateFile(req.params.id, {
               Name,
