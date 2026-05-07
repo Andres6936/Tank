@@ -20,6 +20,15 @@ const alreadyExistPath = async (
   return [false, null];
 };
 
+const existFile = async (id: string) => {
+  const result = await sql
+    .select({ Id: FilesTable.Id })
+    .from(FilesTable)
+    .where(eq(FilesTable.Id, id))
+    .limit(1);
+  return result.length > 0;
+};
+
 const getFileMaybe = async (id: string) => {
   const result = await sql
     .select()
@@ -35,4 +44,4 @@ const getFileMaybe = async (id: string) => {
   return row;
 };
 
-export { alreadyExistPath, getFileMaybe };
+export { alreadyExistPath, existFile, getFileMaybe };
