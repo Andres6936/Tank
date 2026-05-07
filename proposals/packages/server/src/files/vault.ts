@@ -30,4 +30,12 @@ const updateFile = async (args: {
   }
 };
 
-export { writeFile, updateFile };
+const deleteFile = async (args: { Path: string }) => {
+  const file = privateVault.file(args.Path);
+  // Cannot use Promise.all here, must be awaited separately for allow
+  // write the file in the ephemeral bucket
+  await ephemeralVault.write(args.Path, file);
+  return await file.delete();
+};
+
+export { writeFile, updateFile, deleteFile };

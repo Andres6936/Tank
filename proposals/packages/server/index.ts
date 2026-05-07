@@ -12,7 +12,11 @@ import {
   insertFile,
   updateFile,
 } from "./src/files/sql";
-import { writeFile, updateFile as updateFileVault } from "./src/files/vault";
+import {
+  writeFile,
+  updateFile as updateFileVault,
+  deleteFile as deleteFileVault,
+} from "./src/files/vault";
 
 const { vault } = getSQLClients();
 
@@ -112,7 +116,7 @@ const server = Bun.serve({
         }
 
         const [_, result] = await Promise.all([
-          vault.delete(file.Path),
+          deleteFileVault({Path: file.Path}),
           deleteFile(id),
         ]);
         if (!result) {
