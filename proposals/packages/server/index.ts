@@ -1,8 +1,7 @@
-import { z } from "zod";
 import mime from "mime-types";
 import path from "node:path";
 
-import { asJson } from "./src/utility/response";
+import { handle, asJson } from "./src/utility/response";
 import { getClients } from "./src/config/clients";
 import { SaveFileSchema } from "./src/schemas/validate";
 import {
@@ -13,28 +12,7 @@ import {
   updateFile,
 } from "./src/files";
 
-const { vault, sql } = getClients();
-
-const hasErrorMessage = (error: unknown): error is { message: string } => {
-  return typeof error === "object" && error !== null && "message" in error;
-};
-
-const handle = async (fn: () => Promise<Response> | Response) => {
-  try {
-    return await fn();
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      return asJson(403, {
-        message: "Validation Error",
-        issues: error.issues,
-      });
-    }
-    return asJson(501, {
-      message: "Server Error",
-      error: hasErrorMessage(error) ? error.message : "None message",
-    });
-  }
-};
+const { vault } = getClients();
 
 const server = Bun.serve({
   // `routes` requires Bun v1.2.3+
