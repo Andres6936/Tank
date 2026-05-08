@@ -23,7 +23,7 @@ describe("Server Flow File", async () => {
     formData.append("Path", "/file.txt");
     formData.append("Blob", file);
 
-    const url = new URL("/api/documents/private/save", BASE_URL);
+    const url = new URL("/api/documents/save", BASE_URL);
     const result = await fetch(url, {
       method: "POST",
       body: formData,
@@ -43,7 +43,7 @@ describe("Server Flow File", async () => {
   });
 
   test("Query File", async () => {
-    const url = new URL(`/api/documents/private/${FileId}`, BASE_URL);
+    const url = new URL(`/api/documents/${FileId}`, BASE_URL);
     const result = await fetch(url, {
       method: "GET",
     });
@@ -66,7 +66,7 @@ describe("Server Flow File", async () => {
     formData.append("Path", "/text.txt");
     formData.append("Blob", file);
 
-    const url = new URL(`/api/documents/private/${FileId}`, BASE_URL);
+    const url = new URL(`/api/documents/${FileId}`, BASE_URL);
     const result = await fetch(url, {
       method: "PUT",
       body: formData,
@@ -84,7 +84,7 @@ describe("Server Flow File", async () => {
   });
 
   test("Delete File", async () => {
-    const url = new URL(`/api/documents/private/${FileId}`, BASE_URL);
+    const url = new URL(`/api/documents/${FileId}`, BASE_URL);
     const result = await fetch(url, {
       method: "DELETE",
     });
