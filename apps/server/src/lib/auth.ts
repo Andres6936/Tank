@@ -1,0 +1,20 @@
+import { betterAuth } from "better-auth";
+import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { getSQLClients } from "../config/clients-sql";
+import { Accounts, Sessions, Users, Verifications } from "../db/auth-schema";
+
+const { sql } = getSQLClients();
+
+export const auth = betterAuth({
+  experimental: { joins: true },
+  database: drizzleAdapter(sql, {
+    provider: "sqlite",
+    usePlural: true,
+    schema: {
+      user: Users,
+      session: Sessions,
+      account: Accounts,
+      verification: Verifications,
+    },
+  }),
+});
