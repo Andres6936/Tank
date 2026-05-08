@@ -88,6 +88,46 @@ export const Verifications = sqliteTable(
   (table) => [index("Verifications_identifier_idx").on(table.identifier)],
 );
 
+export const ApiKeys = sqliteTable(
+  "ApiKeys",
+  {
+    id: defaultId,
+    configId: text("ConfigId").default("default").notNull(),
+    name: text("Name"),
+    start: text("Start"),
+    referenceId: text("ReferenceId").notNull(),
+    prefix: text("Prefix"),
+    key: text("Key").notNull(),
+    refillInterval: integer("RefillInterval"),
+    refillAmount: integer("RefillAmount"),
+    lastRefillAt: integer("LastRefillAt", { mode: "timestamp_ms" }),
+    enabled: integer("Enabled", { mode: "boolean" }).default(true),
+    rateLimitEnabled: integer("RateLimitEnabled", {
+      mode: "boolean",
+    }).default(true),
+    rateLimitTimeWindow: integer("RateLimitTimeWindow").default(86400000),
+    rateLimitMax: integer("RateLimitMax").default(10),
+    requestCount: integer("RequestCount").default(0),
+    remaining: integer("Remaining"),
+    lastRequest: integer("LastRequest", { mode: "timestamp_ms" }),
+    expiresAt: integer("ExpiresAt", { mode: "timestamp_ms" }),
+    createdAt: integer("CreatedAt", { mode: "timestamp_ms" }).notNull(),
+    updatedAt: integer("UpdatedAt", { mode: "timestamp_ms" }).notNull(),
+    permissions: text("Permissions"),
+    metadata: text("Metadata"),
+  },
+  (table) => [
+    index("apikeys_configId_idx").on(table.configId),
+    index("apikeys_referenceId_idx").on(table.referenceId),
+    index("apikeys_key_idx").on(table.key),
+  ],
+);
+
+export const UsersRelations = relations(Users, ({ many }) => ({
+  sessions: many(Sessions),
+  accounts: many(Accounts),
+}));
+
 export const SessionsRelations = relations(Sessions, ({ one }) => ({
   Users: one(Users, {
     fields: [Sessions.userId],
