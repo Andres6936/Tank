@@ -1,4 +1,4 @@
-import { getVaultsClients } from "../config/clients";
+import { getVaultsClients } from "../config/clients-vault";
 
 const { privateVault, ephemeralVault } = getVaultsClients();
 

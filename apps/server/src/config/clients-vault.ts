@@ -1,6 +1,4 @@
 import { S3Client } from "bun";
-import { createClient } from "@libsql/client";
-import { drizzle } from "drizzle-orm/libsql";
 
 const BucketsAvailable = {
   Private: "private",
@@ -28,16 +26,4 @@ const getVaultsClients = () => {
   };
 };
 
-const getSQLClients = () => {
-  const clientLibSQL = createClient({
-    url: process.env.LIBSQL_URL!,
-    authToken: process.env.LIBSQL_AUTH_TOKEN!,
-  });
-  const sql = drizzle({ client: clientLibSQL });
-
-  return {
-    sql,
-  };
-};
-
-export { BucketsAvailable, getSQLClients, getVaultsClients };
+export { BucketsAvailable, getVaultsClients };

@@ -1,6 +1,7 @@
 import { eq } from "drizzle-orm";
 
-import { BucketsAvailable, getSQLClients } from "../config/clients";
+import { BucketsAvailable } from "../config/clients-vault";
+import { getSQLClients } from "../config/clients-sql";
 import { FilesTable, type FilesTableInsert } from "../db/schema";
 
 const { sql } = getSQLClients();
