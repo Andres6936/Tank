@@ -4,12 +4,16 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "worker": "npx @openworkflow/cli worker start"
+    "dev": "concurrently --names Server,Worker -c green,blue  \"bun run server:hot\" \"bun run worker\"",
+    "server": "bun run index",
+    "server:hot": "bun run --hot index",
+    "worker": "bunx @openworkflow/cli worker start"
   },
   "devDependencies": {
     "@openworkflow/cli": "^0.4.4",
     "@types/bun": "latest",
     "@types/mime-types": "^3.0.1",
+    "concurrently": "^9.2.1",
     "drizzle-kit": "^0.31.10"
   },
   "peerDependencies": {
