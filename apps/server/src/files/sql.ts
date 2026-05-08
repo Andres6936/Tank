@@ -1,9 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import { getSQLClients } from "../config/clients";
+import { BucketsAvailable, getSQLClients } from "../config/clients";
 import { FilesTable, type FilesTableInsert } from "../db/schema";
 
 const { sql } = getSQLClients();
+
+type PartialFileType = Pick<FilesTableInsert, "Name" | "Path" | "Mimetype">;
 
 const existPath = async (
   path: string,
@@ -44,26 +46,26 @@ const getFileMaybe = async (id: string) => {
   return row;
 };
 
-const insertFile = async (schema: FilesTableInsert) => {
+const insertFile = async (schema: PartialFileType) => {
   return await sql
     .insert(FilesTable)
     .values({
       Name: schema.Name,
       Path: schema.Path,
-      Bucket: schema.Bucket,
       Mimetype: schema.Mimetype,
+      Bucket: BucketsAvailable.Private,
     })
     .returning({ Id: FilesTable.Id });
 };
 
-const updateFile = async (id: string, schema: FilesTableInsert) => {
+const updateFile = async (id: string, schema: PartialFileType) => {
   return await sql
     .update(FilesTable)
     .set({
       Name: schema.Name,
       Path: schema.Path,
-      Bucket: schema.Bucket,
       Mimetype: schema.Mimetype,
+      Bucket: BucketsAvailable.Private,
     })
     .where(eq(FilesTable.Id, id))
     .returning({ Id: FilesTable.Id });

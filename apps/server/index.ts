@@ -23,7 +23,7 @@ const server = Bun.serve({
     // Static routes
     "/api/status": new Response("OK"),
 
-    "/api/documents/:bucket/save": {
+    "/api/documents/save": {
       POST: async (req) =>
         await handle(async () => {
           const schema = SaveFileSchema.parse(
@@ -46,7 +46,6 @@ const server = Bun.serve({
               Name,
               Path,
               Mimetype,
-              Bucket: req.params.bucket,
             }),
           ]);
           const [row] = result;
@@ -58,7 +57,7 @@ const server = Bun.serve({
     },
 
     // Per-HTTP method handlers
-    "/api/documents/:bucket/:id": {
+    "/api/documents/:id": {
       GET: async (req) => {
         const { id } = req.params;
         const file = await getFileMaybe(id);
@@ -96,7 +95,6 @@ const server = Bun.serve({
               Name,
               Path,
               Mimetype,
-              Bucket: req.params.bucket,
             }),
           ]);
           const [row] = result;

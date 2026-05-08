@@ -2,6 +2,11 @@ import { S3Client } from "bun";
 import { createClient } from "@libsql/client";
 import { drizzle } from "drizzle-orm/libsql";
 
+const BucketsAvailable = {
+  Private: "private",
+  Ephemeral: "ephemeral",
+} as const;
+
 const getVaultsClients = () => {
   const privateVault = new S3Client({
     endpoint: "https://s3sea.andres6936.dev/",
@@ -35,4 +40,4 @@ const getSQLClients = () => {
   };
 };
 
-export { getSQLClients, getVaultsClients };
+export { BucketsAvailable, getSQLClients, getVaultsClients };
