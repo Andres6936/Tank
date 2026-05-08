@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently --names Server,Worker -c green,blue  \"bun run server:hot\" \"bun run worker\"",
+    "start": "concurrently --names Server,Worker -c green,blue  \"bun run server\" \"bun run worker\"",
     "server": "bun run index",
     "server:hot": "bun run --hot index",
     "worker": "bunx @openworkflow/cli worker start"
