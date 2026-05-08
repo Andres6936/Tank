@@ -1,6 +1,7 @@
 import mime from "mime-types";
 import path from "node:path";
 
+import { auth } from "./src/lib/auth";
 import { handle, asJson } from "./src/utility/response";
 import { SaveFileSchema } from "./src/schemas/validate";
 import {
@@ -120,6 +121,8 @@ const server = Bun.serve({
         return asJson(200, { Id: result.Id });
       },
     },
+
+    "/api/auth/*": (r) => auth.handler(r),
 
     // Wildcard route for all routes that start with "/api/" and aren't otherwise matched
     "/api/*": Response.json({ message: "Not found" }, { status: 404 }),
