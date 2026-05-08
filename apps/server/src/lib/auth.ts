@@ -24,6 +24,7 @@ export const auth = betterAuth({
       sessions: Sessions,
       accounts: Accounts,
       verifications: Verifications,
+      apikeys: ApiKeys,
     },
   }),
   plugins: [apiKey()],
