@@ -19,9 +19,19 @@ type Props = {
   type: string;
   title: string;
   month: string;
+  scaleTitle?: number;
 };
 
+const DEFAULT_SIZE_TITLE = 52;
+
 export default function Component(props: Props) {
+  const getScaleTitle = () => {
+    if (props.scaleTitle) {
+      return DEFAULT_SIZE_TITLE * props.scaleTitle;
+    }
+    return DEFAULT_SIZE_TITLE;
+  };
+
   return (
     <Page size="A4" style={{ padding: "0.4cm", backgroundColor: "#14192f" }}>
       <View
@@ -62,7 +72,7 @@ export default function Component(props: Props) {
         <Text
           style={{
             textAlign: "center",
-            fontSize: "52pt",
+            fontSize: `${getScaleTitle()}pt`,
             marginTop: "2cm",
             fontFamily: "Merriweather",
             textTransform: "uppercase",
