@@ -1,0 +1,173 @@
+<Document
+    subject="Propuesta Económica"
+    title="Asistente Conversacional y Operativo (IA)"
+    author="Joan Andrés Buriticá Salazar"
+    keywords="Proposal"
+    creator="Joan Andrés Buriticá Salazar"
+    producer="React PDF with Bun"
+    language="es"
+>
+    <Cover
+        type="Propuesta Económica"
+        title="Asistente Conversacional y Operativo (IA)"
+        scaleTitle="0.85"
+        month="Mayo 2026"
+    />
+
+    <Paginate>
+        <IndicatorHeader value="Ing. Joan A. Buriticá S." />
+        <Section marginTop="0" gap="0.1cm">
+            <Text>
+                <Text bold="1">
+                    Fecha:
+                    <S />
+                </Text>
+                Mayo, 8 de 2026
+            </Text>
+        </Section>
+
+        <Section>
+            <Title size='xs' textAlign='left'>
+                Objetivo del Servicio
+            </Title>
+
+            <Paragraph>
+                Implementar un canal de atención bidireccional y automatizado en WhatsApp,
+                potenciado por Inteligencia Artificial. Este asistente no solo interpretará
+                intenciones y mantendrá conversaciones naturales, sino que tendrá la capacidad
+                operativa de ejecutar acciones específicas y transaccionales dentro de su
+                sistema, funcionando como un agente de servicio automatizado disponible 24/7.
+            </Paragraph>
+
+            <Text bold="1">
+                Alcance de la Integración (Setup Base)
+            </Text>
+
+            <Paragraph>
+                El servicio comprende el diseño, configuración y conexión de la arquitectura
+                conversacional y operativa, incluyendo:
+            </Paragraph>
+
+            <BulletText>
+                Consultoría Tecnológica: Selección del modelo de lenguaje (LLM) óptimo que
+                soporte ejecución de instrucciones y herramientas (Function Calling),
+                adaptado a su presupuesto operativo y necesidades técnicas.
+            </BulletText>
+
+            <BulletText>
+                Arquitectura Bidireccional: Desarrollo y configuración de los webhooks de
+                recepción y emisión para conectar Twilio con el servidor de procesamiento
+                lógico.
+            </BulletText>
+
+            <BulletText>
+                Parametrización y Prompt Engineering: Diseño del "comportamiento" de la IA,
+                estableciendo reglas de negocio, tono de marca, restricciones y base de
+                conocimiento inicial.
+            </BulletText>
+
+            <BulletText>
+                Capacidad Operativa y Ejecución de Acciones: Desarrollo de la lógica
+                necesaria para que la IA interactúe con su plataforma. Las acciones
+                específicas que el asistente podrá ejecutar (Ej: consultar el estado
+                de un pedido, registrar un ticket, validar disponibilidad) estarán
+                estrictamente delimitadas en el Anexo de Requerimientos Técnicos
+                adjunto a esta propuesta.
+            </BulletText>
+
+            <BulletText>
+                Gestión de Memoria: Implementación de persistencia de sesión para que
+                el sistema recuerde el contexto de la conversación con cada usuario
+                durante la interacción.
+            </BulletText>
+        </Section>
+
+        <Section>
+            <Title size='xs' textAlign='left'>
+                Escalabilidad y Desarrollo Adicional
+            </Title>
+
+            <Paragraph>
+                El ecosistema queda preparado para expandir las capacidades del agente:
+            </Paragraph>
+
+            <BulletText>
+                Nuevas Acciones Operativas: El desarrollo de capacidades transaccionales,
+                consultas a bases de datos o integraciones no listadas en el Anexo de
+                Requerimientos Técnicos inicial, se analizarán y cotizarán por módulo
+                u hora de desarrollo proyectada.
+            </BulletText>
+        </Section>
+
+        <Section>
+            <Title size='xs' textAlign='left'>
+                Responsabilidades del Cliente (Exclusiones Críticas)
+            </Title>
+
+            <Paragraph>
+                Para el correcto funcionamiento del asistente transaccional, el cliente
+                asume la provisión y el costo de los siguientes recursos:
+            </Paragraph>
+
+            <BulletText>
+                Infraestructura de Servidor y Bases de Datos: Provisión de un entorno de
+                servidor capaz de alojar continuamente el código de procesamiento. Asimismo,
+                el cliente debe garantizar que los endpoints o bases de datos necesarias
+                para que la IA ejecute las acciones acordadas estén accesibles y documentados.
+            </BulletText>
+
+            <BulletText>
+                Consumo de Tokens (API de Inteligencia Artificial): Gestión de llaves API y
+                pago directo al proveedor de IA por el consumo de procesamiento generado.
+            </BulletText>
+
+            <BulletText>
+                Costos de Plataforma Twilio: Alquiler del número telefónico sin vinculación
+                previa y tarifas por recepción y envío de mensajes a través de la API oficial.
+            </BulletText>
+
+            <BulletText>
+                Naturaleza del Modelo y Transacciones: Aunque se configuran estrictos
+                parámetros de seguridad (guardrails), la generación de respuestas de la
+                IA es probabilística. Nos eximimos de responsabilidad por imprecisiones
+                derivadas del modelo elegido o por el uso indebido del canal por parte de
+                los usuarios finales al solicitar transacciones.
+            </BulletText>
+        </Section>
+
+        <Section paddingBottom="0" marginBottom="0">
+            <Title size='xs' textAlign='left'>
+                Inversión y Forma de Pago
+            </Title>
+
+            <Paragraph>
+                El costo por el Setup Base de integración del Asistente Operativo es de:
+            </Paragraph>
+
+            <BulletText>
+                Valor Total de Integración: $3.400.000 COP
+            </BulletText>
+
+            <Title size='xs' textAlign='left'>
+                Condiciones Comerciales
+            </Title>
+
+            <BulletText>
+                Anticipo: 50% para dar inicio a la consultoría, configuración del prompt
+                y desarrollo de las acciones listadas en el Anexo de Requerimientos.
+            </BulletText>
+
+            <BulletText>
+                Saldo final: 50% pagadero una vez el asistente y sus acciones operativas
+                estén conectados y funcionales en el entorno de producción.
+            </BulletText>
+        </Section>
+
+        <SignSection hiddenTitle="1" marginTop="0" paddingTop="0">
+          <SignRow>
+            <SignMeLeft scale="0.6" />
+            <SignMeRight />
+          </SignRow>
+        </SignSection>
+    </Paginate>
+</Document>
