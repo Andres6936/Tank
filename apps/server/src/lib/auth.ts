@@ -15,15 +15,15 @@ const { sql } = getSQLClients();
 
 export const auth = betterAuth({
   experimental: { joins: true },
+  emailAndPassword: { enabled: true },
   database: drizzleAdapter(sql, {
     provider: "sqlite",
     usePlural: true,
     schema: {
-      user: Users,
-      session: Sessions,
-      account: Accounts,
-      verification: Verifications,
-      apikeys: ApiKeys,
+      users: Users,
+      sessions: Sessions,
+      accounts: Accounts,
+      verifications: Verifications,
     },
   }),
   plugins: [apiKey()],
