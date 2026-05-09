@@ -1,0 +1,176 @@
+<Document
+    subject="Hoja de Ruta"
+    title="Plataforma Inmobiliaria"
+    author="Joan Andrés Buriticá Salazar"
+    keywords="Proposal"
+    creator="Joan Andrés Buriticá Salazar"
+    producer="React PDF with Bun"
+    language="es"
+>
+    <Cover
+        type="Hoja de Ruta"
+        title="Plataforma Inmobiliaria"
+        month="Mayo 2026"
+    />
+
+    <Paginate>
+        <IndicatorHeader value="Ing. Joan A. Buriticá S." />
+        <Section marginTop="0" gap="0.1cm">
+            <Text>
+                <Text bold="1">
+                    Fecha:
+                    <S />
+                </Text>
+                Mayo, 8 de 2026
+            </Text>
+        </Section>
+
+        <Section>
+            <Title size="xs" textAlign="left">
+                Fase 1: Validaciòn, Diseño UX/UI y Presencia Temprana
+            </Title>
+
+            <Paragraph>
+                El objetivo de esta fase se centrará en dos criterios: definir
+                la arquitectura visual completa de la plataforma antes de
+                iniciar labores de implementación, y establecer de forma
+                temprana la presencia digital para comenzar a posicionar la
+                marca en Google, captar clientes potenciales y válidar el
+                interés de la plataforma.
+            </Paragraph>
+            <Paragraph>
+                Prototipado Interactivo: Diseño de la experiencia de usuario
+                (UX) e interfaz visual (UI) de toda la plataforma (Desktop y
+                Mobile). Entregamos un enlace navegable para que pueda
+                visualizar y aprobar cómo funcionarán los mapas, las búsquedas y
+                los paneles antes de iniciar el desarrollo pesado.
+            </Paragraph>
+            <Paragraph>
+                Landing Page de Lanzamiento: Desarrollo de una página web
+                corporativa estática de alto rendimiento. Funcionando como su
+                tarjeta de presentación digital, explicando la propuesta de
+                valor y recolectando datos (leads) de usuarios/clientes
+                interesados mientras se construye la plataforma principal.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                Fase 2: Motor de Búsqueda y Catálogo Público (Marketplace B2C)
+            </Title>
+
+            <Paragraph>
+                Una vez aprobado el diseño visual, nos enfocaremos en construir
+                el "núcleo público" de la plataforma. El objetivo es que los
+                usuarios finales ya puedan navegar, buscar y consultar las
+                propiedades.
+            </Paragraph>
+
+            <Paragraph>
+                <Text bold="1">Buscador Avanzado y Filtros Dinámicos</Text>:
+                Desarrollo del sistema de filtrado multicriterio (tipo de
+                inmueble, precio, ubicación, características).
+            </Paragraph>
+
+            <Paragraph>
+                <Text bold="1">Visualización Geográfica</Text>: Integración de
+                mapas interactivos para la exploración intuitiva de los
+                inmuebles en la zona de interés.
+            </Paragraph>
+
+            <Paragraph>
+                <Text bold="1">Fichas de Propiedad</Text>: Estructuración de las
+                páginas de detalle de cada inmueble con galerías de imágenes,
+                características y datos de contacto.
+            </Paragraph>
+
+            <Paragraph>
+                <Text bold="1">Panel Operativo Básico</Text>: Un módulo de
+                administración interno para que su equipo pueda cargar y
+                gestionar el inventario inicial de propiedades.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                Fase 3: Ecosistema de Gestión Administrativa y Pagos (Portal
+                B2B)
+            </Title>
+
+            <Paragraph>
+                Con la plataforma pública operando y captando tráfico,
+                integramos la lógica de negocio pesada, convirtiendo el portal
+                en una herramienta de gestión administrativa y financiera más
+                completa, propía de un desarrollo a medida.
+            </Paragraph>
+
+            <Paragraph>
+                <Text bold="1">Sistema de Roles y Autenticación</Text>: Creación
+                de perfiles para administradores, agentes inmobiliarios y
+                clientes finales.
+            </Paragraph>
+
+            <Paragraph>
+                <Text bold="1">Portal de Usuarios y Documentación</Text>:
+                Espacios privados para la gestión de contratos de arrendamiento,
+                inventarios y almacenamiento seguro de documentos por cliente.
+            </Paragraph>
+
+            <Paragraph>
+                <Text bold="1">Motor de Pagos y Suscripciones</Text>:
+                Integración de pasarelas de pago certificadas para procesar de
+                manera segura el cobro de cánones de arrendamiento, avalúos y
+                las suscripciones de los agentes que deseen publicar en el
+                portal.
+            </Paragraph>
+        </Section>
+
+        <Section>
+            <Title size="xs" textAlign="left">
+                Fase 4: Inteligencia Artificial y Automatización
+            </Title>
+
+            <Paragraph>
+                En esta etapa de madurez, la plataforma se optimiza para escalar
+                de forma masiva reduciendo la carga operativa manual de su
+                equipo.
+            </Paragraph>
+
+            <Paragraph>
+                <Text bold="1">Asistente de Contenido IA</Text>: Integración de
+                inteligencia artificial para redactar descripciones de
+                propiedades altamente persuasivas, generar títulos atractivos y
+                optimizar automáticamente el contenido para los motores de
+                búsqueda (SEO).
+            </Paragraph>
+
+            <Paragraph>
+                <Text bold="1">Distribución Multicanal</Text>: Automatización de
+                publicaciones para que el inventario inmobiliario se comparta en
+                sus redes sociales corporativas directamente desde el panel de
+                administración.
+            </Paragraph>
+
+            <Title size="xs" textAlign="left">
+                Infraestructura y Seguridad (Garantía Transversal)
+            </Title>
+
+            <Paragraph>
+                Durante todas las fases, el desarrollo estará respaldado por
+                tecnologías de vanguardia (React, Tailwind CSS) para garantizar
+                una carga ultrarrápida (con informes de Light House). La
+                información sensible y la base de datos estarán protegidas bajo
+                arquitecturas de alto rendimiento con encriptación de datos,
+                asegurando la continuidad de su negocio y el cumplimiento de los
+                estándares internacionales de seguridad.
+            </Paragraph>
+        </Section>
+
+        <SignSection hiddenTitle="1" marginTop="0" paddingTop="0">
+            <SignRow>
+                <SignMeLeft />
+                <SignMeRight />
+            </SignRow>
+        </SignSection>
+    </Paginate>
+</Document>;
