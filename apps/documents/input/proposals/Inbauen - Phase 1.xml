@@ -1,0 +1,187 @@
+;<Document
+    subject="Hoja de Ruta"
+    title="Plataforma Inmobiliaria"
+    author="Joan Andrés Buriticá Salazar"
+    keywords="Proposal"
+    creator="Joan Andrés Buriticá Salazar"
+    producer="React PDF with Bun"
+    language="es"
+>
+    <Cover
+        type="Hoja de Ruta"
+        title="Plataforma Inmobiliaria"
+        month="Mayo 2026"
+    />
+
+    <Paginate>
+        <IndicatorHeader value="Ing. Joan A. Buriticá S." />
+        <Section marginTop="0" gap="0.1cm">
+            <Text>
+                <Text bold="1">
+                    Fecha:
+                    <S />
+                </Text>
+                Mayo, 19 de 2026
+            </Text>
+        </Section>
+
+        <Section>
+            <Title size="xs" textAlign="left">
+                I. Visión Estratégica del Proyecto
+            </Title>
+
+            <Paragraph>
+                Tras la reunión de alineación el pasado 15 de Mayo de 2026,
+                entendemos que el objetivo principal es modernizar el modelo de
+                negocio de Inbauen, pasando de una plataforma de publicación
+                centralizada hacia un ecosistema digital autogestionable y
+                escalable.
+            </Paragraph>
+            <Paragraph>
+                El nuevo enfoque abordado en esta propuesta buscará ofrecer una
+                experiencia inmersiva centrada en el inmueble (muy a la par de
+                AirBnb pero con un enfoque centrado en la compra y venta de
+                inmuebles), permitiendo que propietarios verificados publiquen
+                sus propiedades para arriendo o venta, mientras los usuarios
+                interesados pueden contactar a la inmobiliaria de manera directa
+                y fluida.
+            </Paragraph>
+            <Paragraph>
+                Para garantizar el éxito del proyecto, mitigar riesgos y
+                asegurar un lanzamiento al mercado sin contratiempos, hemos
+                estructurado el desarrollo bajo una metodología de entregas por
+                fases.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                Hoja de Ruta Propuesta (Roadmap)
+            </Title>
+
+            <Title size="xs" textAlign="left">
+                Fase 1: Conceptualización Visual, Flujos de Seguridad y
+                Despliegue
+            </Title>
+
+            <BulletText>
+                <Bold>Diseño UX/UI del Marketplace</Bold>: Prototipado completo
+                de la plataforma, definiendo la experiencia de búsqueda
+                inmersiva, las fichas de propiedades y el panel de autogestión
+                para los usuarios.
+            </BulletText>
+
+            <BulletText>
+                Diseño centrado en la optimización de click por parte de los
+                usuarios. Asegurando que los usuarios puedan encontrar lo que
+                buscan de manera intuitiva y eficiente, con la menor cantidad de
+                barreras.
+            </BulletText>
+
+            <BulletText>
+                <Bold>
+                    Diseño del Flujo de Verificación (Onboarding Seguro)
+                </Bold>
+                : Estructuración visual del proceso mediante el cual un
+                propietario sube su documento de identidad y el certificado de
+                tradición para ser habilitado en la plataforma.
+            </BulletText>
+
+            <Title size="xs" textAlign="left">
+                Fase 2: Desarrollo Core del Marketplace (MVP Transaccional)
+            </Title>
+
+            <BulletText>
+                <Bold>Desarrollo del Buscador y Visualización Geográfica</Bold>:
+                Programación del motor de búsqueda con filtros dinámicos y mapas
+                interactivos.
+            </BulletText>
+
+            <BulletText>
+                <Bold>Sistema de Autenticación y Verificación</Bold>:
+                Implementación de la base de datos y la lógica de registro.
+                (Nota técnica: Se debe definir junto a Inbauen si el proceso de
+                verificación de identidad será manual por parte de un
+                administrador, o si se integrará una API de terceros para
+                validación biométrica/documental automática, lo cual conllevará
+                costos externos).
+            </BulletText>
+
+            <BulletText>
+                <Bold>Panel de Autogestión</Bold>: Entorno privado para que los
+                propietarios verificados publiquen y administren sus inmuebles.
+            </BulletText>
+
+            <BulletText>
+                <Bold>Gestión de Leads</Bold>: Sistema de recepción de
+                intenciones, donde las solicitudes de los usuarios interesados
+                se canalizan hacia el equipo comercial de Inbauen.
+            </BulletText>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                II. Propuesta Económica - Fase 1
+            </Title>
+
+            <Title size="xs" textAlign="left">
+                Objetivo de la Fase 1
+            </Title>
+
+            <Paragraph>
+                Diseñar la arquitectura visual e interactiva de la nueva
+                plataforma de Inbauen, definiendo los flujos críticos de
+                registro de usuarios y la publicación autogestionada de
+                inmuebles. Simultáneamente, establecer una presencia digital
+                moderna que prepare el terreno comercial para el lanzamiento del
+                ecosistema completo.
+            </Paragraph>
+
+            <Title size="xs" textAlign="left">
+                Alcance de los Entregables
+            </Title>
+
+            <Title size="xs" textAlign="left">
+                Módulo A: Diseño UX/UI y Prototipado del Marketplace
+                Autogestionable
+            </Title>
+
+            <BulletText>
+                <Bold>Flujo de Registro y Verificación (Onboarding)</Bold>:
+                Diseño de las pantallas para la creación de cuentas, carga
+                segura de documentos (cédula y certificado de tradición) y
+                notificaciones de estado del perfil (en revisión, aprobado,
+                rechazado).
+            </BulletText>
+
+            <BulletText>
+                <Bold>Panel de Autogestión (Propietarios)</Bold>: Diseño del
+                entorno privado donde el usuario verificado podrá crear y
+                gestionar sus publicaciones (carga de fotografías,
+                características del inmueble).
+            </BulletText>
+
+            <BulletText>
+                <Bold>Experiencia de Búsqueda Inmersiva</Bold>: Diseño de la
+                interfaz pública priorizando la visualización de alto impacto de
+                los inmuebles, la optimización de clicks, la integración de
+                mapas interactivos, la navegación intuitiva y uso fácil de la
+                interfaz.
+            </BulletText>
+
+            <BulletText>
+                <Bold>Fichas de Propiedad orientadas a Conversión</Bold>: Diseño
+                detallado de la vista individual de cada inmueble, con un Call
+                to Action (Llamado a la Acción) optimizado para generar el
+                contacto (Lead) hacia la inmobiliaria.
+            </BulletText>
+        </Section>
+
+        <SignSection hiddenTitle="1" marginTop="0" paddingTop="0">
+            <SignRow>
+                <SignMeLeft />
+                <SignMeRight />
+            </SignRow>
+        </SignSection>
+    </Paginate>
+</Document>
