@@ -20,6 +20,7 @@ import { getBreBCode, getBufferSeals } from "~/pdf/utility/buffer-seals";
 
 // Formatters
 import { formatMoney, formatSpanishDate } from "~/lib/utils";
+import { currencyToSpeech } from "../utility/speech-money";
 
 const components: ComponentMap = {
   // Sign Component
@@ -141,8 +142,7 @@ const transform = async (config: {
     }),
   ]);
 
-  const valueSpeech =
-    "Un millón cuatrocientos ochenta mil ciento sesenta y seis pesos colombianos";
+  const valueSpeech = await currencyToSpeech(params.Value, params.Currency);
   let parsed = content
     .replaceAll("{{UUID.Short}}", buffers.uuid.short)
     .replaceAll("{{UUID.Long}}", buffers.uuid.long)
