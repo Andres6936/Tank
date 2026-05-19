@@ -13,7 +13,15 @@ import { Line, SansLine } from "~/pdf/components/cover/uuid-lines";
 import { VerticalLetter } from "~/pdf/components/cover/vertical-letter";
 import { Page, Seal, Section, Sign, BreBCode } from "~/pdf/components/invoices";
 import { Table, Row, Cell, Header, Footer } from "~/pdf/components/table";
-import { Paragraph, Title, BulletText, Text, S } from "~/pdf/components/text";
+import {
+  Paragraph,
+  Title,
+  BulletText,
+  Text,
+  Bold,
+  Italic,
+  S,
+} from "~/pdf/components/text";
 
 // Utility Seals Buffers
 import { getBreBCode, getBufferSeals } from "~/pdf/utility/buffer-seals";
@@ -47,6 +55,8 @@ const components: ComponentMap = {
   Paragraph,
   Title,
   Text,
+  Bold,
+  Italic,
   S,
 };
 

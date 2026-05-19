@@ -70,15 +70,13 @@ const Text = ({
   );
 };
 
-type Props = React.PropsWithChildren<
-  React.ComponentPropsWithRef<typeof PDFText>
->;
+const Bold = (props: React.PropsWithChildren<typeof Text>) => (
+  <Text {...props} bold />
+);
 
-const P = ({ children, style, ...props }: Props & StylesNode) => {
-  return (
-    <PDFText {...props} children={children} style={mergeStyles(style, props)} />
-  );
-};
+const Italic = (props: React.PropsWithChildren<typeof Text>) => (
+  <Text {...props} italic />
+);
 
 const S = () => <PDFText> </PDFText>;
 
@@ -148,4 +146,4 @@ const RuleContent = (props: React.ComponentPropsWithRef<typeof PDFText>) => {
   );
 };
 
-export { BulletText, Text, S, P, Title, Paragraph, RuleContent };
+export { BulletText, Text, Bold, Italic, S, Title, Paragraph, RuleContent };
