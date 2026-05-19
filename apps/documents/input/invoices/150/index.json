@@ -1,0 +1,28 @@
+{
+  "Date": "2026-05-19",
+  "AccountNumber": 150,
+  "Value": 104748,
+  "Currency": "COP",
+  "Parameters": [
+    {
+      "Key": "DebtorName",
+      "Type": "String",
+      "Value": "Residuos Ambientales SAS"
+    },
+    {
+      "Key": "DebtorTypeId",
+      "Type": "String",
+      "Value": "NIT"
+    },
+    {
+      "Key": "DebtorId",
+      "Type": "String",
+      "Value": "901.747.145-4"
+    },
+    {
+      "Key": "Concept",
+      "Type": "String",
+      "Value": "- Apoyo informático / Envio de Certificados"
+    }
+  ]
+}
