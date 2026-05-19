@@ -33,24 +33,28 @@
             <Paragraph>
                 Tras la reunión de alineación el pasado 15 de Mayo de 2026,
                 entendemos que el objetivo principal es modernizar el modelo de
-                negocio de Inbauen, pasando de una plataforma de publicación
-                centralizada hacia un ecosistema digital autogestionable y
-                escalable.
+                negocio de Inbauen. Reconocemos su trayectoria de más de 10 años
+                en el mercado; por ello, el reto no es construir una presencia
+                digital desde cero, sino evolucionar su plataforma actual hacia
+                un ecosistema autogestionable y alineado con los estándares
+                tecnológicos de hoy.
             </Paragraph>
             <Paragraph>
-                El nuevo enfoque abordado en esta propuesta buscará ofrecer una
-                experiencia inmersiva centrada en el inmueble (muy a la par de
-                AirBnb pero con un enfoque centrado en la compra y venta de
-                inmuebles), permitiendo que propietarios verificados publiquen
-                sus propiedades para arriendo o venta, mientras los usuarios
-                interesados pueden contactar a la inmobiliaria de manera directa
-                y fluida.
+                El nuevo enfoque presentado en esta propuesta buscará ofrecer
+                una experiencia visual inmersiva y de baja fricción, tomando
+                como inspiración los estándares de diseño de plataformas líderes
+                (como Airbnb), pero adaptando su operatividad al sector de la
+                compra, venta y arrendamiento tradicional de inmuebles.
             </Paragraph>
             <Paragraph>
-                Para garantizar el éxito del proyecto, mitigar riesgos y
-                asegurar un lanzamiento al mercado sin contratiempos, hemos
-                estructurado el desarrollo bajo una metodología de entregas por
-                fases.
+                Esta filosofía de diseño permite que propietarios verificados
+                publiquen sus inmuebles con facilidad, mientras que los
+                compradores o arrendatarios disfrutan de una exploración
+                altamente visual y directa, culminando en un contacto seguro y
+                sin intermediarios complejos hacia la inmobiliaria. Para
+                garantizar el éxito de esta transformación, hemos estructurado
+                el desarrollo bajo una metodología de entregas por fases como
+                inicialmente se propuso.
             </Paragraph>
         </Section>
 
@@ -60,22 +64,24 @@
             </Title>
 
             <Title size="xs" textAlign="left">
-                Fase 1: Conceptualización Visual, Flujos de Seguridad y
-                Despliegue
+                Fase 1: Conceptualización Visual y Flujos de Seguridad
             </Title>
 
             <BulletText>
-                <Bold>Diseño UX/UI del Marketplace</Bold>: Prototipado completo
-                de la plataforma, definiendo la experiencia de búsqueda
-                inmersiva, las fichas de propiedades y el panel de autogestión
-                para los usuarios.
+                <Bold>Diseño UX/UI del Marketplace (Filosofía Inmersiva)</Bold>:
+                Prototipado completo de la plataforma, priorizando la fotografía
+                del inmueble y la simplicidad en la navegación, definiendo la
+                experiencia de búsqueda, las fichas de propiedades y el panel de
+                autogestión.
             </BulletText>
 
             <BulletText>
-                Diseño centrado en la optimización de click por parte de los
-                usuarios. Asegurando que los usuarios puedan encontrar lo que
-                buscan de manera intuitiva y eficiente, con la menor cantidad de
-                barreras.
+                Diseño centrado en la optimización de clics (Click-through rate)
+                y usabilidad. Aseguramos que la interfaz no solo sea
+                estéticamente superior a la actual, sino que el usuario final
+                encuentre exactamente lo que busca de manera intuitiva y
+                eficiente, minimizando las barreras visuales y encontrando lo
+                que necesita con pocos clicks.
             </BulletText>
 
             <BulletText>
@@ -84,7 +90,8 @@
                 </Bold>
                 : Estructuración visual del proceso mediante el cual un
                 propietario sube su documento de identidad y el certificado de
-                tradición para ser habilitado en la plataforma.
+                tradición para ser habilitado en la plataforma, garantizando
+                confianza en el ecosistema.
             </BulletText>
 
             <Title size="xs" textAlign="left">
@@ -130,11 +137,12 @@
 
             <Paragraph>
                 Diseñar la arquitectura visual e interactiva de la nueva
-                plataforma de Inbauen, definiendo los flujos críticos de
-                registro de usuarios y la publicación autogestionada de
-                inmuebles. Simultáneamente, establecer una presencia digital
-                moderna que prepare el terreno comercial para el lanzamiento del
-                ecosistema completo.
+                plataforma de Inbauen bajo estándares modernos de experiencia de
+                usuario. Esta fase define los flujos críticos de registro seguro
+                y publicación autogestionada, reemplazando la interfaz legada
+                por un diseño optimizado para la conversión que honre sus más de
+                10 años de trayectoria y prepare el terreno técnico para el
+                desarrollo del ecosistema completo.
             </Paragraph>
 
             <Title size="xs" textAlign="left">
@@ -156,24 +164,26 @@
 
             <BulletText>
                 <Bold>Panel de Autogestión (Propietarios)</Bold>: Diseño del
-                entorno privado donde el usuario verificado podrá crear y
-                gestionar sus publicaciones (carga de fotografías,
-                características del inmueble).
+                entorno privado, limpio y sin distracciones, donde el usuario
+                verificado podrá crear y gestionar sus publicaciones con
+                facilidad.
             </BulletText>
 
             <BulletText>
                 <Bold>Experiencia de Búsqueda Inmersiva</Bold>: Diseño de la
-                interfaz pública priorizando la visualización de alto impacto de
-                los inmuebles, la optimización de clicks, la integración de
-                mapas interactivos, la navegación intuitiva y uso fácil de la
-                interfaz.
+                interfaz pública aplicando patrones de diseño de alto nivel
+                (inspiración directa en flujos tipo Airbnb). Priorizamos la
+                fotografía a gran escala, la integración de mapas fluidos y una
+                navegación que garantiza que el diseño sea tanto visualmente
+                impactante como altamente funcional y fácil de usar.
             </BulletText>
 
             <BulletText>
                 <Bold>Fichas de Propiedad orientadas a Conversión</Bold>: Diseño
-                detallado de la vista individual de cada inmueble, con un Call
-                to Action (Llamado a la Acción) optimizado para generar el
-                contacto (Lead) hacia la inmobiliaria.
+                detallado de la vista individual de cada inmueble. Se
+                estructurará estratégicamente para destacar las virtudes de la
+                propiedad y presentar un Call to Action (Llamado a la Acción)
+                claro y persuasivo para generar el contacto directo (Lead).
             </BulletText>
         </Section>
 
