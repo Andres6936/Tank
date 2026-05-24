@@ -201,6 +201,89 @@
             </BulletText>
         </Section>
 
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                Fase 2: Desarrollo Core del Marketplace e Implementación (MVP
+                Transaccional)
+            </Title>
+
+            <BulletText>
+                <Bold>
+                    Implementación del Buscador y Visualización Geográfica
+                </Bold>
+                : Desarrollo del motor de búsqueda con filtros dinámicos y
+                programación de los mapas interactivos, siguiendo estrictamente
+                los parámetros de rendimiento y conversión aprobados en los
+                prototipos de la Fase 1.
+            </BulletText>
+
+            <BulletText>
+                <Bold>Migración de Inventario Histórico</Bold>: Extracción y
+                carga masiva de los inmuebles activos desde la plataforma
+                actual. (Nota técnica: La migración está sujeta a la entrega de
+                datos en un formato estandarizado. Los inmuebles antiguos que
+                carezcan de georreferenciación exacta o documentación de
+                validación requerirán actualización por parte de los
+                propietarios en el nuevo sistema).
+            </BulletText>
+
+            <BulletText>
+                <Bold>Flujo de Autenticación y Verificación de Usuarios</Bold>:
+                Programación de la lógica de registro y seguridad.
+                Implementación del flujo de validación documental, habilitando a
+                los administradores de Inbauen para aprobar o rechazar
+                manualmente los perfiles basados en la cédula y el certificado
+                de tradición.
+            </BulletText>
+
+            <BulletText>
+                <Bold>Panel de Autogestión (Dashboard Independiente)</Bold>:
+                Desarrollo del entorno privado alojado bajo una arquitectura de
+                subdominio aislado (ej. app.inbauen.com). Este despliegue
+                independiente garantiza mayor seguridad y rendimiento,
+                proporcionando a los propietarios verificados un espacio
+                exclusivo para gestionar sus publicaciones, fotografías y leads.
+            </BulletText>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                Fase 3: Ecosistema Administrativo, Gestión Documental y Pagos
+                (PropTech ERP)
+            </Title>
+
+            <BulletText>
+                <Bold>Arquitectura Avanzada de Roles y Autenticación</Bold>:
+                Expansión del sistema base para soportar una jerarquía compleja
+                de perfiles (Administradores de Inbauen, Agentes Inmobiliarios
+                autorizados y Clientes Finales). Se implementará un control de
+                acceso estricto donde cada rol tendrá permisos específicos para
+                operar dentro del Dashboard.
+            </BulletText>
+
+            <BulletText>
+                <Bold>Portal de Usuarios y Repositorio Legal Seguro</Bold>:
+                Desarrollo de módulos privados dedicados a la gestión del ciclo
+                de vida del inmueble. Incluye la creación de bóvedas digitales
+                encriptadas por usuario para el almacenamiento seguro de
+                contratos de arrendamiento, inventarios detallados y anexos
+                legales, garantizando la privacidad y trazabilidad de la
+                documentación.
+            </BulletText>
+
+            <BulletText>
+                <Bold>Motor Transaccional y Recaudo de Cánones</Bold>:
+                Integración tecnológica vía API con pasarelas de pago
+                certificadas y robustas. Este módulo permitirá digitalizar y
+                procesar de manera segura el recaudo de cánones de
+                arrendamiento. (Nota técnica: La propuesta contempla el
+                desarrollo de la conexión de software; la habilitación de
+                cuentas comerciales, dispersión de fondos y cumplimiento
+                bancario/tributario son responsabilidad administrativa exclusiva
+                de Inbauen).
+            </BulletText>
+        </Section>
+
         <SignSection hiddenTitle="1" marginTop="0" paddingTop="0">
             <SignRow>
                 <SignMeLeft />
