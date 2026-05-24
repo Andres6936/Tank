@@ -325,11 +325,16 @@
             </BulletText>
 
             <BulletText>
-                <Bold>Propiedad Intelectual</Bold>: Los derechos de uso,
-                explotación y propiedad sobre los diseños, recursos gráficos y
-                prototipos entregados serán transferidos a Inbauen única y
+                <Bold>Propiedad Intelectual y Código Fuente</Bold>: Los derechos
+                patrimoniales, de uso, explotación y modificación sobre los
+                entregables finales (incluyendo arquitectura, diseños visuales,
+                prototipos y el código fuente desarrollado a medida para la
+                plataforma) serán transferidos en su totalidad a Inbauen única y
                 exclusivamente tras la cancelación del 100% del valor total
-                acordado para esta fase.
+                acordado. Las tecnologías de base, librerías, frameworks o
+                fragmentos de código de terceros (Open Source) utilizados para
+                la construcción del ecosistema mantendrán sus respectivas
+                licencias originales.
             </BulletText>
 
             <Title size="xs" textAlign="left">
