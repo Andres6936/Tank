@@ -297,6 +297,68 @@
             </BulletText>
         </Section>
 
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                III. Términos y Condiciones Comerciales
+            </Title>
+
+            <BulletText>
+                <Bold>Tiempos de Respuesta y Actas de Reuniones</Bold>: Todo
+                avance, entregable, compromiso y novedad discutida durante las
+                sesiones de trabajo quedará documentado en un Acta de Reunión
+                formal. Estas actas constituirán el soporte principal y la
+                bitácora del desarrollo. El cliente dispondrá de un máximo de
+                cinco (5) días hábiles para emitir comentarios sobre cada acta.
+                Superado este plazo sin objeciones, la información y los
+                entregables allí presentados quedarán tácitamente aprobados para
+                avanzar.
+            </BulletText>
+
+            <BulletText>
+                <Bold>Límite de Iteraciones (Diseño)</Bold>: El Módulo A incluye
+                hasta dos (2) rondas de ajustes mayores sobre los wireframes y
+                una (1) ronda de ajustes menores sobre el diseño visual final de
+                alta fidelidad. Las solicitudes de modificación que excedan este
+                límite o que alteren sustancialmente la arquitectura base
+                previamente aprobada, se cotizarán y facturarán de manera
+                independiente por hora de diseño.
+            </BulletText>
+
+            <BulletText>
+                <Bold>Propiedad Intelectual</Bold>: Los derechos de uso,
+                explotación y propiedad sobre los diseños, recursos gráficos y
+                prototipos entregados serán transferidos a Inbauen única y
+                exclusivamente tras la cancelación del 100% del valor total
+                acordado para esta fase.
+            </BulletText>
+
+            <Title size="xs" textAlign="left">
+                Próximos Pasos para Iniciar
+            </Title>
+
+            <BulletText>
+                <Bold>1. Aprobación Formal</Bold>: Confirmación de aceptación de
+                esta propuesta económica y hoja de ruta por parte del equipo
+                directivo.
+            </BulletText>
+
+            <BulletText>
+                <Bold>2. Kick-off (Reunión de Lanzamiento)</Bold>: Sesión
+                técnica inicial para la entrega de accesos, manual de marca
+                corporativo, tipografías y directrices base para la
+                estructuración de la interfaz.
+            </BulletText>
+
+            <BulletText>
+                <Bold>3. Definición Detallada de Flujos</Bold>: Mapeo exhaustivo
+                y documentación de los flujos de usuario (arquitectura de
+                información). Una vez aprobados y establecidos formalmente
+                mediante acta, el alcance quedará fijo. Cualquier cambio
+                posterior a esta arquitectura se considerará un nuevo
+                requerimiento y se cotizará por separado.
+            </BulletText>
+        </Section>
+
         <SignSection hiddenTitle="1" marginTop="0" paddingTop="0">
             <SignRow>
                 <SignMeLeft />
