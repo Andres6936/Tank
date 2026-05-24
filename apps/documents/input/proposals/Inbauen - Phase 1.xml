@@ -128,11 +128,19 @@
 
         <Section wrap="1">
             <Title size="xs" textAlign="left">
-                II. Propuesta Económica - Fase 1
+                II. Propuesta Económica y Objetivos del Proyecto
             </Title>
 
+            <Paragraph>
+                Para garantizar una transición tecnológica segura, mitigar
+                riesgos y asegurar un retorno de inversión escalonado, el
+                desarrollo integral de Inbauen se estructura en cuatro grandes
+                hitos. A continuación, se detallan los objetivos estratégicos de
+                cada fase:
+            </Paragraph>
+
             <Title size="xs" textAlign="left">
-                Objetivo de la Fase 1
+                Objetivo de la Fase 1: Conceptualización Visual y Prototipado
             </Title>
 
             <Paragraph>
@@ -143,6 +151,45 @@
                 por un diseño optimizado para la conversión que honre sus más de
                 10 años de trayectoria y prepare el terreno técnico para el
                 desarrollo del ecosistema completo.
+            </Paragraph>
+
+            <Title size="xs" textAlign="left">
+                Objetivo de la Fase 2: Desarrollo Core e Implementación (MVP)
+            </Title>
+
+            <Paragraph>
+                Materializar el diseño en una plataforma funcional y de alto
+                rendimiento. El objetivo es desplegar el motor de búsqueda
+                avanzado, los mapas interactivos y el panel de autogestión,
+                asegurando la migración del inventario histórico y permitiendo
+                que Inbauen opere su nuevo modelo transaccional en el mercado
+                con una base tecnológica sólida.
+            </Paragraph>
+
+            <Title size="xs" textAlign="left">
+                Objetivo de la Fase 3: Ecosistema PropTech y Gestión Financiera
+            </Title>
+
+            <Paragraph>
+                Evolucionar el Marketplace hacia una herramienta integral de
+                gestión empresarial (ERP). El objetivo es descentralizar la
+                administración mediante un sistema jerárquico de roles,
+                habilitar bóvedas digitales seguras para la custodia legal de
+                contratos e integrar pasarelas de pago para digitalizar el
+                recaudo de cánones y suscripciones.
+            </Paragraph>
+
+            <Title size="xs" textAlign="left">
+                Objetivo de la Fase 4: Escalabilidad mediante IA y
+                Automatización
+            </Title>
+            <Paragraph>
+                Dotar a la plataforma de capacidades operativas avanzadas para
+                maximizar el alcance comercial. El objetivo es reducir la carga
+                de trabajo manual del equipo mediante Inteligencia Artificial
+                para la optimización de contenido (SEO) y automatizar la
+                distribución multicanal del inventario hacia las redes sociales
+                corporativas.
             </Paragraph>
 
             <Title size="xs" textAlign="left">
@@ -201,7 +248,7 @@
             </BulletText>
         </Section>
 
-        <Section wrap="1">
+        <Section>
             <Title size="xs" textAlign="left">
                 Fase 2: Desarrollo Core del Marketplace e Implementación (MVP
                 Transaccional)
