@@ -53,6 +53,7 @@ const Row = (props: React.PropsWithChildren<{}>) => {
   return (
     <View
       style={flatten({
+        gap: "5pt",
         flexDirection: "row",
         borderBottomWidth: "0.3pt",
         borderBottomColor: "#14192f",
