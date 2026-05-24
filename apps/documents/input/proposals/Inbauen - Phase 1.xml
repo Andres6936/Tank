@@ -185,6 +185,20 @@
                 propiedad y presentar un Call to Action (Llamado a la Acción)
                 claro y persuasivo para generar el contacto directo (Lead).
             </BulletText>
+
+            <Title size="xs" textAlign="left" marginTop="0.5cm">
+                Módulo B: Apartado Corporativo de Remodelaciones
+            </Title>
+
+            <BulletText>
+                <Bold>Diseño de Vista Interna y Captura de Leads:</Bold> Diseño
+                de una sección informativa estática y altamente persuasiva,
+                dedicada a exhibir de manera visual y estructurada los servicios
+                de remodelación de Inbauen. El diseño guiará al usuario a través
+                de la propuesta de valor hacia un formulario de contacto
+                directo, operando orgánicamente dentro del mismo ecosistema de
+                la plataforma principal.
+            </BulletText>
         </Section>
 
         <SignSection hiddenTitle="1" marginTop="0" paddingTop="0">
