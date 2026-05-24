@@ -284,6 +284,37 @@
             </BulletText>
         </Section>
 
+        <Section>
+            <Title size="xs" textAlign="left">
+                Fase 4: Inteligencia Artificial y Automatización Multicanal
+            </Title>
+
+            <BulletText>
+                <Bold>Asistente de Contenido IA (Generación y SEO)</Bold>:
+                Integración tecnológica con modelos de lenguaje de última
+                generación (LLMs) para asistir a los usuarios y agentes en la
+                redacción de descripciones altamente persuasivas. El sistema
+                generará sugerencias de títulos atractivos y optimizará
+                automáticamente el contenido para mejorar el posicionamiento en
+                motores de búsqueda (SEO). (Nota técnica: El sistema operará
+                bajo un modelo de revisión manual para garantizar la veracidad
+                de la información del inmueble, y los costos de consumo de la
+                API de IA serán gestionados desde la cuenta del cliente).
+            </BulletText>
+
+            <BulletText>
+                <Bold>Distribución Multicanal Automatizada</Bold>: Desarrollo de
+                un módulo de interconexión (API) que permita distribuir el
+                inventario inmobiliario hacia las redes sociales corporativas de
+                Inbauen directamente desde el panel de administración. Esto
+                centraliza la estrategia de marketing y reduce el trabajo
+                operativo. (Nota técnica: La disponibilidad de esta función está
+                sujeta a los procesos de aprobación, políticas de uso y
+                actualizaciones de las plataformas externas como Meta o
+                cualquier otro red social).
+            </BulletText>
+        </Section>
+
         <SignSection hiddenTitle="1" marginTop="0" paddingTop="0">
             <SignRow>
                 <SignMeLeft />
