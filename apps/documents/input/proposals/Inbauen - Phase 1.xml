@@ -126,8 +126,8 @@
             </BulletText>
         </Section>
 
-        <Section wrap="1">
-            <Title size="xs" textAlign="left">
+        <Section wrap="1" marginTop="2cm">
+            <Title size="md">
                 II. Propuesta Económica y Objetivos del Proyecto
             </Title>
 
@@ -139,9 +139,9 @@
                 cada fase:
             </Paragraph>
 
-            <Title size="xs" textAlign="left">
+            <Bold>
                 Objetivo de la Fase 1: Conceptualización Visual y Prototipado
-            </Title>
+            </Bold>
 
             <Paragraph>
                 Diseñar la arquitectura visual e interactiva de la nueva
@@ -153,9 +153,9 @@
                 desarrollo del ecosistema completo.
             </Paragraph>
 
-            <Title size="xs" textAlign="left">
+            <Bold>
                 Objetivo de la Fase 2: Desarrollo Core e Implementación (MVP)
-            </Title>
+            </Bold>
 
             <Paragraph>
                 Materializar el diseño en una plataforma funcional y de alto
@@ -166,9 +166,9 @@
                 con una base tecnológica sólida.
             </Paragraph>
 
-            <Title size="xs" textAlign="left">
+            <Bold>
                 Objetivo de la Fase 3: Ecosistema PropTech y Gestión Financiera
-            </Title>
+            </Bold>
 
             <Paragraph>
                 Evolucionar el Marketplace hacia una herramienta integral de
@@ -179,10 +179,11 @@
                 recaudo de cánones y suscripciones.
             </Paragraph>
 
-            <Title size="xs" textAlign="left">
+            <Bold>
                 Objetivo de la Fase 4: Escalabilidad mediante IA y
                 Automatización
-            </Title>
+            </Bold>
+
             <Paragraph>
                 Dotar a la plataforma de capacidades operativas avanzadas para
                 maximizar el alcance comercial. El objetivo es reducir la carga
