@@ -191,7 +191,9 @@
                 distribución multicanal del inventario hacia las redes sociales
                 corporativas.
             </Paragraph>
+        </Section>
 
+        <Section wrap="1">
             <Title size="xs" textAlign="left">
                 Alcance de los Entregables
             </Title>
@@ -248,7 +250,7 @@
             </BulletText>
         </Section>
 
-        <Section>
+        <Section wrap="1">
             <Title size="xs" textAlign="left">
                 Fase 2: Desarrollo Core del Marketplace e Implementación (MVP
                 Transaccional)
