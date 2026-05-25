@@ -21,7 +21,7 @@
                     Fecha:
                     <S />
                 </Text>
-                Mayo, 15 de 2026
+                Mayo, 22 de 2026
             </Text>
         </Section>
 
@@ -108,7 +108,7 @@
                 administración mediante un sistema jerárquico de roles,
                 habilitar bóvedas digitales seguras para la custodia legal de
                 contratos e integrar pasarelas de pago para digitalizar el
-                recaudo de cánones y suscripciones.
+                recaudo de cánones.
             </Paragraph>
 
             <Bold>
@@ -205,8 +205,7 @@
                 actual. (Nota técnica: La migración está sujeta a la entrega de
                 datos en un formato estandarizado. Los inmuebles antiguos que
                 carezcan de georreferenciación exacta o documentación de
-                validación requerirán actualización por parte de los
-                propietarios en el nuevo sistema).
+                validación requerirán actualización manual en el nuevo sistema).
             </BulletText>
 
             <BulletText>
@@ -339,8 +338,7 @@
                     <Row>
                         <Cell>Fase 2</Cell>
                         <Cell flex="2">
-                            Motor de búsqueda, Migración de datos, Autenticación
-                            y Dashboard
+                            Motor de búsqueda, Autenticación y Dashboard
                         </Cell>
                         <Cell>$ 8.500</Cell>
                     </Row>
@@ -460,12 +458,5 @@
                 requerimiento y se cotizará por separado.
             </BulletText>
         </Section>
-
-        <SignSection hiddenTitle="1" marginTop="0" paddingTop="0">
-            <SignRow>
-                <SignMeLeft />
-                <SignMeRight />
-            </SignRow>
-        </SignSection>
     </Paginate>
 </Document>
