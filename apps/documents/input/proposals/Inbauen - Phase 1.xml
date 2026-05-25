@@ -299,7 +299,104 @@
 
         <Section wrap="1">
             <Title size="xs" textAlign="left">
-                III. Términos y Condiciones Comerciales
+                III. Estructura Presupuestal y Desglose de Inversión
+            </Title>
+
+            <Paragraph>
+                La siguiente estructura financiera refleja la complejidad
+                técnica y la carga de ingeniería requerida para la modernización
+                del ecosistema Inbauen. El presupuesto base de desarrollo se ha
+                distribuido de manera proporcional al impacto operativo de cada
+                etapa, concentrando el mayor esfuerzo en la Fase 2 y 3, la cual
+                aborda la lógica transaccional.
+            </Paragraph>
+
+            <Paragraph>
+                Con el objetivo de blindar el cronograma y evitar detenciones
+                administrativas por micro-facturación frente a cambios menores,
+                se ha integrado un margen de eventualidades del 13%. Esta
+                provisión técnica esta diseñada para absorber fluctuaciones en
+                las variaciones de las APIs de terceros.
+            </Paragraph>
+
+            <Table>
+                <Header>
+                    <Row>
+                        <Cell>Fase del Proyecto</Cell>
+                        <Cell flex="2">Alcance Principal</Cell>
+                        <Cell>Inversión (USD)</Cell>
+                    </Row>
+                </Header>
+                <Body>
+                    <Row>
+                        <Cell>Fase 1</Cell>
+                        <Cell flex="2">
+                            Diseño UX/UI, Prototipado, Arquitectura de
+                            Información
+                        </Cell>
+                        <Cell>$ 3.500</Cell>
+                    </Row>
+                    <Row>
+                        <Cell>Fase 2</Cell>
+                        <Cell flex="2">
+                            Motor de búsqueda, Migración de datos, Autenticación
+                            y Dashboard
+                        </Cell>
+                        <Cell>$ 8.500</Cell>
+                    </Row>
+                    <Row>
+                        <Cell>Fase 3</Cell>
+                        <Cell flex="2">
+                            Bóvedas documentales, Roles (RBAC) e Integración de
+                            pasarelas
+                        </Cell>
+                        <Cell>$ 5.000</Cell>
+                    </Row>
+                    <Row>
+                        <Cell>Fase 4</Cell>
+                        <Cell flex="2">
+                            Asistente IA (LLMs) y Distribución Multicanal en
+                            Redes
+                        </Cell>
+                        <Cell>$ 3.000</Cell>
+                    </Row>
+                    <Row>
+                        <Cell>Subtotal Desarrollo</Cell>
+                        <Cell flex="2" />
+                        <Cell>$ 20.000</Cell>
+                    </Row>
+                    <Row>
+                        <Cell>Eventualidades (13%)</Cell>
+                        <Cell flex="2">
+                            Provisión técnica para fluctuaciones y ajustes
+                            operativos
+                        </Cell>
+                        <Cell>$ 2.600</Cell>
+                    </Row>
+                    <Row>
+                        <Cell>Subtotal Gravable</Cell>
+                        <Cell flex="2" />
+                        <Cell>$ 22.600</Cell>
+                    </Row>
+                    <Row>
+                        <Cell>Impuestos (10.62%)</Cell>
+                        <Cell flex="2">Carga impositiva aplicable</Cell>
+                        <Cell>$ 2.400</Cell>
+                    </Row>
+                </Body>
+                <Footer>
+                    <Row>
+                        <Cell>Inversión Total</Cell>
+                        <Cell flex="2" />
+                        <Cell>$ 25.000</Cell>
+                    </Row>
+                </Footer>
+            </Table>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                IV. Términos y Condiciones Comerciales
             </Title>
 
             <BulletText>
