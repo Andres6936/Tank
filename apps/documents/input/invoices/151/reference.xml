@@ -1,0 +1,205 @@
+<Invoice
+    title="Cuenta de Cobro - x97 - Ref: 019E64B7-FA93-7000-9DF8-ADA751A69C72"
+    author="Joan Andrés Buritica Salazar"
+    subject="Cuenta de Cobro - x97 - Ref: 019E64B7-FA93-7000-9DF8-ADA751A69C72"
+    keywords="Account, Bill"
+    creator="Joan Andrés Buritica Salazar"
+    producer="Joan Andrés Buriticá Salazar"
+    language="es"
+>
+    <Page>
+        <Seal />
+        <VerticalLetter>
+            019E64B7-FA93-7000-9DF8-ADA751A69C72
+        </VerticalLetter>
+
+        <Section alignItems="flex-end">
+            <Text bold="1">26 de Mayo (2026-05-26)</Text>
+            <Text>Santiago de Cali, Colombia (760001)</Text>
+        </Section>
+
+        <Section flexGrow="1" justifyContent="center" alignContent="center">
+            <Section textAlign='center' marginBottom="2cm" gap="4pt">
+                <Line>
+                    019E64B7-ADA751A69C72
+                </Line>
+                <Text>
+                    Cuenta de cobro N°
+                    <S />
+                    <SansLine>
+                        x97
+                    </SansLine>
+                </Text>
+                <Text>Residuos Ambientales SAS</Text>
+                <Text>NIT 901.747.145-4</Text>
+            </Section>
+            <Section textAlign='center' gap="4pt">
+                <Text bold="1" textTransform="uppercase">Debe A:</Text>
+                <Text>Joan Andrés Buritica Salazar</Text>
+                <Text>C.C. 1143995473 con RUT 1.143.995.473</Text>
+                <Text>La suma de: $ 104.748 COP</Text>
+                <Text>Ciento cuatro mil setecientos cuarenta y ocho Pesos Colombianos</Text>
+            </Section>
+        </Section>
+
+        <Section>
+            <Section gap="4pt" marginBottom="2cm">
+                <Text>Por concepto de:</Text>
+                <Text>- Apoyo informático / Envio de Certificados</Text>
+            </Section>
+            <Section flexDirection='row'>
+                <Section flex="1" gap="2pt" justifyContent="flex-end">
+                    <Text>Teléfono: +57 319 (656) 94-58</Text>
+                    <Text>Contacto: andres6936@live.com</Text>
+                </Section>
+
+                <Section flex="1" gap="4pt" justifyContent='flex-end'>
+                    <Sign />
+                </Section>
+            </Section>
+        </Section>
+    </Page>
+
+    <Page>
+        <VerticalLetter>
+            019E64B7-FA93-7000-9DF8-ADA751A69C72
+        </VerticalLetter>
+
+        <Section>
+            <Title
+                size="xs"
+                textAlign="left"
+            >Referencia Bancaria Nacional</Title>
+
+            <Paragraph size="lg" marginTop="0.7cm" marginBottom="0.2cm">
+                Se certifica a la fecha de expedición de esta cuenta de cobro que JOAN ANDRES BURITICA SALAZAR identificado con CC 1.143.995.473
+                tiene los siguientes productos bancarios:
+            </Paragraph>
+
+            <Section paddingVertical="0.3cm">
+                <Table>
+                    <Header>
+                        <Row>
+                            <Cell flex="1.5">Producto</Cell>
+                            <Cell>Entidad</Cell>
+                            <Cell>No. Producto</Cell>
+                            <Cell>Estado</Cell>
+                        </Row>
+                    </Header>
+                    <Body>
+                        <Row>
+                            <Cell flex="1.5">Cuenta de Ahorros</Cell>
+                            <Cell>Bancolombia</Cell>
+                            <Cell>91218898063</Cell>
+                            <Cell>Activa</Cell>
+                        </Row>
+                        <Row>
+                            <Cell flex="1.5">Llave Bre-B</Cell>
+                            <Cell>Interbancaria</Cell>
+                            <Cell>1143995473</Cell>
+                            <Cell>Activa</Cell>
+                        </Row>
+                    </Body>
+                </Table>
+            </Section>
+
+            <BulletText size="md" marginBottom="0.3cm">
+                Si desea verificar la veracidad de esta información, puede comunicarse con la Sucursal Telefónica Bancolombia en los siguientes números:
+            </BulletText>
+
+            <Section flexDirection="row" paddingBottom="0.7cm">
+                <Section flex="1">
+                    <Indent marginBottom="0.3cm">
+                        <BulletText size="sm">
+                            Medellín - Local: (57-4) 510 90 00
+                        </BulletText>
+                        <BulletText size="sm">
+                            Bogotá - Local: (57-1) 343 00 00
+                        </BulletText>
+                        <BulletText size="sm">
+                            Barranquilla - Local: (57-5) 361 88 88
+                        </BulletText>
+                        <BulletText size="sm">
+                            Cali - Local: (57-2) 554 05 05
+                        </BulletText>
+                        <BulletText size="sm">
+                            Resto del país: 01800 09 12345
+                        </BulletText>
+                    </Indent>
+                </Section>
+
+                <Section flex="1">
+                    <Text size="md" marginBottom="0.3cm">
+                        Sucursales Telefónicas en el exterior:
+                    </Text>
+                    <Indent>
+                        <BulletText size="sm">
+                            España (34) 900 995 717
+                        </BulletText>
+                        <BulletText size="sm">
+                            Estados Unidos (1) 1 866 379 97 14
+                        </BulletText>
+                    </Indent>
+                </Section>
+            </Section>
+
+            <Title size="xs" textAlign="left">
+                Referencia Bancaria Internacional
+            </Title>
+
+            <Section paddingVertical="0.3cm">
+                <Table>
+                    <Header>
+                        <Row>
+                            <Cell>Sistema</Cell>
+                            <Cell>BIC/SWIFT</Cell>
+                            <Cell>Producto</Cell>
+                        </Row>
+                    </Header>
+                    <Body>
+                        <Row>
+                            <Cell>SWIFT</Cell>
+                            <Cell>COLOCOBM</Cell>
+                            <Cell>91218898063</Cell>
+                        </Row>
+                        <Row>
+                            <Cell>Paypal</Cell>
+                            <Cell>No Aplica</Cell>
+                            <Cell>andres6936@live.com</Cell>
+                        </Row>
+                    </Body>
+                </Table>
+            </Section>
+        </Section>
+
+        <Section gap="0.1cm" marginTop="0.3cm">
+            <Title size="xs" textAlign="left">Descargos</Title>
+
+            <BulletText size="md">
+                Contribuyente inscrito en el Régimen Simple de Tributación (RST).
+                De conformidad con el artículo 911 del Estatuto Tributario, no sujeto a
+                retención en la fuente a título del impuesto sobre la renta.
+                Actividad Económica CIIU 6201.
+            </BulletText>
+
+            <BulletText size="md">
+                No responsable del Impuesto sobre las Ventas (IVA) - Artículo 437 del E.T.
+            </BulletText>
+        </Section>
+
+        <Section
+            flexGrow="1"
+            flexDirection='row'
+            alignItems="flex-end"
+            justifyContent="space-between"
+        >
+             <Section alignItems="center">
+                 <BreBCode />
+                 <Text size="sm" marginTop="0.3cm">
+                     LLave Bre-B: 1143995473
+                 </Text>
+             </Section>
+             <Sign />
+        </Section>
+    </Page>
+</Invoice>
