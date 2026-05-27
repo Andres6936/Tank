@@ -265,6 +265,74 @@
             </BulletText>
         </Section>
 
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                Nota Técnica: La Magnitud de los Requerimientos Implícitos
+            </Title>
+
+            <Paragraph>
+                En el desarrollo de software a la medida, cada funcionalidad
+                descrita a nivel comercial conlleva una extensa arquitectura de
+                procesos invisibles para el usuario final. A modo de ejemplo, el
+                componente "Portal de Usuarios y Repositorio Legal" (Fase 3)
+                requiere la programación y conexión de los siguientes flujos
+                individuales, todos necesarios para su correcto funcionamiento:
+            </Paragraph>
+
+            <BulletText>
+                Arquitectura de nube para almacenamiento cifrado y generación de
+                tokens de acceso temporal (para que los PDFs no sean indexables
+                por Google).
+            </BulletText>
+            <BulletText>
+                Desarrollo e implementación de la interfaz (UI) para la carga y
+                clasificación de documentos legales con validación de peso y
+                formatos.
+            </BulletText>
+            <BulletText>
+                Desarrollo e implementación de la UI para la visualización en
+                pantalla (visor integrado) y revisión del contrato por parte del
+                usuario final.
+            </BulletText>
+            <BulletText>
+                Implementación de la UI y la lógica para la consulta de
+                contratos por parte del cliente y los administradores.
+            </BulletText>
+            <BulletText>
+                Implementación de la UI y la lógica de validación para la
+                captura de firma o intención de firma electrónica.
+            </BulletText>
+            <BulletText>
+                Imlementación del flujo de "borrador del contrato" donde el
+                cliente podrá descargar el borrador del contrato sin firmas de
+                ambas para su revisión.
+            </BulletText>
+            <BulletText>
+                Implementación del flujo de "rechazo de contrato" y "corrección
+                de contrato", habilitando la captura de comentarios tanto de los
+                administradores para con el cliente y actualizando el estado en
+                la base de datos.
+            </BulletText>
+            <BulletText>
+                Implementación del flujo de versionamiento y corrección para los
+                administradores de Inbauen (Ej. reemplazar el contrato V1
+                rechazado por el V2 corregido).
+            </BulletText>
+            <BulletText>
+                Desarrollo del motor de notificaciones transaccionales para
+                alertar en tiempo real o mediante correos electrónicos o
+                mensajes de texto: notificación de disponibilidad de contrato,
+                alerta de firma exitosa y notificación de rechazo, expiración y
+                aprobación.
+            </BulletText>
+
+            <Paragraph>
+                La inversión total del proyecto refleja la cobertura integral de
+                cientos de estos requerimientos implícitos a lo largo de las
+                cuatro fases.
+            </Paragraph>
+        </Section>
+
         <Section>
             <Title size="xs" textAlign="left">
                 Fase 4: Inteligencia Artificial y Automatización Multicanal
