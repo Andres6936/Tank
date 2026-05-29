@@ -431,30 +431,17 @@
                     </Row>
                     <Row>
                         <Cell flex="2">
-                            Eventualidades (5%): Provisión técnica para
-                            fluctuaciones y ajustes operativos
-                        </Cell>
-                        <Cell>$ 750</Cell>
-                        <Cell>$ 1.000</Cell>
-                    </Row>
-                    <Row>
-                        <Cell flex="2">Subtotal Gravable</Cell>
-                        <Cell>$ 15.750</Cell>
-                        <Cell>$ 21.000</Cell>
-                    </Row>
-                    <Row>
-                        <Cell flex="2">
                             Impuestos (10.62%): Carga impositiva aplicable
                         </Cell>
-                        <Cell>$ 1.575</Cell>
-                        <Cell>$ 2.100</Cell>
+                        <Cell>$ 1.500</Cell>
+                        <Cell>$ 2.000</Cell>
                     </Row>
                 </Body>
                 <Footer>
                     <Row>
                         <Cell flex="2">Inversión Total Estimada (USD)</Cell>
-                        <Cell>$ 17.325</Cell>
-                        <Cell>$ 23.100</Cell>
+                        <Cell>$ 16.500</Cell>
+                        <Cell>$ 22.000</Cell>
                     </Row>
                 </Footer>
             </Table>
