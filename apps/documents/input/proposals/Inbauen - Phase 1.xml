@@ -26,9 +26,7 @@
         </Section>
 
         <Section>
-            <Title size="xs" textAlign="left">
-                I. Visión Estratégica del Proyecto
-            </Title>
+            <Title size="md">I. Visión Estratégica del Proyecto</Title>
 
             <Paragraph>
                 Tras la reunión de alineación el pasado 15 de Mayo de 2026,
@@ -365,7 +363,7 @@
         </Section>
 
         <Section wrap="1">
-            <Title size="xs" textAlign="left">
+            <Title size="md">
                 III. Estructura Presupuestal y Desglose de Inversión
             </Title>
 
@@ -461,9 +459,7 @@
         </Section>
 
         <Section wrap="1">
-            <Title size="xs" textAlign="left">
-                IV. Términos y Condiciones Comerciales
-            </Title>
+            <Title size="md">IV. Términos y Condiciones Comerciales</Title>
 
             <BulletText>
                 <Bold>Tiempos de Respuesta y Actas de Reuniones</Bold>: Todo
