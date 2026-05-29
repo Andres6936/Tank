@@ -387,72 +387,74 @@
             <Table>
                 <Header>
                     <Row>
-                        <Cell>Fase del Proyecto</Cell>
-                        <Cell flex="2">Alcance Principal</Cell>
-                        <Cell>Inversión (USD)</Cell>
+                        <Cell flex="2">Fase y Alcance del Proyecto</Cell>
+                        <Cell>Presupuesto Mínimo</Cell>
+                        <Cell>Presupuesto Original</Cell>
                     </Row>
                 </Header>
                 <Body>
                     <Row>
-                        <Cell>Fase 1</Cell>
                         <Cell flex="2">
-                            Diseño UX/UI, Prototipado, Arquitectura de
+                            Fase 1: Diseño UX/UI, Prototipado, Arquitectura de
                             Información
                         </Cell>
+                        <Cell>$ 2.625</Cell>
                         <Cell>$ 3.500</Cell>
                     </Row>
                     <Row>
-                        <Cell>Fase 2</Cell>
                         <Cell flex="2">
-                            Motor de búsqueda, Autenticación y Dashboard
+                            Fase 2: Motor de búsqueda, Autenticación y Dashboard
                         </Cell>
+                        <Cell>$ 6.375</Cell>
                         <Cell>$ 8.500</Cell>
                     </Row>
                     <Row>
-                        <Cell>Fase 3</Cell>
                         <Cell flex="2">
-                            Bóvedas documentales, Roles (RBAC) e Integración de
-                            pasarelas
+                            Fase 3: Bóvedas documentales, Roles (RBAC) e
+                            Integración de pasarelas
                         </Cell>
+                        <Cell>$ 3.750</Cell>
                         <Cell>$ 5.000</Cell>
                     </Row>
                     <Row>
-                        <Cell>Fase 4</Cell>
                         <Cell flex="2">
-                            Asistente IA (LLMs) y Distribución Multicanal en
-                            Redes
+                            Fase 4: Asistente IA (LLMs) y Distribución
+                            Multicanal en Redes
                         </Cell>
+                        <Cell>$ 2.250</Cell>
                         <Cell>$ 3.000</Cell>
                     </Row>
                     <Row>
-                        <Cell>Subtotal Desarrollo</Cell>
-                        <Cell flex="2" />
+                        <Cell flex="2">Subtotal Desarrollo</Cell>
+                        <Cell>$ 15.000</Cell>
                         <Cell>$ 20.000</Cell>
                     </Row>
                     <Row>
-                        <Cell>Eventualidades (13%)</Cell>
                         <Cell flex="2">
-                            Provisión técnica para fluctuaciones y ajustes
-                            operativos
+                            Eventualidades (5%): Provisión técnica para
+                            fluctuaciones y ajustes operativos
                         </Cell>
-                        <Cell>$ 2.600</Cell>
+                        <Cell>$ 750</Cell>
+                        <Cell>$ 1.000</Cell>
                     </Row>
                     <Row>
-                        <Cell>Subtotal Gravable</Cell>
-                        <Cell flex="2" />
-                        <Cell>$ 22.600</Cell>
+                        <Cell flex="2">Subtotal Gravable</Cell>
+                        <Cell>$ 15.750</Cell>
+                        <Cell>$ 21.000</Cell>
                     </Row>
                     <Row>
-                        <Cell>Impuestos (10.62%)</Cell>
-                        <Cell flex="2">Carga impositiva aplicable</Cell>
-                        <Cell>$ 2.400</Cell>
+                        <Cell flex="2">
+                            Impuestos (10.62%): Carga impositiva aplicable
+                        </Cell>
+                        <Cell>$ 1.575</Cell>
+                        <Cell>$ 2.100</Cell>
                     </Row>
                 </Body>
                 <Footer>
                     <Row>
-                        <Cell>Inversión Total</Cell>
-                        <Cell flex="2" />
-                        <Cell>$ 25.000</Cell>
+                        <Cell flex="2">Inversión Total Estimada (USD)</Cell>
+                        <Cell>$ 17.325</Cell>
+                        <Cell>$ 23.100</Cell>
                     </Row>
                 </Footer>
             </Table>
