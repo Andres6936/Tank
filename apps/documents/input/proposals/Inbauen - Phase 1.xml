@@ -376,20 +376,12 @@
                 aborda la lógica transaccional.
             </Paragraph>
 
-            <Paragraph>
-                Con el objetivo de blindar el cronograma y evitar detenciones
-                administrativas por micro-facturación frente a cambios menores,
-                se ha integrado un margen de eventualidades del 13%. Esta
-                provisión técnica esta diseñada para absorber fluctuaciones en
-                las variaciones de las APIs de terceros.
-            </Paragraph>
-
             <Table>
                 <Header>
                     <Row>
                         <Cell flex="2">Fase y Alcance del Proyecto</Cell>
-                        <Cell>Presupuesto Mínimo</Cell>
-                        <Cell>Presupuesto Original</Cell>
+                        <Cell textAlign="center">USD</Cell>
+                        <Cell textAlign="center">COP</Cell>
                     </Row>
                 </Header>
                 <Body>
@@ -398,50 +390,38 @@
                             Fase 1: Diseño UX/UI, Prototipado, Arquitectura de
                             Información
                         </Cell>
-                        <Cell>$ 2.625</Cell>
-                        <Cell>$ 3.500</Cell>
+                        <Cell textAlign="center">$ 2.625</Cell>
+                        <Cell textAlign="right">$ 9.975.000</Cell>
                     </Row>
                     <Row>
                         <Cell flex="2">
                             Fase 2: Motor de búsqueda, Autenticación y Dashboard
                         </Cell>
-                        <Cell>$ 6.375</Cell>
-                        <Cell>$ 8.500</Cell>
+                        <Cell textAlign="center">$ 6.375</Cell>
+                        <Cell textAlign="right">$ 24.225.000</Cell>
                     </Row>
                     <Row>
                         <Cell flex="2">
                             Fase 3: Bóvedas documentales, Roles (RBAC) e
                             Integración de pasarelas
                         </Cell>
-                        <Cell>$ 3.750</Cell>
-                        <Cell>$ 5.000</Cell>
+                        <Cell textAlign="center">$ 3.750</Cell>
+                        <Cell textAlign="right">$ 14.250.000</Cell>
                     </Row>
                     <Row>
                         <Cell flex="2">
                             Fase 4: Asistente IA (LLMs) y Distribución
                             Multicanal en Redes
                         </Cell>
-                        <Cell>$ 2.250</Cell>
-                        <Cell>$ 3.000</Cell>
-                    </Row>
-                    <Row>
-                        <Cell flex="2">Subtotal Desarrollo</Cell>
-                        <Cell>$ 15.000</Cell>
-                        <Cell>$ 20.000</Cell>
-                    </Row>
-                    <Row>
-                        <Cell flex="2">
-                            Impuestos (10.62%): Carga impositiva aplicable
-                        </Cell>
-                        <Cell>$ 1.500</Cell>
-                        <Cell>$ 2.000</Cell>
+                        <Cell textAlign="center">$ 2.250</Cell>
+                        <Cell textAlign="right">$ 8.550.000</Cell>
                     </Row>
                 </Body>
                 <Footer>
                     <Row>
                         <Cell flex="2">Inversión Total Estimada (USD)</Cell>
-                        <Cell>$ 16.500</Cell>
-                        <Cell>$ 22.000</Cell>
+                        <Cell textAlign="center">$ 15.000</Cell>
+                        <Cell textAlign="right">$ 57.000.000</Cell>
                     </Row>
                 </Footer>
             </Table>
