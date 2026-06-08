@@ -491,5 +491,74 @@
                 requerimiento y se cotizará por separado.
             </BulletText>
         </Section>
+
+        <Section wrap="1">
+            <Title size="md">
+                V. Propuesta Alternativa: Alcance Limitado (MVP Esencial)
+            </Title>
+
+            <Paragraph>
+                Comprendiendo las necesidades presupuestales y buscando ofrecer
+                una ruta de entrada más conservadora, presentamos esta
+                alternativa de alcance ajustado. Esta versión se centra
+                exclusivamente en el núcleo operativo del negocio: la exhibición
+                inmersiva de propiedades y la generación de leads, prescindiendo
+                de las herramientas administrativas avanzadas (PropTech ERP) y
+                la automatización.
+            </Paragraph>
+
+            <Paragraph>
+                Bajo este esquema, se conservan la conceptualización visual
+                (diseño inmersivo tipo Airbnb) y la migración del inventario
+                histórico. El desarrollo técnico se simplifica de la siguiente
+                manera: el buscador operará con mapas de localización estática
+                (sin interactividad compleja) y el sistema de control de acceso
+                se limitará a dos perfiles fundamentales (administradores y
+                clientes/usuarios publicadores). Los módulos de recaudo de
+                pagos, bóvedas de contratos y la integración de Inteligencia
+                Artificial quedan excluidos de esta iteración.
+            </Paragraph>
+
+            <Table>
+                <Header>
+                    <Row>
+                        <Cell flex="2">Fase y Alcance del Proyecto</Cell>
+                        <Cell textAlign="center">USD</Cell>
+                        <Cell textAlign="center">COP</Cell>
+                    </Row>
+                </Header>
+                <Body>
+                    <Row>
+                        <Cell flex="2">
+                            Fase 1: Diseño UX/UI Inmersivo y Prototipado
+                        </Cell>
+                        <Cell textAlign="center">$ 2.250</Cell>
+                        <Cell textAlign="right">$ 8.550.000</Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            Fase 2: Motor de búsqueda simple, Migración y Panel
+                            Administrativo
+                        </Cell>
+                        <Cell textAlign="center">$ 2.169</Cell>
+                        <Cell textAlign="right">$ 8.242.200</Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            Fase 3: Sistema de Usuarios Simplificado (2 Roles)
+                        </Cell>
+                        <Cell textAlign="center">$ 1.100</Cell>
+                        <Cell textAlign="right">$ 4.180.000</Cell>
+                    </Row>
+                </Body>
+                <Footer>
+                    <Row>
+                        <Cell flex="2">Inversión Total Estimada</Cell>
+                        <Cell textAlign="center">$ 4.944</Cell>
+                        <Cell textAlign="right">$ 20.972.200</Cell>
+                    </Row>
+                </Footer>
+            </Table>
+        </Section>
     </Paginate>
 </Document>
