@@ -1,0 +1,170 @@
+;<Document
+    subject="Acta de Reunión"
+    title="Plataforma Residuos Ambientales"
+    author="Joan Andrés Buriticá Salazar"
+    keywords="Act, Meet, Compromises"
+    creator="Joan Andrés Buriticá Salazar"
+    producer="React PDF with Bun"
+    language="es"
+>
+    <Cover
+        type="Acta de Reunión"
+        title="Plataforma Residuos Ambientales"
+        month="Abril 2026"
+    />
+
+    <Paginate>
+        <IndicatorHeader value="Ing. Joan A. Buriticá" />
+        <Section marginTop="0" gap="0.1cm">
+            <Text>
+                <Text bold="1">Fecha:</Text>
+                18 de junio de 2026
+            </Text>
+
+            <Text>
+                <Text bold="1">Asunto:</Text>
+                Propuesta Formal de Intercambio de Alcance (Control de Cambios)
+            </Text>
+
+            <Text>
+                <Text bold="1">Proyecto:</Text>
+                Plataforma de Gestión Logística y Administrativa
+            </Text>
+        </Section>
+
+        <Section wrap="1" gap="0.2cm">
+            <Title size="xs" textAlign="left">
+                1. Objetivo
+            </Title>
+
+            <Paragraph>
+                Formalizar el intercambio de requerimientos pactado inicialmente
+                en el acta del 23 de abril de 2026, estableciendo las
+                funcionalidades que se retiran del alcance original y las nuevas
+                características que se incorporan al desarrollo, así como la
+                liquidación del tiempo equivalente.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1" gap="0.2cm">
+            <Title size="xs" textAlign="left">
+                2. Alcance Retirado (A deducir)
+            </Title>
+
+            <Paragraph>
+                Se retira del cronograma y obligaciones de entrega el siguiente
+                módulo contemplado en la propuesta original:
+            </Paragraph>
+
+            <BulletText>
+                <Text bold="1">Módulo de Certificados:</Text>
+                <S />
+                Funcionalidad que consiste en el envio de certificados de
+                disposición al cliente final mediante correo electrónico,
+                adjuntado multiples certificados de un mismo cliente en un único
+                correo mensual, así como una UI para la gestión de certificados
+                y cargué de los mismos.
+            </BulletText>
+
+            <Indent>
+                <Text>
+                    <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 61 horas.
+                </Text>
+            </Indent>
+        </Section>
+
+        <Section wrap="1" gap="0.2cm">
+            <Title size="xs" textAlign="left">
+                3. Nuevo Alcance Incorporado (A adicionar)
+            </Title>
+
+            <Paragraph>
+                En sustitución del módulo retirado, se desarrollarán e
+                implementarán las siguientes funcionalidades solicitadas por
+                REAM:
+            </Paragraph>
+
+            <BulletText>
+                <Paragraph bold="1">
+                    1. Reporte Mensual Automático para Planta (Excel):
+                </Paragraph>
+                <TextJustify>
+                    Desarrollo e implementación de un sistema de generación y
+                    distribución automatizada del conglomerado mensual de
+                    manifiestos.
+                </TextJustify>
+                <TextJustify>
+                    <Paragraph bold="1">- Estructura y Formato:</Paragraph> El
+                    sistema utilizará como base una plantilla fija en formato
+                    Excel, la cual deberá ser proporcionada por REAM. El
+                    desarrollo mapeará los datos del sistema para poblar este
+                    documento respetando dicha estructura.
+                </TextJustify>
+                <TextJustify>
+                    <Paragraph bold="1">- Automatización (Cron Job):</Paragraph>
+                    Se configurará una tarea programada en el servidor que se
+                    ejecutará de forma autónoma el primer día de cada mes,
+                    coincidiendo con el inicio del nuevo ciclo operativo.
+                </TextJustify>
+                <TextJustify>
+                    <Paragraph bold="1">- Distribución:</Paragraph> Una vez
+                    construido el documento, el sistema lo enviará
+                    automáticamente como archivo adjunto a la dirección de
+                    correo electrónico que REAM designe para el área de
+                    disposición final/planta.
+                </TextJustify>
+            </BulletText>
+
+            <BulletText>
+                <Text bold="1">Registro de Pago Contra-Entrega:</Text>
+                Habilitación de registro de recaudo en sitio para los
+                manifiestos.
+                <Text bold="1">Tiempo estimado:</Text> [X horas].
+            </BulletText>
+
+            <BulletText>
+                <Text bold="1">Visualización de Saldo a Favor:</Text>
+                Interfaz informativa para control de saldos de clientes.
+                <Text bold="1">Tiempo estimado:</Text> [X horas].
+            </BulletText>
+        </Section>
+
+        <Section wrap="1" gap="0.2cm">
+            <Title size="xs" textAlign="left">
+                4. Liquidación y Saldo a Favor
+            </Title>
+
+            <Paragraph>
+                De acuerdo con la estimación de tiempos, el intercambio genera
+                un saldo a favor para REAM, el cual será administrado de la
+                siguiente manera:
+            </Paragraph>
+
+            <BulletText>Tiempo total retirado: [X horas]</BulletText>
+
+            <BulletText>Tiempo total adicionado: [X horas]</BulletText>
+
+            <BulletText>
+                <Text bold="1">Saldo a favor resultante: [X horas]</Text>
+            </BulletText>
+
+            <Paragraph>
+                Este saldo a favor será acreditado a REAM bajo la modalidad de
+                [Bolsa de horas para soporte / Bolsa para futuros
+                requerimientos], con vigencia hasta [Fecha].
+            </Paragraph>
+        </Section>
+
+        <SignSection>
+            <SignRow gap="25pt" height="120pt">
+                <SignPad />
+                <SignPadRight signBy="Firma Liz Alexandra, Representante REAM" />
+            </SignRow>
+
+            <SignRow gap="25pt" height="120pt">
+                <SignPadLeft signBy="Firma Ricardo Suarez, Representante REAM" />
+                <SignMeRight />
+            </SignRow>
+        </SignSection>
+    </Paginate>
+</Document>
