@@ -119,12 +119,43 @@
                 </BulletText>
             </Indent>
 
-            <BulletText>
-                <Text bold="1">Registro de Pago Contra-Entrega:</Text>
-                Habilitación de registro de recaudo en sitio para los
-                manifiestos.
-                <Text bold="1">Tiempo estimado:</Text> [X horas].
-            </BulletText>
+            <Text>
+                <Paragraph bold="1">
+                    2. Registro de Pago Contra-Entrega (Perfil Operario):
+                </Paragraph>
+
+                <Paragraph>
+                    Habilitación de la funcionalidad de recaudo en sitio,
+                    permitiendo que el personal operativo registre los pagos del
+                    cliente directamente al momento de prestar el servicio.
+                </Paragraph>
+            </Text>
+
+            <Indent gap="7pt">
+                <Paragraph>
+                    <Paragraph bold="1">Ajuste de Roles y Permisos:</Paragraph>
+                    Extender los privilegios del perfil "Operario" en el sistema
+                    para permitir la acción de registro de pagos, una función
+                    que en la arquitectura actual es exclusiva de los perfiles
+                    "Administrador" y "Comercial".
+                </Paragraph>
+
+                <Paragraph>
+                    <Paragraph bold="1">Interfaz de Usuario (UI):</Paragraph>
+                    Diseño e implementación de una sección específica dentro del
+                    entorno del operario. Esta interfaz estará adaptada para la
+                    captura ágil del pago durante la ejecución de la ruta.
+                </Paragraph>
+
+                <Paragraph>
+                    <Paragraph bold="1">Sincronización de Datos:</Paragraph>
+                    El recaudo ingresado por el operario se sincronizará
+                    inmediatamente con el módulo central de pagos, actualizando
+                    el estado de cuenta del registro correspondiente sin
+                    requerir la doble digitación por parte del área
+                    administrativa.
+                </Paragraph>
+            </Indent>
 
             <BulletText>
                 <Text bold="1">Visualización de Saldo a Favor:</Text>
