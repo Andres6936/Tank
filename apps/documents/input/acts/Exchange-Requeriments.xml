@@ -201,6 +201,26 @@
 
                 <BulletText>
                     <Paragraph bold="1">
+                        Visualización Rápida en Tabla de Servicios:
+                    </Paragraph>
+                    Adición de una nueva columna en el listado principal de
+                    servicios para exponer el saldo a favor actual, facilitando
+                    la identificación inmediata del estado de cuenta sin
+                    navegación adicional.
+                </BulletText>
+
+                <BulletText>
+                    <Paragraph bold="1">
+                        Detalle de Servicio (Perfil Comercial):
+                    </Paragraph>
+                    Actualización de la interfaz de usuario (UI) en la vista de
+                    detalle por registro para incluir la información del saldo a
+                    favor. Esta modificación asegura que el perfil comercial
+                    tenga acceso y visibilidad directa a este dato clave.
+                </BulletText>
+
+                <BulletText>
+                    <Paragraph bold="1">
                         Aplicación en Pagos Manuales (Cruce de Cuentas):
                     </Paragraph>
                     Al momento de registrar un nuevo pago manual, la interfaz
@@ -211,7 +231,7 @@
             </Indent>
 
             <Text>
-                <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 18 horas.
+                <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 21 horas.
             </Text>
         </Section>
 
@@ -226,12 +246,12 @@
                 siguiente manera:
             </Paragraph>
 
-            <BulletText>Tiempo total retirado: 21 horas</BulletText>
+            <BulletText>Tiempo total retirado: 18 horas</BulletText>
 
             <BulletText>Tiempo total adicionado: 0 horas</BulletText>
 
             <BulletText>
-                <Text bold="1">Saldo a favor resultante: 21 horas</Text>
+                <Text bold="1">Saldo a favor resultante: 18 horas</Text>
             </BulletText>
 
             <Paragraph>
