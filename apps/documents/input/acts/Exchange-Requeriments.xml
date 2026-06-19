@@ -261,6 +261,78 @@
             </Paragraph>
         </Section>
 
+        <Section wrap="1" gap="0.2cm">
+            <Title size="xs" textAlign="left">
+                5. Requerimientos Adicionales (Ejecución del Saldo a Favor)
+            </Title>
+
+            <Paragraph>
+                Si bien no forman parte de la negociación principal de
+                intercambio, durante las mesas de trabajo recientes se
+                identificaron nuevas necesidades operativas y visuales por parte
+                de REAM. De mutuo acuerdo, se establece que las horas de saldo a
+                favor generadas en la Sección 4 se podrán utilizar en su
+                totalidad para cubrir total o parcilamente el desarrollo e
+                implementación de los siguientes puntos del backlog:
+            </Paragraph>
+
+            <Indent gap="7pt">
+                <BulletText>
+                    <Paragraph bold="1">
+                        Gráficos de Rendimiento (Mes y Día):
+                    </Paragraph>
+                    Implementación de gráficos con filtros mensuales y diarios
+                    para visualizar de forma rápida la actividad, rendimiento y
+                    trazabilidad de los operarios y los camiones.
+                </BulletText>
+
+                <BulletText>
+                    <Paragraph bold="1">
+                        Indicador Visual de Progreso (Camión):
+                    </Paragraph>
+                    Diseño de un componente visual tipo infografía (forma de
+                    camión con puntos de relleno progresivo). Este indicador se
+                    integrará en la UI del camión y del operario para
+                    representar, en tiempo real, el total de servicios prestados
+                    en el día frente a los servicios restantes de la ruta
+                    diaria.
+                </BulletText>
+
+                <BulletText>
+                    <Paragraph bold="1">
+                        Catálogo Extendido de Residuos Sanitarios:
+                    </Paragraph>
+                    Ampliación de la lista predefinida en la vista de
+                    manifiestos, requiriendo que REAM provea el listado completo
+                    a incorporar. Este desarrollo incluye la modificación del
+                    motor de generación de PDF para que la nueva lista extendida
+                    se refleje en los documentos generados.
+                </BulletText>
+
+                <BulletText>
+                    <Paragraph bold="1">
+                        Estadísticas de Cartera y Registros:
+                    </Paragraph>
+                    Incorporación de métricas rápidas en el panel administrativo
+                    para monitorear el conteo total de servicios que se
+                    encuentran en estado "En Mora", "Suspendido" y "Retiro
+                    Temporal".
+                </BulletText>
+            </Indent>
+
+            <Paragraph>
+                Es indispensable precisar que la complejidad técnica y el
+                alcance de estas funcionalidades adicionales superan las horas
+                disponibles en el saldo a favor. Por mutuo acuerdo, dichas horas
+                se aplicarán en su totalidad como un abono a la ejecución de
+                este bloque de desarrollos. Las horas de trabajo adicionales que
+                se requieran para la culminación y entrega de estos
+                requerimientos excedentes serán asumidas por REAM y facturadas a
+                una tarifa establecida de una (1) UVT (Unidad de Valor
+                Tributario) por hora de desarrollo técnico.
+            </Paragraph>
+        </Section>
+
         <SignSection>
             <SignRow gap="25pt" height="120pt">
                 <SignPad />
