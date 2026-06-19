@@ -118,7 +118,9 @@
                     disposición final/planta.
                 </BulletText>
             </Indent>
+        </Section>
 
+        <Section>
             <Text>
                 <Paragraph bold="1">
                     2. Registro de Pago Contra-Entrega (Perfil Operario):
@@ -156,7 +158,9 @@
                     administrativa.
                 </Paragraph>
             </Indent>
+        </Section>
 
+        <Section>
             <Text>
                 <Paragraph bold="1">
                     3. Gestión y Visualización de Saldos (A favor / En contra):
