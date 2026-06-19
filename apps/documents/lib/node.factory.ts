@@ -22,6 +22,8 @@ export interface XmlToReactOptions {
   ) => React.ReactNode | null | undefined;
   // Transforma atributos (p.ej. "true"/"false" a boolean, números a number, etc.)
   attributeTransform?: (name: string, value: string) => any;
+  // Etiquetas cuyos hijos pueden contener texto plano (ej. 'Text' en react-pdf). Por defecto ['Text']
+  textTags?: string[];
 }
 
 function defaultAttributeTransform(_name: string, value: string): any {
@@ -44,6 +46,7 @@ export function xmlToReactTree(
     interceptTags,
     onInterceptTag,
     attributeTransform = defaultAttributeTransform,
+    textTags = ["Text"],
   } = options;
 
   const parser = new DOMParser({
@@ -60,15 +63,57 @@ export function xmlToReactTree(
 
   const doc = parser.parseFromString(xml, "text/xml");
 
-  function nodeToElement(node: Node, index: number): React.ReactNode | null {
+  function nodeToElement(
+    node: Node,
+    index: number,
+    parentTag?: string,
+  ): React.ReactNode | null {
     const ELEMENT_NODE = 1;
     const TEXT_NODE = 3;
 
     if ((node as any).nodeType === TEXT_NODE) {
       const raw = node.nodeValue ?? "";
-      const text = trimText ? raw.replace(/\s+/g, " ").trim() : raw;
-      if (!text) return null;
-      return textWrapper ? React.createElement(textWrapper, null, text) : text;
+      if (!raw) return null;
+
+      if (trimText) {
+        // Colapsamos todas las secuencias de espacios en uno solo
+        const collapsed = raw.replace(/\s+/g, " ");
+        let text = collapsed;
+
+        // Si el hermano inmediato es un ELEMENTO, conservamos el espacio en ese lado
+        const prevIsElement = node.previousSibling?.nodeType === ELEMENT_NODE;
+        const nextIsElement = node.nextSibling?.nodeType === ELEMENT_NODE;
+
+        if (!prevIsElement) {
+          text = text.trimStart();
+        }
+        if (!nextIsElement) {
+          text = text.trimEnd();
+        }
+
+        if (!text) return null;
+
+        // Si el texto resultante es SOLO ESPACIOS y el padre NO es un componente de texto,
+        // lo ignoramos para evitar advertencias en react-pdf u otros renderizadores
+        if (text.trim() === "" && parentTag && !textTags.includes(parentTag)) {
+          return null;
+        }
+
+        return textWrapper
+          ? React.createElement(textWrapper, null, text)
+          : text;
+      } else {
+        // trimText === false
+        const text = raw;
+        if (!text) return null;
+        // También filtramos si el texto es solo espacios y el padre no admite texto
+        if (text.trim() === "" && parentTag && !textTags.includes(parentTag)) {
+          return null;
+        }
+        return textWrapper
+          ? React.createElement(textWrapper, null, text)
+          : text;
+      }
     }
 
     if ((node as any).nodeType === ELEMENT_NODE) {
@@ -87,7 +132,7 @@ export function xmlToReactTree(
       // children
       const children: React.ReactNode[] = [];
       for (let i = 0; i < el.childNodes.length; i += 1) {
-        const child = nodeToElement(el.childNodes.item(i), i);
+        const child = nodeToElement(el.childNodes.item(i), i, tag);
         if (child !== null && child !== undefined) children.push(child);
       }
 
