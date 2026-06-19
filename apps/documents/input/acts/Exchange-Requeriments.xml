@@ -57,13 +57,12 @@
             </Paragraph>
 
             <BulletText>
-                <Text bold="1">Módulo de Certificados:</Text>
-                <S />
-                Funcionalidad que consiste en el envio de certificados de
-                disposición al cliente final mediante correo electrónico,
-                adjuntado multiples certificados de un mismo cliente en un único
-                correo mensual, así como una UI para la gestión de certificados
-                y cargué de los mismos.
+                <Text bold="1">Módulo de Certificados:</Text> Funcionalidad que
+                consiste en el envio de certificados de disposición al cliente
+                final mediante correo electrónico, adjuntado multiples
+                certificados de un mismo cliente en un único correo mensual, así
+                como una UI para la gestión de certificados y cargué de los
+                mismos.
             </BulletText>
 
             <Indent>
@@ -84,36 +83,41 @@
                 REAM:
             </Paragraph>
 
-            <BulletText>
+            <Text>
                 <Paragraph bold="1">
                     1. Reporte Mensual Automático para Planta (Excel):
                 </Paragraph>
-                <TextJustify>
+                <Paragraph>
                     Desarrollo e implementación de un sistema de generación y
                     distribución automatizada del conglomerado mensual de
                     manifiestos.
-                </TextJustify>
-                <TextJustify>
-                    <Paragraph bold="1">- Estructura y Formato:</Paragraph> El
+                </Paragraph>
+            </Text>
+
+            <Indent gap="7pt">
+                <BulletText>
+                    <Paragraph bold="1">Estructura y Formato:</Paragraph> El
                     sistema utilizará como base una plantilla fija en formato
                     Excel, la cual deberá ser proporcionada por REAM. El
                     desarrollo mapeará los datos del sistema para poblar este
                     documento respetando dicha estructura.
-                </TextJustify>
-                <TextJustify>
-                    <Paragraph bold="1">- Automatización (Cron Job):</Paragraph>
+                </BulletText>
+
+                <BulletText>
+                    <Paragraph bold="1">Automatización (Cron Job):</Paragraph>
                     Se configurará una tarea programada en el servidor que se
                     ejecutará de forma autónoma el primer día de cada mes,
                     coincidiendo con el inicio del nuevo ciclo operativo.
-                </TextJustify>
-                <TextJustify>
-                    <Paragraph bold="1">- Distribución:</Paragraph> Una vez
+                </BulletText>
+
+                <BulletText>
+                    <Paragraph bold="1">Distribución:</Paragraph> Una vez
                     construido el documento, el sistema lo enviará
                     automáticamente como archivo adjunto a la dirección de
                     correo electrónico que REAM designe para el área de
                     disposición final/planta.
-                </TextJustify>
-            </BulletText>
+                </BulletText>
+            </Indent>
 
             <BulletText>
                 <Text bold="1">Registro de Pago Contra-Entrega:</Text>
