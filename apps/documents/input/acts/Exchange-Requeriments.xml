@@ -1,16 +1,17 @@
 ;<Document
-    subject="Acta de Reunión"
-    title="Plataforma Residuos Ambientales"
+    subject="Propuesta"
+    title="Intercambio de Requerimientos"
     author="Joan Andrés Buriticá Salazar"
-    keywords="Act, Meet, Compromises"
+    keywords="Act, Meet, Compromises, Proposal"
     creator="Joan Andrés Buriticá Salazar"
     producer="React PDF with Bun"
     language="es"
 >
     <Cover
-        type="Acta de Reunión"
-        title="Plataforma Residuos Ambientales"
-        month="Abril 2026"
+        type="Propuesta"
+        title="Intercambio Requerimientos"
+        scaleTitle="0.85"
+        month="Junio 2026"
     />
 
     <Paginate>
