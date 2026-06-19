@@ -235,7 +235,7 @@
             </Text>
         </Section>
 
-        <Section wrap="1" gap="0.2cm">
+        <Section gap="0.2cm">
             <Title size="xs" textAlign="left">
                 4. Liquidación y Saldo a Favor
             </Title>
@@ -270,10 +270,10 @@
                 Si bien no forman parte de la negociación principal de
                 intercambio, durante las mesas de trabajo recientes se
                 identificaron nuevas necesidades operativas y visuales por parte
-                de REAM. De mutuo acuerdo, se establece que las horas de saldo a
-                favor generadas en la Sección 4 se podrán utilizar en su
-                totalidad para cubrir total o parcilamente el desarrollo e
-                implementación de los siguientes puntos del backlog:
+                de REAM. Se establece que las horas de saldo a favor generadas
+                en la Sección 4 se podrán utilizar en su totalidad para cubrir
+                total o parcilamente el desarrollo e implementación de los
+                siguientes puntos del backlog:
             </Paragraph>
 
             <Indent gap="7pt">
@@ -285,6 +285,13 @@
                     para visualizar de forma rápida la actividad, rendimiento y
                     trazabilidad de los operarios y los camiones.
                 </BulletText>
+
+                <Indent marginBottom="0.5cm">
+                    <Text>
+                        <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 18
+                        horas.
+                    </Text>
+                </Indent>
 
                 <BulletText>
                     <Paragraph bold="1">
@@ -298,6 +305,12 @@
                     diaria.
                 </BulletText>
 
+                <Indent marginBottom="0.5cm">
+                    <Text>
+                        <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 2 horas.
+                    </Text>
+                </Indent>
+
                 <BulletText>
                     <Paragraph bold="1">
                         Catálogo Extendido de Residuos Sanitarios:
@@ -309,15 +322,26 @@
                     se refleje en los documentos generados.
                 </BulletText>
 
+                <Indent marginBottom="0.5cm">
+                    <Text>
+                        <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 1 horas.
+                    </Text>
+                </Indent>
+
                 <BulletText>
                     <Paragraph bold="1">
                         Estadísticas de Cartera y Registros:
                     </Paragraph>
-                    Incorporación de métricas rápidas en el panel administrativo
-                    para monitorear el conteo total de servicios que se
-                    encuentran en estado "En Mora", "Suspendido" y "Retiro
-                    Temporal".
+                    Incorporación de métricas en el panel administrativo para
+                    monitorear el conteo total de servicios que se encuentran en
+                    estado "En Mora", "Suspendido" y "Retiro Temporal".
                 </BulletText>
+
+                <Indent marginBottom="0.5cm">
+                    <Text>
+                        <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 8 horas.
+                    </Text>
+                </Indent>
             </Indent>
 
             <Paragraph>
