@@ -65,11 +65,9 @@
                 mismos.
             </BulletText>
 
-            <Indent>
-                <Text>
-                    <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 61 horas.
-                </Text>
-            </Indent>
+            <Text>
+                <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 61 horas.
+            </Text>
         </Section>
 
         <Section wrap="1" gap="0.2cm">
@@ -82,7 +80,9 @@
                 implementarán las siguientes funcionalidades solicitadas por
                 REAM:
             </Paragraph>
+        </Section>
 
+        <Section>
             <Text>
                 <Paragraph bold="1">
                     1. Reporte Mensual Automático para Planta (Excel):
@@ -118,6 +118,10 @@
                     disposición final/planta.
                 </BulletText>
             </Indent>
+
+            <Text>
+                <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 10 horas.
+            </Text>
         </Section>
 
         <Section>
@@ -158,6 +162,10 @@
                     administrativa.
                 </Paragraph>
             </Indent>
+
+            <Text>
+                <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 12 horas.
+            </Text>
         </Section>
 
         <Section>
@@ -201,6 +209,10 @@
                     valor a pagar en la factura subsecuente.
                 </BulletText>
             </Indent>
+
+            <Text>
+                <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 18 horas.
+            </Text>
         </Section>
 
         <Section wrap="1" gap="0.2cm">
@@ -214,18 +226,18 @@
                 siguiente manera:
             </Paragraph>
 
-            <BulletText>Tiempo total retirado: [X horas]</BulletText>
+            <BulletText>Tiempo total retirado: 21 horas</BulletText>
 
-            <BulletText>Tiempo total adicionado: [X horas]</BulletText>
+            <BulletText>Tiempo total adicionado: 0 horas</BulletText>
 
             <BulletText>
-                <Text bold="1">Saldo a favor resultante: [X horas]</Text>
+                <Text bold="1">Saldo a favor resultante: 21 horas</Text>
             </BulletText>
 
             <Paragraph>
                 Este saldo a favor será acreditado a REAM bajo la modalidad de
-                [Bolsa de horas para soporte / Bolsa para futuros
-                requerimientos], con vigencia hasta [Fecha].
+                Bolsa para futuros requerimientos, con vigencia de 1 mes
+                posterios a la aceptación de esta propuesta.
             </Paragraph>
         </Section>
 
