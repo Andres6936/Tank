@@ -157,11 +157,46 @@
                 </Paragraph>
             </Indent>
 
-            <BulletText>
-                <Text bold="1">Visualización de Saldo a Favor:</Text>
-                Interfaz informativa para control de saldos de clientes.
-                <Text bold="1">Tiempo estimado:</Text> [X horas].
-            </BulletText>
+            <Text>
+                <Paragraph bold="1">
+                    3. Gestión y Visualización de Saldos (A favor / En contra):
+                </Paragraph>
+                <Paragraph>
+                    Implementación de un sistema de control de saldos para
+                    gestionar pagos parciales o con excedentes, y su aplicación
+                    cruzada en ciclos de facturación posteriores.
+                </Paragraph>
+            </Text>
+
+            <Indent gap="7pt">
+                <BulletText>
+                    <Paragraph bold="1">Flexibilidad en Recaudos:</Paragraph>
+                    Ajustar la lógica del módulo de pagos para permitir el
+                    registro manual de valores superiores o inferiores al monto
+                    total facturado, calculando y almacenando automáticamente la
+                    diferencia.
+                </BulletText>
+
+                <BulletText>
+                    <Paragraph bold="1">
+                        Visualización en Facturación:
+                    </Paragraph>
+                    Integrar indicadores en las interfaces de facturación y
+                    resumen de cliente que reflejen de manera clara el estado de
+                    cuenta histórico (saldo a favor o saldo pendiente por
+                    cobrar).
+                </BulletText>
+
+                <BulletText>
+                    <Paragraph bold="1">
+                        Aplicación en Pagos Manuales (Cruce de Cuentas):
+                    </Paragraph>
+                    Al momento de registrar un nuevo pago manual, la interfaz
+                    expondrá el saldo a favor disponible del cliente y
+                    habilitará la funcionalidad para descontar dicho monto del
+                    valor a pagar en la factura subsecuente.
+                </BulletText>
+            </Indent>
         </Section>
 
         <Section wrap="1" gap="0.2cm">
