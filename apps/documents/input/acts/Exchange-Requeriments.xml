@@ -247,6 +247,17 @@
                 siguiente manera:
             </Paragraph>
 
+            <Paragraph>
+                Para efectos de transparencia financiera en la presente
+                liquidación, el valor monetario de la hora de desarrollo ha sido
+                calculado tomando como base el monto correspondiente a la última
+                factura pendiente de pago del contrato, dividido equitativamente
+                entre el total de horas estimadas para la ejecución del módulo
+                retirado. Esta fórmula establece de manera objetiva la tasa base
+                de cuantificación para el cruce de cuentas y el saldo a favor
+                generado.
+            </Paragraph>
+
             <BulletText>Tiempo total retirado: 18 horas</BulletText>
 
             <BulletText>Tiempo total adicionado: 0 horas</BulletText>
@@ -341,6 +352,26 @@
                 <Indent marginBottom="0.5cm">
                     <Text>
                         <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 8 horas.
+                    </Text>
+                </Indent>
+
+                <BulletText>
+                    <Paragraph bold="1">
+                        Resumen de Cobros Adicionales en Manifiestos:
+                    </Paragraph>
+                    Modificación de la plantilla del motor de generación de PDFs
+                    (Manifiestos de Carga) para incorporar una nueva página
+                    anexa. Esta página expondrá el resumen detallado de los
+                    cobros adicionales aplicados al cliente. El desarrollo
+                    requiere intervenir y actualizar la lógica del flujo de
+                    "sellar manifiesto" para calcular y transparentar estos
+                    valores en tiempo real, anticipándose a la generación de la
+                    factura a final de mes.
+                </BulletText>
+
+                <Indent marginBottom="0.5cm">
+                    <Text>
+                        <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 3 horas.
                     </Text>
                 </Indent>
             </Indent>
