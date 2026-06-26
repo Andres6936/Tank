@@ -86,12 +86,12 @@
         <Section>
             <Text>
                 <Paragraph bold="1">
-                    1. Reporte Mensual Automático para Planta (Excel):
+                    1. Reporte Mensual para Planta (Excel) bajo Demanda:
                 </Paragraph>
                 <Paragraph>
-                    Desarrollo e implementación de un sistema de generación y
-                    distribución automatizada del conglomerado mensual de
-                    manifiestos.
+                    Desarrollo e implementación de una funcionalidad para la
+                    generación controlada y bajo demanda del conglomerado
+                    mensual de manifiestos.
                 </Paragraph>
             </Text>
 
@@ -105,18 +105,23 @@
                 </BulletText>
 
                 <BulletText>
-                    <Paragraph bold="1">Automatización (Cron Job):</Paragraph>
-                    Se configurará una tarea programada en el servidor que se
-                    ejecutará de forma autónoma el primer día de cada mes,
-                    coincidiendo con el inicio del nuevo ciclo operativo.
+                    <Paragraph bold="1">
+                        Generación Manual (Administrador):
+                    </Paragraph>
+                    Se habilitará una opción en la interfaz que permitirá
+                    exclusivamente al perfil "Administrador" ejecutar la
+                    creación del reporte en el momento que lo requiera, las
+                    veces que sea necesario y sin restricciones automáticas de
+                    fecha.
                 </BulletText>
 
                 <BulletText>
-                    <Paragraph bold="1">Distribución:</Paragraph> Una vez
-                    construido el documento, el sistema lo enviará
-                    automáticamente como archivo adjunto a la dirección de
-                    correo electrónico que REAM designe para el área de
-                    disposición final/planta.
+                    <Paragraph bold="1">Disponibilidad y Descarga:</Paragraph>{" "}
+                    Una vez solicitado por el administrador, el sistema
+                    construirá el documento consolidado y permitirá su descarga
+                    directa (o envío inmediato) otorgando a REAM el control
+                    absoluto sobre el momento de corte y distribución hacia el
+                    área de planta.
                 </BulletText>
             </Indent>
 
