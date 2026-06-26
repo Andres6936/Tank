@@ -293,11 +293,15 @@
                     <Paragraph bold="1">
                         Gráficos de Rendimiento (Mes y Día):
                     </Paragraph>
-                    Implementación de gráficos con filtros mensuales y diarios
-                    para visualizar de forma rápida la actividad, rendimiento y
-                    trazabilidad de los operarios y los camiones, incorporando
-                    además la métrica de los kilogramos (Kg) totales recogidos
-                    durante el ciclo operativo.
+                    Implementación de gráficos y paneles de control con filtros
+                    mensuales y diarios para visualizar de forma rápida la
+                    actividad, rendimiento y trazabilidad de los operarios y los
+                    camiones. Como parte de la medición de actividad, la
+                    interfaz desglosará el progreso de la ruta indicando
+                    claramente el volumen de recolecciones clasificadas en sus
+                    tres estados operativos: pendientes, recogidas y con
+                    novedad. Asimismo, se incorporará la métrica cuantitativa de
+                    los kilogramos (Kg) totales recogidos durante el ciclo.
                 </BulletText>
 
                 <Indent marginBottom="0.5cm">
