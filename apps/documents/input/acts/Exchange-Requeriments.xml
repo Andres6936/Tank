@@ -438,6 +438,48 @@
             </Paragraph>
         </Section>
 
+        <Section gap="0.2cm">
+            <Title size="xs" textAlign="left">
+                6. Resumen Financiero y Liquidación Final
+            </Title>
+
+            <Paragraph>
+                A continuación, se presenta el consolidado financiero para el
+                cierre formal de este ciclo de desarrollo. La siguiente tabla
+                detalla el valor correspondiente a la factura pendiente del hito
+                contractual actual, junto con la estimación económica de las
+                horas extra de desarrollo requeridas para culminar a cabalidad
+                los requerimientos excedentes estipulados en la Sección 5,
+                calculadas bajo la tarifa convenida de una (1) UVT por hora
+                técnica.
+            </Paragraph>
+
+            <Table>
+                <Header>
+                    <Row>
+                        <Cell flex="2">Concepto</Cell>
+                        <Cell textAlign="right">COP</Cell>
+                    </Row>
+                </Header>
+                <Body>
+                    <Row>
+                        <Cell flex="2">Factura Pendiente</Cell>
+                        <Cell textAlign="right">$ 1'531.238</Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">Horas Extras</Cell>
+                        <Cell textAlign="right">$ 1'256.976</Cell>
+                    </Row>
+                </Body>
+                <Footer>
+                    <Row>
+                        <Cell flex="2">Total</Cell>
+                        <Cell textAlign="right">$ 2'788.214</Cell>
+                    </Row>
+                </Footer>
+            </Table>
+        </Section>
+
         <SignSection>
             <SignRow gap="25pt" height="120pt">
                 <SignPad />
