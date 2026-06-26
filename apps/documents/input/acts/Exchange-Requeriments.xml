@@ -295,7 +295,9 @@
                     </Paragraph>
                     Implementación de gráficos con filtros mensuales y diarios
                     para visualizar de forma rápida la actividad, rendimiento y
-                    trazabilidad de los operarios y los camiones.
+                    trazabilidad de los operarios y los camiones, incorporando
+                    además la métrica de los kilogramos (Kg) totales recogidos
+                    durante el ciclo operativo.
                 </BulletText>
 
                 <Indent marginBottom="0.5cm">
@@ -357,21 +359,59 @@
 
                 <BulletText>
                     <Paragraph bold="1">
-                        Resumen de Cobros Adicionales en Manifiestos:
+                        Resumen de Cobros Adicionales y Pagos en Manifiestos:
                     </Paragraph>
-                    Modificación de la plantilla del motor de generación de PDFs
-                    (Manifiestos de Carga) para incorporar una nueva página
-                    anexa. Esta página expondrá el resumen detallado de los
-                    cobros adicionales aplicados al cliente. El desarrollo
-                    requiere intervenir y actualizar la lógica del flujo de
-                    "sellar manifiesto" para calcular y transparentar estos
-                    valores en tiempo real, anticipándose a la generación de la
-                    factura a final de mes.
+                    Modificación estructural de la plantilla del motor de
+                    generación de PDFs (Manifiestos de Carga). Se expandirá el
+                    tamaño de la página para consolidar en una única hoja el
+                    bloque de firmas y el resumen detallado de los cobros
+                    adicionales. Adicionalmente, el documento deberá indicar de
+                    forma explícita si el cliente realizó un pago contra-entrega
+                    y el monto exacto recaudado. Este desarrollo requiere
+                    actualizar la lógica del flujo de "sellar manifiesto" para
+                    calcular e inyectar estos valores en el PDF en tiempo real.
                 </BulletText>
 
                 <Indent marginBottom="0.5cm">
                     <Text>
                         <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 3 horas.
+                    </Text>
+                </Indent>
+
+                <BulletText>
+                    <Paragraph bold="1">
+                        Reporte Diario de Pagos Contra-Entrega (Excel):
+                    </Paragraph>
+                    Desarrollo de una funcionalidad para la generación bajo
+                    demanda de un informe consolidado en formato Excel (XLSX)
+                    sobre los recaudos en sitio. Se implementará una ventana
+                    modal que permitirá seleccionar la fecha específica a
+                    consultar. El acceso y ejecución de este reporte estará
+                    restringido exclusivamente a los perfiles "Comercial" y
+                    "Administrador".
+                </BulletText>
+
+                <Indent marginBottom="0.5cm">
+                    <Text>
+                        <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 6 horas.
+                    </Text>
+                </Indent>
+
+                <BulletText>
+                    <Paragraph bold="1">
+                        Ordenamiento Personalizado de Servicios:
+                    </Paragraph>
+                    Inclusión de un campo de "Orden" asignable a cada registro
+                    de servicio. Este parámetro dictará la secuencia exacta en
+                    la que el operario visualizará su lista de recolecciones en
+                    la interfaz móvil. La gestión y modificación de este orden
+                    se habilitará directamente desde la vista de la lista de
+                    programación, permitiendo ajustes logísticos en tiempo real.
+                </BulletText>
+
+                <Indent marginBottom="0.5cm">
+                    <Text>
+                        <Text bold="1">Tiempo/Esfuerzo estimado:</Text> 1 horas.
                     </Text>
                 </Indent>
             </Indent>
