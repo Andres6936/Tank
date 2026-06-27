@@ -1,0 +1,262 @@
+;<Document
+    subject="Acta de Reunión"
+    title="Plataforma Residuos Ambientales"
+    author="Joan Andrés Buriticá Salazar"
+    keywords="Act, Meet, Compromises"
+    creator="Joan Andrés Buriticá Salazar"
+    producer="React PDF with Bun"
+    language="es"
+>
+    <Cover
+        type="Acta de Reunión"
+        title="Plataforma Residuos Ambientales"
+        month="Junio 2026"
+    />
+
+    <Paginate>
+        <IndicatorHeader value="Ing. Joan A. Buriticá" />
+        <Section marginTop="0" gap="0.1cm">
+            <Text>
+                <Text bold="1">Fecha de la Reunión:</Text>
+                26 de junio de 2026
+            </Text>
+
+            <Text>
+                <Text bold="1">Hora de Inicio:</Text>
+                10:00 AM
+            </Text>
+
+            <Text>
+                <Text bold="1">Hora de Finalización:</Text>
+                11:30 AM
+            </Text>
+
+            <Text>
+                <Text bold="1">Lugar:</Text>
+                Videoconferencia vía Google Meet
+            </Text>
+        </Section>
+
+        <Section gap="0.3cm">
+            <Title size="xs" textAlign="left">
+                Asistentes:
+            </Title>
+
+            <BulletText>Joan Andrés Buriticá (El Proveedor)</BulletText>
+            <BulletText>Liz Alexandra, Responsable REAM</BulletText>
+            <BulletText>Ricardo Suarez, Responsable REAM</BulletText>
+        </Section>
+
+        <Section>
+            <Title size="xs" textAlign="left">
+                Orden del Día:
+            </Title>
+
+            <Paragraph>
+                Cierre formal del ciclo de pruebas (Módulos Base)
+            </Paragraph>
+
+            <Paragraph>
+                Consolidación de requerimientos técnicos y correcciones (Mayo -
+                Junio)
+            </Paragraph>
+
+            <Paragraph>
+                Formalización de Extensión Contractual e Intercambio de
+                Requerimientos
+            </Paragraph>
+
+            <Paragraph>
+                Levantamiento de ajustes finales de interfaz y reglas de negocio
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                1. Cierre Definitivo de los Ciclos de Desarrollo y Pruebas
+            </Title>
+
+            <Paragraph>
+                REAM confirma la validación técnica y operativa de los módulos
+                de Programación, Servicios, Pagos y Manifiestos. Con esta
+                validación, se declara formalmente la finalización, aprobación y
+                cierre definitivo tanto del ciclo de desarrollo como del único
+                ciclo de pruebas establecido para el alcance principal de la
+                plataforma.
+            </Paragraph>
+
+            <Paragraph>
+                Se deja expresa constancia de que la única funcionalidad
+                exceptuada de este cierre es el "Módulo de Certificados", el
+                cual no será desarrollado por mutuo acuerdo y ha sido sustituido
+                legal y financieramente mediante el documento anexo de
+                "Intercambio de Requerimientos".
+            </Paragraph>
+
+            <Paragraph>
+                En consecuencia, y dada la culminación de la etapa de desarrollo
+                y pruebas, cualquier nueva solicitud de modificación, ajuste de
+                interfaz, alteración de reglas de negocio o adición de
+                requerimientos por parte de REAM a partir de la fecha, será
+                catalogada de manera estricta como un nuevo alcance (Scope
+                Creep) y estará sujeta a estimación, cotización y facturación
+                independiente al contrato actual.
+            </Paragraph>
+
+            <Paragraph>
+                Finalmente, se confirma el cumplimiento del compromiso pendiente
+                del acta del 17 de abril, habilitando satisfactoriamente el
+                envío automatizado de notificaciones por correo electrónico para
+                los estados "En Mora" y "Retiro Temporal".
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                2. Consolidación de Ajustes Ejecutados (Entregables)
+            </Title>
+
+            <Paragraph>
+                Se deja constancia de la entrega, revisión y aprobación en
+                producción de las siguientes correcciones e implementaciones
+                levantadas durante las mesas de trabajo del 22 de mayo al 22 de
+                junio:
+            </Paragraph>
+
+            <BulletText>
+                <Text bold="1">Perfiles, UI y Accesibilidad:</Text> Habilitación
+                de UI para edición e inactivación de operarios, corrección de
+                error 404 en camiones, integración de campo de contraseña,
+                mejoras de accesibilidad en formularios de creación y
+                reestructuración de campos de nombres.
+            </BulletText>
+
+            <BulletText>
+                <Text bold="1">Manifiestos y App Operador:</Text> Corrección en
+                la captura del campo "Otro" en manifiestos, reparación del botón
+                "Tomar Foto", visibilidad del valor de factura del ciclo actual
+                en la vista del operario, y habilitación de venta de productos
+                adicionales en manifiestos "Sin Residuos" (con Novedad).
+            </BulletText>
+
+            <BulletText>
+                <Text bold="1">Facturación, Pagos y Vistas:</Text> Eliminación
+                del tope máximo en registro manual de facturas, adición de fecha
+                de pago, bloqueo de doble registro en pagos procesados,
+                normalización de los detalles de medio de pago/monto, y
+                ampliación de permisos al perfil Comercial para visualizar
+                tablas de servicios, detalles, manifiestos y pagos. Corrección
+                de ordenamiento (Estado - Día) y arreglos en discrepancias de
+                meses en facturas vencidas.
+            </BulletText>
+
+            <BulletText>
+                <Text bold="1">Clarificaciones Técnicas:</Text> Se validó que
+                los estados de los manifiestos ya se encuentran normalizados
+                desde la base de datos, y que los perfiles comerciales mantienen
+                la restricción correcta sobre el registro de pagos, tal como
+                estipula la arquitectura del sistema.
+            </BulletText>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                3. Formalización de Extensión e Intercambio de Requerimientos
+            </Title>
+            <Paragraph>
+                Se presentan finalizados y testeados los desarrollos paralelos
+                categorizados como funcionalidades adicionales: Gráficos de
+                rendimiento por mes/día (con distinción de novedades), Indicador
+                visual de progreso del camión, Visualización de Saldo a Favor en
+                tablas y detalles, Nuevo listado de Residuos Sanitarios,
+                Histórico diario de camiones y Estadísticas de registros al día
+                vs. en mora.
+            </Paragraph>
+            <Paragraph>
+                Para integrar estas funcionalidades, se acuerda formalmente la
+                firma del
+                <Text bold="1">
+                    Otrosí No. 3 (Serial: 019F061A-1E2F7C1DFA98)
+                </Text>
+                , el cual extiende la vigencia del contrato hasta el
+                <Text bold="1">30 de julio de 2026</Text>, y se anexa el
+                documento
+                <Text bold="1">
+                    "Intercambio de Requerimientos" (Serial:
+                    019F061A-1E2F7C1DFA98)
+                </Text>
+                que liquida financieramente este cambio de alcance.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                4. Compromisos Pendientes y Ajustes Finales (Mesa de Trabajo 26
+                de Junio)
+            </Title>
+
+            <Paragraph>
+                Como condición para el cierre definitivo, el Proveedor se
+                compromete a realizar los siguientes ajustes menores de interfaz
+                y reglas de negocio detectados en la reunión de la fecha:
+            </Paragraph>
+
+            <BulletText>
+                <Text bold="1">Lógica de Botones:</Text> El botón "Sin Residuos"
+                en la App del operario se habilitará únicamente si no existen
+                líneas de residuos previamente diligenciadas.
+            </BulletText>
+            <BulletText>
+                <Text bold="1">Nomenclatura (Labels):</Text> Cambiar el estado
+                visual de "Servicio Desvinculado" a "Retiro Temporal", y
+                renombrar "Suspendido" a "En Mora".
+            </BulletText>
+            <BulletText>
+                <Text bold="1">Programación y Modal:</Text> La matriz de
+                configuración de programación se inicializará por defecto con
+                todos los días sin seleccionar. Adicionalmente, se implementará
+                un modal de confirmación al desvincular un servicio.
+            </BulletText>
+            <BulletText>
+                <Text bold="1">
+                    Gestión de Registros en Mora (Pendiente Mayo):
+                </Text>
+                En la tabla de programación, los registros "En Mora" se enviarán
+                al final de la lista. Se configurará el traslado automático de
+                estos registros a la tabla de pendientes el primer día de cada
+                mes.
+            </BulletText>
+            <BulletText>
+                <Text bold="1">Ajustes UI Operador y Cargos:</Text> Ocultar los
+                valores de referencia de los guardianes en la vista del
+                operario, y añadir un indicador visual (Scroll) junto al pad de
+                firmas para mejorar la accesibilidad.
+            </BulletText>
+        </Section>
+
+        <Section>
+            <Paragraph>
+                <Text size="xs" opacity="0.7">
+                    Nota Legal de Aceptación Tácita: Según la CLÁUSULA SEGUNDA,
+                    Numeral 14 del contrato original, el CONTRATANTE dispone de
+                    cinco (5) días hábiles tras el envío de este documento para
+                    manifestar inconformidades. Vencido este plazo sin
+                    notificación formal, el acta y su contenido se considerarán
+                    aceptados de manera definitiva.
+                </Text>
+            </Paragraph>
+        </Section>
+
+        <SignSection>
+            <SignRow gap="25pt" height="120pt">
+                <SignPad />
+                <SignPadRight signBy="Firma Liz Alexandra, Representante REAM" />
+            </SignRow>
+
+            <SignRow gap="25pt" height="120pt">
+                <SignPadLeft signBy="Firma Ricardo Suarez, Representante REAM" />
+                <SignMeRight />
+            </SignRow>
+        </SignSection>
+    </Paginate>
+</Document>
