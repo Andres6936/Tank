@@ -1,0 +1,160 @@
+;<Document
+    subject="Propuesta Económica"
+    title="Cambios Servigenerador"
+    author="Joan Andrés Buriticá Salazar"
+    keywords="Proposal"
+    creator="Joan Andrés Buriticá Salazar"
+    producer="React PDF with Bun"
+    language="es"
+>
+    <Cover
+        type="Propuesta Económica"
+        title="Cambios Servigenerador"
+        scaleTitle="0.9"
+        month="Julio 2026"
+    />
+
+    <Paginate>
+        <IndicatorHeader value="Ing. Joan A. Buriticá S." />
+        <Section marginTop="0" gap="0.1cm">
+            <Text>
+                <Text bold="1">
+                    Fecha:
+                    <S />
+                </Text>
+                Julio, 1 de 2026
+            </Text>
+        </Section>
+
+        <Section>
+            <Title size="md">I. Objetivo del Documento</Title>
+
+            <Paragraph>
+                Presentar el alcance técnico, cronograma y condiciones
+                comerciales para la implementación de optimizaciones en la
+                captura de datos y modernización del formato de órdenes de
+                servicio en la plataforma actual.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1" marginTop="1cm">
+            <Title size="md">II. Alcance Técnico</Title>
+
+            <Title size="xs" textAlign="left">
+                Módulo A: Modernización de Formato de Orden de Servicio
+            </Title>
+
+            <Paragraph>
+                Rediseño de Formato (PDF): Estructuración de un nuevo diseño
+                visual para el formato de orden de servicio, enfocado en
+                legibilidad corporativa y profesionalismo.
+            </Paragraph>
+
+            <Paragraph>
+                Integración de Evidencias: Acoplamiento del módulo de evidencias
+                al rediseño del formato. Esta función está estrictamente
+                limitada a la visualización y renderizado de la información y
+                registros fotográficos existentes vinculados a la orden,
+                asumiendo que la captura de dichos anexos ya fue completada en
+                etapas previas del flujo.
+            </Paragraph>
+
+            <Indent marginBottom="0.7cm">
+                <Bold>Tiempo Estimado: 3 horas</Bold>
+            </Indent>
+
+            <Title size="xs" textAlign="left">
+                Módulo B: Refactorización de Arquitectura de Datos (Equipos)
+            </Title>
+
+            <Paragraph>
+                Optimización de Ingreso de Datos: Modificación de los
+                formularios de creación de "Equipos", trasladando los campos de
+                información estática y repetitiva que actualmente residen en la
+                "Orden de Servicio".
+            </Paragraph>
+
+            <Paragraph>
+                Migración Relacional: Reestructuración de la base de datos para
+                que la Orden de Servicio consuma y arrastre automáticamente la
+                información del Equipo seleccionado, eliminando la doble
+                digitación.
+            </Paragraph>
+
+            <Paragraph>
+                Migración de Datos Históricos: Ejecución de un script de base de
+                datos para preservar la integridad de las órdenes de servicio
+                generadas antes de esta actualización, asegurando que no haya
+                pérdida de información.
+            </Paragraph>
+
+            <Indent>
+                <Bold>Tiempo Estimado: 3 horas</Bold>
+            </Indent>
+        </Section>
+
+        <Section>
+            <Title size="md">III. Exclusiones de Alcance y Dependencias</Title>
+
+            <Paragraph>
+                Los siguientes puntos discutidos en la mesa de trabajo quedan
+                formalmente excluidos de esta cotización y ejecución:
+            </Paragraph>
+
+            <Paragraph>
+                Cargue Masivo de Clientes: Según lo acordado, la importación de
+                clientes se realizará de forma manual por el equipo de
+                Servigenerador desde la interfaz actual. No se desarrollará un
+                módulo de importación vía Excel.
+            </Paragraph>
+
+            <Paragraph>
+                Migración de Infraestructura (Almacenamiento): La auditoría de
+                límites de espacio y posible migración de proveedor de
+                almacenamiento queda pausada a la espera de la recepción de
+                credenciales de acceso por parte del cliente. Cualquier acción
+                sobre la infraestructura será cotizada en un documento
+                independiente.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="md">IV. Cronograma y Condiciones de Entrega</Title>
+
+            <Paragraph>
+                Tiempo de Desarrollo: El desarrollo de los Módulos A y B
+                requerirá de 6 horas, contados a partir del día hábil siguiente
+                a la confirmación de la propuesta.
+            </Paragraph>
+
+            <Paragraph>
+                Aceptación Tácita: Una vez notificada la entrega de la
+                actualización para pruebas (UAT), el cliente dispondrá de siete
+                (7) días hábiles para reportar observaciones exclusivas sobre el
+                alcance contratado. Superado este plazo, el desarrollo se
+                considerará aceptado a satisfacción, procediendo con la
+                facturación del saldo final.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="md">V. Inversión y Forma de Pago</Title>
+
+            <Paragraph>
+                El valor total por la ingeniería, diseño y migración de datos
+                para el alcance descrito es de:
+                <Bold>
+                    6 horas de trabajo que equivale a 6 UVT equivalente a
+                    314.224 COP
+                </Bold>
+            </Paragraph>
+        </Section>
+
+        <SignSection hiddenTitle="1" marginTop="0" paddingTop="0">
+            <SignRow>
+                <SignMeLeft scale="0.6" />
+                <SignMeRight />
+            </SignRow>
+        </SignSection>
+    </Paginate>
+</Document>
