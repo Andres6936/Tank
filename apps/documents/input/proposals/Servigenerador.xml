@@ -22,7 +22,7 @@
                     Fecha:
                     <S />
                 </Text>
-                Julio, 1 de 2026
+                Julio, 2 de 2026
             </Text>
         </Section>
 
@@ -59,8 +59,16 @@
                 etapas previas del flujo.
             </Paragraph>
 
+            <Paragraph>
+                Soporte Documental: Se ampliará la capacidad del sistema para
+                permitir la carga de documentos adjuntos (nuevo formato
+                permitido: .pdf) con un límite máximo de 5MB por archivo. La
+                visualización en interfaz se limitará a un enlace de descarga,
+                omitiendo visores integrados.
+            </Paragraph>
+
             <Indent marginBottom="0.7cm">
-                <Bold>Tiempo Estimado: 3 horas</Bold>
+                <Bold>Tiempo Estimado: 4 horas</Bold>
             </Indent>
 
             <Title size="xs" textAlign="left">
@@ -97,24 +105,15 @@
             <Title size="md">III. Exclusiones de Alcance y Dependencias</Title>
 
             <Paragraph>
-                Los siguientes puntos discutidos en la mesa de trabajo quedan
-                formalmente excluidos de esta cotización y ejecución:
+                Los siguientes puntos quedan formalmente excluidos de esta
+                cotización y ejecución, o representan una dependencia de
+                terceros:
             </Paragraph>
 
             <Paragraph>
-                Cargue Masivo de Clientes: Según lo acordado, la importación de
-                clientes se realizará de forma manual por el equipo de
-                Servigenerador desde la interfaz actual. No se desarrollará un
-                módulo de importación vía Excel.
-            </Paragraph>
-
-            <Paragraph>
-                Migración de Infraestructura (Almacenamiento): La auditoría de
-                límites de espacio y posible migración de proveedor de
-                almacenamiento queda pausada a la espera de la recepción de
-                credenciales de acceso por parte del cliente. Cualquier acción
-                sobre la infraestructura será cotizada en un documento
-                independiente.
+                Cargue Masivo de Clientes: La importación de clientes se
+                realizará de forma manual por el equipo de Servigenerador. No se
+                desarrollará un módulo de importación vía Excel.
             </Paragraph>
         </Section>
 
@@ -123,7 +122,7 @@
 
             <Paragraph>
                 Tiempo de Desarrollo: El desarrollo de los Módulos A y B
-                requerirá de 6 horas, contados a partir del día hábil siguiente
+                requerirá de 7 horas, contados a partir del día hábil siguiente
                 a la confirmación de la propuesta.
             </Paragraph>
 
@@ -144,8 +143,8 @@
                 El valor total por la ingeniería, diseño y migración de datos
                 para el alcance descrito es de:
                 <Bold>
-                    6 horas de trabajo que equivale a 6 UVT equivalente a
-                    314.224 COP
+                    7 horas de trabajo que equivale a 7 UVT equivalente a
+                    366.618 COP
                 </Bold>
             </Paragraph>
         </Section>
