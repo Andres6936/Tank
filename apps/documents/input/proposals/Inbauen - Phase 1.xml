@@ -382,7 +382,7 @@
                         <Cell flex="2">
                             Fase y Características del Proyecto
                         </Cell>
-                        <Cell textAlign="center">USD</Cell>
+
                         <Cell textAlign="center">COP</Cell>
                     </Row>
                 </Header>
@@ -393,7 +393,7 @@
                                 Fase 1: Diseño UX/UI, Prototipado y Arquitectura
                             </Bold>
                         </Cell>
-                        <Cell textAlign="center">$ 2.625</Cell>
+
                         <Cell textAlign="right">$ 9.975.000</Cell>
                     </Row>
                     <Row>
@@ -442,7 +442,7 @@
                                 Dashboard
                             </Bold>
                         </Cell>
-                        <Cell textAlign="center">$ 6.375</Cell>
+
                         <Cell textAlign="right">$ 24.225.000</Cell>
                     </Row>
                     <Row>
@@ -508,7 +508,7 @@
                                 Pasarelas
                             </Bold>
                         </Cell>
-                        <Cell textAlign="center">$ 3.750</Cell>
+
                         <Cell textAlign="right">$ 14.250.000</Cell>
                     </Row>
                     <Row>
@@ -560,7 +560,7 @@
                                 Multicanal
                             </Bold>
                         </Cell>
-                        <Cell textAlign="center">$ 2.250</Cell>
+
                         <Cell textAlign="right">$ 8.550.000</Cell>
                     </Row>
                     <Row>
@@ -605,9 +605,7 @@
                         <Cell flex="2">
                             <Bold>Inversión Total Estimada (Desarrollo)</Bold>
                         </Cell>
-                        <Cell textAlign="center">
-                            <Bold>$ 15.000</Bold>
-                        </Cell>
+
                         <Cell textAlign="right">
                             <Bold>$ 57.000.000</Bold>
                         </Cell>
@@ -724,7 +722,7 @@
                 <Header>
                     <Row>
                         <Cell flex="2">Fase y Alcance del Proyecto</Cell>
-                        <Cell textAlign="center">USD</Cell>
+
                         <Cell textAlign="center">COP</Cell>
                     </Row>
                 </Header>
@@ -735,7 +733,7 @@
                                 Fase 1: Diseño UX/UI, Prototipado y Arquitectura
                             </Bold>
                         </Cell>
-                        <Cell textAlign="center">$ 2.625</Cell>
+
                         <Cell textAlign="right">$ 9.975.000</Cell>
                     </Row>
                     <Row>
@@ -783,7 +781,7 @@
                                 Motor de búsqueda
                             </Bold>
                         </Cell>
-                        <Cell textAlign="center">$ 2.169</Cell>
+
                         <Cell textAlign="right">$ 12.422.200</Cell>
                     </Row>
 
@@ -842,8 +840,8 @@
                         <Cell flex="2">
                             <Bold>Inversión Total Estimada</Bold>
                         </Cell>
-                        <Cell textAlign="center">$ 4.944</Cell>
-                        <Cell textAlign="right">$ 20.972.200</Cell>
+
+                        <Cell textAlign="right">$ 22.397.200</Cell>
                     </Row>
                 </Footer>
             </Table>
