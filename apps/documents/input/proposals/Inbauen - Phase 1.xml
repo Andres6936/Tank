@@ -379,7 +379,9 @@
             <Table>
                 <Header>
                     <Row>
-                        <Cell flex="2">Fase y Alcance del Proyecto</Cell>
+                        <Cell flex="2">
+                            Fase y Características del Proyecto
+                        </Cell>
                         <Cell textAlign="center">USD</Cell>
                         <Cell textAlign="center">COP</Cell>
                     </Row>
@@ -387,41 +389,229 @@
                 <Body>
                     <Row>
                         <Cell flex="2">
-                            Fase 1: Diseño UX/UI, Prototipado, Arquitectura de
-                            Información
+                            <Bold>
+                                Fase 1: Diseño UX/UI, Prototipado y Arquitectura
+                            </Bold>
                         </Cell>
                         <Cell textAlign="center">$ 2.625</Cell>
                         <Cell textAlign="right">$ 9.975.000</Cell>
                     </Row>
                     <Row>
                         <Cell flex="2">
-                            Fase 2: Motor de búsqueda, Autenticación y Dashboard
+                            • Levantamiento de arquitectura de información y
+                            User Journeys
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Construcción de wireframes estructurales (Lo-Fi)
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Diseño de componentes inmersivos y vistas Hi-Fi
+                        </Cell>
+                        <Cell />
+                        <Cell />
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Prototipado interactivo navegable para validación
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Elaboración del sistema de diseño (Design System)
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Adaptación responsiva (Mobile-first) para todos
+                            los flujos
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Diseño de estados de error, validación y
+                            notificaciones UI
+                        </Cell>
+                    </Row>
+
+                    <Row>
+                        <Cell flex="2">
+                            <Bold>
+                                Fase 2: Motor de Búsqueda, Autenticación y
+                                Dashboard
+                            </Bold>
                         </Cell>
                         <Cell textAlign="center">$ 6.375</Cell>
                         <Cell textAlign="right">$ 24.225.000</Cell>
                     </Row>
                     <Row>
                         <Cell flex="2">
-                            Fase 3: Bóvedas documentales, Roles (RBAC) e
-                            Integración de pasarelas
+                            • Configuración de entorno escalable (Next.js y
+                            React Server Components)
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Integración de base de datos relacional
+                            (PostgreSQL / Supabase)
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Tipado estricto de datos de extremo a extremo
+                            (TypeScript)
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Creación de API interna de alto rendimiento (Bun /
+                            Node)
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Programación de mapas interactivos con
+                            geolocalización dinámica
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Algoritmo de filtrado facetado avanzado y
+                            paginación en tiempo real
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Panel administrativo autogestionable con
+                            protección de rutas
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Script de migración, limpieza y sanitización de
+                            datos legados
+                        </Cell>
+                    </Row>
+
+                    <Row>
+                        <Cell flex="2">
+                            <Bold>
+                                Fase 3: Bóvedas Documentales, Roles (RBAC) y
+                                Pasarelas
+                            </Bold>
                         </Cell>
                         <Cell textAlign="center">$ 3.750</Cell>
                         <Cell textAlign="right">$ 14.250.000</Cell>
                     </Row>
                     <Row>
                         <Cell flex="2">
-                            Fase 4: Asistente IA (LLMs) y Distribución
-                            Multicanal en Redes
+                            • Arquitectura de almacenamiento cifrado en la nube
+                            para documentos
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Sistema de control de acceso basado en roles
+                            jerárquicos (RBAC)
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Visor de PDF integrado y flujos de revisión de
+                            contratos
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Maquinaria de estados para rechazo, corrección y
+                            firmas
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Integración de webhooks y API de pasarela de pagos
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Motor de alertas y notificaciones transaccionales
+                            automáticas
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Auditoría de seguridad sobre operaciones de
+                            recaudo
+                        </Cell>
+                    </Row>
+
+                    <Row>
+                        <Cell flex="2">
+                            <Bold>
+                                Fase 4: Asistente IA (LLMs) y Distribución
+                                Multicanal
+                            </Bold>
                         </Cell>
                         <Cell textAlign="center">$ 2.250</Cell>
                         <Cell textAlign="right">$ 8.550.000</Cell>
                     </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Conexión y prompting seguro con API de modelos de
+                            lenguaje (OpenAI)
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Generación de descripciones persuasivas con
+                            revisión "Human-in-the-loop"
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Inyección automatizada de meta-tags para
+                            optimización SEO técnica
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Integración vía API con el ecosistema de Meta
+                            (Facebook/Instagram)
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Integración de distribución hacia red profesional
+                            (LinkedIn)
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Programador de tareas en segundo plano para
+                            publicación diferida
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Módulo de trazabilidad y métricas de alcance en
+                            redes
+                        </Cell>
+                    </Row>
                 </Body>
                 <Footer>
                     <Row>
-                        <Cell flex="2">Inversión Total Estimada (USD)</Cell>
-                        <Cell textAlign="center">$ 15.000</Cell>
-                        <Cell textAlign="right">$ 57.000.000</Cell>
+                        <Cell flex="2">
+                            <Bold>Inversión Total Estimada (Desarrollo)</Bold>
+                        </Cell>
+                        <Cell textAlign="center">
+                            <Bold>$ 15.000</Bold>
+                        </Cell>
+                        <Cell textAlign="right">
+                            <Bold>$ 57.000.000</Bold>
+                        </Cell>
                     </Row>
                 </Footer>
             </Table>
