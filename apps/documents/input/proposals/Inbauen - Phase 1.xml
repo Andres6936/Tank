@@ -447,28 +447,35 @@
                     </Row>
                     <Row>
                         <Cell flex="2">
-                            • Configuración de entorno escalable (Next.js y
-                            React Server Components)
+                            • Arquitectura de autenticación segura y exclusiva
+                            para administradores.
                         </Cell>
                     </Row>
                     <Row>
                         <Cell flex="2">
-                            • Integración de base de datos relacional
-                            (PostgreSQL / Supabase)
+                            • Interfaz de gestión de inventario (CRUD) para
+                            creación y edición de inmuebles.
                         </Cell>
                     </Row>
                     <Row>
                         <Cell flex="2">
-                            • Tipado estricto de datos de extremo a extremo
-                            (TypeScript)
+                            • Módulo de carga, compresión y ordenamiento de
+                            galerías fotográficas.
                         </Cell>
                     </Row>
                     <Row>
                         <Cell flex="2">
-                            • Creación de API interna de alto rendimiento (Bun /
-                            Node)
+                            • Control de estados de visibilidad del inventario
+                            (Activo, Inactivo, Destacado).
                         </Cell>
                     </Row>
+                    <Row>
+                        <Cell flex="2">
+                            • Panel centralizado para la recepción, lectura y
+                            gestión básica de leads entrantes.
+                        </Cell>
+                    </Row>
+
                     <Row>
                         <Cell flex="2">
                             • Programación de mapas interactivos con
@@ -691,14 +698,26 @@
 
             <Paragraph>
                 Bajo este esquema, se conservan la conceptualización visual
-                (diseño inmersivo tipo Airbnb) y la migración del inventario
-                histórico. El desarrollo técnico se simplifica de la siguiente
-                manera: el buscador operará con mapas de localización estática
-                (sin interactividad compleja) y el sistema de control de acceso
-                se limitará a dos perfiles fundamentales (administradores y
-                clientes/usuarios publicadores). Los módulos de recaudo de
-                pagos, bóvedas de contratos y la integración de Inteligencia
-                Artificial quedan excluidos de esta iteración.
+                (diseño inmersivo tipo Airbnb). El desarrollo técnico se
+                simplifica de la siguiente manera: el buscador operará con mapas
+                de localización estática (sin interactividad compleja) y el
+                sistema de control de acceso se limitará a dos perfiles
+                fundamentales (administradores y clientes/usuarios
+                publicadores). Los módulos de recaudo de pagos, bóvedas de
+                contratos y la integración de Inteligencia Artificial quedan
+                excluidos de esta iteración.
+            </Paragraph>
+
+            <Paragraph>
+                La fase 3 se integraría con la fase previa en el desarrollo del
+                entorno privado para el equipo interno de Inbauen o clientes de
+                Inbauen. Este módulo centraliza la administración del catálogo,
+                permitiendo crear, editar, actualizar y dar de baja los
+                inmuebles que se exhiben en la interfaz pública (Fase 1). Si
+                bien esta versión prescinde de la gestión de contratos, bóvedas
+                documentales y recaudo de pagos, garantiza el control operativo
+                total sobre la información visible, garantizando que el sitio
+                web se mantenga actualizado sin depender de terceros.
             </Paragraph>
 
             <Table>
@@ -760,19 +779,14 @@
                     <Row>
                         <Cell flex="2">
                             <Bold>
-                                Fase 2: Motor de búsqueda simple, Migración y
-                                Panel Administrativo
+                                Fase 2: Panel Administrativo, Gestión de Leads y
+                                Motor de búsqueda
                             </Bold>
                         </Cell>
                         <Cell textAlign="center">$ 2.169</Cell>
-                        <Cell textAlign="right">$ 8.242.200</Cell>
+                        <Cell textAlign="right">$ 12.422.200</Cell>
                     </Row>
-                    <Row>
-                        <Cell flex="2">
-                            • Configuración base y conexión a base de datos
-                            relacional
-                        </Cell>
-                    </Row>
+
                     <Row>
                         <Cell flex="2">
                             • Buscador textual y listado con mapa de
@@ -787,54 +801,39 @@
                     </Row>
                     <Row>
                         <Cell flex="2">
-                            • Carga de datos legados (sin geocodificación
-                            automatizada)
-                        </Cell>
-                    </Row>
-                    <Row>
-                        <Cell flex="2">
                             • Formularios UI integrados para captura directa de
                             leads
                         </Cell>
                     </Row>
+
                     <Row>
                         <Cell flex="2">
-                            <Bold>
-                                Fase 3: Sistema de Usuarios Simplificado (2
-                                Roles)
-                            </Bold>
-                        </Cell>
-                        <Cell textAlign="center">$ 1.100</Cell>
-                        <Cell textAlign="right">$ 4.180.000</Cell>
-                    </Row>
-                    <Row>
-                        <Cell flex="2">
-                            • Arquitectura de autenticación estándar
-                            (Login/Registro seguro)
+                            • Arquitectura de autenticación segura y exclusiva
+                            para administradores.
                         </Cell>
                     </Row>
                     <Row>
                         <Cell flex="2">
-                            • Implementación de 2 roles fijos: Administrador y
-                            Cliente
+                            • Interfaz de gestión de inventario (CRUD) para
+                            creación y edición de inmuebles.
                         </Cell>
                     </Row>
                     <Row>
                         <Cell flex="2">
-                            • Lógica de enrutamiento y protección de sesiones
-                            activas
+                            • Módulo de carga, compresión y ordenamiento de
+                            galerías fotográficas.
                         </Cell>
                     </Row>
                     <Row>
                         <Cell flex="2">
-                            • Interfaz de perfil y actualización de datos de
-                            contacto
+                            • Control de estados de visibilidad del inventario
+                            (Activo, Inactivo, Destacado).
                         </Cell>
                     </Row>
                     <Row>
                         <Cell flex="2">
-                            • Flujo seguro para el restablecimiento de
-                            contraseñas
+                            • Panel centralizado para la recepción, lectura y
+                            gestión básica de leads entrantes.
                         </Cell>
                     </Row>
                 </Body>
