@@ -5,7 +5,7 @@ export const currencyToSpeech = async (
   try {
     const key = process.env.GOOGLE_AI_STUDIO;
     const stream = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key=${key}`,
       {
         method: "POST",
         body: JSON.stringify({
