@@ -1,0 +1,229 @@
+;<Document
+    subject="Propuesta Económica"
+    title="Ecosistema Web Headless & Portafolio Administrable"
+    author="Joan Andrés Buriticá Salazar"
+    keywords="Proposal"
+    creator="Joan Andrés Buriticá Salazar"
+    producer="React PDF with Bun"
+    language="es"
+>
+    <Cover
+        type="Propuesta Económica"
+        title="Ecosistema Web Headless & Portafolio Administrable"
+        scaleTitle="0.80"
+        month="Julio 2026"
+    />
+
+    <Paginate>
+        <IndicatorHeader value="Ing. Joan A. Buriticá S." />
+        <Section marginTop="0" gap="0.1cm">
+            <Text>
+                <Text bold="1">
+                    Fecha:
+                    <S />
+                </Text>
+                Julio, 21 de 2026
+            </Text>
+        </Section>
+
+        <Section>
+            <Title size="xs" textAlign="left">
+                Resumen Ejecutivo y Arquitectura
+            </Title>
+
+            <Text>
+                Desarrollo e implementación de una plataforma web de alto
+                rendimiento utilizando arquitectura Jamstack (Next.js) para la
+                interfaz de usuario, conectada en modalidad Headless a WordPress
+                para la gestión autónoma del portafolio. Esta infraestructura
+                garantiza tiempos de carga ultrarrápidos, seguridad avanzada al
+                separar el frontend de la base de datos, y una indexación
+                superior en motores de búsqueda (SEO).
+            </Text>
+        </Section>
+
+        <Section>
+            <Title size="xs" textAlign="left">
+                Alcance del Desarrollo y Entregables
+            </Title>
+
+            <Text>
+                La ejecución del proyecto se divide en los siguientes módulos
+                fundamentales:
+            </Text>
+
+            <Table>
+                <Header>
+                    <Row>
+                        <Cell>Módulo</Cell>
+                        <Cell flex="2">Descripción del Entregable</Cell>
+                    </Row>
+                </Header>
+                <Body>
+                    <Row>
+                        <Cell>
+                            <Bold>Landing Page (Frontend)</Bold>
+                        </Cell>
+                        <Cell flex="2">
+                            Desarrollo a medida en Next.js. Interfaces
+                            dinámicas, animaciones y optimización Core Web
+                            Vitals (carga de imágenes en formato WebP y lazy
+                            loading).
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell>
+                            <Bold>Integración CMS (Backend)</Bold>
+                        </Cell>
+                        <Cell flex="2">
+                            Configuración de WordPress en modo Headless,
+                            desarrollo de Custom Post Types para el portafolio y
+                            exposición de datos mediante API REST/GraphQL.
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell>
+                            <Bold>SEO Técnico y Estructural</Bold>
+                        </Cell>
+                        <Cell flex="2">
+                            Implementación de Server-Side Rendering (SSR) para
+                            la página principal y metadata dinámica para cada
+                            proyecto del portafolio.
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell>
+                            <Bold>Sincronización (Webhooks)</Bold>
+                        </Cell>
+                        <Cell flex="2">
+                            Configuración de Incremental Static Regeneration
+                            (ISR). El sitio actualizará el Sitemap y el
+                            contenido automáticamente al publicar en WordPress,
+                            sin requerir redespliegues.
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell>
+                            <Bold>Módulos de Interacción</Bold>
+                        </Cell>
+                        <Cell flex="2">
+                            Formulario de contacto conectado a correo
+                            corporativo e integración de Feed de Instagram
+                            mediante componente de terceros.
+                        </Cell>
+                    </Row>
+                </Body>
+            </Table>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                Delimitaciones y Acuerdos Técnicos
+            </Title>
+
+            <Text>
+                Para garantizar la viabilidad y estabilidad del proyecto, se
+                establecen los siguientes parámetros de alcance operativo:
+            </Text>
+
+            <BulletText>
+                <Bold>Gestión de Contenido</Bold>: El administrador de WordPress
+                (CMS) estará habilitado exclusivamente para la creación, edición
+                y eliminación de entradas de la sección "Portafolio". El diseño,
+                estructura estructural y textos de la Landing Page principal
+                quedarán estáticos en el código fuente para garantizar el
+                rendimiento. Modificaciones futuras sobre esta sección
+                requerirán intervención de desarrollo.
+            </BulletText>
+
+            <BulletText>
+                <Bold>Integración de Instagram</Bold>: Para asegurar la
+                estabilidad del feed y evitar caídas por expiración de tokens de
+                la API oficial de Meta, se implementará a través de un widget de
+                terceros (ej. Elfsight o SnapWidget). El cliente final o la
+                agencia será responsable de proporcionar o asumir el
+                licenciamiento de dicha herramienta si el tráfico supera los
+                límites gratuitos.
+            </BulletText>
+
+            <BulletText>
+                <Bold>SEO de Contenidos</Bold>: La arquitectura entregada estará
+                100% optimizada para lectura de buscadores. La redacción de
+                palabras clave, meta-descripciones y estrategias de
+                posicionamiento de contenido correrá por cuenta del equipo de
+                marketing.
+            </BulletText>
+        </Section>
+
+        <Section>
+            <Title size="xs" textAlign="left">
+                Propuesta de Inversión
+            </Title>
+
+            <Text>
+                Nota: Los valores presentados a continuación son de referencia y
+                deben ser ajustados según la tasa pactada y los costos de
+                infraestructura.
+            </Text>
+
+            <Table>
+                <Header>
+                    <Row>
+                        <Cell>Concepto de Desarrollo</Cell>
+                        <Cell textAlign="right">Valor Estimado</Cell>
+                    </Row>
+                </Header>
+                <Body>
+                    <Row>
+                        <Cell>Desarrollo Frontend (Next.js) y UI</Cell>
+                        <Cell textAlign="right">733.236 COP</Cell>
+                    </Row>
+                    <Row>
+                        <Cell>Backend, API Headless y Webhooks</Cell>
+                        <Cell textAlign="right">785.610 COP</Cell>
+                    </Row>
+                    <Row>
+                        <Cell>Configuración SEO Técnico e Integraciones</Cell>
+                        <Cell textAlign="right">576.114 COP</Cell>
+                    </Row>
+                    <Row>
+                        <Cell>Despliegue y Configuración de Servidores</Cell>
+                        <Cell textAlign="right">0 COP</Cell>
+                    </Row>
+                </Body>
+                <Footer>
+                    <Row>
+                        <Cell>Total Inversión</Cell>
+                        <Cell textAlign="right">
+                            <Bold>2'094.960 COP</Bold>
+                        </Cell>
+                    </Row>
+                </Footer>
+            </Table>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                Condiciones Comerciales
+            </Title>
+
+            <BulletText>
+                Modalidad de pago: 50% al inicio del proyecto (Firma de
+                aprobación) y 50% contra entrega y despliegue a producción.
+            </BulletText>
+
+            <BulletText>
+                Propiedad Intelectual: La transferencia total de los derechos
+                sobre el código fuente y la arquitectura se realizará una vez
+                saldado el 100% de la inversión.
+            </BulletText>
+
+            <BulletText>
+                Tiempos de ejecución: El desarrollo tendrá una duración estimada
+                de 2-3 semanas, contadas a partir de la entrega total de los
+                insumos gráficos (diseños aprobados) y accesos de
+                infraestructura.
+            </BulletText>
+        </Section>
+    </Paginate>
+</Document>
