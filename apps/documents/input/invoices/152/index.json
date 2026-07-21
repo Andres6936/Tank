@@ -1,0 +1,28 @@
+{
+  "Date": "2026-07-21",
+  "AccountNumber": 152,
+  "Value": 314244,
+  "Currency": "COP",
+  "Parameters": [
+    {
+      "Key": "DebtorName",
+      "Type": "String",
+      "Value": "Rueda Verde"
+    },
+    {
+      "Key": "DebtorTypeId",
+      "Type": "String",
+      "Value": "NIT"
+    },
+    {
+      "Key": "DebtorId",
+      "Type": "String",
+      "Value": "900.690.799-1"
+    },
+    {
+      "Key": "Concept",
+      "Type": "String",
+      "Value": "- Apoyo informático"
+    }
+  ]
+}
