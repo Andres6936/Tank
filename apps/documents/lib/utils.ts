@@ -49,6 +49,9 @@ export function formatSpanishDate(isoDate: string): string {
   if (!monthName) {
     throw new Error("Invalid month in date.");
   }
+  if (!day) {
+    throw new Error("Invalid day in date.");
+  }
 
   const dayPadded = day.padStart(2, "0");
   return `${dayPadded} de ${monthName}`;
