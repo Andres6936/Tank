@@ -1,0 +1,156 @@
+;<Document
+    subject="Acta de Entrega Final"
+    title="Plataforma Residuos Ambientales"
+    author="Joan Andrés Buriticá Salazar"
+    keywords="Act, Delivery, Closure, Warranty"
+    creator="Joan Andrés Buriticá Salazar"
+    producer="React PDF with Bun"
+    language="es"
+>
+    <Cover
+        type="Acta de Entrega Final y Cierre"
+        title="Plataforma Residuos Ambientales"
+        month="Agosto 2026"
+    />
+
+    <Paginate>
+        <IndicatorHeader value="Ing. Joan A. Buriticá" />
+        <Section marginTop="0" gap="0.1cm">
+            <Text>
+                <Text bold="1">
+                    Fecha de Emisión:
+                    <S />
+                </Text>
+                12 de agosto de 2026
+            </Text>
+
+            <Text>
+                <Text bold="1">
+                    Asunto:
+                    <S />
+                </Text>
+                Entrega Final de Proyecto, Inicio de Garantía y Obligación de
+                Pago
+            </Text>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                1. Declaración de Entrega (Despliegue Asíncrono)
+            </Title>
+            <Paragraph>
+                Ante la dificultad de coordinar las mesas de trabajo de cierre
+                solicitadas por EL CONTRATISTA durante las últimas dos semanas,
+                y con el objetivo de evitar mayores retrasos operativos, se
+                notifica mediante el presente documento la culminación y entrega
+                formal del 100% de los requerimientos técnicos y funcionales de
+                la plataforma, incluyendo el alcance original anexo al contrato
+                derivado del desarrollo, el Otrosí No. 3 y el documento de
+                "Intercambio de Requerimientos". A partir de esta fecha, el
+                sistema se encuentra desplegado y a entera disposición de REAM
+                en el entorno de producción.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                2. Periodo de Revisión y Aceptación Tácita
+            </Title>
+            <Paragraph>
+                En cumplimiento de las actas previas y la normativa vigente, se
+                establece un periodo de validación de alcance de cinco (5) días
+                hábiles contados a partir del envío de esta acta. Durante este
+                periodo, EL CONTRATANTE (REAM) podrá emitir observaciones
+                exclusivamente sobre la presencia y completitud de los módulos
+                pactados en el documento de "Intercambio de Requerimientos".
+            </Paragraph>
+            <Paragraph>
+                Si transcurrido este plazo (vencimiento: 20 de agosto de 2026)
+                no se recibe notificación formal de rechazo sustentado, el
+                proyecto se considerará recibido a entera satisfacción mediante
+                el mecanismo legal de Aceptación Tácita, cerrando
+                definitivamente la fase de desarrollo.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                3. Ejecución de la Garantía y Limitación de Responsabilidad
+            </Title>
+
+            <Paragraph>
+                En estricto apego a la CLÁUSULA DÉCIMA SEGUNDA del contrato de
+                prestación de servicios principal, se ratifica la cobertura de
+                garantía técnica sobre la plataforma bajo las siguientes
+                directrices:
+            </Paragraph>
+
+            <BulletText>
+                <Text bold="1">Vigencia y Activación:</Text> La garantía técnica
+                tendrá una duración de tres (3) meses, contados a partir de la
+                fecha de entrega y aceptación final (expresa o tácita) de los
+                entregables descritos en la Sección 2. Durante este periodo, se
+                corregirá sin costo adicional cualquier error de código o
+                defecto estructural que afecte el funcionamiento pactado.
+            </BulletText>
+
+            <BulletText>
+                <Text bold="1">Exclusiones (Pérdida de Garantía):</Text> Esta
+                cobertura no aplicará y quedará invalidada ante fallas que sean
+                resultado de: uso indebido por parte de los operarios,
+                modificaciones o manipulaciones al código y/o base de datos por
+                personal de REAM o terceros no autorizados, fallas en el
+                hardware o redes, e intermitencias en sistemas de terceros.
+            </BulletText>
+
+            <BulletText>
+                <Text bold="1">Limitación de Responsabilidad:</Text> La
+                responsabilidad máxima derivada de cualquier daño directo queda
+                estrictamente limitada al valor total del contrato. El
+                desarrollador queda expresamente eximido de toda responsabilidad
+                por daños indirectos, lucro cesante, pérdida de datos o
+                interrupción del negocio.
+            </BulletText>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                4. Consolidado Financiero, Emisión de Cobro y Bloqueo de Fases
+            </Title>
+
+            <Paragraph>
+                Una vez cumplido el periodo de revisión de cinco (5) días
+                hábiles y consolidada la aceptación (expresa o tácita) del
+                proyecto el día 20 de agosto de 2026, EL CONTRATISTA procederá
+                con la emisión y envío formal de la cuenta de cobro
+                correspondiente a la liquidación final, por un valor de DOS
+                MILLONES SETECIENTOS OCHENTA Y OCHO MIL DOSCIENTOS CATORCE PESOS
+                M/CTE ($2'788.214 COP).
+            </Paragraph>
+
+            <Paragraph>
+                A partir de la fecha de recepción de dicho documento contable,
+                EL CONTRATANTE (REAM) dispondrá de un plazo máximo e
+                improrrogable de cinco (5) días hábiles para efectuar el
+                desembolso total del saldo a favor de EL CONTRATISTA.
+            </Paragraph>
+
+            <Paragraph>
+                Para garantizar el orden administrativo y la viabilidad del
+                proyecto, se establece como condición innegociable que cualquier
+                negociación, cotización, planificación o inicio de desarrollo
+                para futuras fases, módulos adicionales o requerimientos
+                evolutivos, queda estrictamente suspendida y supeditada a la
+                aceptación, pago total y cierre administrativo definitivo del
+                presente contrato.
+            </Paragraph>
+        </Section>
+
+        <SignSection>
+            <SignRow gap="25pt" height="120pt">
+                <SignPadLeft signBy="Yomaira Beytar Florez, Representante REAM" />
+                <SignMeRight />
+            </SignRow>
+        </SignSection>
+    </Paginate>
+</Document>
