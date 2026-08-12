@@ -65,6 +65,7 @@ export default function Component(props: Props) {
             fontSize: "38pt",
             fontStyle: "italic",
             fontFamily: "InstrumentSerif",
+            maxWidth: "80%",
           }}
         >
           {props.type}
