@@ -14,7 +14,7 @@ describe("Server Flow File", () => {
 
   let FileId = "";
 
-  test("Client test", async () => {
+  test("Save test", async () => {
     const file = Bun.file("./test/resources/file.txt");
 
     const formData = new FormData();
