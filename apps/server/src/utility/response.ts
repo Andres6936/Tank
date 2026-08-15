@@ -7,25 +7,30 @@ const asJson = <T extends number, Q>(status: T, payload: Q) => {
   );
 };
 
+const asPayload = <const T extends number, Q>(status: T, payload: Q) => ({
+  statusCode: status,
+  body: payload,
+});
+
 const hasErrorMessage = (error: unknown): error is { message: string } => {
   return typeof error === "object" && error !== null && "message" in error;
 };
 
-const handle = async (fn: () => Promise<Response> | Response) => {
+const handle = async <T>(fn: () => Promise<T>) => {
   try {
     return await fn();
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return asJson(403, {
+      return asPayload(403, {
         message: "Validation Error",
         issues: error.issues,
       });
     }
-    return asJson(501, {
+    return asPayload(501, {
       message: "Server Error",
       error: hasErrorMessage(error) ? error.message : "None message",
     });
   }
 };
 
-export { handle, asJson };
+export { handle, asJson, asPayload };

@@ -8,8 +8,13 @@ const SaveFileSchema = z.object({
   ),
 });
 
+const UpdateFileSchema = SaveFileSchema.extend({
+  Id: z.uuidv7(),
+});
+
 type SaveFileType = z.infer<typeof SaveFileSchema>;
+type UpdateFileType = z.infer<typeof UpdateFileSchema>;
 
-export { SaveFileSchema };
+export { SaveFileSchema, UpdateFileSchema };
 
-export type { SaveFileType };
+export type { SaveFileType, UpdateFileType };

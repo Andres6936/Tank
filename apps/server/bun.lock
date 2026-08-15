@@ -7,6 +7,8 @@
       "dependencies": {
         "@better-auth/api-key": "^1.6.9",
         "@libsql/client": "^0.17.3",
+        "@trpc/client": "^11.18.0",
+        "@trpc/server": "^11.18.0",
         "better-auth": "^1.6.9",
         "drizzle-orm": "^0.45.2",
         "mime-types": "^3.0.2",
@@ -145,6 +147,10 @@
     "@openworkflow/cli": ["@openworkflow/cli@0.4.4", "", { "dependencies": { "@clack/prompts": "^1.2.0", "commander": "^14.0.3", "consola": "^3.4.2", "dotenv": "^17.4.1", "jiti": "^2.6.1", "nypm": "^0.6.5" }, "peerDependencies": { "openworkflow": "^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0" }, "bin": { "openworkflow": "dist/cli.js" } }, "sha512-C+TnglKqfLbsTAC6Pz1erbhGdcRJGSkheULiAqUp0xW4ET9OsharsFP8k3Lzq7M9gD4F+h0VgEpZrWYFzsXhwA=="],
 
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
+
+    "@trpc/client": ["@trpc/client@11.18.0", "", { "peerDependencies": { "@trpc/server": "11.18.0", "typescript": ">=5.7.2" }, "bin": { "intent": "bin/intent.js" } }, "sha512-wOqeg3Fvl25V1ZisQhUD3K8G60ZJDlSGJNSyeXrLH24xAo5w6GSR2Kzb1cSNY9Y+IQ2YZvYGZstBU+V/ulo/ow=="],
+
+    "@trpc/server": ["@trpc/server@11.18.0", "", { "peerDependencies": { "typescript": ">=5.7.2" }, "bin": { "intent": "bin/intent.js" } }, "sha512-JAvXOuNTxgXjIDfQaOvDq1j66LMNfDJUH1IU7Slfn8EvRv2EkH6ehu3A7zpYhjO0syHHiYg77v2lG2JFJgvw7Q=="],
 
     "@types/bun": ["@types/bun@1.3.13", "", { "dependencies": { "bun-types": "1.3.13" } }, "sha512-9fqXWk5YIHGGnUau9TEi+qdlTYDAnOj+xLCmSTwXfAIqXr2x4tytJb43E9uCvt09zJURKXwAtkoH4nLQfzeTXw=="],
 
