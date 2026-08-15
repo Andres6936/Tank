@@ -16,6 +16,14 @@ export const FilesTable = sqliteTable("Files", {
   ...defaultColumns,
 });
 
+export const DocumentsTable = sqliteTable("Documents", {
+  Id: defaultId,
+  Title: text().notNull(),
+  Subject: text().notNull(),
+  Content: text().notNull(),
+  ...defaultColumns,
+});
+
 export type FilesTableInsert = typeof FilesTable.$inferInsert;
 
 export type FilesTableSelect = typeof FilesTable.$inferSelect;
