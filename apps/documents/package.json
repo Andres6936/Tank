@@ -6,6 +6,13 @@
   "scripts": {
     "build": "bunx rslib build"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/entry.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "./dist/entry.d.ts",
   "devDependencies": {
     "@types/bun": "latest",
     "@types/react": "19.2.4",
