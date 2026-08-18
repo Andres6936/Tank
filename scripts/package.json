@@ -3,7 +3,7 @@
   "scripts": {},
   "dependencies": {
     "@libsql/client": "^0.17.0",
-    "@luxdb/sdk": "^1.1.0",
+    "@luxdb/sdk": "latest",
     "date-fns": "^4.1.0",
     "jose": "^6.2.0"
   },
