@@ -26,7 +26,7 @@ export const app = router({
   status: publicProcedure.query(async () => {
     return asPayload(200, { message: "OK" });
   }),
-  documents: {
+  files: {
     getAll: publicProcedure.input(z.optional(PaginateSchema)).query(handle(async (args) => {
       const { input } = args;
       const result = await getAll(input);
