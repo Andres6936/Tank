@@ -1,5 +1,5 @@
 // Utility Seals Buffers
-export { getBufferSeals } from "~/pdf/utility/buffer-seals";
+export { getBufferSeals, getBreBCode } from "~/pdf/utility/buffer-seals";
 
 // Templates
 import * as document from "~/pdf/templates/document";
