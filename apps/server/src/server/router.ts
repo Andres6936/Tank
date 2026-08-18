@@ -20,14 +20,16 @@ import {
   updateFile as updateFileVault,
   deleteFile as deleteFileVault,
 } from "~/files/vault";
+import { PaginateSchema } from "~/schemas/general";
 
 export const app = router({
   status: publicProcedure.query(async () => {
     return asPayload(200, { message: "OK" });
   }),
   documents: {
-    getAll: publicProcedure.query(handle(async () => {
-      const result = await getAll();
+    getAll: publicProcedure.input(z.optional(PaginateSchema)).query(handle(async (args) => {
+      const { input } = args;
+      const result = await getAll(input);
       return asPayload(200, result);
     })),
     save: publicProcedure.input(z.instanceof(FormData)).mutation(
