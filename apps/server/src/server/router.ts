@@ -8,6 +8,7 @@ import { handle, asPayload } from "~/utility/response";
 import { SaveFileSchema, UpdateFileSchema } from "~/schemas/validate";
 import {
   existPath,
+  getAll,
   getFileMaybe,
   deleteFile,
   insertFile,
@@ -26,7 +27,8 @@ export const app = router({
   }),
   documents: {
     getAll: publicProcedure.query(handle(async () => {
-
+      const result = await getAll();
+      return asPayload(200, result);
     })),
     save: publicProcedure.input(z.instanceof(FormData)).mutation(
       handle(async (args) => {

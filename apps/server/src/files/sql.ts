@@ -1,8 +1,9 @@
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 
 import { BucketsAvailable } from "../config/clients-vault";
 import { getSQLClients } from "../config/clients-sql";
 import { FilesTable, type FilesTableInsert } from "../db/schema";
+import { type PaginateType, defaultPagination } from "~/schemas/general";
 
 const { sql } = getSQLClients();
 
@@ -30,6 +31,17 @@ const existFile = async (id: string) => {
     .where(eq(FilesTable.Id, id))
     .limit(1);
   return result.length > 0;
+};
+
+const getAll = async (args?: PaginateType) => {
+  const { Page, PageSize } = args ?? defaultPagination;
+  const result = await sql
+    .select()
+    .from(FilesTable)
+    .orderBy(desc(FilesTable.CreatedAt))
+    .limit(PageSize)
+    .offset((Page - 1) * PageSize);
+  return result;
 };
 
 const getFileMaybe = async (id: string) => {
@@ -89,6 +101,7 @@ const deleteFile = async (id: string) => {
 export {
   existPath,
   existFile,
+  getAll,
   getFileMaybe,
   insertFile,
   updateFile,
