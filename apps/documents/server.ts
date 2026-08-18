@@ -8,8 +8,8 @@ const server = Bun.serve({
       const buffers = await getBufferSeals({
         seal: 'red',
       });
-      const file = './input/acts/2026-06-26.xml';
-      const doc = await document.run({ file, buffers });
+      const xml = await Bun.file('./input/acts/2026-06-26.xml').text();
+      const doc = await document.run({ xml, buffers });
       const buffer = await ReactPDF.renderToStream(doc) as any as ReadableStream<Uint8Array>;
       return new Response(buffer, { headers: { "Content-Type": "application/pdf" } });
     },

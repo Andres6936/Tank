@@ -73,7 +73,8 @@ const config = run(parser, {
     const buffers = await getBufferSeals({
       seal,
     });
-    const doc = await document({ file, buffers });
+    const xml = await Bun.file(file).text();
+    const doc = await document({ xml, buffers });
     ReactPDF.render(doc, output);
   }
 

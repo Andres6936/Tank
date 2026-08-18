@@ -3,7 +3,7 @@ import "~/pdf/utility/register-fonts";
 
 import React, { Fragment } from "react";
 import { Document } from "@react-pdf/renderer";
-import { type ComponentMap, fromFile } from "~/lib/node.factory";
+import { type ComponentMap, fromString } from "~/lib/node.factory";
 
 import { Table, Row, Cell, Header, Footer } from "~/pdf/components/table";
 import { Indent, Paginate, Section } from "~/pdf/components/section";
@@ -71,11 +71,11 @@ const components: ComponentMap = {
 };
 
 const getTreeNode = async (
-  xmlPath: string,
+  xml: string,
   buffers: Awaited<ReturnType<typeof getBufferSeals>>,
 ) => {
   const properties: Record<string, unknown> = {};
-  const nodes = await fromFile(xmlPath, components, {
+  const nodes = await fromString(xml, components, {
     textTags: [
       "Paragraph",
       "Title",
@@ -141,10 +141,10 @@ const withBook = async (
 ) => <Document {...properties}>{nodes}</Document>;
 
 const run = async (args: {
-  file: string;
+  xml: string;
   buffers: Awaited<ReturnType<typeof getBufferSeals>>;
 }) => {
-  const { nodes, properties } = await getTreeNode(args.file, args.buffers);
+  const { nodes, properties } = await getTreeNode(args.xml, args.buffers);
   return await withBook(nodes, properties);
 };
 
