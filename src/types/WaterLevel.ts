@@ -1,1 +1,0 @@
-export type WaterLevel = "low" | "medium" | "high";
