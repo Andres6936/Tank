@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "bunx rslib build"
+    "build": "bunx rslib build --tsconfig tsconfig.build.json"
   },
   "exports": {
     ".": {
