@@ -9,9 +9,27 @@ const hasErrorMessage = (error: unknown): error is { message: string } => {
   return typeof error === "object" && error !== null && "message" in error;
 };
 
-const handle = async <T>(fn: () => Promise<T>) => {
+type ErrorResponse =
+  | {
+      statusCode: 403;
+      body: {
+        message: string;
+        issues: z.core.$ZodIssue[];
+      };
+    }
+  | {
+      statusCode: 501;
+      body: {
+        message: string;
+        error: string;
+      };
+    };
+
+const handle = <Args extends unknown[], T>(
+  fn: (...args: Args) => Promise<T>
+): ((...args: Args) => Promise<T | ErrorResponse>) => async (...args: Args) => {
   try {
-    return await fn();
+    return await fn(...args);
   } catch (error) {
     if (error instanceof z.ZodError) {
       return asPayload(403, {
