@@ -1,10 +1,16 @@
 {
   "name": "escriba",
+  "type": "module",
+  "private": true,
   "version": "2026.08.17",
   "workspaces": [
     "apps/*"
   ],
   "devDependencies": {
     "@types/bun": "latest"
-  }
+  },
+  "dependencies": {
+    "turbo": "^2.10.10"
+  },
+  "packageManager": "bun@1.3.0"
 }
