@@ -1,12 +1,5 @@
 import { z } from "zod";
 
-const asJson = <T extends number, Q>(status: T, payload: Q) => {
-  return Response.json(
-    { statusCode: status, body: { ...payload } },
-    { status },
-  );
-};
-
 const asPayload = <const T extends number, Q>(status: T, payload: Q) => ({
   statusCode: status,
   body: payload,
@@ -33,4 +26,4 @@ const handle = async <T>(fn: () => Promise<T>) => {
   }
 };
 
-export { handle, asJson, asPayload };
+export { handle, asPayload };
