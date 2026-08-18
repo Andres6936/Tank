@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { auth } from "~/lib/auth";
 import { publicProcedure, router } from "./trpc";
-import { handle, asJson, asPayload } from "~/utility/response";
+import { handle, asPayload } from "~/utility/response";
 import { SaveFileSchema, UpdateFileSchema } from "~/schemas/validate";
 import {
   existPath,
@@ -25,9 +25,11 @@ export const app = router({
     return asPayload(200, { message: "OK" });
   }),
   documents: {
+    getAll: publicProcedure.query(handle(async () => {
+
+    })),
     save: publicProcedure.input(z.instanceof(FormData)).mutation(
-      async (args) =>
-        await handle(async () => {
+      handle(async (args) => {
           const { input } = args;
           const schema = SaveFileSchema.parse(
             Object.fromEntries(input.entries()),
@@ -71,8 +73,7 @@ export const app = router({
       return asPayload(200, { link });
     }),
     updateById: publicProcedure.input(z.instanceof(FormData)).mutation(
-      async (args) =>
-        await handle(async () => {
+         handle(async (args) => {
           const { input } = args;
           const schema = UpdateFileSchema.parse(
             Object.fromEntries(input.entries()),
