@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { sqliteTable, text, index } from "drizzle-orm/sqlite-core";
 import { defaultId, defaultISODate } from "./default";
 
 const defaultColumns = {
@@ -21,8 +21,11 @@ export const DocumentsTable = sqliteTable("Documents", {
   Title: text().notNull(),
   Subject: text().notNull(),
   Content: text().notNull(),
+  FileId: text().notNull().references(() => FilesTable.Id, {onDelete: "cascade"}),
   ...defaultColumns,
-});
+}, (table) => [
+  index('Document_FileId').on(table.FileId),
+]);
 
 export type FilesTableInsert = typeof FilesTable.$inferInsert;
 
