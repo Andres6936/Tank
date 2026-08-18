@@ -1,6 +1,6 @@
 {
-  "name": "server",
-  "module": "index.ts",
+  "name": "@escriba/server",
+  "version": "2026.08.18",
   "type": "module",
   "private": true,
   "scripts": {
@@ -18,9 +18,10 @@
     "drizzle-kit": "^0.31.10"
   },
   "peerDependencies": {
-    "typescript": "^5"
+    "typescript": "^7"
   },
   "dependencies": {
+    "@escriba/documents": "workspace:*",
     "@better-auth/api-key": "^1.6.9",
     "@libsql/client": "^0.17.3",
     "@trpc/client": "^11.18.0",

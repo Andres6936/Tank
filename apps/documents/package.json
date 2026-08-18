@@ -1,6 +1,6 @@
 {
-  "name": "proposals",
-  "module": "index.ts",
+  "name": "@escriba/documents",
+  "version": "2026.08.18",
   "type": "module",
   "private": true,
   "scripts": {
