@@ -15,10 +15,10 @@ const trpc = createTRPCClient<AppRouter>({
     splitLink({
       condition: (args) => isNonJsonSerializable(args.input),
       true: httpLink({
-        url: "http://localhost:3000",
+        url: "http://localhost:3000/trpc",
       }),
       false: httpBatchLink({
-        url: "http://localhost:3000",
+        url: "http://localhost:3000/trpc",
       }),
     }),
   ],

@@ -1,8 +1,8 @@
-import { createHTTPServer } from "@trpc/server/adapters/standalone";
+import { fetchRequestHandler, } from "@trpc/server/adapters/fetch";
 import { app } from "./router";
 
-const server = createHTTPServer({
+export const handler = (req: Request) => fetchRequestHandler({
+  req,
   router: app,
+  endpoint: "/trpc",
 });
-
-server.listen(3000);
