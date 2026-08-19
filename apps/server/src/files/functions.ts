@@ -29,12 +29,16 @@ export const Args = {
   deleteById: z.uuidv7(),
 };
 
+type InferArgs = {
+  [K in keyof typeof Args]: z.infer<(typeof Args)[K]>;
+};
+
 export default {
-  getAll: async (args: z.infer<typeof Args.getAll>) => {
+  getAll: async (args: InferArgs["getAll"]) => {
     const result = await getAll(args);
     return asPayload(200, result);
   },
-  save: async (args: z.infer<typeof Args.save>) => {
+  save: async (args: InferArgs["save"]) => {
     const schema = SaveFileSchema.parse(Object.fromEntries(args.entries()));
     const Path = path.posix.normalize(schema.Path);
     const [exists, id] = await existPath(Path);
@@ -61,7 +65,7 @@ export default {
     }
     return asPayload(200, { Id: row.Id });
   },
-  getById: async (args: z.infer<typeof Args.getById>) => {
+  getById: async (args: InferArgs["getById"]) => {
     const file = await getFileMaybe(args);
     if (!file) {
       return asPayload(404, { message: "Not found" });
@@ -72,7 +76,7 @@ export default {
     });
     return asPayload(200, { link });
   },
-  updateById: async (args: z.infer<typeof Args.updateById>) => {
+  updateById: async (args: InferArgs["updateById"]) => {
     const schema = UpdateFileSchema.parse(Object.fromEntries(args.entries()));
     const file = await getFileMaybe(schema.Id);
     if (!file) {
@@ -102,7 +106,7 @@ export default {
     }
     return asPayload(200, { Id: row.Id });
   },
-  deleteById: async (args: z.infer<typeof Args.deleteById>) => {
+  deleteById: async (args: InferArgs["deleteById"]) => {
     const file = await getFileMaybe(args);
     if (!file) {
       return asPayload(404, { message: "Not found" });
