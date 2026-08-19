@@ -27,7 +27,8 @@ export const XmlEditor = () => {
       value={value}
       onChange={(val) => setValue(val)}
       extensions={[xml(), abbreviationTracker(), emmetTabKeymap]}
-      height="600px"
+      height="100%"
+      className="h-full"
     />
   );
 };
