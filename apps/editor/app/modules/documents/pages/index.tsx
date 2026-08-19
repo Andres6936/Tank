@@ -1,21 +1,25 @@
 import { CloudDownload, Copy, Play, Settings } from "lucide-react";
 import { useState } from "react";
+import { Button } from "~/components/ui/button";
+import { ButtonGroup } from "~/components/ui/button-group";
 
 const Options = () => {
   return (
-    <div className="absolute top-8 left-2/4 -translate-x-2/4 flex flex-row gap-2 border shadow bg-white rounded w-fit px-2 py-1">
-      <div>
-        <Play size={18} strokeWidth={1} />
-      </div>
-      <div>
-        <CloudDownload size={18} strokeWidth={1} />
-      </div>
-      <div>
-        <Copy size={18} strokeWidth={1} />
-      </div>
-      <div>
-        <Settings size={18} strokeWidth={1} />
-      </div>
+    <div className="absolute top-8 left-2/4 -translate-x-2/4 bg-white rounded-md shadow">
+      <ButtonGroup>
+        <Button variant="outline" size="icon">
+          <Play size={18} strokeWidth={1} />
+        </Button>
+        <Button variant="outline" size="icon">
+          <CloudDownload size={18} strokeWidth={1} />
+        </Button>
+        <Button variant="outline" size="icon">
+          <Copy size={18} strokeWidth={1} />
+        </Button>
+        <Button variant="outline" size="icon">
+          <Settings size={18} strokeWidth={1} />
+        </Button>
+      </ButtonGroup>
     </div>
   );
 };
