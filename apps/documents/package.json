@@ -4,6 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "dev": "bun run --hot server",
+    "start": "bun run server",
     "build": "bunx rslib build --tsconfig tsconfig.build.json"
   },
   "exports": {
