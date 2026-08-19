@@ -17,6 +17,7 @@ const InvoicesSchema = z.object({
 
 
 const server = Bun.serve({
+  port: process.env.SERVER_PORT,
   routes: {
     "/api/status": new Response("OK"),
     "/api/documents": {
