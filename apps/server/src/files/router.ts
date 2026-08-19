@@ -21,42 +21,17 @@ import {
 } from "~/files/vault";
 import { PaginateSchema } from "~/schemas/general";
 
+import functions from "./functions";
+
 export default {
   getAll: publicProcedure.input(z.optional(PaginateSchema)).query(handle(async (args) => {
     const { input } = args;
-    const result = await getAll(input);
-    return asPayload(200, result);
+    return functions.getAll(input);
   })),
   save: publicProcedure.input(z.instanceof(FormData)).mutation(
     handle(async (args) => {
-        const { input } = args;
-        const schema = SaveFileSchema.parse(
-          Object.fromEntries(input.entries()),
-        );
-        const Path = path.posix.normalize(schema.Path);
-        const [exists, id] = await existPath(Path);
-        if (exists) {
-          return asPayload(409, {
-            message: `File already exists with Id: ${id}`,
-          });
-        }
-
-        const Name = path.posix.basename(Path);
-        const Mimetype = schema.Blob.type ?? mime.lookup(Path);
-
-        const [_, result] = await Promise.all([
-          writeFile({ Path, Blob: schema.Blob }),
-          insertFile({
-            Name,
-            Path,
-            Mimetype,
-          }),
-        ]);
-        const [row] = result;
-        if (!row) {
-          return asPayload(500, { message: "Failed to create file" });
-        }
-        return asPayload(200, { Id: row.Id });
+      const { input } = args;
+      return functions.save(input);
       }),
   ),
   getById: publicProcedure.input(z.uuidv7()).query(async (args) => {
