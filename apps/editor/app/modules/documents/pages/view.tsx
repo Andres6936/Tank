@@ -8,7 +8,12 @@ export default function View() {
           <XmlEditor />
         </div>
       </div>
-      <div className="flex flex-1 bg-sky-100"></div>
+      <div className="flex flex-1 bg-sky-100">
+        <iframe
+          src="https://www.rd.usda.gov/sites/default/files/pdf-sample_0.pdf"
+          className="w-full h-full border border-zinc-200 hover:border-zinc-400 focus:border-zinc-400"
+        ></iframe>
+      </div>
     </div>
   );
 }
