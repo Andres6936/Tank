@@ -24,15 +24,17 @@ import { PaginateSchema } from "~/schemas/general";
 import functions from "./functions";
 
 export default {
-  getAll: publicProcedure.input(z.optional(PaginateSchema)).query(handle(async (args) => {
-    const { input } = args;
-    return functions.getAll(input);
-  })),
+  getAll: publicProcedure.input(z.optional(PaginateSchema)).query(
+    handle(async (args) => {
+      const { input } = args;
+      return functions.getAll(input);
+    }),
+  ),
   save: publicProcedure.input(z.instanceof(FormData)).mutation(
     handle(async (args) => {
       const { input } = args;
       return functions.save(input);
-      }),
+    }),
   ),
   getById: publicProcedure.input(z.uuidv7()).query(async (args) => {
     const { input: id } = args;
@@ -47,39 +49,39 @@ export default {
     return asPayload(200, { link });
   }),
   updateById: publicProcedure.input(z.instanceof(FormData)).mutation(
-       handle(async (args) => {
-        const { input } = args;
-        const schema = UpdateFileSchema.parse(
-          Object.fromEntries(input.entries()),
-        );
-        const file = await getFileMaybe(schema.Id);
-        if (!file) {
-          return asPayload(404, { message: "Not found" });
-        }
+    handle(async (args) => {
+      const { input } = args;
+      const schema = UpdateFileSchema.parse(
+        Object.fromEntries(input.entries()),
+      );
+      const file = await getFileMaybe(schema.Id);
+      if (!file) {
+        return asPayload(404, { message: "Not found" });
+      }
 
-        const OldPath = file.Path;
-        const Path = path.posix.normalize(schema.Path);
-        const Name = path.posix.basename(Path);
-        const Mimetype = schema.Blob.type ?? mime.lookup(Path);
+      const OldPath = file.Path;
+      const Path = path.posix.normalize(schema.Path);
+      const Name = path.posix.basename(Path);
+      const Mimetype = schema.Blob.type ?? mime.lookup(Path);
 
-        const [_, result] = await Promise.all([
-          updateFileVault({
-            OldPath,
-            NewPath: Path,
-            Blob: schema.Blob,
-          }),
-          updateFile(schema.Id, {
-            Name,
-            Path,
-            Mimetype,
-          }),
-        ]);
-        const [row] = result;
-        if (!row) {
-          return asPayload(500, { message: "Failed to update file" });
-        }
-        return asPayload(200, { Id: row.Id });
-      }),
+      const [_, result] = await Promise.all([
+        updateFileVault({
+          OldPath,
+          NewPath: Path,
+          Blob: schema.Blob,
+        }),
+        updateFile(schema.Id, {
+          Name,
+          Path,
+          Mimetype,
+        }),
+      ]);
+      const [row] = result;
+      if (!row) {
+        return asPayload(500, { message: "Failed to update file" });
+      }
+      return asPayload(200, { Id: row.Id });
+    }),
   ),
   deleteById: publicProcedure.input(z.uuidv7()).mutation(async (args) => {
     const { input: id } = args;
@@ -97,4 +99,4 @@ export default {
     }
     return asPayload(200, { Id: result.Id });
   }),
-}
+};

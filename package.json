@@ -7,7 +7,8 @@
     "apps/*"
   ],
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "prettier": "^3.9.6"
   },
   "dependencies": {
     "turbo": "^2.10.10"
