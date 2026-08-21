@@ -1,5 +1,8 @@
-import { CloudDownload, Copy, Play, Settings } from "lucide-react";
 import { useState } from "react";
+import { CloudDownload, Copy, Play, Settings } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+
+import { useTRPC } from "~/utils/trpc";
 import { Button } from "~/components/ui/button";
 import { ButtonGroup } from "~/components/ui/button-group";
 
@@ -43,9 +46,28 @@ const Document = () => {
 };
 
 export default function Page() {
+  const trpc = useTRPC();
+  const query = useQuery(trpc.documents.getAll.queryOptions());
+
+  if (query.isLoading) {
+    return <p>Loading ...</p>;
+  }
+
+  if (query.isError) {
+    return <p>Error: {query.error.message}</p>;
+  }
+
+  if (query.data.statusCode !== 200) {
+    return <p>Error: {query.data.body.message}</p>;
+  }
+
+  const items = query.data.body;
+
   return (
     <div className="grid grid-cols-[repeat(auto-fill,10rem)] gap-4 place-content-start">
-      <Document /> <Document /> <Document />
+      {items.map((item) => (
+        <Document key={item.Id} />
+      ))}
     </div>
   );
 }

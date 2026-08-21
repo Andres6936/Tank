@@ -6,6 +6,9 @@
   "workspaces": [
     "apps/*"
   ],
+  "scripts": {
+    "dev": "bun run --parallel --filter \"*\" dev"
+  },
   "devDependencies": {
     "@types/bun": "latest",
     "prettier": "^3.9.6"
