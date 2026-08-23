@@ -49,7 +49,7 @@ export default function Page() {
   const trpc = useTRPC();
   const query = useQuery(trpc.documents.getAll.queryOptions());
 
-  if (query.isLoading) {
+  if (query.isLoading || !query.data) {
     return <p>Loading ...</p>;
   }
 

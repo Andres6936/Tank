@@ -3,15 +3,24 @@
   "version": "2026.08.18",
   "type": "module",
   "private": true,
+  "exports": {
+    ".": {
+      "types": "./dist/entry.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "./dist/entry.d.ts",
   "scripts": {
     "dev": "concurrently --names Server,Worker -c green,blue  \"bun run server:hot\" \"bun run worker\"",
     "start": "concurrently --names Server,Worker -c green,blue  \"bun run server\" \"bun run worker\"",
     "server": "bun run index",
     "server:hot": "bun run --hot index",
-    "worker": "bunx @openworkflow/cli worker start"
+    "worker": "bunx @openworkflow/cli worker start",
+    "build": "bunx rslib build --tsconfig tsconfig.build.json"
   },
   "devDependencies": {
     "@openworkflow/cli": "^0.4.4",
+    "@rslib/core": "^0.23.2",
     "@types/bun": "latest",
     "@types/mime-types": "^3.0.1",
     "concurrently": "^9.2.1",

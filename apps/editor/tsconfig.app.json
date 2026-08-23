@@ -36,6 +36,5 @@
     "**/.server/**/*",
     "**/.client/**/*",
     ".react-router/types/**/*",
-    "../server/src/server/*",
   ],
 }

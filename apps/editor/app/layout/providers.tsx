@@ -7,7 +7,8 @@ import {
   httpBatchLink,
 } from "@trpc/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { type AppRouter, TRPCProvider } from "~/utils/trpc";
+import { TRPCProvider } from "~/utils/trpc";
+import type { AppRouter } from "@escriba/server";
 
 function makeQueryClient() {
   return new QueryClient({
