@@ -10,6 +10,8 @@ import {
 import type { Route } from "./+types/root";
 import "./index.css";
 
+import { QueryContextProvider } from "./context/query";
+
 export const links: Route.LinksFunction = () => [];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -31,7 +33,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <QueryContextProvider>
+      <Outlet />
+    </QueryContextProvider>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

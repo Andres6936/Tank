@@ -38,7 +38,7 @@ function getQueryClient() {
   }
 }
 
-export function Providers(props: React.PropsWithChildren<{}>) {
+export function QueryContextProvider(props: React.PropsWithChildren<{}>) {
   const queryClient = getQueryClient();
   const [trpcClient] = useState(() =>
     createTRPCClient<AppRouter>({
