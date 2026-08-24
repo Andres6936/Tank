@@ -15,6 +15,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useTRPC } from "~/utils/trpc";
 import { Button } from "~/components/ui/button";
 import { ButtonGroup } from "~/components/ui/button-group";
+import { overlay } from "overlay-kit";
+import { CreateDocumentModal } from "../modals/create-document";
 
 const Options = ({ Id }: { Id: string }) => {
   return (
@@ -88,6 +90,11 @@ export default function Page() {
         <Button
           variant="outline"
           className="min-h-16 gap-3 min-w-96 justify-start pl-4"
+          onClick={async () => {
+            const result = await overlay.openAsync((args) => (
+              <CreateDocumentModal {...args} />
+            ));
+          }}
         >
           <Plus />
           <div className="text-start">
