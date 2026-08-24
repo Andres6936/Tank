@@ -36,7 +36,9 @@ export default {
 
     const Name = path.posix.basename(Path);
     const Mimetype =
-      args.Blob instanceof Blob ? args.Blob.type : mime.lookup(Path);
+      args.Blob instanceof Blob
+        ? args.Blob.type
+        : (mime.lookup(Path) as string);
 
     const [_, result] = await Promise.all([
       writeFile({ Path, Blob: args.Blob }),
@@ -73,7 +75,9 @@ export default {
     const Path = path.posix.normalize(args.Path);
     const Name = path.posix.basename(Path);
     const Mimetype =
-      args.Blob instanceof Blob ? args.Blob.type : mime.lookup(Path);
+      args.Blob instanceof Blob
+        ? args.Blob.type
+        : (mime.lookup(Path) as string);
 
     const [_, result] = await Promise.all([
       updateFileVault({

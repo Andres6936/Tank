@@ -1,13 +1,17 @@
+import { z } from "zod";
 import { eq, desc } from "drizzle-orm";
 
 import { BucketsAvailable } from "../config/clients-vault";
 import { getSQLClients } from "../config/clients-sql";
-import { FilesTable, type FilesTableInsert } from "../db/schema";
+import { FilesTable } from "../db/schema";
 import { type PaginateType, defaultPagination } from "~/schemas/general";
 
 const { sql } = getSQLClients();
 
-type PartialFileType = Pick<FilesTableInsert, "Name" | "Path" | "Mimetype">;
+type PartialFileType = Pick<
+  typeof FilesTable.$inferInsert,
+  "Name" | "Path" | "Mimetype"
+>;
 
 const existPath = async (
   path: string,
