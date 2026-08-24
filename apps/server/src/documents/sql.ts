@@ -77,4 +77,22 @@ const updateContent = async (
   return row;
 };
 
-export { getAll, getByIdMaybe, create, updateContent };
+const updateFileLinkAndSeal = async (id: string, fileId: string) => {
+  const result = await sql
+    .update(DocumentsTable)
+    .set({
+      FileId: fileId,
+      TypeState: TypeStateDocumentKeys.Sealed,
+    })
+    .where(eq(DocumentsTable.Id, id))
+    .returning();
+
+  if (result.length === 0) {
+    return null;
+  }
+
+  const [row] = result;
+  return row;
+};
+
+export { getAll, getByIdMaybe, create, updateContent, updateFileLinkAndSeal };

@@ -2,10 +2,16 @@ import { z } from "zod";
 
 const SaveFileSchema = z.object({
   Path: z.string(),
-  Blob: z.instanceof(Blob).refine(
-    (it) => it.size <= 5 * 1024 * 1024, // 5MB
-    { message: "File must be less than 5MB" },
-  ),
+  Blob: z.union([
+    z.instanceof(Blob).refine(
+      (it) => it.size <= 5 * 1024 * 1024, // 5MB
+      { message: "File must be less than 5MB" },
+    ),
+    z.instanceof(ArrayBuffer).refine(
+      (it) => it.byteLength <= 5 * 1024 * 1024, // 5MB
+      { message: "File must be less than 5MB" },
+    ),
+  ]),
 });
 
 const UpdateFileSchema = SaveFileSchema.extend({

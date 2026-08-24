@@ -1,5 +1,7 @@
 import { asPayload } from "~/utility/response";
+import { TypeStateDocumentKeys } from "~/db/enums";
 
+import files from "~/files/functions";
 import { type InferArgs } from "./args";
 import * as sql from "./sql";
 
@@ -11,11 +13,14 @@ export default {
   seal: async (args: InferArgs["seal"]) => {
     const result = await sql.getByIdMaybe(args);
     if (!result) return asPayload(404, { message: "Not found" });
-
+    const document = result;
+    if (document.TypeState !== TypeStateDocumentKeys.Draft) {
+      return asPayload(401, { message: "Document is not in draft state" });
+    }
     const stream = await fetch("http://localhost:6936/api/documents", {
       method: "POST",
       body: JSON.stringify({
-        xml: result.Content,
+        xml: document.Content,
         seal: "red",
       }),
       headers: {
@@ -24,7 +29,14 @@ export default {
     });
     if (!stream.ok) return asPayload(500, { message: "Failed to generate" });
     const payload = await stream.arrayBuffer();
-
+    const operation = await files.save({
+      Path: `/tmp/${document.Title}.pdf`,
+      Blob: payload,
+    });
+    if (operation.statusCode !== 200) return operation;
+    const { Id } = operation.body;
+    const updated = await sql.updateFileLinkAndSeal(document.Id, Id);
+    if (!updated) return asPayload(500, { message: "Failed to update" });
     return asPayload(200, { message: "Sealed successfully" });
   },
   getById: async (args: InferArgs["getById"]) => {

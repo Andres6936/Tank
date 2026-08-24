@@ -10,17 +10,21 @@ const getLinkFile = async (args: { Path: string; Name: string }) => {
   return link;
 };
 
-const writeFile = async (args: { Path: string; Blob: Blob }) => {
-  return await privateVault.write(args.Path, await args.Blob.arrayBuffer());
+const writeFile = async (args: { Path: string; Blob: Blob | ArrayBuffer }) => {
+  return await privateVault.write(
+    args.Path,
+    args.Blob instanceof Blob ? await args.Blob.arrayBuffer() : args.Blob,
+  );
 };
 
 const updateFile = async (args: {
   NewPath: string;
   OldPath: string;
-  Blob: Blob;
+  Blob: Blob | ArrayBuffer;
 }) => {
   const isDifferentPath = args.OldPath !== args.NewPath;
-  const buffer = await args.Blob.arrayBuffer();
+  const buffer =
+    args.Blob instanceof Blob ? await args.Blob.arrayBuffer() : args.Blob;
   const promiseWrite = privateVault.write(args.NewPath, buffer);
 
   if (isDifferentPath) {
