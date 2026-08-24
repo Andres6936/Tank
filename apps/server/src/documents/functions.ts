@@ -7,6 +7,7 @@ import { getAll, getByIdMaybe } from "./sql";
 export const Args = {
   getAll: z.optional(PaginateSchema),
   generate: z.any(),
+  getById: z.uuidv7(),
 };
 
 type InferArgs = {
@@ -36,5 +37,10 @@ export default {
     const payload = await stream.arrayBuffer();
     await Bun.write("out.pdf", payload);
     return { success: true };
+  },
+  getById: async (args: InferArgs["getById"]) => {
+    const result = await getByIdMaybe(args);
+    if (!result) return asPayload(404, { message: "Not found" });
+    return asPayload(200, result);
   },
 };

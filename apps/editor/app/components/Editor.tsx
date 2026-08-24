@@ -19,8 +19,12 @@ const emmetTabKeymap = Prec.highest(
   ]),
 );
 
-export const XmlEditor = () => {
-  const [value, setValue] = useState(initialXml);
+type Props = {
+  content: string;
+};
+
+export const XmlEditor = (props: Props) => {
+  const [value, setValue] = useState(props.content);
 
   return (
     <CodeMirror

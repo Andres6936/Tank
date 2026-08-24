@@ -16,4 +16,10 @@ export default {
       return functions.generate(args);
     }),
   ),
+  getById: publicProcedure.input(Args.getById).query(
+    handle(async (args) => {
+      const { input } = args;
+      return functions.getById(input);
+    }),
+  ),
 };
