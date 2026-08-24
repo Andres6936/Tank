@@ -21,17 +21,7 @@ import {
   deleteFile as deleteFileVault,
 } from "./vault";
 
-export const Args = {
-  getAll: z.optional(PaginateSchema),
-  save: z.instanceof(FormData),
-  getById: z.uuidv7(),
-  updateById: z.instanceof(FormData),
-  deleteById: z.uuidv7(),
-};
-
-type InferArgs = {
-  [K in keyof typeof Args]: z.infer<(typeof Args)[K]>;
-};
+import { Args, type InferArgs } from "./args";
 
 export default {
   getAll: async (args: InferArgs["getAll"]) => {
