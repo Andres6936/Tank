@@ -1,6 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { CloudDownload, Copy, Play, Settings } from "lucide-react";
+import {
+  ChevronsUpDown,
+  CloudDownload,
+  Copy,
+  LayoutGrid,
+  List,
+  Play,
+  Plus,
+  Settings,
+} from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 
 import { useTRPC } from "~/utils/trpc";
@@ -74,10 +83,34 @@ export default function Page() {
   const items = query.data.body;
 
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,10rem)] gap-4 place-content-start">
-      {items.map((item) => (
-        <Document key={item.Id} document={item} />
-      ))}
-    </div>
+    <>
+      <div className="flex flex-row justify-between items-center">
+        <Button>
+          <Plus /> New folder
+        </Button>
+        <div className="flex flex-row gap-4">
+          <ButtonGroup>
+            <Button size="icon">
+              <LayoutGrid size={18} strokeWidth={1} />
+            </Button>
+            <Button variant="outline" size="icon">
+              <List size={18} strokeWidth={1} />
+            </Button>
+          </ButtonGroup>
+
+          <div className="flex flex-row gap-2 items-center">
+            <p className="text-muted-foreground text-xs">Sort by</p>
+            <Button variant="outline">
+              Last modified <ChevronsUpDown size={18} strokeWidth={1} />
+            </Button>
+          </div>
+        </div>
+      </div>
+      <div className="grid grid-cols-[repeat(auto-fill,10rem)] gap-4 place-content-start">
+        {items.map((item) => (
+          <Document key={item.Id} document={item} />
+        ))}
+      </div>
+    </>
   );
 }
