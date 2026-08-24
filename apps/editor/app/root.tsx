@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import { OverlayProvider } from "overlay-kit";
 
 import type { Route } from "./+types/root";
 import "./index.css";
@@ -35,7 +36,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <QueryContextProvider>
-      <Outlet />
+      <OverlayProvider>
+        <Outlet />
+      </OverlayProvider>
     </QueryContextProvider>
   );
 }

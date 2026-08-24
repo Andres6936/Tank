@@ -57,6 +57,7 @@
         "clsx": "^2.1.1",
         "isbot": "^5.2.1",
         "lucide-react": "^1.31.0",
+        "overlay-kit": "^1.9.0",
         "react": "^19.2.8",
         "react-dom": "^19.2.8",
         "react-router": "^8.3.0",
@@ -1224,6 +1225,8 @@
     "openworkflow": ["openworkflow@0.9.2", "", { "peerDependencies": { "postgres": "^3.4.9" }, "optionalPeers": ["postgres"] }, "sha512-NluYomuVLf+rAMJ9ASKqw8nbPAAD+C/HSTZoJacZdelLfTpndzHvPcP8SCANg9me9zek6mao0uUOGGbrWUWhGw=="],
 
     "ora": ["ora@8.2.0", "", { "dependencies": { "chalk": "^5.3.0", "cli-cursor": "^5.0.0", "cli-spinners": "^2.9.2", "is-interactive": "^2.0.0", "is-unicode-supported": "^2.0.0", "log-symbols": "^6.0.0", "stdin-discarder": "^0.2.2", "string-width": "^7.2.0", "strip-ansi": "^7.1.0" } }, "sha512-weP+BZ8MVNnlCm8c0Qdc1WSWq4Qn7I+9CJGm7Qali6g44e/PUzbjNqJX5NJ9ljlNMosfJvg1fKEGILklK9cwnw=="],
+
+    "overlay-kit": ["overlay-kit@1.9.0", "", { "peerDependencies": { "react": "^16.8 || ^17 || ^18 || ^19" } }, "sha512-kwzAOhWEDsrmgJzQKuI0v3xCwyWTSaNe3qI0t+7OTTj05ciRpg3j+NWz8FRPVt7rHBFL/jAjKyQf4xGOHcRXfg=="],
 
     "oxlint": ["oxlint@1.78.0", "", { "optionalDependencies": { "@oxlint/binding-android-arm-eabi": "1.78.0", "@oxlint/binding-android-arm64": "1.78.0", "@oxlint/binding-darwin-arm64": "1.78.0", "@oxlint/binding-darwin-x64": "1.78.0", "@oxlint/binding-freebsd-x64": "1.78.0", "@oxlint/binding-linux-arm-gnueabihf": "1.78.0", "@oxlint/binding-linux-arm-musleabihf": "1.78.0", "@oxlint/binding-linux-arm64-gnu": "1.78.0", "@oxlint/binding-linux-arm64-musl": "1.78.0", "@oxlint/binding-linux-ppc64-gnu": "1.78.0", "@oxlint/binding-linux-riscv64-gnu": "1.78.0", "@oxlint/binding-linux-riscv64-musl": "1.78.0", "@oxlint/binding-linux-s390x-gnu": "1.78.0", "@oxlint/binding-linux-x64-gnu": "1.78.0", "@oxlint/binding-linux-x64-musl": "1.78.0", "@oxlint/binding-openharmony-arm64": "1.78.0", "@oxlint/binding-win32-arm64-msvc": "1.78.0", "@oxlint/binding-win32-ia32-msvc": "1.78.0", "@oxlint/binding-win32-x64-msvc": "1.78.0" }, "peerDependencies": { "oxlint-tsgolint": ">=7.0.2001", "vite-plus": "*" }, "optionalPeers": ["oxlint-tsgolint", "vite-plus"], "bin": { "oxlint": "bin/oxlint" } }, "sha512-QgQePuxIqKOzo1KSjG2EnITEeWvWnKAm77eq8nrMtf6AGoA+zyGc4PFYtDNJSD25g/ibOwfQ851hZ4/SPkMVoA=="],
 
