@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { XmlEditor } from "~/components/Editor";
 import { useTRPC } from "~/utils/trpc";
+import { Preview } from "../components/preview";
 
 export default function View({ Id }: { Id: string }) {
   const trpc = useTRPC();
@@ -33,10 +34,7 @@ export default function View({ Id }: { Id: string }) {
       </div>
       <div className="relative flex flex-1">
         <div className="absolute inset-0 flex-1 border border-zinc-300">
-          <iframe
-            src="https://www.rd.usda.gov/sites/default/files/pdf-sample_0.pdf"
-            className="w-full h-full"
-          />
+          <Preview content={item.Content} />
         </div>
       </div>
     </div>
