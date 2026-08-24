@@ -36,7 +36,3 @@ export const DocumentsTable = sqliteTable(
   },
   (table) => [index("Document_FileId").on(table.FileId)],
 );
-
-export type FilesTableInsert = typeof FilesTable.$inferInsert;
-
-export type FilesTableSelect = typeof FilesTable.$inferSelect;
