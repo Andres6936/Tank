@@ -1,7 +1,8 @@
 import { publicProcedure } from "~/server/trpc";
 import { handle } from "~/utility/response";
 
-import functions, { Args } from "./functions";
+import functions from "./functions";
+import { Args } from "./args";
 
 export default {
   getAll: publicProcedure.input(Args.getAll).query(
@@ -20,6 +21,18 @@ export default {
     handle(async (args) => {
       const { input } = args;
       return functions.getById(input);
+    }),
+  ),
+  create: publicProcedure.input(Args.create).mutation(
+    handle(async (args) => {
+      const { input } = args;
+      return functions.create(input);
+    }),
+  ),
+  updateContent: publicProcedure.input(Args.updateContent).mutation(
+    handle(async (args) => {
+      const { input } = args;
+      return functions.updateContent(input);
     }),
   ),
 };

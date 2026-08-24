@@ -3,8 +3,10 @@ import { eq, desc } from "drizzle-orm";
 import { getSQLClients } from "~/config/clients-sql";
 import { DocumentsTable } from "~/db/schema";
 import { defaultPagination, type PaginateType } from "~/schemas/general";
-import type { InsertDocumentType } from "./types";
 import { TypeStateDocumentKeys } from "~/db/enums";
+
+import { Args, type InferArgs } from "./args";
+import type { OmitUpdateKeys } from "~/utility/types";
 
 const { sql } = getSQLClients();
 
@@ -34,7 +36,7 @@ const getByIdMaybe = async (id: string) => {
   return row;
 };
 
-const create = async (document: InsertDocumentType) => {
+const create = async (document: InferArgs["create"]) => {
   const result = await sql
     .insert(DocumentsTable)
     .values({
@@ -53,4 +55,26 @@ const create = async (document: InsertDocumentType) => {
   return row;
 };
 
-export { getAll, getByIdMaybe, create };
+const updateContent = async (
+  id: string,
+  document: OmitUpdateKeys<InferArgs["updateContent"]>,
+) => {
+  const result = await sql
+    .update(DocumentsTable)
+    .set({
+      Title: document.Title,
+      Subject: document.Subject,
+      Content: document.Content,
+    })
+    .where(eq(DocumentsTable.Id, id))
+    .returning();
+
+  if (result.length === 0) {
+    return null;
+  }
+
+  const [row] = result;
+  return row;
+};
+
+export { getAll, getByIdMaybe, create, updateContent };

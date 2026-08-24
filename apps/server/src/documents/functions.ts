@@ -1,20 +1,7 @@
-import { z } from "zod";
-import { PaginateSchema } from "~/schemas/general";
 import { asPayload } from "~/utility/response";
 
-import schemas from "./schemas";
+import { type InferArgs } from "./args";
 import * as sql from "./sql";
-
-export const Args = {
-  getAll: z.optional(PaginateSchema),
-  generate: z.any(),
-  getById: z.uuidv7(),
-  create: schemas.Insert,
-};
-
-type InferArgs = {
-  [K in keyof typeof Args]: z.infer<(typeof Args)[K]>;
-};
 
 export default {
   getAll: async (args: InferArgs["getAll"]) => {
@@ -50,6 +37,11 @@ export default {
   create: async (args: InferArgs["create"]) => {
     const result = await sql.create(args);
     if (!result) return asPayload(500, { message: "Failed to create" });
+    return asPayload(200, result);
+  },
+  updateContent: async (args: InferArgs["updateContent"]) => {
+    const result = await sql.updateContent(args.Id, args);
+    if (!result) return asPayload(500, { message: "Failed to update" });
     return asPayload(200, result);
   },
 };
