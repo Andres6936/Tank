@@ -84,6 +84,18 @@ export default function Page() {
 
   return (
     <>
+      <div>
+        <Button
+          variant="outline"
+          className="min-h-16 gap-3 min-w-96 justify-start pl-4"
+        >
+          <Plus />
+          <div className="text-start">
+            <p className="text-xs font-semibold">Empty document</p>
+            <p className="text-xs text-muted-foreground">Start from scratch</p>
+          </div>
+        </Button>
+      </div>
       <div className="flex flex-row justify-between items-center">
         <Button>
           <Plus /> New folder
