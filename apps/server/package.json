@@ -17,7 +17,7 @@
     "server:hot": "bun run --hot index",
     "worker": "bunx @openworkflow/cli worker start",
     "build": "bunx rslib build --tsconfig tsconfig.build.json",
-    "schema:generate": "drizzle-kit generate"
+    "schema:generate": "drizzle-kit generate && bun run seed"
   },
   "devDependencies": {
     "@openworkflow/cli": "^0.4.4",
