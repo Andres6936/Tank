@@ -1,7 +1,10 @@
-import { publicProcedure } from "~/server/trpc";
+import { z } from "zod";
 import { handle } from "~/utility/response";
+import { publicProcedure } from "~/server/trpc";
+import { SaveFileSchema, UpdateFileSchema } from "~/schemas/validate";
 
-import functions, { Args } from "./functions";
+import functions from "./functions";
+import { Args } from "./args";
 
 export default {
   getAll: publicProcedure.input(Args.getAll).query(
@@ -10,10 +13,12 @@ export default {
       return functions.getAll(input);
     }),
   ),
-  save: publicProcedure.input(Args.save).mutation(
+  save: publicProcedure.input(z.instanceof(FormData)).mutation(
     handle(async (args) => {
       const { input } = args;
-      return functions.save(input);
+      return functions.save(
+        SaveFileSchema.parse(Object.fromEntries(input.entries())),
+      );
     }),
   ),
   getById: publicProcedure.input(Args.getById).query(
@@ -22,10 +27,12 @@ export default {
       return functions.getById(id);
     }),
   ),
-  updateById: publicProcedure.input(Args.updateById).mutation(
+  updateById: publicProcedure.input(z.instanceof(FormData)).mutation(
     handle(async (args) => {
       const { input } = args;
-      return functions.updateById(input);
+      return functions.updateById(
+        UpdateFileSchema.parse(Object.fromEntries(input.entries())),
+      );
     }),
   ),
   deleteById: publicProcedure.input(Args.deleteById).mutation(

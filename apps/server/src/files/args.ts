@@ -1,13 +1,14 @@
 import { z } from "zod";
 
 import { PaginateSchema } from "~/schemas/general";
+import { SaveFileSchema, UpdateFileSchema } from "~/schemas/validate";
 
 export const Args = {
   getAll: z.optional(PaginateSchema),
-  save: z.instanceof(FormData),
-  getById: z.uuidv7(),
-  updateById: z.instanceof(FormData),
-  deleteById: z.uuidv7(),
+  save: SaveFileSchema,
+  getById: z.uuid(),
+  updateById: UpdateFileSchema,
+  deleteById: z.uuid(),
 };
 
 export type InferArgs = {

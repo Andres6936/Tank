@@ -1,27 +1,24 @@
 import mime from "mime-types";
 import path from "node:path";
-import { z } from "zod";
 
 import { asPayload } from "~/utility/response";
-import { SaveFileSchema, UpdateFileSchema } from "~/schemas/validate";
-import { PaginateSchema } from "~/schemas/general";
 
 import {
+  deleteFile,
   existPath,
   getAll,
   getFileMaybe,
-  deleteFile,
   insertFile,
   updateFile,
 } from "./sql";
 import {
-  getLinkFile,
-  writeFile,
-  updateFile as updateFileVault,
   deleteFile as deleteFileVault,
+  getLinkFile,
+  updateFile as updateFileVault,
+  writeFile,
 } from "./vault";
 
-import { Args, type InferArgs } from "./args";
+import { type InferArgs } from "./args";
 
 export default {
   getAll: async (args: InferArgs["getAll"]) => {
@@ -29,8 +26,7 @@ export default {
     return asPayload(200, result);
   },
   save: async (args: InferArgs["save"]) => {
-    const schema = SaveFileSchema.parse(Object.fromEntries(args.entries()));
-    const Path = path.posix.normalize(schema.Path);
+    const Path = path.posix.normalize(args.Path);
     const [exists, id] = await existPath(Path);
     if (exists) {
       return asPayload(409, {
@@ -39,10 +35,10 @@ export default {
     }
 
     const Name = path.posix.basename(Path);
-    const Mimetype = schema.Blob.type ?? mime.lookup(Path);
+    const Mimetype = args.Blob.type ?? mime.lookup(Path);
 
     const [_, result] = await Promise.all([
-      writeFile({ Path, Blob: schema.Blob }),
+      writeFile({ Path, Blob: args.Blob }),
       insertFile({
         Name,
         Path,
@@ -67,24 +63,23 @@ export default {
     return asPayload(200, { link });
   },
   updateById: async (args: InferArgs["updateById"]) => {
-    const schema = UpdateFileSchema.parse(Object.fromEntries(args.entries()));
-    const file = await getFileMaybe(schema.Id);
+    const file = await getFileMaybe(args.Id);
     if (!file) {
       return asPayload(404, { message: "Not found" });
     }
 
     const OldPath = file.Path;
-    const Path = path.posix.normalize(schema.Path);
+    const Path = path.posix.normalize(args.Path);
     const Name = path.posix.basename(Path);
-    const Mimetype = schema.Blob.type ?? mime.lookup(Path);
+    const Mimetype = args.Blob.type ?? mime.lookup(Path);
 
     const [_, result] = await Promise.all([
       updateFileVault({
         OldPath,
         NewPath: Path,
-        Blob: schema.Blob,
+        Blob: args.Blob,
       }),
-      updateFile(schema.Id, {
+      updateFile(args.Id, {
         Name,
         Path,
         Mimetype,
