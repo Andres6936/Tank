@@ -5,8 +5,8 @@ import schemas from "./schemas";
 
 export const Args = {
   getAll: z.optional(PaginateSchema),
-  generate: z.any(),
-  getById: z.uuidv7(),
+  seal: z.uuid(),
+  getById: z.uuid(),
   create: schemas.Insert,
   updateContent: schemas.Update.extend({ Id: z.uuid() })
     .pick({

@@ -8,26 +8,24 @@ export default {
     const result = await sql.getAll(args);
     return asPayload(200, result);
   },
-  generate: async (args: InferArgs["generate"]) => {
-    const result = await sql.getByIdMaybe(
-      "01a012c2-cc97-771d-bc93-d91c0de027e9",
-    );
-    if (!result) throw new Error("Not found");
+  seal: async (args: InferArgs["seal"]) => {
+    const result = await sql.getByIdMaybe(args);
+    if (!result) return asPayload(404, { message: "Not found" });
 
     const stream = await fetch("http://localhost:6936/api/documents", {
       method: "POST",
       body: JSON.stringify({
         xml: result.Content,
-        seal: "green",
+        seal: "red",
       }),
       headers: {
         "Content-Type": "application/json",
       },
     });
-    if (!stream.ok) throw new Error("Failed to generate");
+    if (!stream.ok) return asPayload(500, { message: "Failed to generate" });
     const payload = await stream.arrayBuffer();
-    await Bun.write("out.pdf", payload);
-    return { success: true };
+
+    return asPayload(200, { message: "Sealed successfully" });
   },
   getById: async (args: InferArgs["getById"]) => {
     const result = await sql.getByIdMaybe(args);

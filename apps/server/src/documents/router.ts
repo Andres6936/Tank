@@ -11,10 +11,10 @@ export default {
       return functions.getAll(input);
     }),
   ),
-  generate: publicProcedure.input(Args.generate).mutation(
+  seal: publicProcedure.input(Args.seal).mutation(
     handle(async (args) => {
       const { input } = args;
-      return functions.generate(args);
+      return functions.seal(input);
     }),
   ),
   getById: publicProcedure.input(Args.getById).query(
