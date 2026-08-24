@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
 
 const asQuery = async (args: { xml: string }) => {
   const stream = await fetch("http://localhost:6936/api/documents", {
@@ -8,6 +9,10 @@ const asQuery = async (args: { xml: string }) => {
       seal: "red",
     }),
   });
+  if (!stream.ok)
+    throw new Error(
+      "The server cannot process your request: " + stream.statusText,
+    );
   const buffer = await stream.arrayBuffer();
   const blob = new Blob([buffer], { type: "application/pdf" });
   const url = URL.createObjectURL(blob);
@@ -18,7 +23,16 @@ export const Preview = ({ content }: { content: string }) => {
   const query = useQuery({
     queryKey: ["/preview", content],
     queryFn: () => asQuery({ xml: content }),
+    staleTime: Infinity,
   });
+
+  const url = query.data;
+
+  useEffect(() => {
+    if (url) {
+      URL.revokeObjectURL(url);
+    }
+  }, [url]);
 
   if (query.isLoading || !query.data) {
     return <p>Loading ...</p>;
@@ -27,8 +41,6 @@ export const Preview = ({ content }: { content: string }) => {
   if (query.isError) {
     return <p>Error: {query.error.message}</p>;
   }
-
-  const url = query.data;
 
   return <iframe src={url} className="w-full h-full" />;
 };
