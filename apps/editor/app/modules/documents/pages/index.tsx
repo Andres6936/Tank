@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Link } from "react-router";
+import { useQuery } from "@tanstack/react-query";
 import {
   ChevronsUpDown,
   CloudDownload,
@@ -10,13 +9,13 @@ import {
   Plus,
   Settings,
 } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { Link } from "react-router";
 
-import { useTRPC } from "~/utils/trpc";
 import { Button } from "~/components/ui/button";
 import { ButtonGroup } from "~/components/ui/button-group";
-import { overlay } from "overlay-kit";
-import { CreateDocumentModal } from "../modals/create-document";
+import { useTRPC } from "~/utils/trpc";
+import { ActionNewDocument } from "../components/actions";
 
 const Options = ({ Id }: { Id: string }) => {
   return (
@@ -25,6 +24,7 @@ const Options = ({ Id }: { Id: string }) => {
         <Button
           variant="outline"
           size="icon"
+          nativeButton={false}
           render={(props) => <Link {...props} to={`/documents/view/${Id}`} />}
         >
           <Play size={18} strokeWidth={1} />
@@ -87,21 +87,7 @@ export default function Page() {
   return (
     <>
       <div>
-        <Button
-          variant="outline"
-          className="min-h-16 gap-3 min-w-96 justify-start pl-4"
-          onClick={async () => {
-            const result = await overlay.openAsync((args) => (
-              <CreateDocumentModal {...args} />
-            ));
-          }}
-        >
-          <Plus />
-          <div className="text-start">
-            <p className="text-xs font-semibold">Empty document</p>
-            <p className="text-xs text-muted-foreground">Start from scratch</p>
-          </div>
-        </Button>
+        <ActionNewDocument />
       </div>
       <div className="flex flex-row justify-between items-center">
         <Button>
