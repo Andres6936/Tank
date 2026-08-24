@@ -11,11 +11,13 @@ const Options = ({ Id }: { Id: string }) => {
   return (
     <div className="absolute top-8 left-2/4 -translate-x-2/4 bg-white rounded-md shadow">
       <ButtonGroup>
-        <Link to={`/documents/view/${Id}`}>
-          <Button variant="outline" size="icon">
-            <Play size={18} strokeWidth={1} />
-          </Button>
-        </Link>
+        <Button
+          variant="outline"
+          size="icon"
+          render={(props) => <Link {...props} to={`/documents/view/${Id}`} />}
+        >
+          <Play size={18} strokeWidth={1} />
+        </Button>
         <Button variant="outline" size="icon">
           <CloudDownload size={18} strokeWidth={1} />
         </Button>
