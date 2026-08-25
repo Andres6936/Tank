@@ -11,7 +11,8 @@ import { OverlayProvider } from "overlay-kit";
 import type { Route } from "./+types/root";
 import "./index.css";
 
-import { QueryContextProvider } from "./context/query";
+import { Toaster } from "~/components/ui/toast";
+import { QueryContextProvider } from "~/context/query";
 
 export const links: Route.LinksFunction = () => [];
 
@@ -28,6 +29,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
+        <Toaster />
       </body>
     </html>
   );
