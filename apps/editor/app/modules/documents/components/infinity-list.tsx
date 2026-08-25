@@ -7,15 +7,15 @@ import { Button } from "~/components/ui/button";
 
 const InfinityList = () => {
   const trpc = useTRPC();
-  const queryInfinite = useInfiniteQuery({
-    ...trpc.documents.getAllInfinite.infiniteQueryOptions(
+  const queryInfinite = useInfiniteQuery(
+    trpc.documents.getAllInfinite.infiniteQueryOptions(
       { limit: 10 },
       {
         getNextPageParam: (lastPage) =>
           lastPage.statusCode === 200 ? lastPage.body.nextCursor : undefined,
       },
     ),
-  });
+  );
 
   if (queryInfinite.status === "pending") {
     return <p>Loading ...</p>;
