@@ -7,7 +7,11 @@ export const Args = {
   getAll: z.optional(PaginateSchema),
   seal: z.uuid(),
   getById: z.uuid(),
-  create: schemas.Insert,
+  create: schemas.Insert.required({
+    Title: true,
+    Subject: true,
+    Content: true,
+  }),
   updateContent: schemas.Update.extend({ Id: z.uuid() })
     .pick({
       Id: true,
