@@ -1,0 +1,133 @@
+;<Document
+    subject="Cesión de Derechos Patrimoniales"
+    title="Plataforma Residuos Ambientales"
+    author="Joan Andrés Buriticá Salazar"
+    keywords="IP, Derechos de Autor, Cesión, Software"
+    creator="Joan Andrés Buriticá Salazar"
+    producer="React PDF with Bun"
+    language="es"
+>
+    <Cover
+        type="Acuerdo de Cesión de Derechos"
+        title="Software: Plataforma Residuos Ambientales"
+        month="Agosto 2026"
+    />
+
+    <Paginate>
+        <IndicatorHeader value="Ing. Joan A. Buriticá" />
+        <Section marginTop="0" gap="0.1cm">
+            <Text>
+                <Text bold="1">
+                    Fecha de Elaboración:
+                    <S />
+                </Text>
+                XX de agosto de 2026
+            </Text>
+        </Section>
+
+        <Section wrap="1">
+            <Title>
+                CONTRATO DE CESIÓN DE DERECHOS PATRIMONIALES SOBRE OBRA DE
+                SOFTWARE
+            </Title>
+
+            <Paragraph>
+                Entre los suscritos, por una parte, JOAN ANDRÉS BURITICÁ
+                SALAZAR, actuando en nombre propio, en adelante denominado EL
+                CEDENTE (Autor/Desarrollador), y por la otra, RESIDUOS
+                AMBIENTALES S.A.S. (REAM), representada legalmente por YOMAIRA
+                BEYTAR FLOREZ, en adelante denominada EL CESIONARIO, acuerdan
+                celebrar el presente documento de Cesión de Derechos
+                Patrimoniales, el cual se rige por las siguientes cláusulas:
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                PRIMERA - OBJETO DE LA CESIÓN:
+            </Title>
+            <Paragraph>
+                EL CEDENTE transfiere a favor de EL CESIONARIO, de forma
+                exclusiva y sin limitación territorial, los derechos
+                patrimoniales y de explotación económica sobre el código fuente
+                a medida, bases de datos relacionales y flujos de interfaz
+                gráfica desarrollados para la "Plataforma de Gestión Logística y
+                Administrativa" (en adelante "El Software"), entregados conforme
+                al Contrato de Prestación de Servicios original y sus
+                respectivos Otrosíes (No. 1, 2 y 3).
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                SEGUNDA - CONDICIÓN SUSPENSIVA Y VIGENCIA (BLOQUEO LEGAL):
+            </Title>
+            <Paragraph>
+                Las partes declaran de manera expresa e innegociable que la
+                presente cesión de derechos está sujeta a una
+                <Text bold="1">Condición Suspensiva</Text>. La transferencia
+                patrimonial objeto de la Cláusula Primera carecerá de todo
+                efecto legal, y EL CEDENTE mantendrá la titularidad absoluta del
+                Software, hasta que se verifique y confirme el pago total,
+                efectivo y libre de retenciones no pactadas de la liquidación
+                final del proyecto, correspondiente a la suma de DOS MILLONES
+                SETECIENTOS OCHENTA Y OCHO MIL DOSCIENTOS CATORCE PESOS M/CTE
+                ($2'788.214 COP). Una vez reflejado el pago, la cesión quedará
+                perfeccionada automáticamente.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                TERCERA - DERECHOS MORALES Y PORTAFOLIO:
+            </Title>
+            <Paragraph>
+                De conformidad con la normativa de propiedad intelectual
+                aplicable, EL CEDENTE conserva de manera perpetua, inalienable e
+                irrenunciable los Derechos Morales sobre la obra (derecho de
+                paternidad). En consecuencia, EL CEDENTE conserva el derecho a
+                ser reconocido como el autor y arquitecto del software, y
+                mantiene la potestad de exhibir capturas de pantalla, flujos
+                abstractos y métricas de desempeño de la plataforma
+                exclusivamente como parte de su portafolio profesional y
+                comercial, garantizando en todo momento la anonimización de los
+                datos sensibles y el secreto comercial de EL CESIONARIO.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                CUARTA - COMPONENTES DE TERCEROS (OPEN SOURCE):
+            </Title>
+            <Paragraph>
+                La presente cesión aplica estricta y exclusivamente sobre el
+                código fuente nativo programado por EL CEDENTE. La arquitectura
+                del Software integra librerías, marcos de trabajo (Frameworks) y
+                componentes de código abierto (Open Source) de terceros. Los
+                derechos sobre dichos componentes no son objeto de esta cesión y
+                continúan rigiéndose bajo sus respectivas licencias públicas
+                internacionales (MIT, Apache, GPL, entre otras).
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                QUINTA - INDEMNIDAD:
+            </Title>
+            <Paragraph>
+                EL CEDENTE declara que el código nativo desarrollado es de su
+                creación original y no infringe derechos de autor de terceros.
+                La responsabilidad máxima por cualquier reclamación derivada de
+                este concepto quedará limitada al tope financiero estipulado en
+                la Cláusula Décima Segunda del contrato principal.
+            </Paragraph>
+        </Section>
+
+        <SignSection>
+            <SignRow gap="25pt" height="120pt">
+                <SignPadLeft signBy="Yomaira Beytar Florez, Representante REAM" />
+                <SignMeRight />
+            </SignRow>
+        </SignSection>
+    </Paginate>
+</Document>

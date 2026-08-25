@@ -1,0 +1,122 @@
+;<Document
+    subject="Liquidación Bilateral y Paz y Salvo"
+    title="Plataforma Residuos Ambientales"
+    author="Joan Andrés Buriticá Salazar"
+    keywords="Liquidación, Paz y Salvo, Cierre de Proyecto"
+    creator="Joan Andrés Buriticá Salazar"
+    producer="React PDF with Bun"
+    language="es"
+>
+    <Cover
+        type="Acta de Liquidación Bilateral y Paz y Salvo"
+        title="Plataforma Residuos Ambientales"
+        month="Agosto 2026"
+    />
+
+    <Paginate>
+        <IndicatorHeader value="Ing. Joan A. Buriticá" />
+        <Section marginTop="0" gap="0.1cm">
+            <Text>
+                <Text bold="1">
+                    Fecha de Suscripción:
+                    <S />
+                </Text>
+                [XX] de agosto de 2026
+            </Text>
+        </Section>
+
+        <Section wrap="1">
+            <Title>
+                ACTA DE LIQUIDACIÓN BILATERAL Y PAZ Y SALVO DEFINITIVO
+            </Title>
+
+            <Paragraph>
+                Entre los suscritos, por una parte, RESIDUOS AMBIENTALES S.A.S.
+                (REAM), representada legalmente por YOMAIRA BEYTAR FLOREZ, en
+                adelante denominada EL CONTRATANTE, y por la otra, JOAN ANDRÉS
+                BURITICÁ SALAZAR, en adelante denominado EL CONTRATISTA, han
+                acordado celebrar la presente Acta de Liquidación Bilateral del
+                Contrato de Prestación de Servicios de Desarrollo de Software,
+                previas las siguientes consideraciones y cláusulas:
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                PRIMERA - DECLARACIÓN DE CUMPLIMIENTO Y CIERRE:
+            </Title>
+            <Paragraph>
+                Las partes declaran de mutuo acuerdo que EL CONTRATISTA ha
+                cumplido a entera satisfacción con la entrega del 100% del
+                alcance funcional, código fuente y requerimientos técnicos
+                estipulados en el Contrato Principal, sus actas derivadas, el
+                documento de "Intercambio de Requerimientos" y los Otrosíes
+                correspondientes (No. 1, 2 y 3). En consecuencia, se declara la
+                terminación definitiva del vínculo contractual por cumplimiento
+                del objeto.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                SEGUNDA - BALANCE FINANCIERO Y PAZ Y SALVO:
+            </Title>
+            <Paragraph>
+                EL CONTRATISTA declara haber recibido a satisfacción la
+                totalidad de los desembolsos pactados, incluyendo el pago del
+                saldo final liquidado por un valor de DOS MILLONES SETECIENTOS
+                OCHENTA Y OCHO MIL DOSCIENTOS CATORCE PESOS M/CTE ($2'788.214
+                COP).
+            </Paragraph>
+            <Paragraph>
+                Por lo anterior, ambas partes declaran que los saldos contables
+                y financieros a favor o en contra del presente contrato se
+                encuentran en CERO PESOS ($0). Las partes se otorgan mutuo,
+                amplio y definitivo <Text bold="1">PAZ Y SALVO</Text> por todo
+                concepto (honorarios, intereses, penalidades, indemnizaciones),
+                renunciando de manera expresa e irrevocable a iniciar cualquier
+                tipo de acción, reclamación o demanda civil, comercial o penal
+                por motivos económicos derivados de este contrato.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                TERCERA - INDEPENDENCIA DE LA GARANTÍA TÉCNICA:
+            </Title>
+            <Paragraph>
+                Se deja expresa constancia de que la presente liquidación del
+                contrato principal no extingue ni afecta la vigencia de la
+                Garantía Técnica de tres (3) meses sobre corrección de errores
+                (Bugs), la cual continuará activa bajo las exclusiones y el tope
+                de responsabilidad estipulados en el Acta de Entrega Final y la
+                Cláusula Décima Segunda del contrato original.
+            </Paragraph>
+        </Section>
+
+        <Section wrap="1">
+            <Title size="xs" textAlign="left">
+                CUARTA - CESIÓN DE DERECHOS:
+            </Title>
+            <Paragraph>
+                Al formalizarse el pago descrito en la Cláusula Segunda, se
+                confirma la entrada en vigencia plena del Contrato de Cesión de
+                Derechos Patrimoniales, consolidando la titularidad de
+                explotación económica a favor de EL CONTRATANTE, salvaguardando
+                los derechos morales irrenunciables de EL CONTRATISTA.
+            </Paragraph>
+
+            <Paragraph>
+                Para constancia y en señal de absoluta conformidad, se firma a
+                los [XX] días del mes de agosto de 2026.
+            </Paragraph>
+        </Section>
+
+        <SignSection>
+            <SignRow gap="25pt" height="120pt">
+                <SignPadLeft signBy="Yomaira Beytar Florez, Representante REAM" />
+                <SignMeRight />
+            </SignRow>
+        </SignSection>
+    </Paginate>
+</Document>
