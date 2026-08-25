@@ -11,6 +11,12 @@ export default {
       return functions.getAll(input);
     }),
   ),
+  getAllInfinite: publicProcedure.input(Args.getAllInfinite).query(
+    handle(async (args) => {
+      const { input } = args;
+      return functions.getAllInfinite(input);
+    }),
+  ),
   seal: publicProcedure.input(Args.seal).mutation(
     handle(async (args) => {
       const { input } = args;

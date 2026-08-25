@@ -1,4 +1,4 @@
-import { eq, desc } from "drizzle-orm";
+import { eq, desc, lt } from "drizzle-orm";
 
 import { getSQLClients } from "~/config/clients-sql";
 import { DocumentsTable } from "~/db/schema";
@@ -18,6 +18,17 @@ const getAll = async (args?: PaginateType) => {
     .orderBy(desc(DocumentsTable.CreatedAt))
     .limit(PageSize)
     .offset((Page - 1) * PageSize);
+  return result;
+};
+
+const getAllInfinite = async (args: InferArgs["getAllInfinite"]) => {
+  const result = await sql
+    .select()
+    .from(DocumentsTable)
+    // If the cursor is provided, get documents after it
+    .where(args.cursor ? lt(DocumentsTable.Id, args.cursor) : undefined)
+    .orderBy(desc(DocumentsTable.Id))
+    .limit(args.limit);
   return result;
 };
 
@@ -95,4 +106,11 @@ const updateFileLinkAndSeal = async (id: string, fileId: string) => {
   return row;
 };
 
-export { getAll, getByIdMaybe, create, updateContent, updateFileLinkAndSeal };
+export {
+  getAll,
+  getAllInfinite,
+  getByIdMaybe,
+  create,
+  updateContent,
+  updateFileLinkAndSeal,
+};

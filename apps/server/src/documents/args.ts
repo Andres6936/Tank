@@ -5,6 +5,10 @@ import schemas from "./schemas";
 
 export const Args = {
   getAll: z.optional(PaginateSchema),
+  getAllInfinite: z.object({
+    limit: z.number(),
+    cursor: z.string().nullish(),
+  }),
   seal: z.uuid(),
   getById: z.uuid(),
   create: schemas.Insert.required({

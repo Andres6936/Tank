@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
 import { Plus } from "lucide-react";
 
 import { useTRPC } from "~/utils/trpc";
@@ -7,21 +7,30 @@ import { Button } from "~/components/ui/button";
 
 const InfinityList = () => {
   const trpc = useTRPC();
-  const query = useQuery(trpc.documents.getAll.queryOptions());
+  const queryInfinite = useInfiniteQuery(
+    trpc.documents.getAllInfinite.infiniteQueryOptions(
+      { limit: 10 },
+      {
+        initialPageParam: undefined,
+        getNextPageParam: (lastPage) =>
+          lastPage.statusCode === 200 ? lastPage.body.nextCursor : undefined,
+      },
+    ),
+  );
 
-  if (query.isLoading || !query.data) {
+  if (queryInfinite.status === "pending") {
     return <p>Loading ...</p>;
   }
 
-  if (query.isError) {
-    return <p>Error: {query.error.message}</p>;
+  if (queryInfinite.status === "error") {
+    return <p>Error: {queryInfinite.error.message}</p>;
   }
 
-  if (query.data.statusCode !== 200) {
-    return <p>Error: {query.data.body.message}</p>;
+  if (queryInfinite.data.pages.some((it) => it.statusCode !== 200)) {
+    return <p>Error to load more items</p>;
   }
 
-  const items = query.data.body;
+  const items = queryInfinite.data.pages.flatMap((it) => it.body.items);
 
   return (
     <div className="flex flex-col flex-1">
@@ -31,8 +40,13 @@ const InfinityList = () => {
         ))}
       </div>
       <div className="mt-auto self-center">
-        <Button variant="outline">
-          <Plus size={18} strokeWidth={1.5} /> See more
+        <Button onClick={() => queryInfinite.fetchNextPage()} variant="outline">
+          <Plus size={18} strokeWidth={1.5} />{" "}
+          {queryInfinite.isFetchingNextPage
+            ? "Loading more ..."
+            : queryInfinite.hasNextPage
+              ? "See more"
+              : "No more items"}
         </Button>
       </div>
     </div>

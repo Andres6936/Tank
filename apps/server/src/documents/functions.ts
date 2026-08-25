@@ -10,6 +10,14 @@ export default {
     const result = await sql.getAll(args);
     return asPayload(200, result);
   },
+  getAllInfinite: async (args: InferArgs["getAllInfinite"]) => {
+    const result = await sql.getAllInfinite(args);
+    const hasMore = result.length === args.limit;
+    return asPayload(200, {
+      items: result,
+      nextCursor: hasMore ? result.at(-1)!.Id : undefined,
+    });
+  },
   seal: async (args: InferArgs["seal"]) => {
     const result = await sql.getByIdMaybe(args);
     if (!result) return asPayload(404, { message: "Not found" });
