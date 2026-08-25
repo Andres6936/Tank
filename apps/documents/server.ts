@@ -1,6 +1,12 @@
 import { z } from "zod";
 import ReactPDF from "@react-pdf/renderer";
 
+import {
+  XmlParserError,
+  InvalidDocumentError,
+  MalformedXmlError,
+  UnescapedEntityError,
+} from "./lib/errors";
 import { getBufferSeals, getBreBCode, document, invoice } from "entry";
 
 const SealSchema = z.literal(["red", "blue", "green"]);
@@ -59,21 +65,84 @@ const server = Bun.serve({
     "/api/documents": {
       POST: async (req) =>
         await handle(async () => {
-          const schema = DocumentsSchema.parse(await req.json());
-          const buffers = await getBufferSeals({
-            seal: schema.seal,
-          });
-          const doc = await document.run({ xml: schema.xml, buffers });
-          const buffer = (await ReactPDF.renderToStream(
-            doc,
-          )) as any as ReadableStream<Uint8Array>;
           const cors = {
             "Access-Control-Allow-Origin": req.headers.get("Origin") || "*",
             "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
           };
-          return new Response(buffer, {
-            headers: { "Content-Type": "application/pdf", ...cors },
+          if (req.method === "OPTIONS") {
+            return new Response(null, { status: 204, headers: cors });
+          }
+          const schema = DocumentsSchema.parse(await req.json());
+          const buffers = await getBufferSeals({
+            seal: schema.seal,
           });
+          try {
+            const doc = await document.run({ xml: schema.xml, buffers });
+            const buffer = (await ReactPDF.renderToStream(
+              doc,
+            )) as any as ReadableStream<Uint8Array>;
+            return new Response(buffer, {
+              headers: { "Content-Type": "application/pdf", ...cors },
+            });
+          } catch (error) {
+            if (error instanceof InvalidDocumentError) {
+              return new Response(
+                JSON.stringify({
+                  message: "Document source cannot be empty or null",
+                }),
+                {
+                  status: 400,
+                  headers: { "Content-Type": "application/json", ...cors },
+                },
+              );
+            }
+            if (error instanceof UnescapedEntityError) {
+              return new Response(
+                JSON.stringify({
+                  message:
+                    "Document contains unescaped special characters (e.g. raw &)",
+                }),
+                {
+                  status: 422,
+                  headers: { "Content-Type": "application/json", ...cors },
+                },
+              );
+            }
+            if (error instanceof MalformedXmlError) {
+              return new Response(
+                JSON.stringify({
+                  message:
+                    "Document has mismatched tags or corrupt layout syntax",
+                }),
+                {
+                  status: 422,
+                  headers: { "Content-Type": "application/json", ...cors },
+                },
+              );
+            }
+            if (error instanceof XmlParserError) {
+              return new Response(
+                JSON.stringify({
+                  message:
+                    "The system encountered a structural problem processing the layout tree",
+                }),
+                {
+                  status: 500,
+                  headers: { "Content-Type": "application/json", ...cors },
+                },
+              );
+            }
+            return new Response(
+              JSON.stringify({
+                message:
+                  "Failed to render document due to an unexpected system error",
+              }),
+              {
+                status: 500,
+                headers: { "Content-Type": "application/json", ...cors },
+              },
+            );
+          }
         })(),
     },
     "/api/invoices": {

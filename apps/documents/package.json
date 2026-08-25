@@ -17,17 +17,17 @@
   "types": "./dist/entry.d.ts",
   "devDependencies": {
     "@types/bun": "latest",
-    "@types/react": "19.2.4",
+    "@types/react": "19.2.18",
     "@rslib/core": "^0.23.2"
   },
   "peerDependencies": {
-    "typescript": "^7"
+    "typescript": "^6.0.3"
   },
   "dependencies": {
-    "@optique/core": "1.0.2",
-    "@optique/run": "1.0.2",
-    "@react-pdf/renderer": "^4.3.2",
-    "@xmldom/xmldom": "^0.8.11",
+    "@optique/core": "1.2.3",
+    "@optique/run": "1.2.3",
+    "@react-pdf/renderer": "^4.8.1",
+    "@xmldom/xmldom": "^0.9.12",
     "canvas": "^3.2.3",
     "etiket": "^0.11.0",
     "konva": "^10.2.1",

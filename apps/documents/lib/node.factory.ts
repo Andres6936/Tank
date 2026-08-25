@@ -1,6 +1,12 @@
 // xml-to-react.ts
 import React from "react";
 import { DOMParser } from "@xmldom/xmldom";
+import {
+  XmlParserError,
+  InvalidDocumentError,
+  MalformedXmlError,
+  UnescapedEntityError,
+} from "./errors";
 
 export type ComponentMap = Record<string, React.ComponentType<any>>;
 
@@ -51,15 +57,30 @@ export function xmlToReactTree(
 
   const parser = new DOMParser({
     errorHandler: {
-      warning() {},
-      error(msg: string) {
-        throw new Error(msg);
+      warning: (msg: string) => {
+        console.warn(`[XML Warning]: ${msg}`);
       },
-      fatalError(msg: string) {
-        throw new Error(msg);
+      error: (msg: string) => {
+        const lowerMsg = msg.toLowerCase();
+        if (lowerMsg.includes("invalid doc source")) {
+          throw new InvalidDocumentError(msg);
+        }
+        if (lowerMsg.includes("element parse error")) {
+          throw new MalformedXmlError(`Tag structural error: ${msg}`);
+        }
+        if (lowerMsg.includes("entity not found")) {
+          throw new UnescapedEntityError(
+            `Unescaped character detected (like a raw &): ${msg}`,
+          );
+        } // Default generic parsing error fallback
+        throw new XmlParserError(`Parsing Error: ${msg}`);
+      },
+      fatalError: (msg: string) => {
+        // Fatal errors completely halt parsing operations
+        throw new XmlParserError(`Fatal Parsing Error: ${msg}`);
       },
     },
-  } as any);
+  });
 
   const doc = parser.parseFromString(xml, "text/xml");
 
