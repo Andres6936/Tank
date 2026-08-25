@@ -25,11 +25,9 @@ const InfinityList = () => {
     return <p>Error: {queryInfinite.error.message}</p>;
   }
 
-  if (queryInfinite.data.pages.some((it) => it.statusCode !== 200)) {
-    return <p>Error to load more items</p>;
-  }
-
-  const items = queryInfinite.data.pages.flatMap((it) => it.body.items);
+  const items = queryInfinite.data.pages.flatMap((it) =>
+    it.statusCode === 200 ? it.body.items : [],
+  );
 
   return (
     <div className="flex flex-col flex-1">
