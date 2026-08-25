@@ -37,12 +37,12 @@ type RouteFiles = {
     id: "routes/home";
     page: "/";
   };
-  "routes/documents.tsx": {
-    id: "routes/documents";
+  "routes/document-home.tsx": {
+    id: "routes/document-home";
     page: "/documents";
   };
-  "routes/view-document-[id].tsx": {
-    id: "routes/view-document-[id]";
+  "routes/document-view.tsx": {
+    id: "routes/document-view";
     page: "/documents/view/:id";
   };
 };
@@ -51,6 +51,6 @@ type RouteModules = {
   "root": typeof import("./app/root.tsx");
   "layout/index": typeof import("./app/layout/index.tsx");
   "routes/home": typeof import("./app/routes/home.tsx");
-  "routes/documents": typeof import("./app/routes/documents.tsx");
-  "routes/view-document-[id]": typeof import("./app/routes/view-document-[id].tsx");
+  "routes/document-home": typeof import("./app/routes/document-home.tsx");
+  "routes/document-view": typeof import("./app/routes/document-view.tsx");
 };

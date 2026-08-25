@@ -1,4 +1,4 @@
-import type { Route } from "./+types/view-document-[id]";
+import type { Route } from "./+types/document-view";
 import Page from "~/modules/documents/pages/view";
 
 export function meta({}: Route.MetaArgs) {
