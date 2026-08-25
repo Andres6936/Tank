@@ -31,12 +31,12 @@ const hasErrorMessage = (error: unknown): error is { message: string } => {
 };
 
 const handle =
-  <Args extends unknown[]>(
-    fn: (...args: Args) => Promise<Response>,
-  ): ((...args: Args) => Promise<Response>) =>
-  async (...args: Args) => {
+  (
+    fn: (req: Request) => Promise<Response>,
+  ): ((req: Request) => Promise<Response>) =>
+  async (req: Request) => {
     try {
-      return await fn(...args);
+      return await fn(req);
     } catch (error) {
       if (error instanceof z.ZodError) {
         const payload = asPayload(403, {
@@ -63,79 +63,67 @@ const server = Bun.serve({
   routes: {
     "/api/status": new Response("OK"),
     "/api/documents": {
-      POST: async (req) =>
-        await handle(async () => {
-          const cors = {
-            "Access-Control-Allow-Origin": req.headers.get("Origin") || "*",
-            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-          };
-          if (req.method === "OPTIONS") {
-            return new Response(null, { status: 204, headers: cors });
-          }
-          const schema = DocumentsSchema.parse(await req.json());
-          const buffers = await getBufferSeals({
-            seal: schema.seal,
+      POST: handle(async (req) => {
+        const cors = {
+          "Access-Control-Allow-Origin": req.headers.get("Origin") || "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        };
+        if (req.method === "OPTIONS") {
+          return new Response(null, { status: 204, headers: cors });
+        }
+        const schema = DocumentsSchema.parse(await req.json());
+        const buffers = await getBufferSeals({
+          seal: schema.seal,
+        });
+        try {
+          const doc = await document.run({ xml: schema.xml, buffers });
+          const buffer = (await ReactPDF.renderToStream(
+            doc,
+          )) as any as ReadableStream<Uint8Array>;
+          return new Response(buffer, {
+            headers: { "Content-Type": "application/pdf", ...cors },
           });
-          try {
-            const doc = await document.run({ xml: schema.xml, buffers });
-            const buffer = (await ReactPDF.renderToStream(
-              doc,
-            )) as any as ReadableStream<Uint8Array>;
-            return new Response(buffer, {
-              headers: { "Content-Type": "application/pdf", ...cors },
-            });
-          } catch (error) {
-            if (error instanceof InvalidDocumentError) {
-              return new Response(
-                JSON.stringify({
-                  message: "Document source cannot be empty or null",
-                }),
-                {
-                  status: 400,
-                  headers: { "Content-Type": "application/json", ...cors },
-                },
-              );
-            }
-            if (error instanceof UnescapedEntityError) {
-              return new Response(
-                JSON.stringify({
-                  message:
-                    "Document contains unescaped special characters (e.g. raw &)",
-                }),
-                {
-                  status: 422,
-                  headers: { "Content-Type": "application/json", ...cors },
-                },
-              );
-            }
-            if (error instanceof MalformedXmlError) {
-              return new Response(
-                JSON.stringify({
-                  message:
-                    "Document has mismatched tags or corrupt layout syntax",
-                }),
-                {
-                  status: 422,
-                  headers: { "Content-Type": "application/json", ...cors },
-                },
-              );
-            }
-            if (error instanceof XmlParserError) {
-              return new Response(
-                JSON.stringify({
-                  message:
-                    "The system encountered a structural problem processing the layout tree",
-                }),
-                {
-                  status: 500,
-                  headers: { "Content-Type": "application/json", ...cors },
-                },
-              );
-            }
+        } catch (error) {
+          if (error instanceof InvalidDocumentError) {
+            return new Response(
+              JSON.stringify({
+                message: "Document source cannot be empty or null",
+              }),
+              {
+                status: 400,
+                headers: { "Content-Type": "application/json", ...cors },
+              },
+            );
+          }
+          if (error instanceof UnescapedEntityError) {
             return new Response(
               JSON.stringify({
                 message:
-                  "Failed to render document due to an unexpected system error",
+                  "Document contains unescaped special characters (e.g. raw &)",
+              }),
+              {
+                status: 422,
+                headers: { "Content-Type": "application/json", ...cors },
+              },
+            );
+          }
+          if (error instanceof MalformedXmlError) {
+            return new Response(
+              JSON.stringify({
+                message:
+                  "Document has mismatched tags or corrupt layout syntax",
+              }),
+              {
+                status: 422,
+                headers: { "Content-Type": "application/json", ...cors },
+              },
+            );
+          }
+          if (error instanceof XmlParserError) {
+            return new Response(
+              JSON.stringify({
+                message:
+                  "The system encountered a structural problem processing the layout tree",
               }),
               {
                 status: 500,
@@ -143,7 +131,18 @@ const server = Bun.serve({
               },
             );
           }
-        })(),
+          return new Response(
+            JSON.stringify({
+              message:
+                "Failed to render document due to an unexpected system error",
+            }),
+            {
+              status: 500,
+              headers: { "Content-Type": "application/json", ...cors },
+            },
+          );
+        }
+      }),
     },
     "/api/invoices": {
       POST: async (req) => {
