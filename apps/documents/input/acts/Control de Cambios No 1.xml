@@ -81,12 +81,6 @@
         aplicará el estado "Suspensión" como consecuencia del flujo, enviando el
         mensaje correspondiente y aplicando las restricciones operativas.
       </BulletText>
-    </Section>
-
-    <Section wrap="1">
-      <Title size="xs" textAlign="left">
-        2. Especificación Funcional: Reglas de Reactivación y Retiro
-      </Title>
 
       <BulletText>
         <Text bold="1">Reactivación desde Suspensión:</Text> Cuando un cliente
@@ -97,22 +91,59 @@
         programación; si ya fue realizada, aparecerá en "Pendiente asignar
         itinerario".
       </BulletText>
+    </Section>
 
-      <BulletText>
-        <Text bold="1">Condiciones de Retiro Temporal:</Text> Una vez cumplidos
-        los plazos de mora profunda (60 días primera factura, 30 días segunda
-        factura), el sistema aplicará el Retiro Temporal el Día 01 del mes
-        siguiente. En ese momento: cambia el estado, envía comunicado, NO se
-        genera una nueva factura, y se impide la programación.
-      </BulletText>
+    <Section wrap="0">
+      <Title size="xs" textAlign="left">
+        2. Especificación Funcional: Retiro Temporal
+      </Title>
+      <Paragraph>
+        El Retiro Temporal se aplicará de manera estricta una vez cumplidas las
+        condiciones y plazos establecidos en el proceso, contemplando sesenta
+        (60) días completos desde la generación de la primera factura y treinta
+        (30) días correspondientes a la segunda factura. El Día 01 del mes
+        siguiente a la consolidación de estos plazos, el sistema ejecutará
+        automatizadamente las siguientes acciones:
+      </Paragraph>
 
-      <BulletText>
-        <Text bold="1">Reactivación desde Retiro Temporal:</Text> La salida de
-        este estado no se produce por el pago de una sola factura. El sistema
-        exigirá el pago completo de las DOS (2) facturas pendientes. Tras
-        verificar este pago, el sistema actualizará el estado y permitirá la
-        reactivación para programación.
-      </BulletText>
+      <Indent gap="7pt">
+        <BulletText>
+          Cambiar el estado del cliente a "Retiro temporal".
+        </BulletText>
+        <BulletText>
+          Enviar el comunicado correspondiente informando al cliente de su
+          condición.
+        </BulletText>
+        <BulletText>
+          Mantener identificadas las dos facturas pendientes de pago que dieron
+          origen a esta condición.
+        </BulletText>
+        <BulletText>
+          Impedir la programación y prestación del servicio mientras permanezca
+          en este estado.
+        </BulletText>
+        <BulletText>
+          NO generar una nueva factura correspondiente a un nuevo periodo
+          mientras el cliente permanezca en Retiro Temporal.
+        </BulletText>
+      </Indent>
+
+      <Paragraph>
+        <Text bold="1">Regla Estricta de Reactivación:</Text> La salida de
+        Retiro Temporal no se producirá por el pago de una sola factura. Para
+        que el cliente pueda ser nuevamente habilitado, deberá realizar el pago
+        total de las DOS (2) facturas pendientes que dieron origen a la
+        condición.
+      </Paragraph>
+
+      <Paragraph>
+        Una vez el sistema verifique el pago completo de ambas facturas, el
+        comportamiento esperado y automatizado será estrictamente el siguiente:
+        <Text bold="1" opacity="0.8">
+          Retiro temporal → pago de las dos facturas pendientes → actualización
+          del estado → reactivación → programación según corresponda.
+        </Text>
+      </Paragraph>
     </Section>
 
     <Section wrap="1">
