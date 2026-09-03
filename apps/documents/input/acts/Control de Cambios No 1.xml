@@ -1,0 +1,193 @@
+<Document
+  subject="Control de Cambios No. 1"
+  title="Plataforma Residuos Ambientales"
+  author="Joan Andrés Buriticá Salazar"
+  keywords="Change Request, Alcance, Flujo, Suspensión"
+  creator="Joan Andrés Buriticá Salazar"
+  producer="React PDF with Bun"
+  language="es"
+>
+  <Cover
+    type="Control de Cambios No. 1"
+    title="Flujo de Estados y Cartera"
+    month="Septiembre 2026"
+    scaleTitle="0.9"
+  />
+
+  <Paginate>
+    <IndicatorHeader value="Ing. Joan A. Buriticá" />
+    <Section marginTop="0" gap="0.1cm">
+      <Text>
+        <Text bold="1">
+          Fecha de Elaboración:
+          <S />
+        </Text>
+        03 de septiembre de 2026
+      </Text>
+    </Section>
+
+    <Section wrap="1">
+      <Title>CONTROL DE CAMBIOS NO. 1: CAMBIOS DE FLUJO DE ESTADOS</Title>
+      <Paragraph>
+        El presente documento detalla el alcance, las reglas de negocio
+        confirmadas y el presupuesto para la modificación de la arquitectura de
+        estados, notificaciones automáticas (Cron Jobs) y bloqueos de
+        programación, de acuerdo con los lineamientos solicitados por REAM.
+      </Paragraph>
+    </Section>
+
+    <Section wrap="1">
+      <Title size="xs" textAlign="left">
+        1. Especificación Funcional: Cronograma y Disparadores
+      </Title>
+
+      <BulletText>
+        <Text bold="1">Día 01 de cada mes (Facturación Normal):</Text> Se
+        realizará la facturación normal de todos los clientes del nuevo periodo
+        (incluyendo aquellos con factura pendiente del mes anterior dentro del
+        flujo normal). La nueva factura tendrá fecha de vencimiento para pago
+        anticipado el día 10. Se enviará el mensaje informando la generación de
+        la nueva factura.
+      </BulletText>
+
+      <BulletText>
+        <Text bold="1">Día 11 (Aviso Pago Anticipado):</Text> Si no se realizó
+        el pago anticipado, se enviará mensaje indicando el vencimiento de dicho
+        pago. El cliente continúa en estado "Al día" (no genera mora ni
+        suspensión automática), dado que el proceso permite pago contra entrega
+        o hasta el último día hábil.
+      </BulletText>
+
+      <BulletText>
+        <Text bold="1">Día 20 y Día 28 (Recordatorios):</Text> El Día 20 se
+        enviará mensaje recordando la factura pendiente. El Día 28 se enviará un
+        mensaje advirtiendo al cliente que debe realizar el pago del servicio ya
+        prestado para evitar la suspensión.
+      </BulletText>
+
+      <BulletText>
+        <Text bold="1">Día 01 del mes siguiente (Paso a Mora):</Text> Se realiza
+        la facturación normal del nuevo periodo. Simultáneamente, los clientes
+        que no hayan cancelado la factura del mes anterior pasan al estado "En
+        mora". El cliente se visualizará en cartera y programación, pero el
+        sistema impedirá que se le programe o realice una nueva recogida hasta
+        que pague la factura pendiente del mes anterior.
+      </BulletText>
+
+      <BulletText>
+        <Text bold="1">Día 11 del segundo mes (Suspensión):</Text> Si el cliente
+        continúa sin pagar la factura del mes anterior y adicionalmente ya se
+        encuentra vencida la nueva factura generada el Día 01, el sistema
+        aplicará el estado "Suspensión" como consecuencia del flujo, enviando el
+        mensaje correspondiente y aplicando las restricciones operativas.
+      </BulletText>
+    </Section>
+
+    <Section wrap="1">
+      <Title size="xs" textAlign="left">
+        2. Especificación Funcional: Reglas de Reactivación y Retiro
+      </Title>
+
+      <BulletText>
+        <Text bold="1">Reactivación desde Suspensión:</Text> Cuando un cliente
+        en Suspensión realice el pago de la factura del mes anterior, el sistema
+        actualizará su condición, permitiendo nuevamente su programación y
+        recogida, AUNQUE permanezca pendiente la factura del mes vigente. Si la
+        ruta asignada no se ha realizado, aparecerá disponible para
+        programación; si ya fue realizada, aparecerá en "Pendiente asignar
+        itinerario".
+      </BulletText>
+
+      <BulletText>
+        <Text bold="1">Condiciones de Retiro Temporal:</Text> Una vez cumplidos
+        los plazos de mora profunda (60 días primera factura, 30 días segunda
+        factura), el sistema aplicará el Retiro Temporal el Día 01 del mes
+        siguiente. En ese momento: cambia el estado, envía comunicado, NO se
+        genera una nueva factura, y se impide la programación.
+      </BulletText>
+
+      <BulletText>
+        <Text bold="1">Reactivación desde Retiro Temporal:</Text> La salida de
+        este estado no se produce por el pago de una sola factura. El sistema
+        exigirá el pago completo de las DOS (2) facturas pendientes. Tras
+        verificar este pago, el sistema actualizará el estado y permitirá la
+        reactivación para programación.
+      </BulletText>
+    </Section>
+
+    <Section wrap="1">
+      <Title size="xs" textAlign="left">
+        3. Estimación de Esfuerzo y Presupuesto
+      </Title>
+      <Paragraph>
+        La alteración del ciclo de vida de los datos requiere la reescritura de
+        las tareas automatizadas en el servidor, validaciones de interfaz y
+        consultas de base de datos.
+      </Paragraph>
+
+      <Table>
+        <Header>
+          <Row>
+            <Cell flex="2">Concepto / Actividad</Cell>
+            <Cell textAlign="right">Esfuerzo</Cell>
+          </Row>
+        </Header>
+        <Body>
+          <Row>
+            <Cell flex="2">
+              Modificación de lógicas de facturación, Cron Jobs (Días 1, 11, 20,
+              28) e integración de restricciones de "Suspensión" y "Retiro
+              Temporal".
+            </Cell>
+            <Cell textAlign="right">[XX] Horas</Cell>
+          </Row>
+          <Row>
+            <Cell flex="2">
+              Descuento Comercial (Concesión parcial por cierre de proyecto)
+            </Cell>
+            <Cell textAlign="right">- [YY] Horas</Cell>
+          </Row>
+        </Body>
+        <Footer>
+          <Row>
+            <Cell flex="2">Total Horas Extra a Facturar (Base 1 UVT)</Cell>
+            <Cell textAlign="right">[XX - YY] Horas</Cell>
+          </Row>
+        </Footer>
+      </Table>
+      <Paragraph>
+        <Text size="xs" opacity="0.8">
+          *El valor monetario exacto derivado de estas horas será consolidado en
+          el anexo del Otrosí No. 4, de acuerdo con el valor de la UVT vigente.
+        </Text>
+      </Paragraph>
+    </Section>
+
+    <Section wrap="1">
+      <Title size="xs" textAlign="left">
+        3. Cronograma y Condiciones de Inicio (Bloqueo Administrativo)
+      </Title>
+
+      <BulletText>
+        <Text bold="1">Tiempo de Ejecución:</Text> [Z] días hábiles contados a
+        partir del inicio efectivo del sprint.
+      </BulletText>
+      <BulletText>
+        <Text bold="1">Fecha de Validación:</Text> Se programará una mesa
+        técnica para revisión de este ajuste exacto el [Día de la semana, XX de
+        Septiembre].
+      </BulletText>
+
+      <Paragraph>
+        <Text bold="1">Condición Suspensiva de Inicio:</Text> Para garantizar la
+        viabilidad financiera del proyecto y mantener el orden administrativo,
+        las partes acuerdan que el inicio del desarrollo estipulado en este
+        documento (y la firma de su correspondiente extensión contractual) queda
+        sujeto a la liquidación, pago y cierre financiero de los desarrollos ya
+        consolidados en la Fase 1, por valor de $2'788.214 COP. Una vez
+        confirmado este desembolso, se activará inmediatamente el cronograma
+        aquí propuesto.
+      </Paragraph>
+    </Section>
+  </Paginate>
+</Document>;
