@@ -242,32 +242,29 @@
 
     <Section wrap="1">
       <Title size="xs" textAlign="left">
-        5. Cronograma y Condiciones Innegociables de Inicio
+        5. Cronograma y Formalización
       </Title>
 
       <BulletText>
-        <Text bold="1">Tiempo de Ejecución:</Text> [Z] días hábiles contados a
-        partir del inicio efectivo del desarrollo.
+        <Text bold="1">Tiempo de Ejecución Estimado:</Text> [Z] días hábiles
+        contados a partir del inicio efectivo del desarrollo.
       </BulletText>
       <BulletText>
-        <Text bold="1">Fecha de Validación:</Text> Se programará una mesa
-        técnica de revisión final el [Día de la semana, XX de Septiembre de
+        <Text bold="1">Fecha de Validación y Pruebas:</Text> Se programará una
+        mesa técnica de revisión final el [Día de la semana, XX de Septiembre de
         2026].
       </BulletText>
 
       <Paragraph>
         <Text bold="1" opacity="0.8">
-          CONDICIÓN SUSPENSIVA DE INICIO Y BLOQUEO OPERATIVO:
+          FORMALIZACIÓN CONTRACTUAL:
         </Text>
-        Para garantizar la viabilidad financiera del proyecto y mantener el
-        orden administrativo, las partes acuerdan que el inicio de la escritura
-        de código estipulada en este documento, así como la firma de su
-        correspondiente extensión contractual (Otrosí No. 4), quedan
-        estrictamente sujetos a la verificación contable del pago de la
-        liquidación final de la Fase 1 del proyecto, correspondiente a la
-        factura emitida por valor de $2'788.214 COP. Una vez confirmado este
-        desembolso a favor de EL CONTRATISTA, se activará inmediatamente el
-        cronograma aquí propuesto.
+        El presente documento establece el marco técnico y operativo del ajuste
+        requerido. Las condiciones financieras para el inicio de esta fase, así
+        como la liquidación de los saldos correspondientes a los módulos ya
+        implementados y la extensión de los plazos de entrega, quedarán
+        estipuladas y reguladas mediante la firma del respectivo
+        <Text bold="1">Otrosí No. 4</Text> al contrato principal.
       </Paragraph>
     </Section>
   </Paginate>
