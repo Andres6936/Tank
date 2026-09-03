@@ -29,10 +29,11 @@
     <Section wrap="1">
       <Title>CONTROL DE CAMBIOS NO. 1: CAMBIOS DE FLUJO DE ESTADOS</Title>
       <Paragraph>
-        El presente documento detalla el alcance, las reglas de negocio
-        confirmadas y el presupuesto para la modificación de la arquitectura de
-        estados, notificaciones automáticas (Cron Jobs) y bloqueos de
-        programación, de acuerdo con los lineamientos solicitados por REAM.
+        Para evitar cualquier interpretación diferente y garantizar la
+        trazabilidad absoluta del requerimiento, se incorpora de manera
+        explícita el flujo operativo, fechas, mensajes y restricciones
+        requeridas por REAM, las cuales dictarán el comportamiento automatizado
+        de la plataforma a partir de su implementación:
       </Paragraph>
     </Section>
 
