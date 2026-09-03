@@ -72,6 +72,7 @@ export default function Component(props: Props) {
         </Text>
         <Text
           style={{
+            maxWidth: "95%",
             textAlign: "center",
             fontSize: `${getScaleTitle()}pt`,
             marginTop: "2cm",
