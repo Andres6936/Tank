@@ -148,7 +148,54 @@
 
     <Section wrap="1">
       <Title size="xs" textAlign="left">
-        3. Estimación de Esfuerzo y Presupuesto
+        3. Definición de Estados y Comportamiento Operativo
+      </Title>
+      <Paragraph>
+        Los siguientes estados regirán de forma exclusiva el comportamiento
+        transversal del sistema. Estos deberán encontrarse correctamente
+        relacionados con la cartera, programación, filtros, mensajes y
+        restricciones operativas, definiendo sus alcances de la siguiente
+        manera:
+      </Paragraph>
+
+      <BulletText>
+        <Text bold="1">Al día:</Text> El cliente puede continuar con su
+        operación normal, de acuerdo con las condiciones del servicio y del
+        proceso de facturación.
+      </BulletText>
+
+      <BulletText>
+        <Text bold="1">En mora:</Text> El cliente aparece identificado en
+        cartera y programación, pero no se permite realizarle una nueva recogida
+        hasta que realice el pago de la factura pendiente correspondiente al mes
+        anterior.
+      </BulletText>
+
+      <BulletText>
+        <Text bold="1">Suspensión:</Text> Corresponde al momento en que se
+        cumplen las condiciones establecidas en el flujo para suspender el
+        servicio. El sistema debe cambiar al cliente a este estado, enviar el
+        mensaje correspondiente y aplicar las restricciones operativas
+        definidas. Una vez el cliente pague la factura pendiente del mes
+        anterior que originó la mora y suspensión, debe poder nuevamente ser
+        recogido, aun cuando la factura del mes vigente permanezca pendiente de
+        pago, dado que esta última todavía se encuentra dentro de su propio
+        ciclo de pago.
+      </BulletText>
+
+      <BulletText>
+        <Text bold="1">Retiro temporal:</Text> Corresponde a la etapa posterior
+        en la que se han cumplido los plazos establecidos. El día 01
+        correspondiente se cambia el estado, se comunica al cliente el Retiro
+        temporal y no se genera una nueva factura. El cliente permanece en este
+        estado hasta que realice el pago de las dos facturas pendientes, momento
+        en el cual podrá ser reactivado.
+      </BulletText>
+    </Section>
+
+    <Section wrap="1">
+      <Title size="xs" textAlign="left">
+        4. Estimación de Esfuerzo y Presupuesto
       </Title>
       <Paragraph>
         La implementación integral de estas condiciones requiere la reescritura
@@ -195,7 +242,7 @@
 
     <Section wrap="1">
       <Title size="xs" textAlign="left">
-        4. Cronograma y Condiciones Innegociables de Inicio
+        5. Cronograma y Condiciones Innegociables de Inicio
       </Title>
 
       <BulletText>
