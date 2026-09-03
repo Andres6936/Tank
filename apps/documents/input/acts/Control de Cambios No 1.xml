@@ -217,19 +217,19 @@
               Refactorización de Flujo de Estados, Disparadores, Notificaciones,
               Suspensión y Retiro Temporal.
             </Cell>
-            <Cell textAlign="right">[XX] Horas</Cell>
+            <Cell textAlign="right">14 Horas</Cell>
           </Row>
           <Row>
             <Cell flex="2">
               Descuento Comercial (Concesión parcial por cierre de proyecto)
             </Cell>
-            <Cell textAlign="right">- [YY] Horas</Cell>
+            <Cell textAlign="right">- 7 Horas</Cell>
           </Row>
         </Body>
         <Footer>
           <Row>
             <Cell flex="2">Total Horas Extra a Facturar (Base 1 UVT)</Cell>
-            <Cell textAlign="right">[XX - YY] Horas</Cell>
+            <Cell textAlign="right">7 Horas</Cell>
           </Row>
         </Footer>
       </Table>
@@ -247,13 +247,13 @@
       </Title>
 
       <BulletText>
-        <Text bold="1">Tiempo de Ejecución Estimado:</Text> [Z] días hábiles
+        <Text bold="1">Tiempo de Ejecución Estimado:</Text> 3 días hábiles
         contados a partir del inicio efectivo del desarrollo.
       </BulletText>
       <BulletText>
         <Text bold="1">Fecha de Validación y Pruebas:</Text> Se programará una
-        mesa técnica de revisión final el [Día de la semana, XX de Septiembre de
-        2026].
+        mesa técnica de revisión final el siguiente día hábil a la fecha de
+        finalización del desarrollo.
       </BulletText>
 
       <Paragraph>
