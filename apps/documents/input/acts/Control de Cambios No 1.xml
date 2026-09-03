@@ -151,9 +151,9 @@
         3. Estimación de Esfuerzo y Presupuesto
       </Title>
       <Paragraph>
-        La alteración del ciclo de vida de los datos requiere la reescritura de
-        las tareas automatizadas en el servidor, validaciones de interfaz y
-        consultas de base de datos.
+        La implementación integral de estas condiciones requiere la reescritura
+        de los Cron Jobs de evaluación, reglas de bloqueo en interfaz de
+        programación y cruce de validaciones de base de datos.
       </Paragraph>
 
       <Table>
@@ -166,9 +166,8 @@
         <Body>
           <Row>
             <Cell flex="2">
-              Modificación de lógicas de facturación, Cron Jobs (Días 1, 11, 20,
-              28) e integración de restricciones de "Suspensión" y "Retiro
-              Temporal".
+              Refactorización de Flujo de Estados, Disparadores, Notificaciones,
+              Suspensión y Retiro Temporal.
             </Cell>
             <Cell textAlign="right">[XX] Horas</Cell>
           </Row>
@@ -188,36 +187,40 @@
       </Table>
       <Paragraph>
         <Text size="xs" opacity="0.8">
-          *El valor monetario exacto derivado de estas horas será consolidado en
-          el anexo del Otrosí No. 4, de acuerdo con el valor de la UVT vigente.
+          *El valor monetario correspondiente a la sumatoria de estas horas se
+          formalizará en el Otrosí No. 4.
         </Text>
       </Paragraph>
     </Section>
 
     <Section wrap="1">
       <Title size="xs" textAlign="left">
-        3. Cronograma y Condiciones de Inicio (Bloqueo Administrativo)
+        4. Cronograma y Condiciones Innegociables de Inicio
       </Title>
 
       <BulletText>
         <Text bold="1">Tiempo de Ejecución:</Text> [Z] días hábiles contados a
-        partir del inicio efectivo del sprint.
+        partir del inicio efectivo del desarrollo.
       </BulletText>
       <BulletText>
         <Text bold="1">Fecha de Validación:</Text> Se programará una mesa
-        técnica para revisión de este ajuste exacto el [Día de la semana, XX de
-        Septiembre].
+        técnica de revisión final el [Día de la semana, XX de Septiembre de
+        2026].
       </BulletText>
 
       <Paragraph>
-        <Text bold="1">Condición Suspensiva de Inicio:</Text> Para garantizar la
-        viabilidad financiera del proyecto y mantener el orden administrativo,
-        las partes acuerdan que el inicio del desarrollo estipulado en este
-        documento (y la firma de su correspondiente extensión contractual) queda
-        sujeto a la liquidación, pago y cierre financiero de los desarrollos ya
-        consolidados en la Fase 1, por valor de $2'788.214 COP. Una vez
-        confirmado este desembolso, se activará inmediatamente el cronograma
-        aquí propuesto.
+        <Text bold="1" opacity="0.8">
+          CONDICIÓN SUSPENSIVA DE INICIO Y BLOQUEO OPERATIVO:
+        </Text>
+        Para garantizar la viabilidad financiera del proyecto y mantener el
+        orden administrativo, las partes acuerdan que el inicio de la escritura
+        de código estipulada en este documento, así como la firma de su
+        correspondiente extensión contractual (Otrosí No. 4), quedan
+        estrictamente sujetos a la verificación contable del pago de la
+        liquidación final de la Fase 1 del proyecto, correspondiente a la
+        factura emitida por valor de $2'788.214 COP. Una vez confirmado este
+        desembolso a favor de EL CONTRATISTA, se activará inmediatamente el
+        cronograma aquí propuesto.
       </Paragraph>
     </Section>
   </Paginate>
