@@ -16,5 +16,7 @@ export default {
   Insert: DocumentSchema.omit({ Id: true, CreatedAt: true })
     .partial()
     .required({ Title: true, Subject: true }),
-  Update: DocumentSchema.omit({ Id: true, CreatedAt: true }).partial(),
+  Update: DocumentSchema.omit({ CreatedAt: true })
+    .partial()
+    .required({ Id: true }),
 };

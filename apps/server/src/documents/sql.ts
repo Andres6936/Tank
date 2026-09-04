@@ -98,9 +98,7 @@ const updateContent = async (
   const result = await sql
     .update(DocumentsTable)
     .set({
-      Title: document.Title,
-      Subject: document.Subject,
-      Content: document.Content,
+      Content: await formatXML(document.Content),
     })
     .where(eq(DocumentsTable.Id, id))
     .returning();

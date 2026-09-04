@@ -26,8 +26,6 @@ export const Args = {
   updateContent: schemas.Update.extend({ Id: z.uuid() })
     .pick({
       Id: true,
-      Title: true,
-      Subject: true,
       Content: true,
     })
     .required(),
