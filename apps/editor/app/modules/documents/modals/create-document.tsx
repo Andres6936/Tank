@@ -14,9 +14,13 @@ import {
 } from "~/components/ui/dialog";
 import {
   Field,
+  FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
+  FieldLegend,
+  FieldSeparator,
+  FieldSet,
 } from "~/components/ui/field";
 import { Input } from "~/components/ui/input";
 import { useId } from "react";
@@ -24,6 +28,11 @@ import { useId } from "react";
 const FormSchema = v.object({
   Title: v.pipe(v.string(), v.minLength(5)),
   Subject: v.pipe(v.string(), v.minLength(5)),
+  Author: v.pipe(v.string(), v.minLength(5)),
+  Keywords: v.pipe(v.string(), v.minLength(3)),
+  Creator: v.pipe(v.string(), v.minLength(5)),
+  Producer: v.pipe(v.string(), v.minLength(1)),
+  Language: v.pipe(v.string(), v.minLength(1)),
 });
 
 const CreateDocumentModal = (props: {
@@ -37,6 +46,11 @@ const CreateDocumentModal = (props: {
     initialInput: {
       Title: "",
       Subject: "",
+      Author: "",
+      Keywords: "",
+      Creator: "",
+      Producer: "",
+      Language: "",
     },
   });
 
@@ -94,7 +108,33 @@ const CreateDocumentModal = (props: {
                 </Field>
               )}
             </FormischField>
+            <FormischField of={form} path={["Author"]}>
+              {(field) => (
+                <Field data-invalid={field.errors !== null}>
+                  <FieldLabel htmlFor="author-1">Author</FieldLabel>
+                  <Input
+                    {...field.props}
+                    id="author-1"
+                    name="author"
+                    value={field.input ?? ""}
+                    aria-invalid={field.errors !== null}
+                  />
+                  {field.errors && (
+                    <FieldError
+                      errors={field.errors.map((message) => ({ message }))}
+                    />
+                  )}
+                </Field>
+              )}
+            </FormischField>
           </FieldGroup>
+          <FieldSeparator />
+          <FieldSet>
+            <FieldLegend>Cover</FieldLegend>
+            <FieldDescription>
+              Added the information about the cover
+            </FieldDescription>
+          </FieldSet>
           <DialogFooter>
             <DialogClose render={<Button variant="outline">Cancel</Button>} />
             <Button type="submit" form={formId}>
