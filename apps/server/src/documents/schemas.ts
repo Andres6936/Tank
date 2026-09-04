@@ -9,14 +9,15 @@ const DocumentSchema = z.object({
   FileId: z.string().nullish(),
   Metadata: z.string(),
   CreatedAt: z.string(),
+  UpdatedAt: z.string(),
 });
 
 export default {
   Select: DocumentSchema,
-  Insert: DocumentSchema.omit({ Id: true, CreatedAt: true })
+  Insert: DocumentSchema.omit({ Id: true, UpdatedAt: true, CreatedAt: true })
     .partial()
     .required({ Title: true, Subject: true }),
-  Update: DocumentSchema.omit({ CreatedAt: true })
+  Update: DocumentSchema.omit({ CreatedAt: true, UpdatedAt: true })
     .partial()
     .required({ Id: true }),
 };

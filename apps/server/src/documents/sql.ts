@@ -113,9 +113,13 @@ const updateContent = async (
     .update(DocumentsTable)
     .set({
       Content: await formatXML(document.Content),
+      UpdatedAt: new Date().toISOString(),
     })
     .where(eq(DocumentsTable.Id, id))
-    .returning({ Content: DocumentsTable.Content });
+    .returning({
+      Content: DocumentsTable.Content,
+      UpdatedAt: DocumentsTable.UpdatedAt,
+    });
 
   if (result.length === 0) {
     return null;
