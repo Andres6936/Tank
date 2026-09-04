@@ -1,6 +1,13 @@
 import { useMutation } from "@tanstack/react-query";
 import { formatDistanceToNow } from "date-fns";
-import { CloudAlert, CloudCheck, Plus, Save, SaveOff } from "lucide-react";
+import {
+  CloudAlert,
+  CloudCheck,
+  Plus,
+  RotateCcw,
+  Save,
+  SaveOff,
+} from "lucide-react";
 import { overlay } from "overlay-kit";
 import { useMemo } from "react";
 import { useNavigate } from "react-router";
@@ -170,4 +177,28 @@ const ActionToggleAutosave = () => {
   );
 };
 
-export { ActionNewDocument, ActionSaveDocument, ActionToggleAutosave };
+const ActionReloadDocument = () => {
+  const { isDirty } = useViewContext();
+
+  return (
+    <Tooltip>
+      <TooltipTrigger
+        render={
+          <Button variant="outline" size="icon" disabled={!isDirty}>
+            <RotateCcw strokeWidth={1} />
+          </Button>
+        }
+      />
+      <TooltipContent>
+        <p>Reload document and discard changes</p>
+      </TooltipContent>
+    </Tooltip>
+  );
+};
+
+export {
+  ActionNewDocument,
+  ActionSaveDocument,
+  ActionToggleAutosave,
+  ActionReloadDocument,
+};

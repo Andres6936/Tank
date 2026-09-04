@@ -1,15 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  Braces,
-  RotateCcw,
-  Save,
-  SaveOff,
-  Settings,
-  Signature,
-  Stamp,
-} from "lucide-react";
+import { Braces, Settings, Stamp } from "lucide-react";
 
-import { Toggle } from "~/components/ui/toggle";
 import { Button } from "~/components/ui/button";
 import { ButtonGroup } from "~/components/ui/button-group";
 import { useTRPC } from "~/utils/trpc";
@@ -61,9 +52,7 @@ export default function View({ Id }: { Id: string }) {
             <div className="flex flex-row gap-2">
               <ButtonGroup>
                 <Actions.ActionSaveDocument />
-                <Button variant="outline" size="icon">
-                  <RotateCcw strokeWidth={1} />
-                </Button>
+                <Actions.ActionReloadDocument />
               </ButtonGroup>
 
               <Actions.ActionToggleAutosave />
