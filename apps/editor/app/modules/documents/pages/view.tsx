@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import {
   Braces,
-  CloudCheck,
-  FileDown,
+  Save,
+  SaveOff,
   Settings,
   Signature,
   Stamp,
 } from "lucide-react";
 
+import { Toggle } from "~/components/ui/toggle";
 import { Button } from "~/components/ui/button";
 import { ButtonGroup } from "~/components/ui/button-group";
 import { useTRPC } from "~/utils/trpc";
@@ -59,12 +60,23 @@ export default function View({ Id }: { Id: string }) {
         </div>
         <div className="flex flex-col flex-1 space-y-2">
           <div className="flex justify-between">
-            <ButtonGroup>
-              <Actions.ActionSaveDocument />
-              <Button variant="outline" size="icon">
-                <FileDown />
-              </Button>
-            </ButtonGroup>
+            <div className="flex flex-row gap-2">
+              <ButtonGroup>
+                <Actions.ActionSaveDocument />
+              </ButtonGroup>
+
+              <Toggle aria-label="Toggle autosave" variant="outline">
+                <Save
+                  strokeWidth={1}
+                  className="group-aria-pressed/toggle:hidden"
+                />
+                <SaveOff
+                  strokeWidth={1}
+                  className="hidden group-aria-pressed/toggle:block"
+                />
+                Autosave
+              </Toggle>
+            </div>
 
             <ButtonGroup>
               <Button variant="outline" size="icon">
