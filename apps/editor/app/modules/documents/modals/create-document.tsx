@@ -87,13 +87,48 @@ const CreateDocumentModal = (props: {
             </DialogDescription>
           </DialogHeader>
           <FieldGroup>
-            <TextInput form={form} path={["Subject"]} label="Subject" />
-            <TextInput form={form} path={["Title"]} label="Title" />
-            <TextInput form={form} path={["Author"]} label="Author" />
-            <TextInput form={form} path={["Keywords"]} label="Keywords" />
-            <TextInput form={form} path={["Creator"]} label="Creator" />
-            <TextInput form={form} path={["Producer"]} label="Producer" />
-            <TextInput form={form} path={["Language"]} label="Language" />
+            <TextInput
+              form={form}
+              path={["Subject"]}
+              label="Subject"
+              placeholder="Subject of document"
+            />
+            <TextInput
+              form={form}
+              path={["Title"]}
+              label="Title"
+              placeholder="Title of document"
+            />
+            <TextInput
+              form={form}
+              path={["Author"]}
+              label="Author"
+              placeholder="Author of document"
+            />
+            <TextInput
+              form={form}
+              path={["Creator"]}
+              label="Creator"
+              placeholder="Creator of document"
+            />
+            <TextInput
+              form={form}
+              path={["Producer"]}
+              label="Producer"
+              placeholder="Producer of document"
+            />
+            <TextInput
+              form={form}
+              path={["Keywords"]}
+              label="Keywords"
+              placeholder="Values separated by comma, eg. act, contract"
+            />
+            <TextInput
+              form={form}
+              path={["Language"]}
+              label="Language"
+              placeholder="es | en"
+            />
           </FieldGroup>
           <FieldSeparator />
           <FieldSet>
@@ -102,9 +137,24 @@ const CreateDocumentModal = (props: {
               Added the information about the cover
             </FieldDescription>
             <FieldGroup>
-              <TextInput form={form} path={["Cover"]} label="Cover" />
-              <TextInput form={form} path={["Type"]} label="Type" />
-              <TextInput form={form} path={["Month"]} label="Month" />
+              <TextInput
+                form={form}
+                path={["Cover"]}
+                label="Cover"
+                placeholder="Title of cover"
+              />
+              <TextInput
+                form={form}
+                path={["Type"]}
+                label="Type"
+                placeholder="Type of cover"
+              />
+              <TextInput
+                form={form}
+                path={["Month"]}
+                label="Month"
+                placeholder="January 2026"
+              />
             </FieldGroup>
           </FieldSet>
           <DialogFooter>
@@ -126,6 +176,7 @@ const TextInput = <
   form: FormStore<Schema>;
   path: ValidPath<v.InferInput<Schema>, FieldPath>;
   label: string;
+  placeholder?: string;
 }) => {
   const id = useId();
   const field = useField(props.form, { path: props.path });
@@ -137,6 +188,7 @@ const TextInput = <
         {...field.props}
         id={id}
         name={props.path.join(".")}
+        placeholder={props.placeholder}
         value={(field.input as string | number | string[] | undefined) ?? ""}
         aria-invalid={field.errors !== null}
       />
