@@ -1,5 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
+import { useDebounce } from "@uidotdev/usehooks";
+import { useQuery } from "@tanstack/react-query";
+
 import { useViewContext } from "../context/view-context";
 
 const asQuery = async (args: { xml: string }) => {
@@ -22,10 +24,12 @@ const asQuery = async (args: { xml: string }) => {
 
 export const Preview = () => {
   const { content } = useViewContext();
+  const debouncedContent = useDebounce(content, 1500);
+
   const query = useQuery({
-    queryKey: ["/preview", content],
-    queryFn: () => asQuery({ xml: content }),
-    staleTime: Infinity,
+    queryKey: ["/preview", debouncedContent],
+    queryFn: () => asQuery({ xml: debouncedContent }),
+    refetchOnWindowFocus: false,
   });
 
   const url = query.data;
