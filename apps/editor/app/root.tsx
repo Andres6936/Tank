@@ -12,6 +12,7 @@ import type { Route } from "./+types/root";
 import "./index.css";
 
 import { Toaster } from "~/components/ui/toast";
+import { TooltipProvider } from "~/components/ui/tooltip";
 import { QueryContextProvider } from "~/context/query";
 
 export const links: Route.LinksFunction = () => [];
@@ -38,9 +39,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <QueryContextProvider>
-      <OverlayProvider>
-        <Outlet />
-      </OverlayProvider>
+      <TooltipProvider>
+        <OverlayProvider>
+          <Outlet />
+        </OverlayProvider>
+      </TooltipProvider>
     </QueryContextProvider>
   );
 }
