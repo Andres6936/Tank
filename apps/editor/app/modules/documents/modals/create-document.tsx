@@ -80,7 +80,7 @@ const CreateDocumentModal = (props: {
   return (
     <Dialog open={props.isOpen} onOpenChange={props.reject}>
       <Form of={form} id={formId} onSubmit={onSubmit}>
-        <DialogContent className="sm:max-w-sm">
+        <DialogContent className="sm:max-w-2xl">
           <DialogHeader>
             <DialogTitle>New document</DialogTitle>
             <DialogDescription>
@@ -89,42 +89,48 @@ const CreateDocumentModal = (props: {
             </DialogDescription>
           </DialogHeader>
           <FieldGroup>
-            <TextInput
-              form={form}
-              path={["Subject"]}
-              label="Subject"
-              placeholder="Subject of document"
-            />
-            <TextInput
-              form={form}
-              path={["Title"]}
-              label="Title"
-              placeholder="Title of document"
-            />
-            <TextInput
-              form={form}
-              path={["Author"]}
-              label="Author"
-              placeholder="Author of document"
-            />
-            <TextInput
-              form={form}
-              path={["Creator"]}
-              label="Creator"
-              placeholder="Creator of document"
-            />
-            <TextInput
-              form={form}
-              path={["Producer"]}
-              label="Producer"
-              placeholder="Producer of document"
-            />
-            <TextInput
-              form={form}
-              path={["Keywords"]}
-              label="Keywords"
-              placeholder="Values separated by comma, eg. act, contract"
-            />
+            <FieldGroup className="flex flex-row">
+              <TextInput
+                form={form}
+                path={["Subject"]}
+                label="Subject"
+                placeholder="Subject of document"
+              />
+              <TextInput
+                form={form}
+                path={["Title"]}
+                label="Title"
+                placeholder="Title of document"
+              />
+            </FieldGroup>
+            <FieldGroup className="flex flex-row">
+              <TextInput
+                form={form}
+                path={["Author"]}
+                label="Author"
+                placeholder="Author of document"
+              />
+              <TextInput
+                form={form}
+                path={["Creator"]}
+                label="Creator"
+                placeholder="Creator of document"
+              />
+            </FieldGroup>
+            <FieldGroup className="flex flex-row">
+              <TextInput
+                form={form}
+                path={["Producer"]}
+                label="Producer"
+                placeholder="Producer of document"
+              />
+              <TextInput
+                form={form}
+                path={["Keywords"]}
+                label="Keywords"
+                placeholder="Values separated by comma, eg. act, contract"
+              />
+            </FieldGroup>
             <TextInput
               form={form}
               path={["Language"]}
@@ -139,18 +145,20 @@ const CreateDocumentModal = (props: {
               Added the information about the cover
             </FieldDescription>
             <FieldGroup>
-              <TextInput
-                form={form}
-                path={["Cover"]}
-                label="Cover"
-                placeholder="Title of cover"
-              />
-              <TextInput
-                form={form}
-                path={["Type"]}
-                label="Type"
-                placeholder="Type of cover"
-              />
+              <FieldGroup className="flex flex-row">
+                <TextInput
+                  form={form}
+                  path={["Cover"]}
+                  label="Cover"
+                  placeholder="Title of cover"
+                />
+                <TextInput
+                  form={form}
+                  path={["Type"]}
+                  label="Type"
+                  placeholder="Type of cover"
+                />
+              </FieldGroup>
               <TextInput
                 form={form}
                 path={["Month"]}
