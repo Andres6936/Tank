@@ -75,14 +75,17 @@ export default function View({ Id }: { Id: string }) {
               </Toggle>
             </div>
 
-            <ButtonGroup>
-              <Button variant="outline" size="icon">
-                <Stamp />
+            <div className="flex flex-row gap-2">
+              <Button className="min-w-20">
+                <Stamp strokeWidth={1.5} />
+                Seal
               </Button>
-              <Button variant="outline" size="icon">
-                <Settings />
-              </Button>
-            </ButtonGroup>
+              <ButtonGroup>
+                <Button variant="outline" size="icon">
+                  <Settings />
+                </Button>
+              </ButtonGroup>
+            </div>
           </div>
           <div className="relative flex flex-1">
             <div className="absolute inset-0 flex-1 border border-zinc-300">
