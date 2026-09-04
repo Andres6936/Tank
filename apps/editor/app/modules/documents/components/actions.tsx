@@ -117,7 +117,11 @@ const ActionSaveDocument = () => {
               mutation.mutate({ Id: id, Content: content });
             }}
           >
-            {isDirty ? <CloudAlert /> : <CloudCheck />}
+            {isDirty ? (
+              <CloudAlert className="stroke-red-600" />
+            ) : (
+              <CloudCheck className="stroke-lime-600" />
+            )}
           </Button>
         }
       />
