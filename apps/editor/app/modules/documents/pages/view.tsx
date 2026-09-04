@@ -8,10 +8,10 @@ import {
   Stamp,
 } from "lucide-react";
 
-import { XmlEditor } from "~/components/Editor";
 import { Button } from "~/components/ui/button";
 import { ButtonGroup } from "~/components/ui/button-group";
 import { useTRPC } from "~/utils/trpc";
+import { Editor } from "../components/editor";
 import { Preview } from "../components/preview";
 import { ViewProvider } from "../context/view-context";
 
@@ -53,7 +53,7 @@ export default function View({ Id }: { Id: string }) {
           </ButtonGroup>
           <div className="relative flex flex-1">
             <div className="absolute inset-0 flex-1">
-              <XmlEditor content={item.Content} />
+              <Editor />
             </div>
           </div>
         </div>

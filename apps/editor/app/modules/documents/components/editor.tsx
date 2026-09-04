@@ -20,7 +20,7 @@ const emmetTabKeymap = Prec.highest(
   ]),
 );
 
-export const XmlEditor = () => {
+export const Editor = () => {
   const { content, onContentChange } = useViewContext();
 
   return (
