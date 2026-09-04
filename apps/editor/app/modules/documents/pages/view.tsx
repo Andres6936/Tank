@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import {
   Braces,
+  RotateCcw,
   Save,
   SaveOff,
   Settings,
@@ -60,6 +61,9 @@ export default function View({ Id }: { Id: string }) {
             <div className="flex flex-row gap-2">
               <ButtonGroup>
                 <Actions.ActionSaveDocument />
+                <Button variant="outline" size="icon">
+                  <RotateCcw strokeWidth={1} />
+                </Button>
               </ButtonGroup>
 
               <Actions.ActionToggleAutosave />
