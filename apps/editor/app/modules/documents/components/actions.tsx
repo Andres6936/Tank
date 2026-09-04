@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { formatDistanceToNow } from "date-fns";
 import {
   CloudAlert,
@@ -179,13 +179,20 @@ const ActionToggleAutosave = () => {
 };
 
 const ActionReloadDocument = () => {
-  const { isDirty } = useViewContext();
+  const trpc = useTRPC();
+  const queryClient = useQueryClient();
+
+  const { id, isDirty, onDirtyChange } = useViewContext();
 
   const onPress = async () => {
     try {
       const result = await overlay.openAsync((args) => (
         <ConfirmationReloadModal {...args} />
       ));
+      queryClient.invalidateQueries({
+        queryKey: trpc.documents.getById.queryKey(id),
+      });
+      onDirtyChange(false);
     } catch (ignored) {}
   };
 
