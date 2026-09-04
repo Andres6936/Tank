@@ -2,7 +2,7 @@ import { CloudCheck, Plus } from "lucide-react";
 import { overlay } from "overlay-kit";
 import { useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
-import { formatDistance } from "date-fns";
+import { formatDistanceToNow } from "date-fns";
 
 import { Button } from "~/components/ui/button";
 import { toast } from "~/components/ui/toast";
@@ -93,7 +93,7 @@ const ActionSaveDocument = () => {
   );
 
   const briefUpdatedAt = useMemo(
-    () => formatDistance(updatedAt, new Date()),
+    () => formatDistanceToNow(updatedAt),
     [updatedAt],
   );
 
