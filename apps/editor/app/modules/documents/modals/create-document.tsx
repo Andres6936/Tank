@@ -49,9 +49,11 @@ const FormSchema = v.object({
   Month: v.pipe(v.string(), v.minLength(5)),
 });
 
+type Output = v.InferOutput<typeof FormSchema>;
+
 const CreateDocumentModal = (props: {
   isOpen: boolean;
-  close: (param: v.InferOutput<typeof FormSchema>) => void;
+  close: (param: Output) => void;
   reject: (reason?: unknown) => void;
 }) => {
   const formId = useId();
@@ -203,4 +205,4 @@ const TextInput = <
   );
 };
 
-export { CreateDocumentModal };
+export { CreateDocumentModal, type Output };

@@ -3,7 +3,10 @@ import { overlay } from "overlay-kit";
 import { useNavigate } from "react-router";
 
 import { Button } from "~/components/ui/button";
-import { CreateDocumentModal } from "../modals/create-document";
+import {
+  CreateDocumentModal,
+  type Output as CreateDocumentOutputType,
+} from "../modals/create-document";
 import { useMutation } from "@tanstack/react-query";
 import { useTRPC } from "~/utils/trpc";
 import { toast } from "~/components/ui/toast";
@@ -43,15 +46,10 @@ const ActionNewDocument = () => {
       className="min-h-16 gap-3 min-w-96 justify-start pl-4"
       onClick={async () => {
         try {
-          const result = await overlay.openAsync<{
-            Title: string;
-            Subject: string;
-          }>((args) => <CreateDocumentModal {...args} />);
-          mutation.mutate({
-            Title: result.Title,
-            Subject: result.Subject,
-            Content: "",
-          });
+          const result = await overlay.openAsync<CreateDocumentOutputType>(
+            (args) => <CreateDocumentModal {...args} />,
+          );
+          mutation.mutate(result);
         } catch (ignored) {}
       }}
     >
