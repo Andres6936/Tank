@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
+import { useViewContext } from "../context/view-context";
 
 const asQuery = async (args: { xml: string }) => {
   const stream = await fetch("http://localhost:6936/api/documents", {
@@ -19,7 +20,8 @@ const asQuery = async (args: { xml: string }) => {
   return url;
 };
 
-export const Preview = ({ content }: { content: string }) => {
+export const Preview = () => {
+  const { content } = useViewContext();
   const query = useQuery({
     queryKey: ["/preview", content],
     queryFn: () => asQuery({ xml: content }),
