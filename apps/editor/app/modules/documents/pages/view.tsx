@@ -56,6 +56,7 @@ export default function View({ Id }: { Id: string }) {
               </ButtonGroup>
 
               <Actions.ActionToggleAutosave />
+              <Actions.ActionToggleAutopreview />
             </div>
 
             <div className="flex flex-row gap-2">

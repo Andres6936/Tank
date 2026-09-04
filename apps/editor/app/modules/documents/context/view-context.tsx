@@ -6,10 +6,12 @@ type ViewContextProps = {
   content: string;
   updatedAt: string;
   autosaveEnabled: boolean;
+  autopreviewEnabled: boolean;
   onDirtyChange: (isDirty: boolean) => void;
   onContentChange: (content: string) => void;
   onUpdatedAtChange: (updatedAt: string) => void;
   onAutosaveChange: (autosaveEnabled: boolean) => void;
+  onAutopreviewChange: (autopreviewEnabled: boolean) => void;
 };
 
 const ViewContext = React.createContext<ViewContextProps | null>(null);
@@ -25,6 +27,7 @@ const ViewProvider = (
   const [content, setContent] = React.useState(props.content);
   const [updatedAt, setUpdatedAt] = React.useState(props.updatedAt);
   const [autosaveEnabled, setAutosaveEnabled] = React.useState(true);
+  const [autopreviewEnabled, setAutopreviewEnabled] = React.useState(false);
 
   const onContentChange = (newContent: string) => {
     setContent(newContent);
@@ -38,6 +41,9 @@ const ViewProvider = (
   const onAutosaveChange = (autosaveEnable: boolean) => {
     setAutosaveEnabled(autosaveEnable);
   };
+  const onAutopreviewChange = (autopreviewEnable: boolean) => {
+    setAutopreviewEnabled(autopreviewEnable);
+  };
 
   return (
     <ViewContext.Provider
@@ -47,10 +53,12 @@ const ViewProvider = (
         content,
         updatedAt,
         autosaveEnabled,
+        autopreviewEnabled,
         onDirtyChange,
         onContentChange,
         onUpdatedAtChange,
         onAutosaveChange,
+        onAutopreviewChange,
       }}
     >
       {props.children}

@@ -3,6 +3,8 @@ import { formatDistanceToNow } from "date-fns";
 import {
   CloudAlert,
   CloudCheck,
+  MonitorOff,
+  MonitorPlay,
   Plus,
   RotateCcw,
   Save,
@@ -178,6 +180,39 @@ const ActionToggleAutosave = () => {
   );
 };
 
+const ActionToggleAutopreview = () => {
+  const { autopreviewEnabled, onAutopreviewChange } = useViewContext();
+
+  return (
+    <Tooltip>
+      <TooltipTrigger
+        render={
+          <Toggle
+            pressed={autopreviewEnabled}
+            onPressedChange={(pressed) => onAutopreviewChange(pressed)}
+            aria-label="Toggle autopreview"
+            variant="outline"
+          >
+            {autopreviewEnabled ? (
+              <MonitorPlay strokeWidth={1} />
+            ) : (
+              <MonitorOff strokeWidth={1} />
+            )}
+            Autopreview
+          </Toggle>
+        }
+      />
+      <TooltipContent>
+        {autopreviewEnabled ? (
+          <p>Autopreview is enabled</p>
+        ) : (
+          <p>Autopreview is disabled</p>
+        )}
+      </TooltipContent>
+    </Tooltip>
+  );
+};
+
 const ActionReloadDocument = () => {
   const trpc = useTRPC();
   const queryClient = useQueryClient();
@@ -238,5 +273,6 @@ export {
   ActionNewDocument,
   ActionSaveDocument,
   ActionToggleAutosave,
+  ActionToggleAutopreview,
   ActionReloadDocument,
 };
