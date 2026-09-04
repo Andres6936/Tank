@@ -2,8 +2,10 @@ import React from "react";
 
 type ViewContextProps = {
   id: string;
+  isDirty: boolean;
   content: string;
   updatedAt: string;
+  onDirtyChange: (isDirty: boolean) => void;
   onContentChange: (content: string) => void;
   onUpdatedAtChange: (updatedAt: string) => void;
 };
@@ -17,6 +19,7 @@ const ViewProvider = (
     updatedAt: string;
   }>,
 ) => {
+  const [isDirty, setIsDirty] = React.useState(false);
   const [content, setContent] = React.useState(props.content);
   const [updatedAt, setUpdatedAt] = React.useState(props.updatedAt);
 
@@ -26,13 +29,18 @@ const ViewProvider = (
   const onUpdatedAtChange = (newUpdatedAt: string) => {
     setUpdatedAt(newUpdatedAt);
   };
+  const onDirtyChange = (newIsDirty: boolean) => {
+    setIsDirty(newIsDirty);
+  };
 
   return (
     <ViewContext.Provider
       value={{
         id: props.id,
+        isDirty,
         content,
         updatedAt,
+        onDirtyChange,
         onContentChange,
         onUpdatedAtChange,
       }}

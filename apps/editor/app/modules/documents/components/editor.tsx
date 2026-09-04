@@ -1,15 +1,12 @@
-import CodeMirror from "@uiw/react-codemirror";
 import { xml } from "@codemirror/lang-xml";
+import { Prec } from "@codemirror/state";
 import { keymap } from "@codemirror/view";
 import {
-  expandAbbreviation,
   abbreviationTracker,
+  expandAbbreviation,
 } from "@emmetio/codemirror6-plugin";
-import { useState } from "react";
-import { Prec } from "@codemirror/state";
+import CodeMirror from "@uiw/react-codemirror";
 import { useViewContext } from "~/modules/documents/context/view-context";
-
-const initialXml = `<Document>...</Document>`;
 
 const emmetTabKeymap = Prec.highest(
   keymap.of([
@@ -21,12 +18,15 @@ const emmetTabKeymap = Prec.highest(
 );
 
 export const Editor = () => {
-  const { content, onContentChange } = useViewContext();
+  const { content, onDirtyChange, onContentChange } = useViewContext();
 
   return (
     <CodeMirror
       value={content}
-      onChange={(val) => onContentChange(val)}
+      onChange={(val) => {
+        onContentChange(val);
+        onDirtyChange(true);
+      }}
       extensions={[xml(), abbreviationTracker(), emmetTabKeymap]}
       height="100%"
       className="h-full"

@@ -1,4 +1,4 @@
-import { CloudCheck, Plus } from "lucide-react";
+import { CloudCheck, CloudAlert, Plus } from "lucide-react";
 import { overlay } from "overlay-kit";
 import { useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
@@ -72,14 +72,22 @@ const ActionNewDocument = () => {
 
 const ActionSaveDocument = () => {
   const trpc = useTRPC();
-  const { id, updatedAt, content, onContentChange, onUpdatedAtChange } =
-    useViewContext();
+  const {
+    id,
+    isDirty,
+    updatedAt,
+    content,
+    onDirtyChange,
+    onContentChange,
+    onUpdatedAtChange,
+  } = useViewContext();
 
   const mutation = useMutation(
     trpc.documents.updateContent.mutationOptions({
       onSuccess: (payload) => {
         if (payload.statusCode === 200) {
           // Update the content with the response content formatted
+          onDirtyChange(false);
           onContentChange(payload.body.Content);
           onUpdatedAtChange(payload.body.UpdatedAt);
         } else {
@@ -109,12 +117,16 @@ const ActionSaveDocument = () => {
               mutation.mutate({ Id: id, Content: content });
             }}
           >
-            <CloudCheck />
+            {isDirty ? <CloudAlert /> : <CloudCheck />}
           </Button>
         }
       />
       <TooltipContent>
-        <p>Last updated: {briefUpdatedAt}</p>
+        {isDirty ? (
+          <p>Not updated in {briefUpdatedAt}</p>
+        ) : (
+          <p>Last updated: {briefUpdatedAt}</p>
+        )}
       </TooltipContent>
     </Tooltip>
   );
