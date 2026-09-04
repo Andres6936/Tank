@@ -1,5 +1,6 @@
 import { eq, desc, lt } from "drizzle-orm";
 
+import { formatXML } from "~/utility/formatter";
 import { getSQLClients } from "~/config/clients-sql";
 import { DocumentsTable } from "~/db/schema";
 import { defaultPagination, type PaginateType } from "~/schemas/general";
@@ -48,12 +49,34 @@ const getByIdMaybe = async (id: string) => {
 };
 
 const create = async (document: InferArgs["create"]) => {
+  const content = Bun.XML.stringify(
+    {
+      Document: {
+        "@subjet": document.Subject,
+        "@title": document.Title,
+        "@author": "",
+        "@keywords": "",
+        "@creator": "",
+        "@producer": "",
+        "@language": "",
+        Cover: {
+          "@type": "",
+          "@title": "",
+          "@month": "",
+        },
+        Paginate: {},
+      },
+    },
+    null,
+    2,
+  );
+
   const result = await sql
     .insert(DocumentsTable)
     .values({
       Title: document.Title,
       Subject: document.Subject,
-      Content: document.Content,
+      Content: await formatXML(content),
       TypeState: TypeStateDocumentKeys.Draft,
     })
     .returning();

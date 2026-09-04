@@ -14,7 +14,6 @@ export const Args = {
   create: schemas.Insert.required({
     Title: true,
     Subject: true,
-    Content: true,
   }),
   updateContent: schemas.Update.extend({ Id: z.uuid() })
     .pick({
