@@ -60,8 +60,10 @@ const create = async (document: InferArgs["create"]) => {
         "@producer": document.Producer,
         "@language": document.Language,
         Cover: {
-          "@type": document.Type,
-          "@title": document.Cover,
+          "@type":
+            document.Type.length === 0 ? document.Subject : document.Type,
+          "@title":
+            document.Cover.length === 0 ? document.Title : document.Cover,
           "@month": document.Month,
         },
         Paginate: {},
