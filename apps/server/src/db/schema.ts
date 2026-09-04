@@ -1,10 +1,10 @@
 import { sql } from "drizzle-orm";
 import { sqliteTable, text, index } from "drizzle-orm/sqlite-core";
-import { defaultId, defaultISODate } from "./default";
+import { defaultId, withISODate } from "./default";
 
 const defaultColumns = {
   Metadata: text().notNull().default("{}"),
-  CreatedAt: defaultISODate,
+  CreatedAt: withISODate("CreatedAt"),
 };
 
 export const FilesTable = sqliteTable("Files", {
@@ -32,7 +32,7 @@ export const DocumentsTable = sqliteTable(
       .notNull()
       .references(() => TypeStateDocument.Type),
     FileId: text().references(() => FilesTable.Id, { onDelete: "cascade" }),
-    UpdatedAt: defaultISODate,
+    UpdatedAt: withISODate("UpdatedAt"),
     ...defaultColumns,
   },
   (table) => [index("Document_FileId").on(table.FileId)],

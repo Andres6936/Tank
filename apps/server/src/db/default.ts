@@ -5,8 +5,9 @@ const defaultId = text("Id")
   .primaryKey()
   .default(sql`(uuid7())`);
 
-const defaultISODate = text("CreatedAt")
-  .notNull()
-  .default(sql`(time_fmt_iso(time_now()))`);
+const withISODate = (name: string) =>
+  text(name)
+    .notNull()
+    .default(sql`(time_fmt_iso(time_now()))`);
 
-export { defaultId, defaultISODate };
+export { defaultId, withISODate };
