@@ -62,17 +62,7 @@ export default function View({ Id }: { Id: string }) {
                 <Actions.ActionSaveDocument />
               </ButtonGroup>
 
-              <Toggle aria-label="Toggle autosave" variant="outline">
-                <Save
-                  strokeWidth={1}
-                  className="group-aria-pressed/toggle:hidden"
-                />
-                <SaveOff
-                  strokeWidth={1}
-                  className="hidden group-aria-pressed/toggle:block"
-                />
-                Autosave
-              </Toggle>
+              <Actions.ActionToggleAutosave />
             </div>
 
             <div className="flex flex-row gap-2">

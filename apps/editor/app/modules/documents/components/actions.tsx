@@ -1,11 +1,13 @@
-import { CloudCheck, CloudAlert, Plus } from "lucide-react";
-import { overlay } from "overlay-kit";
-import { useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import { formatDistanceToNow } from "date-fns";
+import { CloudAlert, CloudCheck, Plus, Save, SaveOff } from "lucide-react";
+import { overlay } from "overlay-kit";
+import { useMemo } from "react";
+import { useNavigate } from "react-router";
 
 import { Button } from "~/components/ui/button";
 import { toast } from "~/components/ui/toast";
+import { Toggle } from "~/components/ui/toggle";
 import {
   Tooltip,
   TooltipContent,
@@ -17,7 +19,6 @@ import {
   CreateDocumentModal,
   type Output as CreateDocumentOutputType,
 } from "../modals/create-document";
-import { useMemo } from "react";
 
 const ActionNewDocument = () => {
   const trpc = useTRPC();
@@ -136,4 +137,37 @@ const ActionSaveDocument = () => {
   );
 };
 
-export { ActionNewDocument, ActionSaveDocument };
+const ActionToggleAutosave = () => {
+  const { autosaveEnabled, onAutosaveChange } = useViewContext();
+
+  return (
+    <Tooltip>
+      <TooltipTrigger
+        render={
+          <Toggle
+            pressed={autosaveEnabled}
+            onPressedChange={(pressed) => onAutosaveChange(pressed)}
+            aria-label="Toggle autosave"
+            variant="outline"
+          >
+            {autosaveEnabled ? (
+              <Save strokeWidth={1} />
+            ) : (
+              <SaveOff strokeWidth={1} />
+            )}
+            Autosave
+          </Toggle>
+        }
+      />
+      <TooltipContent>
+        {autosaveEnabled ? (
+          <p>Autosave is enabled</p>
+        ) : (
+          <p>Autosave is disabled</p>
+        )}
+      </TooltipContent>
+    </Tooltip>
+  );
+};
+
+export { ActionNewDocument, ActionSaveDocument, ActionToggleAutosave };
