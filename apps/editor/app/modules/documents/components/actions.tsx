@@ -182,17 +182,34 @@ const ActionReloadDocument = () => {
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
-  const { id, isDirty, onDirtyChange } = useViewContext();
+  const { id, isDirty, onContentChange, onDirtyChange, onUpdatedAtChange } =
+    useViewContext();
+
+  const mutation = useMutation({
+    mutationFn: async () => {
+      const options = trpc.documents.getById.queryOptions(id);
+      return await queryClient.fetchQuery(options);
+    },
+    onSuccess: (payload) => {
+      if (payload.statusCode === 200) {
+        onDirtyChange(false);
+        onContentChange(payload.body.Content);
+        onUpdatedAtChange(payload.body.UpdatedAt);
+      } else {
+        toast.add({
+          type: "error",
+          title: "Failed to reload document",
+        });
+      }
+    },
+  });
 
   const onPress = async () => {
     try {
       const result = await overlay.openAsync((args) => (
         <ConfirmationReloadModal {...args} />
       ));
-      queryClient.invalidateQueries({
-        queryKey: trpc.documents.getById.queryKey(id),
-      });
-      onDirtyChange(false);
+      mutation.mutate();
     } catch (ignored) {}
   };
 
