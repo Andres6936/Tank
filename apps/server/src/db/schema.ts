@@ -32,6 +32,7 @@ export const DocumentsTable = sqliteTable(
       .notNull()
       .references(() => TypeStateDocument.Type),
     FileId: text().references(() => FilesTable.Id, { onDelete: "cascade" }),
+    UpdatedAt: defaultISODate,
     ...defaultColumns,
   },
   (table) => [index("Document_FileId").on(table.FileId)],

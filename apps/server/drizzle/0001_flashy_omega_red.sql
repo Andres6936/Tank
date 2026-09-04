@@ -7,6 +7,7 @@ CREATE TABLE `Documents` (
 	`FileId` text,
 	`Metadata` text DEFAULT '{}' NOT NULL,
 	`CreatedAt` text DEFAULT (time_fmt_iso(time_now())) NOT NULL,
+	`UpdatedAt` text DEFAULT (time_fmt_iso(time_now())) NOT NULL,
 	FOREIGN KEY (`TypeState`) REFERENCES `TypeStateDocument`(`Type`) ON UPDATE no action ON DELETE no action,
 	FOREIGN KEY (`FileId`) REFERENCES `Files`(`Id`) ON UPDATE no action ON DELETE cascade
 );
