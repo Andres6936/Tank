@@ -39,14 +39,14 @@ import { useId } from "react";
 const FormSchema = v.object({
   Title: v.pipe(v.string(), v.minLength(5)),
   Subject: v.pipe(v.string(), v.minLength(5)),
-  Author: v.pipe(v.string(), v.minLength(5)),
-  Keywords: v.pipe(v.string(), v.minLength(3)),
-  Creator: v.pipe(v.string(), v.minLength(5)),
-  Producer: v.pipe(v.string(), v.minLength(1)),
-  Language: v.pipe(v.string(), v.minLength(1)),
-  Type: v.pipe(v.string(), v.minLength(5)),
-  Cover: v.pipe(v.string(), v.minLength(5)),
-  Month: v.pipe(v.string(), v.minLength(5)),
+  Author: v.pipe(v.string()),
+  Keywords: v.pipe(v.string()),
+  Creator: v.pipe(v.string()),
+  Producer: v.pipe(v.string()),
+  Language: v.pipe(v.string()),
+  Type: v.pipe(v.string()),
+  Cover: v.pipe(v.string()),
+  Month: v.pipe(v.string()),
 });
 
 type Output = v.InferOutput<typeof FormSchema>;

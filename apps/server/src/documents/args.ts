@@ -14,14 +14,14 @@ export const Args = {
   create: z.object({
     Title: z.string().min(5),
     Subject: z.string().min(5),
-    Author: z.string().min(5),
-    Keywords: z.string().min(3),
-    Creator: z.string().min(5),
-    Producer: z.string().min(1),
-    Language: z.string().min(1),
-    Type: z.string().min(5),
-    Cover: z.string().min(5),
-    Month: z.string().min(5),
+    Author: z.string(),
+    Keywords: z.string(),
+    Creator: z.string(),
+    Producer: z.string(),
+    Language: z.string(),
+    Type: z.string(),
+    Cover: z.string(),
+    Month: z.string(),
   }),
   updateContent: schemas.Update.extend({ Id: z.uuid() })
     .pick({
