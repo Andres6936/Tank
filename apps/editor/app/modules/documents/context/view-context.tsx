@@ -1,19 +1,22 @@
 import React from "react";
 
 type ViewContextProps = {
+  id: string;
   content: string;
   onContentChange: (content: string) => void;
 };
 
 const ViewContext = React.createContext<ViewContextProps | null>(null);
 
-const ViewProvider = (props: React.PropsWithChildren<{ content: string }>) => {
+const ViewProvider = (
+  props: React.PropsWithChildren<{ id: string; content: string }>,
+) => {
   const [content, setContent] = React.useState(props.content);
   const onContentChange = (newContent: string) => {
     setContent(newContent);
   };
   return (
-    <ViewContext.Provider value={{ content, onContentChange }}>
+    <ViewContext.Provider value={{ id: props.id, content, onContentChange }}>
       {props.children}
     </ViewContext.Provider>
   );

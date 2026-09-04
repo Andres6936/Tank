@@ -101,7 +101,7 @@ const updateContent = async (
       Content: await formatXML(document.Content),
     })
     .where(eq(DocumentsTable.Id, id))
-    .returning();
+    .returning({ Content: DocumentsTable.Content });
 
   if (result.length === 0) {
     return null;

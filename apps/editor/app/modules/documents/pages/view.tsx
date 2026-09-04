@@ -15,6 +15,8 @@ import { useTRPC } from "~/utils/trpc";
 import { Preview } from "../components/preview";
 import { ViewProvider } from "../context/view-context";
 
+import * as Actions from "../components/actions";
+
 export default function View({ Id }: { Id: string }) {
   const trpc = useTRPC();
   const query = useQuery(trpc.documents.getById.queryOptions(Id));
@@ -38,7 +40,7 @@ export default function View({ Id }: { Id: string }) {
   const item = query.data.body;
 
   return (
-    <ViewProvider content={item.Content}>
+    <ViewProvider id={Id} content={item.Content}>
       <div className="flex flex-1 flex-row gap-2">
         <div className="flex flex-col flex-1 space-y-2">
           <ButtonGroup>
@@ -58,9 +60,7 @@ export default function View({ Id }: { Id: string }) {
         <div className="flex flex-col flex-1 space-y-2">
           <div className="flex justify-between">
             <ButtonGroup>
-              <Button variant="outline" size="icon">
-                <CloudCheck />
-              </Button>
+              <Actions.ActionSaveDocument />
               <Button variant="outline" size="icon">
                 <FileDown />
               </Button>

@@ -1,4 +1,4 @@
-import { Plus } from "lucide-react";
+import { CloudCheck, Plus } from "lucide-react";
 import { overlay } from "overlay-kit";
 import { useNavigate } from "react-router";
 
@@ -10,6 +10,7 @@ import {
 import { useMutation } from "@tanstack/react-query";
 import { useTRPC } from "~/utils/trpc";
 import { toast } from "~/components/ui/toast";
+import { useViewContext } from "../context/view-context";
 
 const ActionNewDocument = () => {
   const trpc = useTRPC();
@@ -62,4 +63,38 @@ const ActionNewDocument = () => {
   );
 };
 
-export { ActionNewDocument };
+const ActionSaveDocument = () => {
+  const trpc = useTRPC();
+  const { id, content, onContentChange } = useViewContext();
+
+  const mutation = useMutation(
+    trpc.documents.updateContent.mutationOptions({
+      onSuccess: (payload) => {
+        if (payload.statusCode === 200) {
+          // Update the content with the response content formatted
+          onContentChange(payload.body.Content);
+        } else {
+          toast.add({
+            type: "error",
+            title: "Failed to save document",
+          });
+        }
+      },
+    }),
+  );
+
+  return (
+    <Button
+      variant="outline"
+      size="icon"
+      disabled={mutation.isPending}
+      onClick={async () => {
+        mutation.mutate({ Id: id, Content: content });
+      }}
+    >
+      <CloudCheck />
+    </Button>
+  );
+};
+
+export { ActionNewDocument, ActionSaveDocument };

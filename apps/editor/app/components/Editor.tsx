@@ -7,6 +7,7 @@ import {
 } from "@emmetio/codemirror6-plugin";
 import { useState } from "react";
 import { Prec } from "@codemirror/state";
+import { useViewContext } from "~/modules/documents/context/view-context";
 
 const initialXml = `<Document>...</Document>`;
 
@@ -19,17 +20,13 @@ const emmetTabKeymap = Prec.highest(
   ]),
 );
 
-type Props = {
-  content: string;
-};
-
-export const XmlEditor = (props: Props) => {
-  const [value, setValue] = useState(props.content);
+export const XmlEditor = () => {
+  const { content, onContentChange } = useViewContext();
 
   return (
     <CodeMirror
-      value={value}
-      onChange={(val) => setValue(val)}
+      value={content}
+      onChange={(val) => onContentChange(val)}
       extensions={[xml(), abbreviationTracker(), emmetTabKeymap]}
       height="100%"
       className="h-full"
