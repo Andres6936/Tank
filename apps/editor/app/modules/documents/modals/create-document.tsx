@@ -191,9 +191,13 @@ const TextInput = <
         placeholder={props.placeholder}
         value={(field.input as string | number | string[] | undefined) ?? ""}
         aria-invalid={field.errors !== null}
+        aria-errormessage={`${id}-error`}
       />
       {field.errors && (
-        <FieldError errors={field.errors.map((message) => ({ message }))} />
+        <FieldError
+          errors={field.errors.map((message) => ({ message }))}
+          id={`${id}-error`}
+        />
       )}
     </Field>
   );
