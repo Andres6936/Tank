@@ -26,6 +26,7 @@ import {
   CreateDocumentModal,
   type Output as CreateDocumentOutputType,
 } from "../modals/create-document";
+import { ConfirmationReloadModal } from "../modals/confirmation-reload";
 
 const ActionNewDocument = () => {
   const trpc = useTRPC();
@@ -180,11 +181,24 @@ const ActionToggleAutosave = () => {
 const ActionReloadDocument = () => {
   const { isDirty } = useViewContext();
 
+  const onPress = async () => {
+    try {
+      const result = await overlay.openAsync((args) => (
+        <ConfirmationReloadModal {...args} />
+      ));
+    } catch (ignored) {}
+  };
+
   return (
     <Tooltip>
       <TooltipTrigger
         render={
-          <Button variant="outline" size="icon" disabled={!isDirty}>
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={onPress}
+            disabled={!isDirty}
+          >
             <RotateCcw strokeWidth={1} />
           </Button>
         }
