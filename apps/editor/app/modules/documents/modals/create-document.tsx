@@ -1,6 +1,17 @@
 import * as v from "valibot";
-import { Form, Field as FormischField, reset, useForm } from "@formisch/react";
-import type { SubmitHandler } from "@formisch/react";
+import {
+  Form,
+  Field as FormischField,
+  useField,
+  useForm,
+} from "@formisch/react";
+import type {
+  FormSchema,
+  FormStore,
+  RequiredPath,
+  SubmitHandler,
+  ValidPath,
+} from "@formisch/react";
 
 import { Button } from "~/components/ui/button";
 import {
@@ -33,6 +44,9 @@ const FormSchema = v.object({
   Creator: v.pipe(v.string(), v.minLength(5)),
   Producer: v.pipe(v.string(), v.minLength(1)),
   Language: v.pipe(v.string(), v.minLength(1)),
+  Type: v.pipe(v.string(), v.minLength(5)),
+  Cover: v.pipe(v.string(), v.minLength(5)),
+  Month: v.pipe(v.string(), v.minLength(5)),
 });
 
 const CreateDocumentModal = (props: {
@@ -51,6 +65,9 @@ const CreateDocumentModal = (props: {
       Creator: "",
       Producer: "",
       Language: "",
+      Type: "",
+      Cover: "",
+      Month: "",
     },
   });
 
@@ -70,63 +87,13 @@ const CreateDocumentModal = (props: {
             </DialogDescription>
           </DialogHeader>
           <FieldGroup>
-            <FormischField of={form} path={["Subject"]}>
-              {(field) => (
-                <Field data-invalid={field.errors !== null}>
-                  <FieldLabel htmlFor="subject-2">Subject</FieldLabel>
-                  <Input
-                    {...field.props}
-                    id="subject-2"
-                    name="subject"
-                    value={field.input ?? ""}
-                    aria-invalid={field.errors !== null}
-                  />
-                  {field.errors && (
-                    <FieldError
-                      errors={field.errors.map((message) => ({ message }))}
-                    />
-                  )}
-                </Field>
-              )}
-            </FormischField>
-            <FormischField of={form} path={["Title"]}>
-              {(field) => (
-                <Field data-invalid={field.errors !== null}>
-                  <FieldLabel htmlFor="title-1">Title</FieldLabel>
-                  <Input
-                    {...field.props}
-                    id="title-1"
-                    name="title"
-                    value={field.input ?? ""}
-                    aria-invalid={field.errors !== null}
-                  />
-                  {field.errors && (
-                    <FieldError
-                      errors={field.errors.map((message) => ({ message }))}
-                    />
-                  )}
-                </Field>
-              )}
-            </FormischField>
-            <FormischField of={form} path={["Author"]}>
-              {(field) => (
-                <Field data-invalid={field.errors !== null}>
-                  <FieldLabel htmlFor="author-1">Author</FieldLabel>
-                  <Input
-                    {...field.props}
-                    id="author-1"
-                    name="author"
-                    value={field.input ?? ""}
-                    aria-invalid={field.errors !== null}
-                  />
-                  {field.errors && (
-                    <FieldError
-                      errors={field.errors.map((message) => ({ message }))}
-                    />
-                  )}
-                </Field>
-              )}
-            </FormischField>
+            <TextInput form={form} path={["Subject"]} label="Subject" />
+            <TextInput form={form} path={["Title"]} label="Title" />
+            <TextInput form={form} path={["Author"]} label="Author" />
+            <TextInput form={form} path={["Keywords"]} label="Keywords" />
+            <TextInput form={form} path={["Creator"]} label="Creator" />
+            <TextInput form={form} path={["Producer"]} label="Producer" />
+            <TextInput form={form} path={["Language"]} label="Language" />
           </FieldGroup>
           <FieldSeparator />
           <FieldSet>
@@ -134,6 +101,11 @@ const CreateDocumentModal = (props: {
             <FieldDescription>
               Added the information about the cover
             </FieldDescription>
+            <FieldGroup>
+              <TextInput form={form} path={["Cover"]} label="Cover" />
+              <TextInput form={form} path={["Type"]} label="Type" />
+              <TextInput form={form} path={["Month"]} label="Month" />
+            </FieldGroup>
           </FieldSet>
           <DialogFooter>
             <DialogClose render={<Button variant="outline">Cancel</Button>} />
@@ -144,6 +116,34 @@ const CreateDocumentModal = (props: {
         </DialogContent>
       </Form>
     </Dialog>
+  );
+};
+
+const TextInput = <
+  Schema extends FormSchema,
+  FieldPath extends RequiredPath,
+>(props: {
+  form: FormStore<Schema>;
+  path: ValidPath<v.InferInput<Schema>, FieldPath>;
+  label: string;
+}) => {
+  const id = useId();
+  const field = useField(props.form, { path: props.path });
+
+  return (
+    <Field data-invalid={field.errors !== null}>
+      <FieldLabel htmlFor={id}>{props.label}</FieldLabel>
+      <Input
+        {...field.props}
+        id={id}
+        name={props.path.join(".")}
+        value={(field.input as string | number | string[] | undefined) ?? ""}
+        aria-invalid={field.errors !== null}
+      />
+      {field.errors && (
+        <FieldError errors={field.errors.map((message) => ({ message }))} />
+      )}
+    </Field>
   );
 };
 
