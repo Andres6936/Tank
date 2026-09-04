@@ -66,7 +66,21 @@ const create = async (document: InferArgs["create"]) => {
             document.Cover.length === 0 ? document.Title : document.Cover,
           "@month": document.Month,
         },
-        Paginate: {},
+        Paginate: {
+          IndicatorHeader: {
+            "@value": "Header Line",
+          },
+          Section: {
+            "@marginTop": "0",
+            "@gap": "0.1cm",
+            Title: {
+              "#text": "Title",
+            },
+            Paragraph: {
+              "#text": "Paragraph",
+            },
+          },
+        },
       },
     },
     null,
