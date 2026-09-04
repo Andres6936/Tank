@@ -1,4 +1,3 @@
-import { sql } from "drizzle-orm";
 import { sqliteTable, text, index } from "drizzle-orm/sqlite-core";
 import { defaultId, withISODate } from "./default";
 
