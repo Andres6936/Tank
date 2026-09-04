@@ -48,9 +48,6 @@ export default function View({ Id }: { Id: string }) {
             <Button variant="outline" size="icon">
               <Braces />
             </Button>
-            <Button variant="outline" size="icon">
-              <Signature />
-            </Button>
           </ButtonGroup>
           <div className="relative flex flex-1">
             <div className="absolute inset-0 flex-1">
