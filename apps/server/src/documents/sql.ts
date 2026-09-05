@@ -74,10 +74,11 @@ const create = async (document: InferArgs["create"]) => {
             "@marginTop": "0",
             "@gap": "0.1cm",
             Title: {
-              "#text": "Title",
+              "#text": "Lorem Ipsum",
             },
             Paragraph: {
-              "#text": "Paragraph",
+              "#text":
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             },
           },
         },
