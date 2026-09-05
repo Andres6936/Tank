@@ -5,14 +5,28 @@ import {
   getConsecutiveUUID,
 } from "~/pdf/utility/graphics";
 
-const getSealFile = (seal: string) => {
+const TypeSeals = {
+  red: {
+    path: "./public/seals/seal-red.png",
+  },
+  green: {
+    path: "./public/seals/seal-green.png",
+  },
+  blue: {
+    path: "./public/seals/seal-blue.png",
+  },
+} as const;
+
+type TypeSealsKey = keyof typeof TypeSeals;
+
+const getSealFile = (seal: TypeSealsKey) => {
   switch (seal) {
     case "red":
-      return Bun.file("./public/seals/seal-red.png");
+      return Bun.file(TypeSeals.red.path);
     case "green":
-      return Bun.file("./public/seals/seal-green.png");
+      return Bun.file(TypeSeals.green.path);
     case "blue":
-      return Bun.file("./public/seals/seal-blue.png");
+      return Bun.file(TypeSeals.blue.path);
     default:
       return Bun.file("./public/seals/seal-red.png");
   }
@@ -45,11 +59,13 @@ const getBreBCode = () => {
   return codeSvg;
 };
 
-const getBufferSeals = async (args?: { seal?: "red" | "green" | "blue" }) => {
+const getBufferSeals = async ({
+  seal = "red",
+}: { seal?: TypeSealsKey } = {}) => {
   const uuid = getConsecutiveUUID();
   const buffer = getCircleTextBuffer(uuid.long);
 
-  const sealFile = getSealFile(args?.seal ?? "red");
+  const sealFile = getSealFile(seal);
   const sealBuffer = Buffer.from(await sealFile.bytes());
   const codeSvg = qrcode("https://andres6936.dev/", {
     margin: 0,
@@ -89,4 +105,4 @@ const getBufferSeals = async (args?: { seal?: "red" | "green" | "blue" }) => {
   };
 };
 
-export { getBreBCode, getBufferSeals };
+export { getBreBCode, getBufferSeals, type TypeSealsKey };
