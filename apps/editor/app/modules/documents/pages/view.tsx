@@ -46,6 +46,7 @@ export default function View({ Id }: { Id: string }) {
 
             <ButtonGroup>
               <ActionsEditor.ActionBold />
+              <ActionsEditor.ActionItalic />
             </ButtonGroup>
           </div>
 
