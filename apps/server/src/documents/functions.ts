@@ -58,6 +58,12 @@ export default {
     return asPayload(200, result);
   },
   updateContent: async (args: InferArgs["updateContent"]) => {
+    const query = await sql.getStateById(args.Id);
+    if (!query) return asPayload(404, { message: "Not found" });
+    // Only the document is draft state can be updated
+    if (query.TypeState !== TypeStateDocumentKeys.Draft)
+      return asPayload(400, { message: "Not a draft" });
+
     const result = await sql.updateContent(args.Id, args);
     if (!result) return asPayload(500, { message: "Failed to update" });
     return asPayload(200, result);

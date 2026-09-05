@@ -48,6 +48,24 @@ const getByIdMaybe = async (id: string) => {
   return row;
 };
 
+const getStateById = async (id: string) => {
+  const result = await sql
+    .select({
+      Id: DocumentsTable.Id,
+      TypeState: DocumentsTable.TypeState,
+    })
+    .from(DocumentsTable)
+    .where(eq(DocumentsTable.Id, id))
+    .limit(1);
+
+  if (result.length === 0) {
+    return null;
+  }
+
+  const [row] = result;
+  return row;
+};
+
 const create = async (document: InferArgs["create"]) => {
   const content = Bun.XML.stringify(
     {
@@ -152,6 +170,7 @@ export {
   getAll,
   getAllInfinite,
   getByIdMaybe,
+  getStateById,
   create,
   updateContent,
   updateFileLinkAndSeal,
