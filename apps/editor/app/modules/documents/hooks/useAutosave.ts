@@ -2,7 +2,10 @@ import { useEffect, useRef, useState, useCallback } from "react";
 
 const useAutosave = (
   saveFn: () => void | Promise<void>,
-  intervalMs: number = 5000,
+  {
+    intervalMs = 5000,
+    disabled = false,
+  }: { intervalMs?: number; disabled?: boolean } = {},
 ) => {
   const [isFocused, setIsFocused] = useState(
     () => document.visibilityState === "visible" && document.hasFocus(),
@@ -35,6 +38,11 @@ const useAutosave = (
   }, [updateFocusState]);
 
   useEffect(() => {
+    // If disabled, don't set up the interval
+    if (disabled) {
+      return;
+    }
+
     const intervalId = setInterval(() => {
       if (isFocusedRef.current) {
         void saveFn();
@@ -44,7 +52,7 @@ const useAutosave = (
     return () => {
       clearInterval(intervalId);
     };
-  }, [saveFn, intervalMs]);
+  }, [saveFn, intervalMs, disabled]);
 
   return { isFocused };
 };

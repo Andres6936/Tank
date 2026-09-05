@@ -154,6 +154,7 @@ const ActionToggleAutosave = () => {
   const {
     id,
     content,
+    isDirty,
     autosaveEnabled,
     onAutosaveChange,
     onDirtyChange,
@@ -174,7 +175,7 @@ const ActionToggleAutosave = () => {
 
   const trigger = () => mutation.mutate({ Id: id, Content: content });
 
-  useAutosave(trigger);
+  useAutosave(trigger, { disabled: !autosaveEnabled || !isDirty });
 
   return (
     <Tooltip>
