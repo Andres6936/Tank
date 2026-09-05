@@ -51,7 +51,7 @@ export const Preview = () => {
   if (!autopreviewEnabled) {
     return (
       <div className="w-full h-full flex flex-1 items-center justify-center">
-        <p>Autopreview is disabled</p>
+        <p>Preview is disabled</p>
       </div>
     );
   }

@@ -198,15 +198,15 @@ const ActionToggleAutopreview = () => {
             ) : (
               <MonitorOff strokeWidth={1} />
             )}
-            Autopreview
+            Preview
           </Toggle>
         }
       />
       <TooltipContent>
         {autopreviewEnabled ? (
-          <p>Autopreview is enabled</p>
+          <p>Preview is enabled</p>
         ) : (
-          <p>Autopreview is disabled</p>
+          <p>Preview is disabled</p>
         )}
       </TooltipContent>
     </Tooltip>
