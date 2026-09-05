@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDebounce } from "@uidotdev/usehooks";
 import { useQuery } from "@tanstack/react-query";
 
@@ -32,21 +32,27 @@ export const Preview = () => {
     queryFn: () => asQuery({ xml: debouncedContent }),
     enabled: autopreviewEnabled,
     refetchOnWindowFocus: false,
+    staleTime: 0,
+    gcTime: 1000 * 60, // Keep the cache for 1 minute
   });
 
   const url = query.data;
+  const previosUrl = useRef<string | undefined>(undefined);
 
   useEffect(() => {
-    if (url) {
-      URL.revokeObjectURL(url);
+    if (previosUrl.current && previosUrl.current !== url) {
+      URL.revokeObjectURL(previosUrl.current);
     }
+    previosUrl.current = url;
+  }, [url]);
 
+  useEffect(() => {
     return () => {
-      if (url) {
-        URL.revokeObjectURL(url);
+      if (previosUrl.current) {
+        URL.revokeObjectURL(previosUrl.current);
       }
     };
-  }, [url]);
+  }, []);
 
   if (!autopreviewEnabled) {
     return (
