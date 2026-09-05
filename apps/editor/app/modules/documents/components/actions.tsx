@@ -29,6 +29,7 @@ import {
   type Output as CreateDocumentOutputType,
 } from "../modals/create-document";
 import { ConfirmationReloadModal } from "../modals/confirmation-reload";
+import { useAutosave } from "../hooks/useAutosave";
 
 const ActionNewDocument = () => {
   const trpc = useTRPC();
@@ -149,6 +150,8 @@ const ActionSaveDocument = () => {
 
 const ActionToggleAutosave = () => {
   const { autosaveEnabled, onAutosaveChange } = useViewContext();
+
+  useAutosave();
 
   return (
     <Tooltip>

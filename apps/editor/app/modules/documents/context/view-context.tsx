@@ -26,8 +26,8 @@ const ViewProvider = (
   const [isDirty, setIsDirty] = React.useState(false);
   const [content, setContent] = React.useState(props.content);
   const [updatedAt, setUpdatedAt] = React.useState(props.updatedAt);
-  const [autosaveEnabled, setAutosaveEnabled] = React.useState(true);
-  const [autopreviewEnabled, setAutopreviewEnabled] = React.useState(false);
+  const [autosaveEnabled, setAutosaveEnabled] = React.useState(false);
+  const [autopreviewEnabled, setAutopreviewEnabled] = React.useState(true);
 
   const onContentChange = (newContent: string) => {
     setContent(newContent);
@@ -74,4 +74,4 @@ const useViewContext = () => {
   return context;
 };
 
-export { ViewProvider, useViewContext };
+export { useViewContext, ViewProvider };
