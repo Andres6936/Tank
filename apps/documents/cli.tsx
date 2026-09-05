@@ -10,7 +10,11 @@ import { run, print } from "@optique/run";
 import { path } from "@optique/run/valueparser";
 
 // Utility Seals Buffers
-import { getBufferSeals } from "~/pdf/utility/buffer-seals";
+import {
+  getBufferSeals,
+  TypeSeals,
+  type TypeSealsKey,
+} from "~/pdf/utility/buffer-seals";
 
 // Templates
 import { run as document } from "~/pdf/templates/document";
@@ -30,7 +34,11 @@ const parser = or(
         }),
       ),
       seal: withDefault(
-        option("-s", "--seal", choice(["blue", "red", "green"])),
+        option(
+          "-s",
+          "--seal",
+          choice(Object.keys(TypeSeals) as TypeSealsKey[]),
+        ),
         "blue",
       ),
       output: withDefault(
@@ -52,7 +60,11 @@ const parser = or(
         }),
       ),
       seal: withDefault(
-        option("-s", "--seal", choice(["blue", "red", "green"])),
+        option(
+          "-s",
+          "--seal",
+          choice(Object.keys(TypeSeals) as TypeSealsKey[]),
+        ),
         "red",
       ),
       output: withDefault(

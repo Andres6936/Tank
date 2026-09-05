@@ -6,30 +6,40 @@ import {
 } from "~/pdf/utility/graphics";
 
 const TypeSeals = {
-  red: {
-    path: "./public/seals/seal-red.png",
+  black: {
+    path: "./public/seals/seal-black.png",
+  },
+  blue: {
+    path: "./public/seals/seal-blue.png",
+  },
+  gold: {
+    path: "./public/seals/seal-gold.png",
   },
   green: {
     path: "./public/seals/seal-green.png",
   },
-  blue: {
-    path: "./public/seals/seal-blue.png",
+  orange: {
+    path: "./public/seals/seal-orange.png",
+  },
+  pink: {
+    path: "./public/seals/seal-pink.png",
+  },
+  purple: {
+    path: "./public/seals/seal-purple.png",
+  },
+  raw: {
+    path: "./public/seals/seal-raw.png",
+  },
+  red: {
+    path: "./public/seals/seal-red.png",
   },
 } as const;
 
 type TypeSealsKey = keyof typeof TypeSeals;
 
 const getSealFile = (seal: TypeSealsKey) => {
-  switch (seal) {
-    case "red":
-      return Bun.file(TypeSeals.red.path);
-    case "green":
-      return Bun.file(TypeSeals.green.path);
-    case "blue":
-      return Bun.file(TypeSeals.blue.path);
-    default:
-      return Bun.file("./public/seals/seal-red.png");
-  }
+  if (!(seal in TypeSeals)) return Bun.file(TypeSeals.raw.path);
+  return Bun.file(TypeSeals[seal].path);
 };
 
 const payload =
@@ -60,7 +70,7 @@ const getBreBCode = () => {
 };
 
 const getBufferSeals = async ({
-  seal = "red",
+  seal = "raw",
 }: { seal?: TypeSealsKey } = {}) => {
   const uuid = getConsecutiveUUID();
   const buffer = getCircleTextBuffer(uuid.long);
@@ -105,4 +115,4 @@ const getBufferSeals = async ({
   };
 };
 
-export { getBreBCode, getBufferSeals, type TypeSealsKey };
+export { getBreBCode, getBufferSeals, TypeSeals, type TypeSealsKey };
