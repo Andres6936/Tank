@@ -30,6 +30,7 @@ import {
 } from "../modals/create-document";
 import { ConfirmationReloadModal } from "../modals/confirmation-reload";
 import { useAutosave } from "../hooks/useAutosave";
+import { Spinner } from "~/components/ui/spinner";
 
 const ActionNewDocument = () => {
   const trpc = useTRPC();
@@ -186,7 +187,11 @@ const ActionToggleAutosave = () => {
             variant="outline"
           >
             {autosaveEnabled ? (
-              <Save strokeWidth={1} />
+              mutation.isPending ? (
+                <Spinner strokeWidth={1} />
+              ) : (
+                <Save strokeWidth={1} />
+              )
             ) : (
               <SaveOff strokeWidth={1} />
             )}
