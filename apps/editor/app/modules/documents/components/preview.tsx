@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { useViewContext } from "../context/view-context";
 import { Skeleton } from "~/components/ui/skeleton";
+import { Divide } from "lucide-react";
 
 const asQuery = async (args: { xml: string }) => {
   const stream = await fetch("http://localhost:6936/api/documents", {
@@ -24,12 +25,13 @@ const asQuery = async (args: { xml: string }) => {
 };
 
 export const Preview = () => {
-  const { content } = useViewContext();
+  const { content, autopreviewEnabled } = useViewContext();
   const debouncedContent = useDebounce(content, 1500);
 
   const query = useQuery({
     queryKey: ["/preview", debouncedContent],
     queryFn: () => asQuery({ xml: debouncedContent }),
+    enabled: autopreviewEnabled,
     refetchOnWindowFocus: false,
   });
 
@@ -40,6 +42,14 @@ export const Preview = () => {
       URL.revokeObjectURL(url);
     }
   }, [url]);
+
+  if (!autopreviewEnabled) {
+    return (
+      <div className="w-full h-full flex flex-1 items-center justify-center">
+        <p>Autopreview is disabled</p>
+      </div>
+    );
+  }
 
   if (query.isLoading || !query.data) {
     return <Skeleton className="w-full h-full" />;
