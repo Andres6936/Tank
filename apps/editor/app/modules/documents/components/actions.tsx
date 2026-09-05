@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { formatDistanceToNow } from "date-fns";
 import {
+  BrushCleaning,
   CloudAlert,
   CloudCheck,
   MonitorOff,
@@ -289,7 +290,7 @@ const ActionReloadDocument = () => {
             onClick={onPress}
             disabled={!isDirty}
           >
-            <RotateCcw strokeWidth={1} />
+            <BrushCleaning strokeWidth={1} />
           </Button>
         }
       />
