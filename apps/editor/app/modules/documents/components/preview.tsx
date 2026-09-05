@@ -3,6 +3,7 @@ import { useDebounce } from "@uidotdev/usehooks";
 import { useQuery } from "@tanstack/react-query";
 
 import { useViewContext } from "../context/view-context";
+import { Skeleton } from "~/components/ui/skeleton";
 
 const asQuery = async (args: { xml: string }) => {
   const stream = await fetch("http://localhost:6936/api/documents", {
@@ -41,7 +42,7 @@ export const Preview = () => {
   }, [url]);
 
   if (query.isLoading || !query.data) {
-    return <p>Loading ...</p>;
+    return <Skeleton className="w-full h-full" />;
   }
 
   if (query.isError) {
