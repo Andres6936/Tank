@@ -1,4 +1,10 @@
 import { Bold } from "lucide-react";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "~/components/ui/tooltip";
 import { Button } from "~/components/ui/button";
 import { useViewContext } from "../context/view-context";
 
@@ -21,9 +27,18 @@ const ActionBold = () => {
   };
 
   return (
-    <Button onClick={onPress} variant="outline" size="icon">
-      <Bold />
-    </Button>
+    <Tooltip>
+      <TooltipTrigger
+        render={
+          <Button onClick={onPress} variant="outline" size="icon">
+            <Bold />
+          </Button>
+        }
+      />
+      <TooltipContent>
+        <p>Apply bold to selected text</p>
+      </TooltipContent>
+    </Tooltip>
   );
 };
 
