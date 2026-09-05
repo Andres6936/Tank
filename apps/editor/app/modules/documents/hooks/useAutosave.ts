@@ -1,35 +1,52 @@
-import React, { useEffect } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
-const useAutosave = () => {
-  const [isFocused, setIsFocused] = React.useState(
-    document.visibilityState === "visible",
+const useAutosave = (
+  saveFn: () => void | Promise<void>,
+  intervalMs: number = 5000,
+) => {
+  const [isFocused, setIsFocused] = useState(
+    () => document.visibilityState === "visible" && document.hasFocus(),
   );
 
+  const isFocusedRef = useRef(isFocused);
+
   useEffect(() => {
-    const fn = () => {
-      if (document.visibilityState === "visible") {
-        setIsFocused(true);
-      } else {
-        setIsFocused(false);
-      }
-    };
+    isFocusedRef.current = isFocused;
+  }, [isFocused]);
 
-    document.addEventListener("visibilitychange", fn);
-
-    return () => {
-      document.removeEventListener("visibilitychange", fn);
-    };
+  const updateFocusState = useCallback(() => {
+    const visible = document.visibilityState === "visible";
+    const focused = document.hasFocus();
+    setIsFocused(visible && focused);
   }, []);
 
   useEffect(() => {
+    updateFocusState();
+
+    document.addEventListener("visibilitychange", updateFocusState);
+    window.addEventListener("focus", updateFocusState);
+    window.addEventListener("blur", updateFocusState);
+
+    return () => {
+      document.removeEventListener("visibilitychange", updateFocusState);
+      window.removeEventListener("focus", updateFocusState);
+      window.removeEventListener("blur", updateFocusState);
+    };
+  }, [updateFocusState]);
+
+  useEffect(() => {
     const intervalId = setInterval(() => {
-      console.log("BBB", isFocused);
-    }, 5000);
+      if (isFocusedRef.current) {
+        void saveFn();
+      }
+    }, intervalMs);
 
     return () => {
       clearInterval(intervalId);
     };
-  }, [isFocused]);
+  }, [saveFn, intervalMs]);
+
+  return { isFocused };
 };
 
 export { useAutosave };

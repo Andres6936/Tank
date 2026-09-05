@@ -149,9 +149,31 @@ const ActionSaveDocument = () => {
 };
 
 const ActionToggleAutosave = () => {
-  const { autosaveEnabled, onAutosaveChange } = useViewContext();
+  const trpc = useTRPC();
+  const {
+    id,
+    content,
+    autosaveEnabled,
+    onAutosaveChange,
+    onDirtyChange,
+    onUpdatedAtChange,
+  } = useViewContext();
 
-  useAutosave();
+  const mutation = useMutation(
+    trpc.documents.updateContent.mutationOptions({
+      onSuccess: (payload) => {
+        if (payload.statusCode === 200) {
+          // Update the content with the response content formatted
+          onDirtyChange(false);
+          onUpdatedAtChange(payload.body.UpdatedAt);
+        }
+      },
+    }),
+  );
+
+  const trigger = () => mutation.mutate({ Id: id, Content: content });
+
+  useAutosave(trigger);
 
   return (
     <Tooltip>
