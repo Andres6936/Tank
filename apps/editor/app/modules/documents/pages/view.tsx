@@ -9,6 +9,7 @@ import { Preview } from "../components/preview";
 import { ViewProvider } from "../context/view-context";
 
 import * as Actions from "../components/actions";
+import * as ActionsEditor from "../components/actions-editor";
 
 export default function View({ Id }: { Id: string }) {
   const trpc = useTRPC();
@@ -36,11 +37,18 @@ export default function View({ Id }: { Id: string }) {
     <ViewProvider id={Id} content={item.Content} updatedAt={item.UpdatedAt}>
       <div className="flex flex-1 flex-row gap-2">
         <div className="flex flex-col flex-1 space-y-2">
-          <ButtonGroup>
-            <Button variant="outline" size="icon">
-              <Braces />
-            </Button>
-          </ButtonGroup>
+          <div className="flex flex-row gap-2">
+            <ButtonGroup>
+              <Button variant="outline" size="icon">
+                <Braces />
+              </Button>
+            </ButtonGroup>
+
+            <ButtonGroup>
+              <ActionsEditor.ActionBold />
+            </ButtonGroup>
+          </div>
+
           <div className="relative flex flex-1">
             <div className="absolute inset-0 flex-1">
               <Editor />

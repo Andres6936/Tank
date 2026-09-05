@@ -18,7 +18,8 @@ const emmetTabKeymap = Prec.highest(
 );
 
 export const Editor = () => {
-  const { content, onDirtyChange, onContentChange } = useViewContext();
+  const { content, onDirtyChange, onContentChange, injectEditor } =
+    useViewContext();
 
   return (
     <CodeMirror
@@ -27,6 +28,7 @@ export const Editor = () => {
         onContentChange(val);
         onDirtyChange(true);
       }}
+      onCreateEditor={(view) => injectEditor(view)}
       extensions={[xml(), abbreviationTracker(), emmetTabKeymap]}
       height="100%"
       className="h-full"

@@ -1,4 +1,5 @@
 import React from "react";
+import type { EditorView } from "@uiw/react-codemirror";
 
 type ViewContextProps = {
   id: string;
@@ -12,6 +13,10 @@ type ViewContextProps = {
   onUpdatedAtChange: (updatedAt: string) => void;
   onAutosaveChange: (autosaveEnabled: boolean) => void;
   onAutopreviewChange: (autopreviewEnabled: boolean) => void;
+
+  // References to the editor view and its methods
+  getEditor: () => EditorView | null;
+  injectEditor: (ref: EditorView) => void;
 };
 
 const ViewContext = React.createContext<ViewContextProps | null>(null);
@@ -28,6 +33,16 @@ const ViewProvider = (
   const [updatedAt, setUpdatedAt] = React.useState(props.updatedAt);
   const [autosaveEnabled, setAutosaveEnabled] = React.useState(false);
   const [autopreviewEnabled, setAutopreviewEnabled] = React.useState(true);
+
+  const editor = React.useRef<EditorView>(null);
+
+  const getEditor = () => {
+    return editor.current;
+  };
+
+  const injectEditor = (ref: EditorView) => {
+    editor.current = ref;
+  };
 
   const onContentChange = (newContent: string) => {
     setContent(newContent);
@@ -59,6 +74,9 @@ const ViewProvider = (
         onUpdatedAtChange,
         onAutosaveChange,
         onAutopreviewChange,
+        // References to the editor view and its methods
+        getEditor,
+        injectEditor,
       }}
     >
       {props.children}
