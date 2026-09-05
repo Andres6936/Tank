@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 
 import { useViewContext } from "../context/view-context";
 import { Skeleton } from "~/components/ui/skeleton";
-import { Divide } from "lucide-react";
 
 const asQuery = async (args: { xml: string }) => {
   const stream = await fetch("http://localhost:6936/api/documents", {
@@ -41,6 +40,12 @@ export const Preview = () => {
     if (url) {
       URL.revokeObjectURL(url);
     }
+
+    return () => {
+      if (url) {
+        URL.revokeObjectURL(url);
+      }
+    };
   }, [url]);
 
   if (!autopreviewEnabled) {
