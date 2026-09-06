@@ -1,0 +1,135 @@
+# Deploy to the VPS with .env injection via GitHub Secrets.
+#
+# Secrets:
+#   VPS_SSH_KEY   private SSH key to the VPS
+#   VPS_HOST / VPS_USER / VPS_PORT
+#   SERVER_ENV    full contents of apps/server/.env (multiline)
+#   DOCUMENTS_ENV full contents of apps/documents/.env (multiline)
+# Vars (optional):
+#   APP_DIR, BRANCH, PM2_SCRIPT
+#
+# If an env secret is missing, the deploy keeps the .env file already
+# present on the VPS (useful for the initial bootstrap without secrets).
+
+name: Deploy services to VPS
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "apps/documents/**"
+      - "apps/server/**"
+      - "package.json"
+      - "bun.lock"
+      - ".github/workflows/deploy-vps.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-vps
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      VPS_HOST: ${{ secrets.VPS_HOST }}
+      VPS_USER: ${{ secrets.VPS_USER }}
+      VPS_PORT: ${{ secrets.VPS_PORT }}
+      VPS_HOST_KEY: ${{ secrets.VPS_HOST_KEY }}
+      SERVER_ENV: ${{ secrets.SERVER_ENV }}
+      DOCUMENTS_ENV: ${{ secrets.DOCUMENTS_ENV }}
+      APP_DIR: ${{ vars.APP_DIR }}
+      BRANCH: ${{ vars.BRANCH }}
+      PM2_SCRIPT: ${{ vars.PM2_SCRIPT }}
+
+    steps:
+      - name: Load VPS SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
+      - name: Sync repo, inject .env and refresh pm2
+        run: |
+          set -euo pipefail
+
+          # ── SSH connection ─────────────────────────────────────────────────
+          : "${VPS_HOST:?Missing secret VPS_HOST}"
+          : "${VPS_USER:?Missing secret VPS_USER}"
+
+          SSH_OPTS=(-p "${VPS_PORT:-22}" -o ConnectTimeout=20 -o BatchMode=yes)
+
+          if [ -n "${VPS_HOST_KEY:-}" ]; then
+            mkdir -p "$HOME/.ssh"
+            chmod 700 "$HOME/.ssh"
+            printf '%s\n' "$VPS_HOST_KEY" > "$HOME/.ssh/known_hosts"
+            SSH_OPTS+=(-o UserKnownHostsFile="$HOME/.ssh/known_hosts")
+          else
+            SSH_OPTS+=(-o StrictHostKeyChecking=accept-new)
+          fi
+
+          # Service env contents as base64 (never print these values)
+          SERVER_ENV_B64=""
+          DOCS_ENV_B64=""
+          [ -n "${SERVER_ENV:-}" ] && SERVER_ENV_B64="$(printf '%s' "$SERVER_ENV" | base64 -w0)"
+          [ -n "${DOCUMENTS_ENV:-}" ] && DOCS_ENV_B64="$(printf '%s' "$DOCUMENTS_ENV" | base64 -w0)"
+
+          REMOTE_ENV="TARGET_COMMIT='$GITHUB_SHA'"
+          [ -n "${APP_DIR:-}" ] && REMOTE_ENV="$REMOTE_ENV APP_DIR='$APP_DIR'"
+          [ -n "${BRANCH:-}" ] && REMOTE_ENV="$REMOTE_ENV BRANCH='$BRANCH'"
+          [ -n "${PM2_SCRIPT:-}" ] && REMOTE_ENV="$REMOTE_ENV PM2_SCRIPT='$PM2_SCRIPT'"
+          [ -n "$SERVER_ENV_B64" ] && REMOTE_ENV="$REMOTE_ENV SERVER_ENV_B64='$SERVER_ENV_B64'"
+          [ -n "$DOCS_ENV_B64" ] && REMOTE_ENV="$REMOTE_ENV DOCS_ENV_B64='$DOCS_ENV_B64'"
+
+          ssh "${SSH_OPTS[@]}" "${VPS_USER}@${VPS_HOST}" "$REMOTE_ENV bash -s" <<'REMOTE'
+          # ==================== Runs INSIDE the VPS ====================
+          set -euo pipefail
+
+          APP_DIR="${APP_DIR:-$HOME/Escriba}"
+          BRANCH="${BRANCH:-master}"
+          PM2_SCRIPT="${PM2_SCRIPT:-bootstrap.sh}"
+          : "${TARGET_COMMIT:?Missing TARGET_COMMIT}"
+
+          # Bun is already installed on the VPS; do not check or install it here.
+
+          # ── 1. Sync the repo to the pushed commit ───────────────────────────
+          if [ ! -d "$APP_DIR/.git" ]; then
+            echo "[deploy] ERROR: no repo clone at $APP_DIR" >&2
+            exit 1
+          fi
+          cd "$APP_DIR"
+
+          echo "[deploy] updating $BRANCH to $TARGET_COMMIT"
+          git fetch --prune origin "$BRANCH"
+          git reset --hard "$TARGET_COMMIT"
+
+          # ── 2. Install production dependencies ──────────────────────────────
+          # (Remove these 3 lines if your pm2 script already runs the install)
+          echo "[deploy] running: bun install --production --frozen-lockfile"
+          bun install --production --frozen-lockfile
+
+          # ── 3. Inject .env files (paths follow each service cwd) ────────────
+          write_env() {
+            local b64="$1" dest="$2"
+            if [ -n "$b64" ]; then
+              mkdir -p "$(dirname "$dest")"
+              printf '%s' "$b64" | base64 -d > "$dest"
+              chmod 600 "$dest"
+              echo "[deploy] updated $dest"
+            else
+              echo "[deploy] no secret set; keeping existing $(basename "$dest")"
+            fi
+          }
+
+          write_env "${SERVER_ENV_B64:-}" "$APP_DIR/apps/server/.env"
+          write_env "${DOCS_ENV_B64:-}" "$APP_DIR/apps/documents/.env"
+
+          # ── 4. Refresh pm2 ──────────────────────────────────────────────────
+          echo "[deploy] refreshing pm2 with: $PM2_SCRIPT"
+          if [ ! -f "$PM2_SCRIPT" ] && [ "${PM2_SCRIPT#/}" = "$PM2_SCRIPT" ]; then
+            PM2_SCRIPT="./$PM2_SCRIPT"
+          fi
+          bash "$PM2_SCRIPT"
+
+          echo "[deploy] Deployment completed"
+          REMOTE
