@@ -106,7 +106,15 @@ jobs:
           PM2_SCRIPT="${PM2_SCRIPT:-bootstrap.sh}"
           : "${TARGET_COMMIT:?Missing TARGET_COMMIT}"
 
-          # Bun is already installed on the VPS; do not check or install it here.
+          # Non-interactive SSH shells do not source ~/.bashrc, where the Bun
+          # installer adds its PATH entry. Make sure ~/.bun/bin is available.
+          export PATH="$HOME/.bun/bin:$PATH"
+
+          if ! command -v bun >/dev/null 2>&1; then
+            echo "[deploy] ERROR: bun not found on PATH" >&2
+            exit 1
+          fi
+          echo "[deploy] bun $(bun --version)"
 
           # ── 1. Sync the repo to the pushed commit ───────────────────────────
           if [ ! -d "$APP_DIR/.git" ]; then
