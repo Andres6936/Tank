@@ -97,7 +97,7 @@ jobs:
           [ -n "$SERVER_ENV_B64" ] && REMOTE_ENV="$REMOTE_ENV SERVER_ENV_B64='$SERVER_ENV_B64'"
           [ -n "$DOCS_ENV_B64" ] && REMOTE_ENV="$REMOTE_ENV DOCS_ENV_B64='$DOCS_ENV_B64'"
 
-          ssh "${SSH_OPTS[@]}" "${VPS_USER}@${VPS_HOST}" "$REMOTE_ENV bash -s" <<'REMOTE'
+          ssh "${SSH_OPTS[@]}" "${VPS_USER}@${VPS_HOST}" "$REMOTE_ENV bash -l -s" <<'REMOTE'
           # ==================== Runs INSIDE the VPS ====================
           set -euo pipefail
 
@@ -106,12 +106,12 @@ jobs:
           PM2_SCRIPT="${PM2_SCRIPT:-bootstrap.sh}"
           : "${TARGET_COMMIT:?Missing TARGET_COMMIT}"
 
-          # Non-interactive SSH shells do not source ~/.bashrc, where the Bun
-          # installer adds its PATH entry. Make sure ~/.bun/bin is available.
-          export PATH="$HOME/.bun/bin:$PATH"
-
+          # Login shell (-l): loads the real user environment from
+          # ~/.profile, keeping PATH declarations in one place on the VPS.
           if ! command -v bun >/dev/null 2>&1; then
             echo "[deploy] ERROR: bun not found on PATH" >&2
+            echo "[deploy]   Add the Bun bin dir to ~/.profile, e.g.:" >&2
+            echo "[deploy]     echo 'export PATH=\"$HOME/.bun/bin:\$PATH\"' >> ~/.profile" >&2
             exit 1
           fi
           echo "[deploy] bun $(bun --version)"
