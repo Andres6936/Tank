@@ -131,6 +131,7 @@ const server = Bun.serve({
               },
             );
           }
+          console.error(error);
           return new Response(
             JSON.stringify({
               message:
