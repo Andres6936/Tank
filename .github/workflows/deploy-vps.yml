@@ -76,7 +76,8 @@ jobs:
 
           REMOTE_ENV="TARGET_COMMIT='$GITHUB_SHA'"
           [ -n "${APP_DIR:-}" ] && REMOTE_ENV="$REMOTE_ENV APP_DIR='$APP_DIR'"
-          [ -n "${BRANCH:-}" ] && REMOTE_ENV="$REMOTE_ENV BRANCH='$BRANCH'"
+          # Default to the branch that triggered the workflow (push or manual run)
+          REMOTE_ENV="$REMOTE_ENV BRANCH='${BRANCH:-$GITHUB_REF_NAME}'"
           [ -n "${PM2_SCRIPT:-}" ] && REMOTE_ENV="$REMOTE_ENV PM2_SCRIPT='$PM2_SCRIPT'"
           [ -n "$SERVER_ENV_B64" ] && REMOTE_ENV="$REMOTE_ENV SERVER_ENV_B64='$SERVER_ENV_B64'"
           [ -n "$DOCS_ENV_B64" ] && REMOTE_ENV="$REMOTE_ENV DOCS_ENV_B64='$DOCS_ENV_B64'"
