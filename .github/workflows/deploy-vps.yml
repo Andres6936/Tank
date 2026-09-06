@@ -15,7 +15,7 @@ name: Deploy services to VPS
 
 on:
   push:
-    branches: [master]
+    branches: [master, vps]
     paths:
       - "apps/documents/**"
       - "apps/server/**"
