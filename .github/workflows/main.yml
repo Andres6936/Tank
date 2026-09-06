@@ -8,30 +8,49 @@ on:
     branches:
       - master
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
-        with:
-          persist-credentials: false
-          submodules: true
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
-      - name: Install 🔧
+      - name: Install dependencies
         run: bun install
 
-      - name: Build
+      - name: Build the page
+        env:
+          GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}
         run: |
-          bun run build --base='/${{ github.event.repository.name }}/'
-      - name: Deploy to GH Pages
-        uses: peaceiris/actions-gh-pages@v3
+          bun run --filter editor build
+
+      - name: Add 404 fallback for SPA routing
+        # Ensures client-side routing works on refresh by copying index.html to 404.html
+        run: cp apps/editor/build/client/index.html apps/editor/build/client/404.html
+
+      - name: Upload production assets
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist
+          path: "apps/editor/build/client"
+
+      - name: Deploy to GH Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
