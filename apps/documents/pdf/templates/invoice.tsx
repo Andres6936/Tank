@@ -24,7 +24,11 @@ import {
 } from "~/pdf/components/text";
 
 // Utility Seals Buffers
-import { getBreBCode, getBufferSeals } from "~/pdf/utility/buffer-seals";
+import {
+  getBreBCode,
+  getBufferSeals,
+  type TypeSealsKey,
+} from "~/pdf/utility/buffer-seals";
 
 // Formatters
 import { formatMoney, formatSpanishDate } from "~/lib/utils";
@@ -138,10 +142,7 @@ type ParamsFileType = {
   Parameters: ParameterType[];
 };
 
-const transform = async (config: {
-  input: string;
-  seal: "blue" | "red" | "green";
-}) => {
+const transform = async (config: { input: string; seal: TypeSealsKey }) => {
   const { input, seal } = config;
   const inputDirectory = input;
 
