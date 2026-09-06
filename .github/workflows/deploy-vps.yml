@@ -33,9 +33,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
-      VPS_HOST: ${{ secrets.VPS_HOST }}
-      VPS_USER: ${{ secrets.VPS_USER }}
-      VPS_PORT: ${{ secrets.VPS_PORT }}
+      VPS_HOST: ${{ vars.VPS_HOST }}
+      VPS_USER: ${{ vars.VPS_USER }}
+      VPS_PORT: ${{ vars.VPS_PORT }}
       VPS_HOST_KEY: ${{ secrets.VPS_HOST_KEY }}
       SERVER_ENV: ${{ secrets.SERVER_ENV }}
       DOCUMENTS_ENV: ${{ secrets.DOCUMENTS_ENV }}
