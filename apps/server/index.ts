@@ -2,7 +2,7 @@ import { auth } from "./src/lib/auth";
 import { handler } from "./src/server";
 
 const server = Bun.serve({
-  port: 3000,
+  port: process.env.SERVER_PORT,
   routes: {
     "/api/status": new Response("OK"),
     "/api/auth/*": (r) => auth.handler(r),
