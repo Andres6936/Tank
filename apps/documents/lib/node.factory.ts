@@ -55,30 +55,32 @@ export function xmlToReactTree(
     textTags = ["Text"],
   } = options;
 
+  // @xmldom/xmldom 0.9 replaced the `errorHandler` object with an `onError`
+  // function. The cast keeps older local typings (0.8.x) from failing while
+  // the runtime installs are aligned on 0.9.x.
   const parser = new DOMParser({
-    errorHandler: {
-      warning: (msg: string) => {
+    onError: (level: "warning" | "error" | "fatalError", msg: string) => {
+      if (level === "warning") {
         console.warn(`[XML Warning]: ${msg}`);
-      },
-      error: (msg: string) => {
-        const lowerMsg = msg.toLowerCase();
-        if (lowerMsg.includes("invalid doc source")) {
-          throw new InvalidDocumentError(msg);
-        }
-        if (lowerMsg.includes("element parse error")) {
-          throw new MalformedXmlError(`Tag structural error: ${msg}`);
-        }
-        if (lowerMsg.includes("entity not found")) {
-          throw new UnescapedEntityError(
-            `Unescaped character detected (like a raw &): ${msg}`,
-          );
-        } // Default generic parsing error fallback
-        throw new XmlParserError(`Parsing Error: ${msg}`);
-      },
-      fatalError: (msg: string) => {
+        return;
+      }
+      if (level === "fatalError") {
         // Fatal errors completely halt parsing operations
         throw new XmlParserError(`Fatal Parsing Error: ${msg}`);
-      },
+      }
+      const lowerMsg = msg.toLowerCase();
+      if (lowerMsg.includes("invalid doc source")) {
+        throw new InvalidDocumentError(msg);
+      }
+      if (lowerMsg.includes("element parse error")) {
+        throw new MalformedXmlError(`Tag structural error: ${msg}`);
+      }
+      if (lowerMsg.includes("entity not found")) {
+        throw new UnescapedEntityError(
+          `Unescaped character detected (like a raw &): ${msg}`,
+        );
+      } // Default generic parsing error fallback
+      throw new XmlParserError(`Parsing Error: ${msg}`);
     },
   });
 
