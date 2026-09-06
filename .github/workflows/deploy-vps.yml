@@ -57,6 +57,21 @@ jobs:
           : "${VPS_HOST:?Missing secret VPS_HOST}"
           : "${VPS_USER:?Missing secret VPS_USER}"
 
+          # Trim accidental whitespace from connection secrets (trailing
+          # newlines/spaces often sneak in when pasting values in the UI).
+          VPS_USER="$(printf '%s' "$VPS_USER" | tr -d '[:space:]')"
+          VPS_HOST="$(printf '%s' "$VPS_HOST" | tr -d '[:space:]')"
+          VPS_PORT="$(printf '%s' "${VPS_PORT:-22}" | tr -d '[:space:]')"
+
+          if [ -z "$VPS_USER" ] || [ -z "$VPS_HOST" ]; then
+            echo "::error::VPS_USER or VPS_HOST is empty after trimming" >&2
+            exit 1
+          fi
+
+          # Sanity check (connection data is not secret; brackets reveal any
+          # remaining hidden character).
+          echo "SSH target: [${VPS_USER}]@[${VPS_HOST}]:${VPS_PORT}"
+
           SSH_OPTS=(-p "${VPS_PORT:-22}" -o ConnectTimeout=20 -o BatchMode=yes)
 
           if [ -n "${VPS_HOST_KEY:-}" ]; then
