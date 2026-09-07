@@ -145,7 +145,7 @@ gh variable set APP_DIR  --body "/home/ubuntu/Escriba"
 
 `.github/workflows/deploy-vps.yml` runs on:
 
-- pushes to `master` (production) and `vps` (testing), path-filtered to the services,
+- pushes to `master` (production), path-filtered to the services,
   lockfiles, `deploy.ts` or the workflow itself;
 - manual runs via _Actions → Deploy services to VPS → Run workflow_ (pick any branch).
 
