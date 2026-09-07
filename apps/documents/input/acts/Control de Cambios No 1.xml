@@ -1,22 +1,22 @@
 <Document
-  subject="Control de Cambios No. 1"
-  title="Plataforma Residuos Ambientales"
-  author="Joan Andrés Buriticá Salazar"
-  keywords="Change Request, Alcance, Flujo, Suspensión"
-  creator="Joan Andrés Buriticá Salazar"
-  producer="React PDF with Bun"
-  language="es"
+    author="Joan Andrés Buriticá Salazar"
+    creator="Joan Andrés Buriticá Salazar"
+    keywords="Change Request, Alcance, Flujo, Suspensión"
+    language="es"
+    producer="React PDF with Bun"
+    subject="Control de Cambios No. 1"
+    title="Plataforma Residuos Ambientales"
 >
   <Cover
-    type="Control de Cambios No. 1"
-    title="Flujo de Estados y Cartera"
-    month="Septiembre 2026"
-    scaleTitle="0.9"
-  />
+        month="Septiembre 2026"
+        scaleTitle="0.9"
+        title="Flujo de Estados y Cartera"
+        type="Control de Cambios No. 1"
+    />
 
   <Paginate>
     <IndicatorHeader value="Ing. Joan A. Buriticá" />
-    <Section marginTop="0" gap="0.1cm">
+    <Section gap="0.1cm" marginTop="0">
       <Text>
         <Text bold="1">
           Fecha de Elaboración:
@@ -44,12 +44,17 @@
 
       <BulletText>
         <Text bold="1">Día 01 de cada mes (Facturación Normal):</Text> Se
-        realizará la facturación normal de todos los clientes del nuevo periodo
-        (incluyendo aquellos con factura pendiente del mes anterior dentro del
-        flujo normal). La nueva factura tendrá fecha de vencimiento para pago
-        anticipado el día 10. Se enviará el mensaje informando la generación de
-        la nueva factura.
-      </BulletText>
+        genera normalmente la factura correspondiente al nuevo periodo para todos
+        los clientes que se encuentren dentro del flujo normal. Esto incluye a los
+        clientes que tengan pendiente la factura del mes anterior, siempre que
+        todavía no hayan llegado a la condición de "Suspensión" o "Retiro
+        temporal". La nueva factura quedará con fecha de vencimiento para pago
+        anticipado el día 10 del mismo mes. Ese mismo Día 01 se enviará la
+        comunicación informando la generación de la nueva factura.
+        <Text bold="1"> Importante:</Text> Tener una factura pendiente del mes
+        anterior no impide que se genere la nueva factura el Día 01 mientras el
+        cliente continúe dentro del flujo normal.
+    </BulletText>
 
       <BulletText>
         <Text bold="1">Día 11 (Aviso Pago Anticipado):</Text> Si no se realizó
@@ -234,7 +239,7 @@
         </Footer>
       </Table>
       <Paragraph>
-        <Text size="xs" opacity="0.8">
+        <Text opacity="0.8" size="xs">
           *El valor monetario correspondiente a la sumatoria de estas horas se
           formalizará en el Otrosí No. 4.
         </Text>
@@ -269,4 +274,4 @@
       </Paragraph>
     </Section>
   </Paginate>
-</Document>;
+</Document>
