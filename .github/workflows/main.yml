@@ -1,5 +1,14 @@
 # Created by MichaelCurrin
 # https://gist.github.com/MichaelCurrin/a698731096f78240f653faf9a9127cba
+#
+# Builds the editor and deploys it to GitHub Pages.
+#
+# The editor needs VITE_* variables at build time. Because this repository is
+# public, the full contents of apps/editor/.env are stored in the
+# EDITOR_ENV secret (repo or github-pages environment scope) and written to
+# apps/editor/.env (gitignored, loaded by Vite in every mode) right before the
+# build. Use the public URLs (e.g. https://preview.andres6936.dev/) for the
+# deployed build, not localhost.
 
 name: Build and deploy
 
@@ -35,6 +44,18 @@ jobs:
 
       - name: Install dependencies
         run: bun install --filter '*'
+
+      - name: Inject editor environment
+        env:
+          EDITOR_ENV: ${{ secrets.EDITOR_ENV }}
+        run: |
+          if [ -z "${EDITOR_ENV:-}" ]; then
+            echo "::warning::Secret EDITOR_ENV is not set; building without VITE_* variables"
+          else
+            # apps/editor/.env is gitignored and Vite loads it in every mode.
+            printf '%s\n' "$EDITOR_ENV" > apps/editor/.env
+            echo "Wrote apps/editor/.env ($(wc -l < apps/editor/.env) lines)"
+          fi
 
       - name: Build the page
         env:

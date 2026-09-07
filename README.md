@@ -93,12 +93,13 @@ The workflow reads two kinds of settings. Connection data that is not sensitive 
 
 ### Secrets (Settings → Secrets and variables → Actions)
 
-| Secret          | Description                                         | Notes                                                                  |
-| --------------- | --------------------------------------------------- | ---------------------------------------------------------------------- |
-| `VPS_SSH_KEY`   | Private SSH key used by the runner to reach the VPS | Full file contents (`BEGIN`…`END`), **LF** line endings, no passphrase |
-| `SERVER_ENV`    | Full contents of `apps/server/.env`                 | Raw, **multiline**, NOT base64                                         |
-| `DOCUMENTS_ENV` | Full contents of `apps/documents/.env`              | Raw, multiline, NOT base64                                             |
-| `VPS_HOST_KEY`  | (optional) VPS host key for `known_hosts`           | Output of `ssh-keyscan -t rsa,ed25519 <host>`                          |
+| Secret          | Description                                             | Notes                                                                                                                |
+| --------------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `VPS_SSH_KEY`   | Private SSH key used by the runner to reach the VPS     | Full file contents (`BEGIN`…`END`), **LF** line endings, no passphrase                                               |
+| `SERVER_ENV`    | Full contents of `apps/server/.env`                     | Raw, **multiline**, NOT base64                                                                                       |
+| `DOCUMENTS_ENV` | Full contents of `apps/documents/.env`                  | Raw, multiline, NOT base64                                                                                           |
+| `EDITOR_ENV`    | Full contents of `apps/editor/.env` for the Pages build | Raw, multiline; written by `main.yml` to `apps/editor/.env` before the build. Use the **public** URLs, not localhost |
+| `VPS_HOST_KEY`  | (optional) VPS host key for `known_hosts`               | Output of `ssh-keyscan -t rsa,ed25519 <host>`                                                                        |
 
 ### Variables
 
@@ -118,6 +119,7 @@ Example setup with the GitHub CLI:
 gh secret set VPS_SSH_KEY < ~/.ssh/OracleVPS.key
 gh secret set SERVER_ENV    --body "$(cat apps/server/.env)"
 gh secret set DOCUMENTS_ENV --body "$(cat apps/documents/.env)"
+gh secret set EDITOR_ENV --body "$(cat apps/editor/.env)"
 gh secret set VPS_HOST_KEY  --body "$(ssh-keyscan -t rsa,ed25519 143.47.125.244 2>$null)"
 
 # Variables
