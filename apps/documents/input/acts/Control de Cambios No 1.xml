@@ -51,10 +51,15 @@
         temporal". La nueva factura quedará con fecha de vencimiento para pago
         anticipado el día 10 del mismo mes. Ese mismo Día 01 se enviará la
         comunicación informando la generación de la nueva factura.
-        <Text bold="1"> Importante:</Text> Tener una factura pendiente del mes
-        anterior no impide que se genere la nueva factura el Día 01 mientras el
-        cliente continúe dentro del flujo normal.
     </BulletText>
+
+    <Indent>
+        <Text>
+            <Text bold="1"> Importante:</Text> Tener una factura pendiente del mes
+            anterior no impide que se genere la nueva factura el Día 01 mientras el
+            cliente continúe dentro del flujo normal.
+        </Text>
+    </Indent>
 
     <BulletText>
         <Text bold="1">Día 11 (Factura del Mes Corriente Pendiente):</Text> Si
@@ -86,11 +91,16 @@
         continúa visible en cartera y programación; sin embargo, el sistema debe
         impedir la ejecución de una nueva recolección mientras permanezca pendiente
         la factura anterior.
-        <Text bold="1"> Importante:</Text> El paso a "En mora" NO significa que
-        se deje de generar automáticamente la nueva factura, ni que el cliente
-        desaparezca de la programación del nuevo periodo (aunque el sistema
-        bloquee su recolección) mientras aún se encuentre dentro del flujo normal.
     </BulletText>
+
+    <Indent>
+        <Text>
+            <Text bold="1"> Importante:</Text> El paso a "En mora" NO significa que
+            se deje de generar automáticamente la nueva factura, ni que el cliente
+            desaparezca de la programación del nuevo periodo (aunque el sistema
+            bloquee su recolección) mientras aún se encuentre dentro del flujo normal.
+        </Text>
+    </Indent>
 
     <BulletText>
         <Text bold="1">Día 11 del segundo mes (Suspensión):</Text> Si para este
@@ -100,10 +110,15 @@
         "Suspensión", enviará la comunicación correspondiente y aplicará las
         restricciones operativas (el cliente no debe poder ser programado ni atendido
         mientras permanezca bajo esta condición).
-        <Text bold="1"> Importante:</Text> La Suspensión será una consecuencia
-        automática del flujo establecido, y no simplemente un estado que pueda
-        seleccionarse manualmente.
     </BulletText>
+
+    <Indent>
+        <Text>
+            <Text bold="1"> Importante:</Text> La Suspensión será una consecuencia
+            automática del flujo establecido, y no simplemente un estado que pueda
+            seleccionarse manualmente.
+        </Text>
+    </Indent>
 
     <BulletText>
         <Text bold="1">Pago de la Factura que Originó la Suspensión (Reactivación):</Text>
@@ -112,15 +127,20 @@
         pasar a estado "Al día". El cliente debe poder nuevamente ser programado y atendido.
         NO debe impedirse la reactivación por el hecho de que la factura del mes corriente
         continúe pendiente, ya que esta última todavía pertenece a su propio ciclo de pago.
-        <Text bold="1">Adicionalmente:</Text> Si la ruta aún no ha sido ejecutada, el
-        cliente debe quedar disponible para programación y recolección. Si la ruta ya fue
-        ejecutada, debe aparecer como "Pendiente asignar itinerario". Esta diferencia entre
-        la factura que originó la restricción y la factura corriente es fundamental para
-        el funcionamiento del proceso.
     </BulletText>
+
+    <Indent>
+        <Text>
+            <Text bold="1">Adicionalmente:</Text> Si la ruta aún no ha sido ejecutada, el
+            cliente debe quedar disponible para programación y recolección. Si la ruta ya fue
+            ejecutada, debe aparecer como "Pendiente asignar itinerario". Esta diferencia entre
+            la factura que originó la restricción y la factura corriente es fundamental para
+            el funcionamiento del proceso.
+        </Text>
+    </Indent>
     </Section>
 
-    <Section wrap="0">
+    <Section wrap="1">
       <Title size="xs" textAlign="left">
         2. Especificación Funcional: Retiro Temporal
       </Title>
@@ -220,7 +240,7 @@
       </BulletText>
     </Section>
 
-    <Section wrap="1">
+    <Section wrap="0">
       <Title size="xs" textAlign="left">
         4. Estimación de Esfuerzo y Presupuesto
       </Title>
