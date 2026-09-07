@@ -257,14 +257,16 @@
             <Cell flex="2">Total Horas Extra a Facturar (Base 1 UVT)</Cell>
             <Cell textAlign="right">7 Horas</Cell>
           </Row>
+          <Row>
+            <Cell flex="2">
+                <Text bold="1">Valor Total (COP)</Text>
+            </Cell>
+            <Cell textAlign="right">
+                <Text bold="1">366.618 COP</Text>
+            </Cell>
+          </Row>
         </Footer>
       </Table>
-      <Paragraph>
-        <Text opacity="0.8" size="xs">
-          *El valor monetario correspondiente a la sumatoria de estas horas se
-          formalizará en el Otrosí No. 4.
-        </Text>
-      </Paragraph>
     </Section>
 
     <Section wrap="1">
@@ -273,14 +275,24 @@
       </Title>
 
       <BulletText>
-        <Text bold="1">Tiempo de Ejecución Estimado:</Text> 3 días hábiles
+        <Text bold="1">Tiempo de Ejecución:</Text> Tres (3) días hábiles
         contados a partir del inicio efectivo del desarrollo.
       </BulletText>
-      <BulletText>
-        <Text bold="1">Fecha de Validación y Pruebas:</Text> Se programará una
-        mesa técnica de revisión final el siguiente día hábil a la fecha de
-        finalización del desarrollo.
-      </BulletText>
+
+        <BulletText>
+            <Text bold="1">Pruebas y Validación (QA):</Text> Una vez finalizado y
+            entregado el desarrollo, se habilitará un plazo de dos (2) días hábiles
+            adicionales para que REAM ejecute las pruebas pertinentes. La aceptación
+            final estará sujeta a la validación funcional satisfactoria del flujo completo.
+        </BulletText>
+
+        <BulletText>
+            <Text bold="1">Criterio de Aceptación:</Text> Se establece de
+            mutuo acuerdo que las especificaciones detalladas en las Secciones 1 a 3
+            de este documento hacen parte integral y exclusiva del alcance. Por lo tanto,
+            este documento constituye el único criterio de referencia válido para el
+            desarrollo, las pruebas y la aceptación final del ajuste.
+        </BulletText>
 
       <Paragraph>
         <Text bold="1" opacity="0.8">
