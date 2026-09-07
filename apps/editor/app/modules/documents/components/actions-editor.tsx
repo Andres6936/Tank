@@ -9,7 +9,7 @@ import { Button } from "~/components/ui/button";
 import { useViewContext } from "../context/view-context";
 
 const ActionBold = () => {
-  const { getEditor } = useViewContext();
+  const { isSealed, getEditor } = useViewContext();
 
   const onPress = () => {
     const editor = getEditor();
@@ -30,7 +30,12 @@ const ActionBold = () => {
     <Tooltip>
       <TooltipTrigger
         render={
-          <Button onClick={onPress} variant="outline" size="icon">
+          <Button
+            onClick={onPress}
+            variant="outline"
+            size="icon"
+            disabled={isSealed}
+          >
             <Bold />
           </Button>
         }
@@ -43,7 +48,7 @@ const ActionBold = () => {
 };
 
 const ActionItalic = () => {
-  const { getEditor } = useViewContext();
+  const { isSealed, getEditor } = useViewContext();
 
   const onPress = () => {
     const editor = getEditor();
@@ -64,7 +69,12 @@ const ActionItalic = () => {
     <Tooltip>
       <TooltipTrigger
         render={
-          <Button onClick={onPress} variant="outline" size="icon">
+          <Button
+            onClick={onPress}
+            variant="outline"
+            size="icon"
+            disabled={isSealed}
+          >
             <Italic />
           </Button>
         }
