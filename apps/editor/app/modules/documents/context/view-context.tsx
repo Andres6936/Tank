@@ -1,9 +1,11 @@
 import React from "react";
 import type { EditorView } from "@uiw/react-codemirror";
+import { TypeStateDocumentKeys } from "../utility/enums";
 
 type ViewContextProps = {
   id: string;
   isDirty: boolean;
+  isSealed: boolean;
   content: string;
   updatedAt: string;
   autosaveEnabled: boolean;
@@ -23,14 +25,17 @@ const ViewContext = React.createContext<ViewContextProps | null>(null);
 
 const ViewProvider = (
   props: React.PropsWithChildren<{
-    id: string;
-    content: string;
-    updatedAt: string;
+    document: {
+      Id: string;
+      Content: string;
+      TypeState: string;
+      UpdatedAt: string;
+    };
   }>,
 ) => {
   const [isDirty, setIsDirty] = React.useState(false);
-  const [content, setContent] = React.useState(props.content);
-  const [updatedAt, setUpdatedAt] = React.useState(props.updatedAt);
+  const [content, setContent] = React.useState(props.document.Content);
+  const [updatedAt, setUpdatedAt] = React.useState(props.document.UpdatedAt);
   const [autosaveEnabled, setAutosaveEnabled] = React.useState(false);
   const [autopreviewEnabled, setAutopreviewEnabled] = React.useState(true);
 
@@ -63,7 +68,8 @@ const ViewProvider = (
   return (
     <ViewContext.Provider
       value={{
-        id: props.id,
+        id: props.document.Id,
+        isSealed: props.document.TypeState === TypeStateDocumentKeys.Sealed,
         isDirty,
         content,
         updatedAt,

@@ -89,6 +89,7 @@ const ActionSaveDocument = () => {
   const {
     id,
     isDirty,
+    isSealed,
     updatedAt,
     content,
     onDirtyChange,
@@ -114,6 +115,8 @@ const ActionSaveDocument = () => {
     }),
   );
 
+  const isDisabled = mutation.isPending || isSealed || !isDirty;
+
   const briefUpdatedAt = useMemo(
     () => formatDistanceToNow(updatedAt),
     [updatedAt],
@@ -126,7 +129,7 @@ const ActionSaveDocument = () => {
           <Button
             variant="outline"
             size="icon"
-            disabled={mutation.isPending}
+            disabled={isDisabled}
             onClick={async () => {
               mutation.mutate({ Id: id, Content: content });
             }}
@@ -156,6 +159,7 @@ const ActionToggleAutosave = () => {
     id,
     content,
     isDirty,
+    isSealed,
     autosaveEnabled,
     onAutosaveChange,
     onDirtyChange,
@@ -176,7 +180,7 @@ const ActionToggleAutosave = () => {
 
   const trigger = () => mutation.mutate({ Id: id, Content: content });
 
-  useAutosave(trigger, { disabled: !autosaveEnabled || !isDirty });
+  useAutosave(trigger, { disabled: !autosaveEnabled || isSealed || !isDirty });
 
   return (
     <Tooltip>
@@ -187,6 +191,7 @@ const ActionToggleAutosave = () => {
             onPressedChange={(pressed) => onAutosaveChange(pressed)}
             aria-label="Toggle autosave"
             variant="outline"
+            disabled={isSealed}
           >
             {autosaveEnabled ? (
               mutation.isPending ? (

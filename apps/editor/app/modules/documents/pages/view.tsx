@@ -34,7 +34,7 @@ export default function View({ Id }: { Id: string }) {
   const item = query.data.body;
 
   return (
-    <ViewProvider id={Id} content={item.Content} updatedAt={item.UpdatedAt}>
+    <ViewProvider document={item}>
       <div className="flex flex-1 flex-row gap-2">
         <div className="flex flex-col flex-1 space-y-2">
           <div className="flex flex-row gap-2">
