@@ -1,6 +1,6 @@
 // xml-to-react.ts
 import React from "react";
-import { DOMParser } from "@xmldom/xmldom";
+import { type Node, type Element, DOMParser } from "@xmldom/xmldom";
 import {
   XmlParserError,
   InvalidDocumentError,
@@ -87,10 +87,11 @@ export function xmlToReactTree(
   const doc = parser.parseFromString(xml, "text/xml");
 
   function nodeToElement(
-    node: Node,
+    node: Node | null,
     index: number,
     parentTag?: string,
   ): React.ReactNode | null {
+    if (!node) return null;
     const ELEMENT_NODE = 1;
     const TEXT_NODE = 3;
 
