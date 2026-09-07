@@ -5,6 +5,7 @@ import { Button } from "~/components/ui/button";
 import { ButtonGroup } from "~/components/ui/button-group";
 import { useTRPC } from "~/utils/trpc";
 import { Editor } from "../components/editor";
+import { Gutters } from "../components/gutters";
 import { Preview } from "../components/preview";
 import { ViewProvider } from "../context/view-context";
 
@@ -53,6 +54,7 @@ export default function View({ Id }: { Id: string }) {
           <div className="relative flex flex-1">
             <div className="absolute inset-0 flex-1">
               <Editor />
+              <Gutters />
             </div>
           </div>
         </div>
