@@ -12,7 +12,7 @@
 # If an env secret is missing, the deploy keeps the .env file already
 # present on the VPS (useful for the initial bootstrap without secrets).
 # The remote deploy steps (install, .env injection, pm2 refresh) run from
-# scripts/deploy.ts with Bun.
+# deploy.ts (repo root) with Bun.
 
 name: Deploy services to VPS
 
@@ -24,7 +24,7 @@ on:
       - "apps/server/**"
       - "package.json"
       - "bun.lock"
-      - "scripts/deploy.ts"
+      - "deploy.ts"
       - ".github/workflows/deploy-vps.yml"
   workflow_dispatch:
 
@@ -124,6 +124,6 @@ jobs:
           git fetch --prune origin "$BRANCH"
           git reset --hard "$TARGET_COMMIT"
 
-          echo "[deploy] running scripts/deploy.ts"
-          exec bun run scripts/deploy.ts
+          echo "[deploy] running deploy.ts"
+          exec bun run deploy.ts
           REMOTE
