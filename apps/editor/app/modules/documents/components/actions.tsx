@@ -10,6 +10,7 @@ import {
   RotateCcw,
   Save,
   SaveOff,
+  Stamp,
 } from "lucide-react";
 import { overlay } from "overlay-kit";
 import { useMemo } from "react";
@@ -306,10 +307,31 @@ const ActionReloadDocument = () => {
   );
 };
 
+const ActionSealDocument = () => {
+  const { isSealed } = useViewContext();
+
+  return (
+    <Tooltip>
+      <TooltipTrigger
+        render={
+          <Button className="min-w-20" disabled={isSealed}>
+            <Stamp strokeWidth={1.5} />
+            {isSealed ? "Already Sealed" : "Seal"}
+          </Button>
+        }
+      />
+      <TooltipContent>
+        <p>Seal document</p>
+      </TooltipContent>
+    </Tooltip>
+  );
+};
+
 export {
   ActionNewDocument,
   ActionSaveDocument,
   ActionToggleAutosave,
   ActionToggleAutopreview,
   ActionReloadDocument,
+  ActionSealDocument,
 };

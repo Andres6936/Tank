@@ -69,10 +69,7 @@ export default function View({ Id }: { Id: string }) {
             </div>
 
             <div className="flex flex-row gap-2">
-              <Button className="min-w-20">
-                <Stamp strokeWidth={1.5} />
-                Seal
-              </Button>
+              <Actions.ActionSealDocument />
               <ButtonGroup>
                 <Button variant="outline" size="icon">
                   <Settings />
