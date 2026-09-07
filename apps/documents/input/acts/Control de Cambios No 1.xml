@@ -56,13 +56,14 @@
         cliente continúe dentro del flujo normal.
     </BulletText>
 
-      <BulletText>
-        <Text bold="1">Día 11 (Aviso Pago Anticipado):</Text> Si no se realizó
-        el pago anticipado, se enviará mensaje indicando el vencimiento de dicho
-        pago. El cliente continúa en estado "Al día" (no genera mora ni
-        suspensión automática), dado que el proceso permite pago contra entrega
-        o hasta el último día hábil.
-      </BulletText>
+    <BulletText>
+        <Text bold="1">Día 11 (Factura del Mes Corriente Pendiente):</Text> Si
+        el pago anticipado no se ha realizado, se envía comunicación informando
+        que la factura se encuentra vencida. El cliente continúa en estado "Al
+        día". El vencimiento del día 10 NO genera automáticamente mora ni
+        suspensión, obedeciendo a que el proceso permite que el cliente realice
+        el pago durante el mes o como plazo máximo hasta el último día hábil.
+    </BulletText>
 
       <BulletText>
         <Text bold="1">Día 20 y Día 28 (Recordatorios):</Text> El Día 20 se
