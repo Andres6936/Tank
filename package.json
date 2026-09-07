@@ -11,6 +11,7 @@
     "start": "bun run --parallel --filter @escriba/server --filter @escriba/documents start"
   },
   "devDependencies": {
+    "@prettier/plugin-xml": "^3.4.2",
     "@types/bun": "^latest",
     "prettier": "^3.9.6"
   },
