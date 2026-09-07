@@ -6,13 +6,16 @@ import { useViewContext } from "../context/view-context";
 import { Skeleton } from "~/components/ui/skeleton";
 
 const asQuery = async (args: { xml: string }) => {
-  const stream = await fetch("http://localhost:6936/api/documents", {
-    method: "POST",
-    body: JSON.stringify({
-      xml: args.xml,
-      seal: "red",
-    }),
-  });
+  const stream = await fetch(
+    new URL("/api/documents", import.meta.env.VITE_PREVIEW_API_URL).href,
+    {
+      method: "POST",
+      body: JSON.stringify({
+        xml: args.xml,
+        seal: "red",
+      }),
+    },
+  );
   if (!stream.ok)
     throw new Error(
       "The server cannot process your request: " + stream.statusText,

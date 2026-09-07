@@ -46,10 +46,10 @@ export function QueryContextProvider(props: React.PropsWithChildren<{}>) {
         splitLink({
           condition: (args) => isNonJsonSerializable(args.input),
           true: httpLink({
-            url: "http://localhost:3000/trpc",
+            url: new URL("/trpc", import.meta.env.VITE_ESCRIBA_API_URL).href,
           }),
           false: httpBatchLink({
-            url: "http://localhost:3000/trpc",
+            url: new URL("/trpc", import.meta.env.VITE_ESCRIBA_API_URL).href,
           }),
         }),
       ],
