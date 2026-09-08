@@ -2,7 +2,7 @@ import { eq, desc, lt } from "drizzle-orm";
 
 import { formatXML } from "~/utility/formatter";
 import { getSQLClients } from "~/config/clients-sql";
-import { DocumentsTable } from "~/db/schema";
+import { DocumentsTable, FilesTable } from "~/db/schema";
 import { defaultPagination, type PaginateType } from "~/schemas/general";
 import { TypeStateDocumentKeys } from "~/db/enums";
 
@@ -45,7 +45,32 @@ const getByIdMaybe = async (id: string) => {
   }
 
   const [row] = result;
-  return row;
+  return row!;
+};
+
+const getByIdWithFile = async (id: string) => {
+  const result = await sql
+    .select({
+      Document: {
+        Id: DocumentsTable.Id,
+        FileId: DocumentsTable.FileId,
+        TypeState: DocumentsTable.TypeState,
+      },
+      File: {
+        Id: FilesTable.Id,
+      },
+    })
+    .from(DocumentsTable)
+    .leftJoin(FilesTable, eq(DocumentsTable.FileId, FilesTable.Id))
+    .where(eq(DocumentsTable.Id, id))
+    .limit(1);
+
+  if (result.length === 0) {
+    return null;
+  }
+
+  const [row] = result;
+  return row!;
 };
 
 const getStateById = async (id: string) => {
@@ -170,6 +195,7 @@ export {
   getAll,
   getAllInfinite,
   getByIdMaybe,
+  getByIdWithFile,
   getStateById,
   create,
   updateContent,

@@ -11,6 +11,7 @@ export const Args = {
   }),
   seal: z.uuid(),
   getById: z.uuid(),
+  getByIdWithFile: z.uuid(),
   create: z.object({
     Title: z.string().min(5),
     Subject: z.string().min(5),

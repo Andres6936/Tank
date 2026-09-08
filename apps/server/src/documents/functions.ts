@@ -1,4 +1,4 @@
-import { asPayload } from "~/utility/response";
+import { asPayload, isError, retrow } from "~/utility/response";
 import { TypeStateDocumentKeys } from "~/db/enums";
 
 import files from "~/files/functions";
@@ -51,6 +51,25 @@ export default {
     const result = await sql.getByIdMaybe(args);
     if (!result) return asPayload(404, { message: "Not found" });
     return asPayload(200, result);
+  },
+  getByIdWithFile: async (args: InferArgs["getByIdWithFile"]) => {
+    const query = await sql.getByIdWithFile(args);
+    if (!query) return asPayload(404, { message: "Not found" });
+    if (query.Document.TypeState !== TypeStateDocumentKeys.Sealed)
+      return asPayload(400, { message: "Not sealed" });
+    if (!query.File)
+      return asPayload(500, {
+        message:
+          "The document has no file associated, violation of invariant, all document sealed must be had a file associated",
+      });
+    const resultGetFileById = await files.getById(query.File.Id);
+    if (isError(resultGetFileById)) return retrow(resultGetFileById);
+    const link = resultGetFileById.body.link;
+
+    return asPayload(200, {
+      Document: { ...query.Document },
+      File: { ...query.File, Link: link },
+    });
   },
   create: async (args: InferArgs["create"]) => {
     const result = await sql.create(args);

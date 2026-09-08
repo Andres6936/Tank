@@ -29,6 +29,12 @@ export default {
       return functions.getById(input);
     }),
   ),
+  getByIdWithFile: publicProcedure.input(Args.getByIdWithFile).query(
+    handle(async (args) => {
+      const { input } = args;
+      return functions.getByIdWithFile(input);
+    }),
+  ),
   create: publicProcedure.input(Args.create).mutation(
     handle(async (args) => {
       const { input } = args;
