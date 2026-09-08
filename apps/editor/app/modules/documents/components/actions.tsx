@@ -4,6 +4,7 @@ import {
   BrushCleaning,
   CloudAlert,
   CloudCheck,
+  Download,
   MonitorOff,
   MonitorPlay,
   Plus,
@@ -253,6 +254,23 @@ const ActionToggleAutopreview = () => {
   );
 };
 
+const ActionDownload = () => {
+  return (
+    <Tooltip>
+      <TooltipTrigger
+        render={
+          <Button variant="outline" size="icon">
+            <Download strokeWidth={1} />
+          </Button>
+        }
+      />
+      <TooltipContent>
+        <p>Download the document</p>
+      </TooltipContent>
+    </Tooltip>
+  );
+};
+
 const ActionReloadDocument = () => {
   const trpc = useTRPC();
   const queryClient = useQueryClient();
@@ -334,6 +352,7 @@ export {
   ActionSaveDocument,
   ActionToggleAutosave,
   ActionToggleAutopreview,
+  ActionDownload,
   ActionReloadDocument,
   ActionSealDocument,
 };

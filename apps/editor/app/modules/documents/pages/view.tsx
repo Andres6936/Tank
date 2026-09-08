@@ -67,7 +67,11 @@ export default function View({ Id }: { Id: string }) {
               </ButtonGroup>
 
               <Actions.ActionToggleAutosave />
-              <Actions.ActionToggleAutopreview />
+
+              <ButtonGroup>
+                <Actions.ActionToggleAutopreview />
+                <Actions.ActionDownload />
+              </ButtonGroup>
             </div>
 
             <div className="flex flex-row gap-2">
