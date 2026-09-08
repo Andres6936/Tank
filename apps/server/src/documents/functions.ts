@@ -25,16 +25,19 @@ export default {
     if (document.TypeState !== TypeStateDocumentKeys.Draft) {
       return asPayload(401, { message: "Document is not in draft state" });
     }
-    const stream = await fetch("http://localhost:6936/api/documents", {
-      method: "POST",
-      body: JSON.stringify({
-        xml: document.Content,
-        seal: "red",
-      }),
-      headers: {
-        "Content-Type": "application/json",
+    const stream = await fetch(
+      new URL("/api/documents", process.env.PREVIEW_URL).href,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          xml: document.Content,
+          seal: "red",
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
       },
-    });
+    );
     if (!stream.ok) return asPayload(500, { message: "Failed to generate" });
     const payload = await stream.arrayBuffer();
     const operation = await files.save({
