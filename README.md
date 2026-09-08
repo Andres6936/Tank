@@ -45,12 +45,12 @@ flowchart LR
         DEPLOY --> INSTALL[bun install --production]
         DEPLOY --> ENV[write .env files<br/>from GitHub Secrets]
         DEPLOY --> PM2[pm2 reload Escriba]
-        PM2 --> SERVER[@escriba/server :3000]
+        PM2 --> SERVER[@escriba/server]
         PM2 --> DOCS[@escriba/documents]
     end
     CADDY[Caddy] --> SERVER
     CADDY --> DOCS
-    EDITOR[GitHub Pages<br/>editor] -.-> CADDY
+    EDITOR[Editor App] --> CADDY
 ```
 
 - **Host:** Oracle Cloud VPS. The repo is cloned at a fixed
