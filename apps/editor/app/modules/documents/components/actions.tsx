@@ -34,6 +34,7 @@ import {
 import { ConfirmationReloadModal } from "../modals/confirmation-reload";
 import { useAutosave } from "../hooks/useAutosave";
 import { Spinner } from "~/components/ui/spinner";
+import { asQueryPreview } from "../actions/preview";
 
 const ActionNewDocument = () => {
   const trpc = useTRPC();
@@ -255,11 +256,24 @@ const ActionToggleAutopreview = () => {
 };
 
 const ActionDownload = () => {
+  const { isSealed, content } = useViewContext();
+
+  const onPress = async () => {
+    if (isSealed) {
+    } else {
+      const result = await asQueryPreview({ xml: content });
+      const link = document.createElement("a");
+      link.href = result;
+      link.download = "Preview - Draft.pdf";
+      link.click();
+    }
+  };
+
   return (
     <Tooltip>
       <TooltipTrigger
         render={
-          <Button variant="outline" size="icon">
+          <Button onClick={onPress} variant="outline" size="icon">
             <Download strokeWidth={1} />
           </Button>
         }

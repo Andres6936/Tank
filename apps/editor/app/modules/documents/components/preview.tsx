@@ -5,27 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useViewContext } from "../context/view-context";
 import { Skeleton } from "~/components/ui/skeleton";
 import { useTRPC } from "~/utils/trpc";
-
-const asQuery = async (args: { xml: string }) => {
-  const stream = await fetch(
-    new URL("/api/documents", import.meta.env.VITE_PREVIEW_API_URL).href,
-    {
-      method: "POST",
-      body: JSON.stringify({
-        xml: args.xml,
-        seal: "red",
-      }),
-    },
-  );
-  if (!stream.ok)
-    throw new Error(
-      "The server cannot process your request: " + stream.statusText,
-    );
-  const buffer = await stream.arrayBuffer();
-  const blob = new Blob([buffer], { type: "application/pdf" });
-  const url = URL.createObjectURL(blob);
-  return url;
-};
+import { asQueryPreview } from "../actions/preview";
 
 const Preview = () => {
   const { isSealed } = useViewContext();
@@ -38,7 +18,7 @@ const Autopreview = () => {
 
   const query = useQuery({
     queryKey: ["/preview", debouncedContent],
-    queryFn: () => asQuery({ xml: debouncedContent }),
+    queryFn: () => asQueryPreview({ xml: debouncedContent }),
     enabled: autopreviewEnabled,
     refetchOnWindowFocus: false,
     staleTime: 0,
