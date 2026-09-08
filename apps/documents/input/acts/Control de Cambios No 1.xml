@@ -144,14 +144,15 @@
       <Title size="xs" textAlign="left">
         2. Especificación Funcional: Retiro Temporal
       </Title>
-      <Paragraph>
-        El Retiro Temporal se aplicará de manera estricta una vez cumplidas las
-        condiciones y plazos establecidos en el proceso, contemplando sesenta
-        (60) días completos desde la generación de la primera factura y treinta
-        (30) días correspondientes a la segunda factura. El Día 01 del mes
-        siguiente a la consolidación de estos plazos, el sistema ejecutará
-        automatizadamente las siguientes acciones:
-      </Paragraph>
+        <Paragraph>
+            El Retiro Temporal se aplicará de manera estricta una vez cumplidas las
+            condiciones y plazos establecidos en el proceso, contemplando un período de
+            dos (2) meses de mora para la primera factura y un (1) mes adicional
+            correspondiente a la segunda factura. El Día 01 del mes siguiente a la
+            consolidación de estos plazos (cumplidos los cuales el cliente acumula dos
+            facturas vencidas sin pagar), el sistema ejecutará automatizadamente las
+            siguientes acciones:
+        </Paragraph>
 
       <Indent gap="7pt">
         <BulletText>
