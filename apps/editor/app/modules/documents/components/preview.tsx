@@ -86,7 +86,12 @@ const FilePreview = () => {
   const { id } = useViewContext();
 
   const trpc = useTRPC();
-  const query = useQuery(trpc.documents.getByIdWithFile.queryOptions(id));
+  const query = useQuery(
+    trpc.documents.getByIdWithFile.queryOptions(id, {
+      staleTime: Infinity,
+      refetchOnWindowFocus: false,
+    }),
+  );
 
   if (query.isLoading || !query.data) {
     return <p>Loading ...</p>;
