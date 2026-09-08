@@ -7,6 +7,10 @@ export const Args = {
   getAll: z.optional(PaginateSchema),
   save: SaveFileSchema,
   getById: z.uuid(),
+  getLinkById: z.object({
+    Id: z.uuid(),
+    Download: z.boolean(),
+  }),
   updateById: UpdateFileSchema,
   deleteById: z.uuid(),
 };

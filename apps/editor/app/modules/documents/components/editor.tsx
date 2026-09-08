@@ -1,5 +1,5 @@
 import { xml } from "@codemirror/lang-xml";
-import { Prec } from "@codemirror/state";
+import { Prec, EditorState } from "@codemirror/state";
 import { keymap } from "@codemirror/view";
 import {
   abbreviationTracker,
@@ -18,7 +18,7 @@ const emmetTabKeymap = Prec.highest(
 );
 
 export const Editor = () => {
-  const { content, onDirtyChange, onContentChange, injectEditor } =
+  const { content, isSealed, onDirtyChange, onContentChange, injectEditor } =
     useViewContext();
 
   return (
@@ -29,7 +29,12 @@ export const Editor = () => {
         onDirtyChange(true);
       }}
       onCreateEditor={(view) => injectEditor(view)}
-      extensions={[xml(), abbreviationTracker(), emmetTabKeymap]}
+      extensions={[
+        xml(),
+        abbreviationTracker(),
+        emmetTabKeymap,
+        EditorState.readOnly.of(isSealed),
+      ]}
       height="100%"
       className="h-full"
     />

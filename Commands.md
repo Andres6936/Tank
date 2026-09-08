@@ -6,6 +6,13 @@ ssh ubuntu@143.47.125.244 -i C:\Users\Saturno\.ssh\OracleVPS.key
 
 ### Install Node
 
+## Install Fontconfig
+
+```bash
+sudo apt-get update
+sudo apt-get install -y fontconfig
+```
+
 ### Install Caddy
 
 Please follow the instructions below: [See](https://caddyserver.com/docs/install#debian-ubuntu-raspbian)

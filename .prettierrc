@@ -1,0 +1,15 @@
+{
+    "overrides": [
+        {
+            "files": "*.xml",
+            "options": {
+                "parser": "xml",
+                "plugins": ["@prettier/plugin-xml"],
+                "printWidth": 100,
+                "tabWidth": 4,
+                "xmlQuoteAttributes": "double",
+                "xmlSortAttributesByKey": true
+            }
+        }
+    ]
+}

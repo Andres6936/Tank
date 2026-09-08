@@ -2,10 +2,16 @@ import { getVaultsClients } from "../config/clients-vault";
 
 const { privateVault, ephemeralVault } = getVaultsClients();
 
-const getLinkFile = async (args: { Path: string; Name: string }) => {
+const getLinkFile = async (args: {
+  Path: string;
+  Name: string;
+  Download: boolean;
+}) => {
   const link = privateVault.presign(args.Path, {
     expiresIn: 3500,
-    contentDisposition: `attachment; filename="${args.Name}"`,
+    contentDisposition: args.Download
+      ? `attachment; filename="${args.Name}"`
+      : "inline",
   });
   return link;
 };

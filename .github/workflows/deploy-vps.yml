@@ -2,14 +2,17 @@
 #
 # Secrets:
 #   VPS_SSH_KEY   private SSH key to the VPS
-#   VPS_HOST / VPS_USER / VPS_PORT
+#   VPS_HOST_KEY  (optional) host key for known_hosts verification
 #   SERVER_ENV    full contents of apps/server/.env (multiline)
 #   DOCUMENTS_ENV full contents of apps/documents/.env (multiline)
-# Vars (optional):
-#   APP_DIR, BRANCH, PM2_SCRIPT
+# Vars:
+#   VPS_HOST / VPS_USER / VPS_PORT (default port: 22)
+#   APP_DIR, BRANCH, PM2_APP (optional)
 #
 # If an env secret is missing, the deploy keeps the .env file already
 # present on the VPS (useful for the initial bootstrap without secrets).
+# The remote deploy steps (install, .env injection, pm2 refresh) run from
+# deploy.ts (repo root) with Bun.
 
 name: Deploy services to VPS
 
@@ -21,6 +24,7 @@ on:
       - "apps/server/**"
       - "package.json"
       - "bun.lock"
+      - "deploy.ts"
       - ".github/workflows/deploy-vps.yml"
   workflow_dispatch:
 
@@ -41,7 +45,7 @@ jobs:
       DOCUMENTS_ENV: ${{ secrets.DOCUMENTS_ENV }}
       APP_DIR: ${{ vars.APP_DIR }}
       BRANCH: ${{ vars.BRANCH }}
-      PM2_SCRIPT: ${{ vars.PM2_SCRIPT }}
+      PM2_APP: ${{ vars.PM2_APP }}
 
     steps:
       - name: Load VPS SSH key
@@ -54,8 +58,23 @@ jobs:
           set -euo pipefail
 
           # ── SSH connection ─────────────────────────────────────────────────
-          : "${VPS_HOST:?Missing secret VPS_HOST}"
-          : "${VPS_USER:?Missing secret VPS_USER}"
+          : "${VPS_HOST:?Missing var VPS_HOST}"
+          : "${VPS_USER:?Missing var VPS_USER}"
+
+          # Trim accidental whitespace and stray quotes from connection values
+          # (newlines/spaces/quotes often sneak in when pasting).
+          VPS_USER="$(printf '%s' "$VPS_USER" | tr -d "[:space:]\"'")"
+          VPS_HOST="$(printf '%s' "$VPS_HOST" | tr -d "[:space:]\"'")"
+          VPS_PORT="$(printf '%s' "${VPS_PORT:-22}" | tr -d "[:space:]\"'")"
+
+          if [ -z "$VPS_USER" ] || [ -z "$VPS_HOST" ]; then
+            echo "::error::VPS_USER or VPS_HOST is empty after trimming" >&2
+            exit 1
+          fi
+
+          # Sanity check (connection data is not secret; brackets reveal any
+          # remaining hidden character).
+          echo "SSH target: [${VPS_USER}]@[${VPS_HOST}]:${VPS_PORT}"
 
           SSH_OPTS=(-p "${VPS_PORT:-22}" -o ConnectTimeout=20 -o BatchMode=yes)
 
@@ -78,22 +97,23 @@ jobs:
           [ -n "${APP_DIR:-}" ] && REMOTE_ENV="$REMOTE_ENV APP_DIR='$APP_DIR'"
           # Default to the branch that triggered the workflow (push or manual run)
           REMOTE_ENV="$REMOTE_ENV BRANCH='${BRANCH:-$GITHUB_REF_NAME}'"
-          [ -n "${PM2_SCRIPT:-}" ] && REMOTE_ENV="$REMOTE_ENV PM2_SCRIPT='$PM2_SCRIPT'"
+          [ -n "${PM2_APP:-}" ] && REMOTE_ENV="$REMOTE_ENV PM2_APP='$PM2_APP'"
           [ -n "$SERVER_ENV_B64" ] && REMOTE_ENV="$REMOTE_ENV SERVER_ENV_B64='$SERVER_ENV_B64'"
           [ -n "$DOCS_ENV_B64" ] && REMOTE_ENV="$REMOTE_ENV DOCS_ENV_B64='$DOCS_ENV_B64'"
 
-          ssh "${SSH_OPTS[@]}" "${VPS_USER}@${VPS_HOST}" "$REMOTE_ENV bash -s" <<'REMOTE'
+          ssh "${SSH_OPTS[@]}" "${VPS_USER}@${VPS_HOST}" "$REMOTE_ENV bash -l -s" <<'REMOTE'
           # ==================== Runs INSIDE the VPS ====================
           set -euo pipefail
 
           APP_DIR="${APP_DIR:-$HOME/Escriba}"
           BRANCH="${BRANCH:-master}"
-          PM2_SCRIPT="${PM2_SCRIPT:-bootstrap.sh}"
           : "${TARGET_COMMIT:?Missing TARGET_COMMIT}"
 
-          # Bun is already installed on the VPS; do not check or install it here.
+          # Login shell (-l): loads the real user environment from ~/.profile.
+          command -v bun >/dev/null 2>&1 || { echo "[deploy] ERROR: bun not found on PATH" >&2; exit 1; }
 
-          # ── 1. Sync the repo to the pushed commit ───────────────────────────
+          # The Bun deploy script lives in the repo, so sync first and then run
+          # the deployment code from the exact commit being deployed.
           if [ ! -d "$APP_DIR/.git" ]; then
             echo "[deploy] ERROR: no repo clone at $APP_DIR" >&2
             exit 1
@@ -104,33 +124,6 @@ jobs:
           git fetch --prune origin "$BRANCH"
           git reset --hard "$TARGET_COMMIT"
 
-          # ── 2. Install production dependencies ──────────────────────────────
-          # (Remove these 3 lines if your pm2 script already runs the install)
-          echo "[deploy] running: bun install --production --frozen-lockfile"
-          bun install --production --frozen-lockfile
-
-          # ── 3. Inject .env files (paths follow each service cwd) ────────────
-          write_env() {
-            local b64="$1" dest="$2"
-            if [ -n "$b64" ]; then
-              mkdir -p "$(dirname "$dest")"
-              printf '%s' "$b64" | base64 -d > "$dest"
-              chmod 600 "$dest"
-              echo "[deploy] updated $dest"
-            else
-              echo "[deploy] no secret set; keeping existing $(basename "$dest")"
-            fi
-          }
-
-          write_env "${SERVER_ENV_B64:-}" "$APP_DIR/apps/server/.env"
-          write_env "${DOCS_ENV_B64:-}" "$APP_DIR/apps/documents/.env"
-
-          # ── 4. Refresh pm2 ──────────────────────────────────────────────────
-          echo "[deploy] refreshing pm2 with: $PM2_SCRIPT"
-          if [ ! -f "$PM2_SCRIPT" ] && [ "${PM2_SCRIPT#/}" = "$PM2_SCRIPT" ]; then
-            PM2_SCRIPT="./$PM2_SCRIPT"
-          fi
-          bash "$PM2_SCRIPT"
-
-          echo "[deploy] Deployment completed"
+          echo "[deploy] running deploy.ts"
+          exec bun run deploy.ts
           REMOTE

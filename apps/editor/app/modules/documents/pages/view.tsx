@@ -5,6 +5,7 @@ import { Button } from "~/components/ui/button";
 import { ButtonGroup } from "~/components/ui/button-group";
 import { useTRPC } from "~/utils/trpc";
 import { Editor } from "../components/editor";
+import { Gutters } from "../components/gutters";
 import { Preview } from "../components/preview";
 import { ViewProvider } from "../context/view-context";
 
@@ -34,7 +35,7 @@ export default function View({ Id }: { Id: string }) {
   const item = query.data.body;
 
   return (
-    <ViewProvider id={Id} content={item.Content} updatedAt={item.UpdatedAt}>
+    <ViewProvider document={item}>
       <div className="flex flex-1 flex-row gap-2">
         <div className="flex flex-col flex-1 space-y-2">
           <div className="flex flex-row gap-2">
@@ -53,6 +54,7 @@ export default function View({ Id }: { Id: string }) {
           <div className="relative flex flex-1">
             <div className="absolute inset-0 flex-1">
               <Editor />
+              <Gutters />
             </div>
           </div>
         </div>
@@ -69,10 +71,7 @@ export default function View({ Id }: { Id: string }) {
             </div>
 
             <div className="flex flex-row gap-2">
-              <Button className="min-w-20">
-                <Stamp strokeWidth={1.5} />
-                Seal
-              </Button>
+              <Actions.ActionSealDocument />
               <ButtonGroup>
                 <Button variant="outline" size="icon">
                   <Settings />
