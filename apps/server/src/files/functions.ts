@@ -59,10 +59,17 @@ export default {
     if (!file) {
       return asPayload(404, { message: "Not found" });
     }
+    return asPayload(200, file);
+  },
+  getLinkById: async (args: InferArgs["getLinkById"]) => {
+    const file = await getFileMaybe(args.Id);
+    if (!file) {
+      return asPayload(404, { message: "Not found" });
+    }
     const link = await getLinkFile({
       Path: file.Path,
       Name: file.Name,
-      Download: true,
+      Download: args.Download,
     });
     return asPayload(200, { link });
   },

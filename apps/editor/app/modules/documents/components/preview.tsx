@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { useViewContext } from "../context/view-context";
 import { Skeleton } from "~/components/ui/skeleton";
+import { useTRPC } from "~/utils/trpc";
 
 const asQuery = async (args: { xml: string }) => {
   const stream = await fetch(
@@ -26,7 +27,12 @@ const asQuery = async (args: { xml: string }) => {
   return url;
 };
 
-export const Preview = () => {
+const Preview = () => {
+  const { isSealed } = useViewContext();
+  return isSealed ? <FilePreview /> : <Autopreview />;
+};
+
+const Autopreview = () => {
   const { content, autopreviewEnabled } = useViewContext();
   const debouncedContent = useDebounce(content, 1500);
 
@@ -75,3 +81,32 @@ export const Preview = () => {
 
   return <iframe src={url} className="w-full h-full" />;
 };
+
+const FilePreview = () => {
+  const { id } = useViewContext();
+
+  const trpc = useTRPC();
+  const query = useQuery(trpc.documents.getByIdWithFile.queryOptions(id));
+
+  if (query.isLoading || !query.data) {
+    return <p>Loading ...</p>;
+  }
+
+  if (query.isError) {
+    return <p>Error: {query.error.message}</p>;
+  }
+
+  if (query.data.statusCode === 404) {
+    return <p>Not Found</p>;
+  }
+
+  if (query.data.statusCode !== 200) {
+    return <p>Error: {query.data.body.message}</p>;
+  }
+
+  const item = query.data.body;
+
+  return <iframe src={item.File.Link} className="w-full h-full" />;
+};
+
+export { Preview };

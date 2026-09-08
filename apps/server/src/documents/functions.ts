@@ -62,7 +62,10 @@ export default {
         message:
           "The document has no file associated, violation of invariant, all document sealed must be had a file associated",
       });
-    const resultGetFileById = await files.getById(query.File.Id);
+    const resultGetFileById = await files.getLinkById({
+      Id: query.File.Id,
+      Download: false,
+    });
     if (isError(resultGetFileById)) return retrow(resultGetFileById);
     const link = resultGetFileById.body.link;
 
