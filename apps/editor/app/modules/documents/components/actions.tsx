@@ -219,7 +219,8 @@ const ActionToggleAutosave = () => {
 };
 
 const ActionToggleAutopreview = () => {
-  const { autopreviewEnabled, onAutopreviewChange } = useViewContext();
+  const { isSealed, autopreviewEnabled, onAutopreviewChange } =
+    useViewContext();
 
   return (
     <Tooltip>
@@ -230,6 +231,7 @@ const ActionToggleAutopreview = () => {
             onPressedChange={(pressed) => onAutopreviewChange(pressed)}
             aria-label="Toggle autopreview"
             variant="outline"
+            disabled={isSealed}
           >
             {autopreviewEnabled ? (
               <MonitorPlay strokeWidth={1} />
