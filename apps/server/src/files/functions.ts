@@ -62,6 +62,7 @@ export default {
     const link = await getLinkFile({
       Path: file.Path,
       Name: file.Name,
+      Download: true,
     });
     return asPayload(200, { link });
   },
