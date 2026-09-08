@@ -274,7 +274,7 @@ const ActionDownload = () => {
         const link = document.createElement("a");
         const url = URL.createObjectURL(blob);
         link.href = url;
-        link.download = File.Id;
+        link.download = File.Name;
         link.click();
         // Revoke the object URL after 10 seconds, avoid memory leaks
         setTimeout(() => URL.revokeObjectURL(url), 10_000);

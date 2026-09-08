@@ -58,6 +58,7 @@ const getByIdWithFile = async (id: string) => {
       },
       File: {
         Id: FilesTable.Id,
+        Name: FilesTable.Name,
       },
     })
     .from(DocumentsTable)
