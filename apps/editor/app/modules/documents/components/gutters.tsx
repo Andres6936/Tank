@@ -19,11 +19,13 @@ const Readonly = () => {
 
   return (
     <Tooltip>
-      <TooltipTrigger>
-        <Button variant="outline" size="icon">
-          <Lock size={12} className="text-muted-foreground" />
-        </Button>
-      </TooltipTrigger>
+      <TooltipTrigger
+        render={
+          <Button variant="outline" size="icon">
+            <Lock size={12} className="text-muted-foreground" />
+          </Button>
+        }
+      />
       <TooltipContent>
         <p>Editing is disabled because the document is sealed.</p>
       </TooltipContent>
