@@ -31,6 +31,7 @@ async function writeEnvFile(b64: string | undefined, relPath: string) {
 // 1. Install production dependencies --------------------------------
 log("running: bun install --production --frozen-lockfile");
 await $`bun install --production --frozen-lockfile`;
+await $`bun dedupe`;
 
 // 2. Inject .env files (paths follow each service cwd) --------------
 await writeEnvFile(process.env.SERVER_ENV_B64, "apps/server/.env");
