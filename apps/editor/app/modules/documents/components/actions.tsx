@@ -266,6 +266,7 @@ const ActionDownload = () => {
       link.href = result;
       link.download = "Preview - Draft.pdf";
       link.click();
+      setTimeout(() => URL.revokeObjectURL(result), 10000);
     }
   };
 
