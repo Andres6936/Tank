@@ -256,10 +256,40 @@ const ActionToggleAutopreview = () => {
 };
 
 const ActionDownload = () => {
-  const { isSealed, content } = useViewContext();
+  const trpc = useTRPC();
+  const queryClient = useQueryClient();
+
+  const { id, isSealed, content } = useViewContext();
+
+  const mutation = useMutation({
+    mutationFn: async () => {
+      const options = trpc.documents.getByIdWithFile.queryOptions(id);
+      return await queryClient.fetchQuery(options);
+    },
+    onSuccess: async (payload) => {
+      if (payload.statusCode === 200) {
+        const { File } = payload.body;
+        const response = await fetch(File.Link);
+        const blob = await response.blob();
+        const link = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+        link.href = url;
+        link.download = File.Id;
+        link.click();
+        // Revoke the object URL after 10 seconds, avoid memory leaks
+        setTimeout(() => URL.revokeObjectURL(url), 10_000);
+      } else {
+        toast.add({
+          type: "error",
+          title: "Failed to reload document",
+        });
+      }
+    },
+  });
 
   const onPress = async () => {
     if (isSealed) {
+      mutation.mutate();
     } else {
       const result = await asQueryPreview({ xml: content });
       const link = document.createElement("a");
