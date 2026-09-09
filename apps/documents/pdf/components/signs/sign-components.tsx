@@ -81,7 +81,9 @@ function SignMeLeft(
 }
 
 const SignLine = () => (
-  <Text style={{ width: "100%", borderColor: "gray", borderTop: "0.5pt" }} />
+  <Text
+    style={{ width: "100%", borderColor: "gray", borderTopWidth: "0.5pt" }}
+  />
 );
 
 type PadProps =
