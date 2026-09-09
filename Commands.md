@@ -4,6 +4,51 @@
 ssh ubuntu@143.47.125.244 -i C:\Users\Saturno\.ssh\OracleVPS.key
 ```
 
+### 1. Configure Swap Memory
+
+By default, OCI Ubuntu images do not include Swap space. Run the following
+commands to create a **2 GB** swap file, providing a crucial safety
+net for the physical RAM:
+
+```bash
+# Create a 2GB file for virtual memory
+sudo fallocate -l 2G /swapfile
+
+# Set secure system permissions
+sudo chmod 600 /swapfile
+
+# Format the file into swap space
+sudo mkswap /swapfile
+
+# Activate the swap file immediately
+sudo swapon /swapfile
+
+# Make the change permanent across reboots
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
+### 2. Disable Tracking and Telemetry Services
+
+The Oracle monitoring agent and the Snap daemon consume between 200 MB and 300 MB
+of background RAM. Stop and disable these services to reclaim critical memory
+for the web application:
+
+```bash
+# Stop and disable Oracle Cloud telemetry agents (Snap)
+sudo systemctl stop snap.oracle-cloud-agent.oracle-cloud-agent.service
+sudo systemctl disable snap.oracle-cloud-agent.oracle-cloud-agent.service
+
+sudo systemctl stop snap.oracle-cloud-agent.oracle-cloud-agent-updater.service
+sudo systemctl disable snap.oracle-cloud-agent.oracle-cloud-agent-updater.service
+
+# Disable the Snap daemon to prevent background resource spikes
+sudo systemctl stop snapd.service snapd.socket
+sudo systemctl disable snapd.service snapd.socket
+```
+
+_Note: Disabling these services stops performance metrics from displaying in the
+OCI web console dashboard, but it drastically improves VPS stability._
+
 ### Install Node
 
 ## Install Fontconfig
