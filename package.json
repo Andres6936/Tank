@@ -7,7 +7,7 @@
     "apps/*"
   ],
   "scripts": {
-    "dev": "bun run --parallel --filter \"*\" dev",
+    "dev": "bun --no-orphans run --parallel --filter \"*\" dev",
     "start": "bun run --parallel --filter @escriba/server --filter @escriba/documents start"
   },
   "devDependencies": {
