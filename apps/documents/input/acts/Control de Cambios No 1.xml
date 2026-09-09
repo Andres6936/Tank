@@ -1,18 +1,18 @@
 <Document
-    author="Joan Andrés Buriticá Salazar"
-    creator="Joan Andrés Buriticá Salazar"
-    keywords="Change Request, Alcance, Flujo, Suspensión"
-    language="es"
-    producer="React PDF with Bun"
-    subject="Control de Cambios No. 1"
-    title="Plataforma Residuos Ambientales"
+  author="Joan Andrés Buriticá Salazar"
+  creator="Joan Andrés Buriticá Salazar"
+  keywords="Change Request, Alcance, Flujo, Suspensión"
+  language="es"
+  producer="React PDF with Bun"
+  subject="Control de Cambios No. 1"
+  title="Plataforma Residuos Ambientales"
 >
   <Cover
-        month="Septiembre 2026"
-        scaleTitle="0.9"
-        title="Flujo de Estados y Cartera"
-        type="Control de Cambios No. 1"
-    />
+    month="Septiembre 2026"
+    scaleTitle="0.9"
+    title="Flujo de Estados y Cartera"
+    type="Control de Cambios No. 1"
+  />
 
   <Paginate>
     <IndicatorHeader value="Ing. Joan A. Buriticá" />
@@ -22,7 +22,7 @@
           Fecha de Elaboración:
           <S />
         </Text>
-        03 de septiembre de 2026
+        08 de septiembre de 2026
       </Text>
     </Section>
 
@@ -43,116 +43,121 @@
       </Title>
 
       <BulletText>
-        <Text bold="1">Día 01 de cada mes (Facturación Normal):</Text> Se
-        genera normalmente la factura correspondiente al nuevo periodo para todos
-        los clientes que se encuentren dentro del flujo normal. Esto incluye a los
+        <Text bold="1">Día 01 de cada mes (Facturación Normal):</Text> Se genera
+        normalmente la factura correspondiente al nuevo periodo para todos los
+        clientes que se encuentren dentro del flujo normal. Esto incluye a los
         clientes que tengan pendiente la factura del mes anterior, siempre que
         todavía no hayan llegado a la condición de "Suspensión" o "Retiro
         temporal". La nueva factura quedará con fecha de vencimiento para pago
         anticipado el día 10 del mismo mes. Ese mismo Día 01 se enviará la
         comunicación informando la generación de la nueva factura.
-    </BulletText>
+      </BulletText>
 
-    <Indent>
+      <Indent>
         <Text>
-            <Text bold="1"> Importante:</Text> Tener una factura pendiente del mes
-            anterior no impide que se genere la nueva factura el Día 01 mientras el
-            cliente continúe dentro del flujo normal.
+          <Text bold="1"> Importante:</Text> Tener una factura pendiente del mes
+          anterior no impide que se genere la nueva factura el Día 01 mientras
+          el cliente continúe dentro del flujo normal.
         </Text>
-    </Indent>
+      </Indent>
 
-    <BulletText>
+      <BulletText>
         <Text bold="1">Día 11 (Factura del Mes Corriente Pendiente):</Text> Si
         el pago anticipado no se ha realizado, se envía comunicación informando
         que la factura se encuentra vencida. El cliente continúa en estado "Al
         día". El vencimiento del día 10 NO genera automáticamente mora ni
         suspensión, obedeciendo a que el proceso permite que el cliente realice
         el pago durante el mes o como plazo máximo hasta el último día hábil.
-    </BulletText>
+      </BulletText>
 
-    <BulletText>
+      <BulletText>
         <Text bold="1">Día 20 (Recordatorio):</Text> Se envía nuevamente
         comunicación recordando que existe una factura pendiente de pago.
-    </BulletText>
+      </BulletText>
 
-    <BulletText>
+      <BulletText>
         <Text bold="1">Día 28 (Aviso Preventivo):</Text> Se envía comunicación
         indicando que el cliente debe realizar el pago de la factura
         correspondiente al servicio ya prestado, con el fin de evitar pasar a
         suspensión conforme al flujo establecido.
-    </BulletText>
+      </BulletText>
 
-    <BulletText>
+      <BulletText>
         <Text bold="1">Día 01 del mes siguiente (Paso a "En mora"):</Text> Si la
-        factura del mes anterior continúa sin ser pagada, se genera normalmente la
-        nueva factura correspondiente al nuevo periodo (siempre que el cliente aún
-        se encuentre dentro del flujo normal). Simultáneamente, el cliente pasa a
-        estado "En mora" respecto de la factura anterior pendiente. El cliente
-        continúa visible en cartera y programación; sin embargo, el sistema debe
-        impedir la ejecución de una nueva recolección mientras permanezca pendiente
-        la factura anterior.
-    </BulletText>
+        factura del mes anterior continúa sin ser pagada, se genera normalmente
+        la nueva factura correspondiente al nuevo periodo (siempre que el
+        cliente aún se encuentre dentro del flujo normal). Simultáneamente, el
+        cliente pasa a estado "En mora" respecto de la factura anterior
+        pendiente. El cliente continúa visible en cartera y programación; sin
+        embargo, el sistema debe impedir la ejecución de una nueva recolección
+        mientras permanezca pendiente la factura anterior.
+      </BulletText>
 
-    <Indent>
+      <Indent>
         <Text>
-            <Text bold="1"> Importante:</Text> El paso a "En mora" NO significa que
-            se deje de generar automáticamente la nueva factura, ni que el cliente
-            desaparezca de la programación del nuevo periodo (aunque el sistema
-            bloquee su recolección) mientras aún se encuentre dentro del flujo normal.
+          <Text bold="1"> Importante:</Text> El paso a "En mora" NO significa
+          que se deje de generar automáticamente la nueva factura, ni que el
+          cliente desaparezca de la programación del nuevo periodo (aunque el
+          sistema bloquee su recolección) mientras aún se encuentre dentro del
+          flujo normal.
         </Text>
-    </Indent>
+      </Indent>
 
-    <BulletText>
+      <BulletText>
         <Text bold="1">Día 11 del segundo mes (Suspensión):</Text> Si para este
-        momento continúa pendiente la factura del mes anterior que originó la mora, y
-        la nueva factura generada el Día 01 también llegó a su vencimiento, el
-        sistema ejecutará lo siguiente: cambiará automáticamente el estado a
-        "Suspensión", enviará la comunicación correspondiente y aplicará las
-        restricciones operativas (el cliente no debe poder ser programado ni atendido
-        mientras permanezca bajo esta condición).
-    </BulletText>
+        momento continúa pendiente la factura del mes anterior que originó la
+        mora, y la nueva factura generada el Día 01 también llegó a su
+        vencimiento, el sistema ejecutará lo siguiente: cambiará automáticamente
+        el estado a "Suspensión", enviará la comunicación correspondiente y
+        aplicará las restricciones operativas (el cliente no debe poder ser
+        programado ni atendido mientras permanezca bajo esta condición).
+      </BulletText>
 
-    <Indent>
+      <Indent>
         <Text>
-            <Text bold="1"> Importante:</Text> La Suspensión será una consecuencia
-            automática del flujo establecido, y no simplemente un estado que pueda
-            seleccionarse manualmente.
+          <Text bold="1"> Importante:</Text> La Suspensión será una consecuencia
+          automática del flujo establecido, y no simplemente un estado que pueda
+          seleccionarse manualmente.
         </Text>
-    </Indent>
+      </Indent>
 
-    <BulletText>
-        <Text bold="1">Pago de la Factura que Originó la Suspensión (Reactivación):</Text>
-        Cuando un cliente se encuentre en Suspensión y pague la factura anterior que
-        originó la mora y la suspensión, el sistema debe actualizar su condición para
-        pasar a estado "Al día". El cliente debe poder nuevamente ser programado y atendido.
-        NO debe impedirse la reactivación por el hecho de que la factura del mes corriente
-        continúe pendiente, ya que esta última todavía pertenece a su propio ciclo de pago.
-    </BulletText>
+      <BulletText>
+        <Text bold="1"
+          >Pago de la Factura que Originó la Suspensión (Reactivación):</Text
+        >
+        Cuando un cliente se encuentre en Suspensión y pague la factura anterior
+        que originó la mora y la suspensión, el sistema debe actualizar su
+        condición para pasar a estado "Al día". El cliente debe poder nuevamente
+        ser programado y atendido. NO debe impedirse la reactivación por el
+        hecho de que la factura del mes corriente continúe pendiente, ya que
+        esta última todavía pertenece a su propio ciclo de pago.
+      </BulletText>
 
-    <Indent>
+      <Indent>
         <Text>
-            <Text bold="1">Adicionalmente:</Text> Si la ruta aún no ha sido ejecutada, el
-            cliente debe quedar disponible para programación y recolección. Si la ruta ya fue
-            ejecutada, debe aparecer como "Pendiente asignar itinerario". Esta diferencia entre
-            la factura que originó la restricción y la factura corriente es fundamental para
-            el funcionamiento del proceso.
+          <Text bold="1">Adicionalmente:</Text> Si la ruta aún no ha sido
+          ejecutada, el cliente debe quedar disponible para programación y
+          recolección. Si la ruta ya fue ejecutada, debe aparecer como
+          "Pendiente asignar itinerario". Esta diferencia entre la factura que
+          originó la restricción y la factura corriente es fundamental para el
+          funcionamiento del proceso.
         </Text>
-    </Indent>
+      </Indent>
     </Section>
 
     <Section wrap="1">
       <Title size="xs" textAlign="left">
         2. Especificación Funcional: Retiro Temporal
       </Title>
-        <Paragraph>
-            El Retiro Temporal se aplicará de manera estricta una vez cumplidas las
-            condiciones y plazos establecidos en el proceso, contemplando un período de
-            dos (2) meses de mora para la primera factura y un (1) mes adicional
-            correspondiente a la segunda factura. El Día 01 del mes siguiente a la
-            consolidación de estos plazos (cumplidos los cuales el cliente acumula dos
-            facturas vencidas sin pagar), el sistema ejecutará automatizadamente las
-            siguientes acciones:
-        </Paragraph>
+      <Paragraph>
+        El Retiro Temporal se aplicará de manera estricta una vez cumplidas las
+        condiciones y plazos establecidos en el proceso, contemplando un período
+        de dos (2) meses de mora para la primera factura y un (1) mes adicional
+        correspondiente a la segunda factura. El Día 01 del mes siguiente a la
+        consolidación de estos plazos (cumplidos los cuales el cliente acumula
+        dos facturas vencidas sin pagar), el sistema ejecutará automatizadamente
+        las siguientes acciones:
+      </Paragraph>
 
       <Indent gap="7pt">
         <BulletText>
@@ -280,10 +285,10 @@
           </Row>
           <Row>
             <Cell flex="2">
-                <Text bold="1">Valor Total (COP)</Text>
+              <Text bold="1">Valor Total (COP)</Text>
             </Cell>
             <Cell textAlign="right">
-                <Text bold="1">366.618 COP</Text>
+              <Text bold="1">366.618 COP</Text>
             </Cell>
           </Row>
         </Footer>
@@ -291,34 +296,31 @@
     </Section>
 
     <Section wrap="1">
-      <Title size="xs" textAlign="left">
-        5. Cronograma y Formalización
-      </Title>
+      <Title size="xs" textAlign="left"> 5. Cronograma y Formalización </Title>
 
       <BulletText>
         <Text bold="1">Tiempo de Ejecución:</Text> Tres (3) días hábiles
         contados a partir del inicio efectivo del desarrollo.
       </BulletText>
 
-        <BulletText>
-            <Text bold="1">Pruebas y Validación (QA):</Text> Una vez finalizado y
-            entregado el desarrollo, se habilitará un plazo de dos (2) días hábiles
-            adicionales para que REAM ejecute las pruebas pertinentes. La aceptación
-            final estará sujeta a la validación funcional satisfactoria del flujo completo.
-        </BulletText>
+      <BulletText>
+        <Text bold="1">Pruebas y Validación (QA):</Text> Una vez finalizado y
+        entregado el desarrollo, se habilitará un plazo de dos (2) días hábiles
+        adicionales para que REAM ejecute las pruebas pertinentes. La aceptación
+        final estará sujeta a la validación funcional satisfactoria del flujo
+        completo.
+      </BulletText>
 
-        <BulletText>
-            <Text bold="1">Criterio de Aceptación:</Text> Se establece de
-            mutuo acuerdo que las especificaciones detalladas en las Secciones 1 a 3
-            de este documento hacen parte integral y exclusiva del alcance. Por lo tanto,
-            este documento constituye el único criterio de referencia válido para el
-            desarrollo, las pruebas y la aceptación final del ajuste.
-        </BulletText>
+      <BulletText>
+        <Text bold="1">Criterio de Aceptación:</Text> Se establece de mutuo
+        acuerdo que las especificaciones detalladas en las Secciones 1 a 3 de
+        este documento hacen parte integral y exclusiva del alcance. Por lo
+        tanto, este documento constituye el único criterio de referencia válido
+        para el desarrollo, las pruebas y la aceptación final del ajuste.
+      </BulletText>
 
       <Paragraph>
-        <Text bold="1" opacity="0.8">
-          FORMALIZACIÓN CONTRACTUAL:
-        </Text>
+        <Text bold="1" opacity="0.8"> FORMALIZACIÓN CONTRACTUAL: </Text>
         El presente documento establece el marco técnico y operativo del ajuste
         requerido. Las condiciones financieras para el inicio de esta fase, así
         como la liquidación de los saldos correspondientes a los módulos ya

@@ -1,0 +1,172 @@
+<Document
+  author="Joan Andrés Buriticá Salazar"
+  creator="Joan Andrés Buriticá Salazar"
+  keywords="Otrosí, Extensión, Pago, Contrato"
+  language="es"
+  producer="React PDF with Bun"
+  subject="Otrosí No. 4"
+  title="Plataforma Residuos Ambientales"
+>
+  <Cover
+    month="Septiembre 2026"
+    title="Extensión de Alcance y Liquidación de Hito"
+    type="Otrosí ~ No. 4"
+    scaleTitle="0.85"
+  />
+
+  <Paginate>
+    <IndicatorHeader value="Ing. Joan A. Buriticá" />
+    <Section gap="0.1cm" marginTop="0">
+      <Text>
+        <Text bold="1">
+          Fecha de Elaboración:
+          <S />
+        </Text>
+        08 de septiembre de 2026
+      </Text>
+    </Section>
+
+    <Section wrap="1">
+      <Title>
+        OTROSÍ NO. 4 AL CONTRATO DE PRESTACIÓN DE SERVICIOS DE DESARROLLO DE
+        SOFTWARE
+      </Title>
+      <Paragraph>
+        Entre los suscritos, por una parte, JOAN ANDRÉS BURITICÁ SALAZAR,
+        actuando en nombre propio, en adelante denominado EL CONTRATISTA, y por
+        la otra, RESIDUOS AMBIENTALES S.A.S. (REAM), representada legalmente por
+        YOMAIRA BEYTAR FLOREZ, en adelante denominada EL CONTRATANTE, acuerdan
+        celebrar el presente OTROSÍ NO. 4 al Contrato Principal, previas las
+        siguientes consideraciones:
+      </Paragraph>
+    </Section>
+
+    <Section wrap="1">
+      <Title size="xs" textAlign="left"> CONSIDERACIONES: </Title>
+      <BulletText>
+        <Text bold="1">1.</Text> Que las partes suscribieron un contrato
+        principal para el desarrollo de la "Plataforma de Gestión Logística y
+        Administrativa".
+      </BulletText>
+      <BulletText>
+        <Text bold="1">2.</Text> Que EL CONTRATISTA hizo entrega formal de los
+        módulos correspondientes a la Fase 1, generando una obligación de pago
+        pendiente a su favor.
+      </BulletText>
+      <BulletText>
+        <Text bold="1">3.</Text> Que EL CONTRATANTE ha solicitado una
+        modificación en la arquitectura y flujo operativo de los estados de
+        cartera, la cual fue detallada, costeada y aprobada técnicamente
+        mediante el documento anexo denominado "Control de Cambios No. 1".
+      </BulletText>
+      <Paragraph>
+        Con base en lo anterior, las partes acuerdan las siguientes cláusulas:
+      </Paragraph>
+    </Section>
+
+    <Section wrap="1">
+      <Title size="xs" textAlign="left">
+        CLÁUSULA PRIMERA - ADICIÓN DE ALCANCE:
+      </Title>
+      <Paragraph>
+        Se adiciona al alcance del Contrato Principal el desarrollo de la
+        refactorización de flujo de estados, disparadores de notificación,
+        suspensión y retiro temporal, limitándose estricta y exclusivamente a lo
+        documentado en el "Control de Cambios No. 1", el cual hace parte
+        integral de este Otrosí.
+      </Paragraph>
+    </Section>
+
+    <Section wrap="1">
+      <Title size="xs" textAlign="left">
+        CLÁUSULA SEGUNDA - RECONOCIMIENTO DE DEUDA Y CONDICIÓN DE INICIO (HITO
+        1):
+      </Title>
+      <Paragraph>
+        EL CONTRATANTE reconoce expresamente la recepción a satisfacción de la
+        Fase 1 y acepta la obligación de pago pendiente a favor de EL
+        CONTRATISTA por la suma de
+        <Text bold="1"
+          >DOS MILLONES SETECIENTOS OCHENTA Y OCHO MIL DOSCIENTOS CATORCE PESOS
+          M/CTE ($2'788.214 COP)</Text
+        >.
+      </Paragraph>
+      <Paragraph>
+        Las partes acuerdan con carácter innegociable que el pago total,
+        efectivo y reflejado en cuenta de esta obligación, constituye una
+        <Text bold="1">Condición Suspensiva</Text> para el inicio de las labores
+        descritas en la Cláusula Primera. El cronograma de desarrollo del
+        Control de Cambios No. 1 no iniciará su ejecución hasta que EL
+        CONTRATISTA confirme la recepción de dichos fondos.
+      </Paragraph>
+    </Section>
+
+    <Section wrap="1">
+      <Title size="xs" textAlign="left">
+        CLÁUSULA TERCERA - VALOR DEL NUEVO DESARROLLO Y FORMA DE PAGO (HITO 2):
+      </Title>
+      <Paragraph>
+        El costo total de la adición de alcance (Control de Cambios No. 1), una
+        vez aplicado el descuento comercial pactado de 7 horas, se fija en la
+        suma de
+        <Text bold="1"
+          >TRESCIENTOS SESENTA Y SEIS MIL SEISCIENTOS DIECIOCHO PESOS M/CTE
+          ($366.618 COP)</Text
+        >.
+      </Paragraph>
+      <Paragraph>
+        Este valor será facturado y pagadero una vez finalizado el periodo de
+        pruebas (QA) de dos (2) días hábiles y emitida la aceptación funcional
+        por parte de EL CONTRATANTE.
+      </Paragraph>
+    </Section>
+
+    <Section wrap="1">
+      <Title size="xs" textAlign="left">
+        CLÁUSULA CUARTA - CRONOGRAMA Y EXTENSIÓN DE VIGENCIA:
+      </Title>
+      <Paragraph>
+        Se extiende la vigencia del contrato principal por el tiempo necesario
+        para cumplir con el siguiente cronograma:
+      </Paragraph>
+      <Indent gap="7pt">
+        <BulletText>
+          <Text bold="1">Desarrollo:</Text> Tres (3) días hábiles contados a
+          partir del día hábil siguiente a la confirmación del pago estipulado
+          en la Cláusula Segunda.
+        </BulletText>
+        <BulletText>
+          <Text bold="1">Pruebas (QA):</Text> Dos (2) días hábiles posteriores a
+          la entrega del código en entorno de producción/pruebas.
+        </BulletText>
+      </Indent>
+    </Section>
+
+    <Section wrap="1">
+      <Title size="xs" textAlign="left">
+        CLÁUSULA QUINTA - VIGENCIA DE LAS DEMÁS CLÁUSULAS:
+      </Title>
+      <Paragraph>
+        Las demás cláusulas del contrato original de prestación de servicios,
+        así como las actas y otrosíes previos que no contraríen lo dispuesto en
+        el presente documento, mantienen su plena validez y vigor legal,
+        incluyendo la retención de los derechos patrimoniales hasta la
+        liquidación total del proyecto.
+      </Paragraph>
+    </Section>
+
+    <Section wrap="1">
+      <Paragraph>
+        Para constancia y en señal de absoluta conformidad, se firma a los 09
+        días del mes de septiembre de 2026.
+      </Paragraph>
+    </Section>
+
+    <SignSection hiddenTitle="1">
+      <SignRow>
+        <SignPadLeft signBy="Yomaira Beytar Florez, Representante REAM" />
+        <SignMeRight />
+      </SignRow>
+    </SignSection>
+  </Paginate>
+</Document>
