@@ -183,6 +183,60 @@ turso.andres6936.dev {
 }
 ```
 
+#### OpenTelemetry Tracing with PostHog (Caddy)
+
+This project uses Caddy's native OpenTelemetry integration to export distributed traces directly to **PostHog** using OTLP over HTTP.
+
+##### 1. Environment Variables Configuration (Systemd)
+
+Since Caddy runs as an isolated systemd service, the OpenTelemetry variables must be injected using a systemd override drop-in file instead of global profile files.
+
+To view or edit these variables on the VPS, run:
+
+```bash
+sudo systemctl edit caddy
+```
+
+Ensure the configuration block looks exactly like this (replace `YOUR_POSTHOG_PROJECT_TOKEN` with your actual token):
+
+```ini
+[Service]
+Environment="OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=https://us.i.posthog.com/i/v1/traces"
+Environment="OTEL_EXPORTER_OTLP_TRACES_PROTOCOL=http/protobuf"
+Environment="OTEL_EXPORTER_OTLP_TRACES_HEADERS=Authorization=Bearer YOUR_POSTHOG_PROJECT_TOKEN"
+Environment="OTEL_SERVICE_NAME=Caddy-Server"
+```
+
+After updating variables, reload systemd and restart the web server:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart caddy
+```
+
+##### 2. Caddyfile Integration
+
+To enable tracing for specific sites or API gateways, add the `tracing` directive inside your site block in `/etc/caddy/Caddyfile`:
+
+```text
+yourdomain.com {
+    # Enable OpenTelemetry request tracing
+    tracing {
+        span "caddy-http-request"
+    }
+
+    # Your standard site configuration (e.g., reverse proxy)
+    reverse_proxy localhost:3000
+}
+```
+
+Validate and safely reload Caddy without downtime:
+
+```bash
+sudo caddy validate --config /etc/caddy/Caddyfile
+sudo systemctl reload caddy
+```
+
 #### Modify the Register DNS from Cloudflare (Squaredomain had Cloudflare Nameservers)
 
 ### Install Fork SQLite (Turso)
