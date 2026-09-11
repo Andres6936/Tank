@@ -89,13 +89,17 @@ export default {
     if (query.TypeState !== TypeStateDocumentKeys.Draft)
       return asPayload(400, { message: "Not a draft" });
 
+    // Extract the <Document .../> element very fast using string index, not regex
     const xml = getDocumentHeader(args.Content);
     if (!xml)
       return asPayload(403, {
         message: "The document has not <Document .../> tag",
       });
+
+    // Parse and extract the title and subject properties of document
     const props = getDocumentProps(xml);
     if (props) {
+      // Update the title and subject in the database
       if (query.Title !== props.Title || query.Subject !== props.Subject) {
         await sql.updateTitleAndSubjet(args.Id, {
           Title: props.Title,
