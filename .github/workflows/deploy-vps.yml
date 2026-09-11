@@ -126,4 +126,5 @@ jobs:
 
           echo "[deploy] running deploy.ts"
           exec bun run deploy.ts
+          exec sudo bun run trusted.ts
           REMOTE
