@@ -47,6 +47,6 @@ if (describe.exitCode === 0) {
   await $`pm2 start ${resolve(ROOT, "execme.sh")} --name ${PM2_APP} --interpreter bash --restart-delay 3000 --kill-timeout 10000 --time`;
 }
 await $`pm2 save`;
-await $`bun run trusted.ts`;
+await $`sudo bun run trusted.ts`;
 
 log("Deployment completed");
