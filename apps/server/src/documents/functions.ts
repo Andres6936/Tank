@@ -19,9 +19,8 @@ export default {
     });
   },
   seal: async (args: InferArgs["seal"]) => {
-    const result = await sql.getByIdMaybe(args);
-    if (!result) return asPayload(404, { message: "Not found" });
-    const document = result;
+    const document = await sql.getByIdMaybe(args);
+    if (!document) return asPayload(404, { message: "Not found" });
     if (document.TypeState !== TypeStateDocumentKeys.Draft) {
       return asPayload(401, { message: "Document is not in draft state" });
     }
@@ -41,7 +40,7 @@ export default {
     if (!stream.ok) return asPayload(500, { message: "Failed to generate" });
     const payload = await stream.arrayBuffer();
     const operation = await files.save({
-      Path: `/tmp/${document.Title}.pdf`,
+      Path: `/tmp/${document.Subject}-${document.Title}.pdf`,
       Blob: payload,
     });
     if (operation.statusCode !== 200) return operation;
