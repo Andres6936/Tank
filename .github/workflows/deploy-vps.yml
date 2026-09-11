@@ -125,5 +125,9 @@ jobs:
           git reset --hard "$TARGET_COMMIT"
 
           echo "[deploy] running deploy.ts"
-          exec bun run deploy.ts && sudo $(which bun) run trusted.ts
+          bun run deploy.ts
+
+          BUN_BIN="$(command -v bun)"
+          echo "[deploy] bun path: $BUN_BIN - running trusted.ts"
+          sudo "$BUN_BIN" run trusted.ts
           REMOTE
