@@ -125,6 +125,5 @@ jobs:
           git reset --hard "$TARGET_COMMIT"
 
           echo "[deploy] running deploy.ts"
-          exec bun run deploy.ts
-          exec sudo bun run trusted.ts
+          exec bun run deploy.ts && sudo bun run trusted.ts
           REMOTE
