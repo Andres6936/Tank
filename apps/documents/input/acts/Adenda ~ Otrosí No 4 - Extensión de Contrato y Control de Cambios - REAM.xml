@@ -1,11 +1,11 @@
 <Document
-  author="Joan Andrés Buriticá Salazar"
-  creator="Joan Andrés Buriticá Salazar"
-  keywords="Otrosí, Extensión, Pago, Contrato"
-  language="es"
-  producer="React PDF with Bun"
   subject="Otrosí No. 4"
   title="Plataforma Residuos Ambientales"
+  author="Joan Andrés Buriticá Salazar"
+  keywords="Otrosí, Extensión, Pago, Contrato"
+  creator="Joan Andrés Buriticá Salazar"
+  producer="React PDF with Bun"
+  language="es"
 >
   <Cover
     month="Septiembre 2026"
@@ -16,13 +16,13 @@
 
   <Paginate>
     <IndicatorHeader value="Ing. Joan A. Buriticá" />
-    <Section gap="0.1cm" marginTop="0">
+    <Section marginTop="0" gap="0.1cm">
       <Text>
         <Text bold="1">
           Fecha de Elaboración:
           <S />
         </Text>
-        08 de septiembre de 2026
+        10 de septiembre de 2026
       </Text>
     </Section>
 
@@ -49,12 +49,7 @@
         Administrativa".
       </BulletText>
       <BulletText>
-        <Text bold="1">2.</Text> Que EL CONTRATISTA hizo entrega formal de los
-        módulos correspondientes a la Fase 1, generando una obligación de pago
-        pendiente a su favor.
-      </BulletText>
-      <BulletText>
-        <Text bold="1">3.</Text> Que EL CONTRATANTE ha solicitado una
+        <Text bold="1">2.</Text> Que EL CONTRATANTE ha solicitado una
         modificación en la arquitectura y flujo operativo de los estados de
         cartera, la cual fue detallada, costeada y aprobada técnicamente
         mediante el documento anexo denominado "Control de Cambios No. 1".
@@ -66,37 +61,48 @@
 
     <Section wrap="1">
       <Title size="xs" textAlign="left">
-        CLÁUSULA PRIMERA - ADICIÓN DE ALCANCE:
+        CLÁUSULA PRIMERA - INTEGRACIÓN Y ALCANCE (CONTROL DE CAMBIOS NO. 1):
       </Title>
       <Paragraph>
-        Se adiciona al alcance del Contrato Principal el desarrollo de la
-        refactorización de flujo de estados, disparadores de notificación,
-        suspensión y retiro temporal, limitándose estricta y exclusivamente a lo
-        documentado en el "Control de Cambios No. 1", el cual hace parte
-        integral de este Otrosí.
+        Se adiciona al alcance del Contrato Principal el desarrollo contenido en
+        el documento anexo "Control de Cambios No. 1", el cual hace parte
+        integral y vinculante de este Otrosí.
+      </Paragraph>
+      <Paragraph>
+        De manera expresa, se establece que las especificaciones funcionales
+        contenidas exclusivamente en las
+        <Text bold="1">Secciones 1, 2 y 3</Text> del mencionado Control de
+        Cambios No. 1 constituyen el alcance total acordado y el único criterio
+        de referencia válido para el desarrollo, las pruebas y la aceptación
+        final del ajuste.
       </Paragraph>
     </Section>
 
     <Section wrap="1">
       <Title size="xs" textAlign="left">
-        CLÁUSULA SEGUNDA - RECONOCIMIENTO DE DEUDA Y CONDICIÓN DE INICIO (HITO
-        1):
+        CLÁUSULA SEGUNDA - ESTADO DE LA FASE 1 Y CONDICIÓN DE INICIO (HITO 1):
       </Title>
       <Paragraph>
-        EL CONTRATANTE reconoce expresamente la recepción a satisfacción de la
-        Fase 1 y acepta la obligación de pago pendiente a favor de EL
-        CONTRATISTA por la suma de
+        Las partes reconocen los avances y entregables realizados en el marco de
+        la Fase 1, encontrándose pendiente la culminación de los ajustes y
+        validaciones establecidos en el Control de Cambios No. 1, necesarios
+        para el cierre integral y funcional de esta etapa.
+      </Paragraph>
+      <Paragraph>
+        No obstante, para garantizar la viabilidad administrativa y contable del
+        proyecto, EL CONTRATANTE reconoce la obligación económica pendiente
+        correspondiente a los entregables ya consolidados de la Fase 1, por la
+        suma de
         <Text bold="1"
           >DOS MILLONES SETECIENTOS OCHENTA Y OCHO MIL DOSCIENTOS CATORCE PESOS
           M/CTE ($2'788.214 COP)</Text
         >.
       </Paragraph>
       <Paragraph>
-        Las partes acuerdan con carácter innegociable que el pago total,
-        efectivo y reflejado en cuenta de esta obligación, constituye una
-        <Text bold="1">Condición Suspensiva</Text> para el inicio de las labores
-        descritas en la Cláusula Primera. El cronograma de desarrollo del
-        Control de Cambios No. 1 no iniciará su ejecución hasta que EL
+        Las partes acuerdan que el desembolso total y efectivo de este valor
+        constituye una <Text bold="1">Condición Suspensiva</Text> indispensable
+        para el inicio de las labores descritas en la Cláusula Primera. El
+        cronograma de desarrollo no iniciará su ejecución hasta que EL
         CONTRATISTA confirme la recepción de dichos fondos.
       </Paragraph>
     </Section>
@@ -107,27 +113,28 @@
       </Title>
       <Paragraph>
         El costo total de la adición de alcance (Control de Cambios No. 1), una
-        vez aplicado el descuento comercial pactado de 7 horas, se fija en la
-        suma de
+        vez aplicado el descuento comercial pactado, se fija en la suma de
         <Text bold="1"
           >TRESCIENTOS SESENTA Y SEIS MIL SEISCIENTOS DIECIOCHO PESOS M/CTE
           ($366.618 COP)</Text
         >.
       </Paragraph>
       <Paragraph>
-        Este valor será facturado y pagadero una vez finalizado el periodo de
-        pruebas (QA) de dos (2) días hábiles y emitida la aceptación funcional
-        por parte de EL CONTRATANTE.
+        Este valor actuará como garantía de cumplimiento funcional y será
+        facturado y pagadero únicamente tras la finalización del periodo de
+        pruebas y la emisión de la aceptación funcional por parte de EL
+        CONTRATANTE, momento en el cual se entenderá cerrada integralmente la
+        Fase 1 del proyecto.
       </Paragraph>
     </Section>
 
     <Section wrap="1">
       <Title size="xs" textAlign="left">
-        CLÁUSULA CUARTA - CRONOGRAMA Y EXTENSIÓN DE VIGENCIA:
+        CLÁUSULA CUARTA - CRONOGRAMA, PRUEBAS Y CRITERIO DE ACEPTACIÓN:
       </Title>
       <Paragraph>
-        Se extiende la vigencia del contrato principal por el tiempo necesario
-        para cumplir con el siguiente cronograma:
+        Se extiende la vigencia del contrato principal para cumplir con el
+        siguiente cronograma:
       </Paragraph>
       <Indent gap="7pt">
         <BulletText>
@@ -136,10 +143,19 @@
           en la Cláusula Segunda.
         </BulletText>
         <BulletText>
-          <Text bold="1">Pruebas (QA):</Text> Dos (2) días hábiles posteriores a
-          la entrega del código en entorno de producción/pruebas.
+          <Text bold="1">Pruebas y Validación (QA):</Text> Dos (2) días hábiles
+          posteriores a la entrega del código en el entorno de pruebas. Este
+          plazo es independiente y adicional al tiempo de desarrollo.
         </BulletText>
       </Indent>
+      <Paragraph>
+        <Text bold="1">Aceptación:</Text> Se deja expresa constancia de que la
+        finalización y entrega del desarrollo no implica aceptación automática.
+        La aceptación y el cierre técnico final estarán sujetos estrictamente a
+        la validación funcional satisfactoria del flujo completo por parte de EL
+        CONTRATANTE, tomando como única referencia las Secciones 1 a 3 del
+        Control de Cambios No. 1.
+      </Paragraph>
     </Section>
 
     <Section wrap="1">
@@ -147,17 +163,15 @@
         CLÁUSULA QUINTA - VIGENCIA DE LAS DEMÁS CLÁUSULAS:
       </Title>
       <Paragraph>
-        Las demás cláusulas del contrato original de prestación de servicios,
-        así como las actas y otrosíes previos que no contraríen lo dispuesto en
-        el presente documento, mantienen su plena validez y vigor legal,
-        incluyendo la retención de los derechos patrimoniales hasta la
-        liquidación total del proyecto.
+        Las demás cláusulas del contrato original de prestación de servicios y
+        sus otrosíes previos que no contraríen lo dispuesto en el presente
+        documento mantienen su plena validez y vigor legal.
       </Paragraph>
     </Section>
 
     <Section wrap="1">
       <Paragraph>
-        Para constancia y en señal de absoluta conformidad, se firma a los 09
+        Para constancia y en señal de absoluta conformidad, se firma a los 10
         días del mes de septiembre de 2026.
       </Paragraph>
     </Section>
