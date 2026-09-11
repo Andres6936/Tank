@@ -167,6 +167,40 @@ num target prot opt source destination
 7 REJECT 0 -- 0.0.0.0/0 0.0.0.0/0 reject-with icmp-host-prohibited
 ```
 
+#### Cloudflare Trusted Proxies Setup
+
+The project includes a `trusted.ts` script that fetches the official Cloudflare
+IPv4 and IPv6 ranges and generates a Caddy configuration fragment at `/etc/caddy/TrustedCloudflare`.
+This ensures Caddy can correctly resolve the real client IP behind Cloudflare's proxy.
+
+1. **Update your Caddyfile** to import the generated file inside the global options block:
+
+   ```bash
+   sudo nano /etc/caddy/Caddyfile
+   ```
+
+   ```caddy
+   {
+       servers {
+           import /etc/caddy/TrustedCloudflare
+       }
+   }
+
+   # Your site configuration goes here...
+   ```
+
+2. **Run the script** with Bun using root privileges to generate the file for the first time:
+
+   ```bash
+   sudo bun run trusted.ts
+   ```
+
+3. **Reload the Caddy server** to apply the changes without downtime:
+
+   ```bash
+   sudo systemctl reload caddy
+   ```
+
 #### Modify the Caddy File
 
 Command: `sudo nano /etc/caddy/Caddyfile`
