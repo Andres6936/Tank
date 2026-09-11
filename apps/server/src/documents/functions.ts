@@ -4,6 +4,7 @@ import { TypeStateDocumentKeys } from "~/db/enums";
 import files from "~/files/functions";
 import { type InferArgs } from "./args";
 import * as sql from "./sql";
+import { getDocumentHeader, getDocumentProps } from "./utility";
 
 export default {
   getAll: async (args: InferArgs["getAll"]) => {
@@ -82,11 +83,26 @@ export default {
     return asPayload(200, result);
   },
   updateContent: async (args: InferArgs["updateContent"]) => {
-    const query = await sql.getStateById(args.Id);
+    const query = await sql.getSubjetAndTitleById(args.Id);
     if (!query) return asPayload(404, { message: "Not found" });
     // Only the document is draft state can be updated
     if (query.TypeState !== TypeStateDocumentKeys.Draft)
       return asPayload(400, { message: "Not a draft" });
+
+    const xml = getDocumentHeader(args.Content);
+    if (!xml)
+      return asPayload(403, {
+        message: "The document has not <Document .../> tag",
+      });
+    const props = getDocumentProps(xml);
+    if (props) {
+      if (query.Title !== props.Title || query.Subject !== props.Subject) {
+        await sql.updateTitleAndSubjet(args.Id, {
+          Title: props.Title,
+          Subject: props.Subject,
+        });
+      }
+    }
 
     const result = await sql.updateContent(args.Id, args);
     if (!result) return asPayload(500, { message: "Failed to update" });

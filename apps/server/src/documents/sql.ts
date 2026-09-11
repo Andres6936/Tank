@@ -48,6 +48,26 @@ const getByIdMaybe = async (id: string) => {
   return row!;
 };
 
+const getSubjetAndTitleById = async (id: string) => {
+  const result = await sql
+    .select({
+      Id: DocumentsTable.Id,
+      Subject: DocumentsTable.Subject,
+      Title: DocumentsTable.Title,
+      TypeState: DocumentsTable.TypeState,
+    })
+    .from(DocumentsTable)
+    .where(eq(DocumentsTable.Id, id))
+    .limit(1);
+
+  if (result.length === 0) {
+    return null;
+  }
+
+  const [row] = result;
+  return row!;
+};
+
 const getByIdWithFile = async (id: string) => {
   const result = await sql
     .select({
@@ -174,6 +194,22 @@ const updateContent = async (
   return row;
 };
 
+const updateTitleAndSubjet = async (
+  id: string,
+  args: {
+    Title: string;
+    Subject: string;
+  },
+) => {
+  await sql
+    .update(DocumentsTable)
+    .set({
+      Title: args.Title,
+      Subject: args.Subject,
+    })
+    .where(eq(DocumentsTable.Id, id));
+};
+
 const updateFileLinkAndSeal = async (id: string, fileId: string) => {
   const result = await sql
     .update(DocumentsTable)
@@ -198,7 +234,9 @@ export {
   getByIdMaybe,
   getByIdWithFile,
   getStateById,
+  getSubjetAndTitleById,
   create,
   updateContent,
+  updateTitleAndSubjet,
   updateFileLinkAndSeal,
 };
