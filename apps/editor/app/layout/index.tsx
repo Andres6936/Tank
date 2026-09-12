@@ -1,4 +1,6 @@
-import { Outlet } from "react-router";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router";
 
 import { AppSidebar } from "~/components/app-sidebar";
 import {
@@ -15,8 +17,23 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "~/components/ui/sidebar";
+import { authClient } from "~/lib/auth-client";
 
 export default function Layout() {
+  const navigate = useNavigate();
+
+  const query = useQuery({
+    queryKey: ["/user/session"],
+    queryFn: () => authClient.getSession(),
+  });
+
+  useEffect(() => {
+    if (query.isLoading) return;
+    if (query.isError || !query.data) return void navigate("/");
+    // If not exist the session, redirect to login
+    if (!query.data.data) return void navigate("/");
+  }, [query, navigate]);
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -44,7 +61,7 @@ export default function Layout() {
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-3">
-          <Outlet />
+          {query.isPending ? <p>Loading...</p> : <Outlet />}
         </div>
       </SidebarInset>
     </SidebarProvider>
