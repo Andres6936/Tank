@@ -29,13 +29,13 @@ type RouteFiles = {
     id: "root";
     page: "/" | "/documents" | "/documents/view/:id";
   };
-  "layout/index.tsx": {
-    id: "layout/index";
-    page: "/" | "/documents" | "/documents/view/:id";
-  };
   "routes/home.tsx": {
     id: "routes/home";
     page: "/";
+  };
+  "layout/index.tsx": {
+    id: "layout/index";
+    page: "/documents" | "/documents/view/:id";
   };
   "routes/document-home.tsx": {
     id: "routes/document-home";
@@ -49,8 +49,8 @@ type RouteFiles = {
 
 type RouteModules = {
   "root": typeof import("./app/root.tsx");
-  "layout/index": typeof import("./app/layout/index.tsx");
   "routes/home": typeof import("./app/routes/home.tsx");
+  "layout/index": typeof import("./app/layout/index.tsx");
   "routes/document-home": typeof import("./app/routes/document-home.tsx");
   "routes/document-view": typeof import("./app/routes/document-view.tsx");
 };
