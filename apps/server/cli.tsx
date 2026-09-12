@@ -3,7 +3,7 @@ import { apiKeyClient } from "@better-auth/api-key/client";
 import { auth } from "./src/lib/auth";
 
 const authClient = createAuthClient({
-  baseURL: process.env.BETTER_AUTH_URL,
+  baseURL: `https://localhost:${process.env.SERVER_PORT}`,
 });
 
 // const { data, error } = await authClient.signUp.email(
