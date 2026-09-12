@@ -30,6 +30,10 @@ import {
 } from "~/components/ui/field";
 import { Input } from "~/components/ui/input";
 import { useId } from "react";
+import { TextInput } from "~/components/form/text-input";
+import { useMutation } from "@tanstack/react-query";
+import { authClient } from "~/lib/auth-client";
+import { toast } from "~/components/ui/toast";
 
 const FormSchema = v.object({
   Email: v.pipe(v.string(), v.email()),
@@ -46,7 +50,36 @@ export function LoginForm() {
     },
   });
 
-  const onSubmit: SubmitHandler<typeof FormSchema> = (values) => {};
+  const mutation = useMutation({
+    mutationKey: ["/login"],
+    mutationFn: async (values: v.InferOutput<typeof FormSchema>) => {
+      const { Email, Password } = values;
+      const response = await authClient.signIn.email({
+        email: Email,
+        password: Password,
+        callbackURL: "/documents",
+        rememberMe: true,
+      });
+      if (response.error) throw response.error;
+      return response.data;
+    },
+    onSuccess: () => {
+      toast.add({
+        title: "Sucess",
+        description: "You are now logged in.",
+      });
+    },
+    onError: (error) => {
+      toast.add({
+        title: "Error",
+        description: error.message,
+      });
+    },
+  });
+
+  const onSubmit: SubmitHandler<typeof FormSchema> = (values) => {
+    mutation.mutate(values);
+  };
 
   return (
     <Form
@@ -63,40 +96,32 @@ export function LoginForm() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
-            <FieldGroup>
-              <Field>
-                <FieldLabel htmlFor="email">Email</FieldLabel>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                />
-              </Field>
-              <Field>
-                <div className="flex items-center">
-                  <FieldLabel htmlFor="password">Password</FieldLabel>
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    Forgot your password?
-                  </a>
-                </div>
-                <Input id="password" type="password" required />
-              </Field>
-              <Field>
-                <Button type="submit">Login</Button>
-                <Button variant="outline" type="button">
-                  Login with Google
-                </Button>
-                <FieldDescription className="text-center">
-                  Don&apos;t have an account? <a href="#">Sign up</a>
-                </FieldDescription>
-              </Field>
-            </FieldGroup>
-          </form>
+          <FieldGroup>
+            <TextInput
+              form={form}
+              path={["Email"]}
+              label="Email"
+              placeholder="m@example.com"
+            />
+
+            <TextInput
+              form={form}
+              path={["Password"]}
+              label="Password"
+              placeholder="********"
+            />
+            <Field>
+              <Button type="submit" form={formId}>
+                Login
+              </Button>
+              <Button variant="outline" type="button">
+                Login with Google
+              </Button>
+              <FieldDescription className="text-center">
+                Don&apos;t have an account? <a href="#">Sign up</a>
+              </FieldDescription>
+            </Field>
+          </FieldGroup>
         </CardContent>
       </Card>
     </Form>
