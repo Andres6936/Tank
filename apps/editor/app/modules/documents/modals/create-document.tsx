@@ -1,18 +1,9 @@
+import type { FormSchema, SubmitHandler } from "@formisch/react";
+import { Form, useForm } from "@formisch/react";
 import * as v from "valibot";
-import {
-  Form,
-  Field as FormischField,
-  useField,
-  useForm,
-} from "@formisch/react";
-import type {
-  FormSchema,
-  FormStore,
-  RequiredPath,
-  SubmitHandler,
-  ValidPath,
-} from "@formisch/react";
 
+import { useId } from "react";
+import { TextInput } from "~/components/form/text-input";
 import { Button } from "~/components/ui/button";
 import {
   Dialog,
@@ -24,17 +15,12 @@ import {
   DialogTitle,
 } from "~/components/ui/dialog";
 import {
-  Field,
   FieldDescription,
-  FieldError,
   FieldGroup,
-  FieldLabel,
   FieldLegend,
   FieldSeparator,
   FieldSet,
 } from "~/components/ui/field";
-import { Input } from "~/components/ui/input";
-import { useId } from "react";
 
 const FormSchema = v.object({
   Title: v.pipe(v.string(), v.minLength(5)),
@@ -176,40 +162,6 @@ const CreateDocumentModal = (props: {
         </DialogContent>
       </Form>
     </Dialog>
-  );
-};
-
-const TextInput = <
-  Schema extends FormSchema,
-  FieldPath extends RequiredPath,
->(props: {
-  form: FormStore<Schema>;
-  path: ValidPath<v.InferInput<Schema>, FieldPath>;
-  label: string;
-  placeholder?: string;
-}) => {
-  const id = useId();
-  const field = useField(props.form, { path: props.path });
-
-  return (
-    <Field data-invalid={field.errors !== null}>
-      <FieldLabel htmlFor={id}>{props.label}</FieldLabel>
-      <Input
-        {...field.props}
-        id={id}
-        name={props.path.join(".")}
-        placeholder={props.placeholder}
-        value={(field.input as string | number | string[] | undefined) ?? ""}
-        aria-invalid={field.errors !== null}
-        aria-errormessage={`${id}-error`}
-      />
-      {field.errors && (
-        <FieldError
-          errors={field.errors.map((message) => ({ message }))}
-          id={`${id}-error`}
-        />
-      )}
-    </Field>
   );
 };
 

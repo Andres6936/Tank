@@ -1,5 +1,5 @@
-import { useId } from "react";
 import { useField } from "@formisch/react";
+import { useId } from "react";
 
 import * as v from "valibot";
 
@@ -10,8 +10,8 @@ import type {
   ValidPath,
 } from "@formisch/react";
 
-import { Input } from "~/components/ui/input";
 import { Field, FieldError, FieldLabel } from "~/components/ui/field";
+import { Input } from "~/components/ui/input";
 
 const TextInput = <
   Schema extends FormSchema,
