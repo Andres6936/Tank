@@ -1,4 +1,18 @@
+import * as v from "valibot";
 import { cn } from "cn";
+import {
+  Form,
+  Field as FormischField,
+  useField,
+  useForm,
+} from "@formisch/react";
+import type {
+  FormSchema,
+  FormStore,
+  RequiredPath,
+  SubmitHandler,
+  ValidPath,
+} from "@formisch/react";
 
 import { Button } from "~/components/ui/button";
 import {
@@ -15,13 +29,32 @@ import {
   FieldLabel,
 } from "~/components/ui/field";
 import { Input } from "~/components/ui/input";
+import { useId } from "react";
 
-export function LoginForm({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+const FormSchema = v.object({
+  Email: v.pipe(v.string(), v.email()),
+  Password: v.pipe(v.string(), v.minLength(8)),
+});
+
+export function LoginForm() {
+  const formId = useId();
+  const form = useForm({
+    schema: FormSchema,
+    initialInput: {
+      Email: "",
+      Password: "",
+    },
+  });
+
+  const onSubmit: SubmitHandler<typeof FormSchema> = (values) => {};
+
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
+    <Form
+      of={form}
+      id={formId}
+      className={cn("flex flex-col gap-6")}
+      onSubmit={onSubmit}
+    >
       <Card>
         <CardHeader>
           <CardTitle>Login to your account</CardTitle>
@@ -66,6 +99,6 @@ export function LoginForm({
           </form>
         </CardContent>
       </Card>
-    </div>
+    </Form>
   );
 }
