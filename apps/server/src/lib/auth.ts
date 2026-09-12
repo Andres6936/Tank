@@ -14,7 +14,11 @@ import {
 const { sql } = getSQLClients();
 
 export const auth = betterAuth({
-  experimental: { joins: true },
+  advanced: {
+    database: {
+      joins: true,
+    },
+  },
   emailAndPassword: { enabled: true },
   database: drizzleAdapter(sql, {
     provider: "sqlite",
