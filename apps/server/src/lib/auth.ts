@@ -14,6 +14,7 @@ import {
 const { sql } = getSQLClients();
 
 export const auth = betterAuth({
+  baseURL: `http://localhost:${process.env.SERVER_PORT}`,
   advanced: {
     database: {
       joins: true,
