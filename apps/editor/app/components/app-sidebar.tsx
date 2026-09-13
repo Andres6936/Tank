@@ -122,7 +122,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <TerminalIcon className="size-4" />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">Escriba 2026</span>
+                <span className="truncate font-medium">Escriba</span>
                 <span className="truncate text-xs">Personal</span>
               </div>
             </SidebarMenuButton>
