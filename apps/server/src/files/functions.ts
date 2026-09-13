@@ -30,7 +30,7 @@ export default {
     const [exists, id] = await existPath(Path);
     if (exists) {
       return asPayload(409, {
-        message: `File already exists with Id: ${id}`,
+        message: `File already exists with Id: ${id} and Path: ${Path}`,
       });
     }
 
