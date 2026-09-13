@@ -63,7 +63,7 @@ const getFileMaybe = async (id: string) => {
   return row;
 };
 
-const insertFile = async (schema: PartialFileType) => {
+const insertFile = async (schema: PartialFileType & { SHA256: string }) => {
   return await sql
     .insert(FilesTable)
     .values({
@@ -71,6 +71,9 @@ const insertFile = async (schema: PartialFileType) => {
       Path: schema.Path,
       Mimetype: schema.Mimetype,
       Bucket: BucketsAvailable.Private,
+      Metadata: {
+        SHA256: schema.SHA256,
+      },
     })
     .returning({ Id: FilesTable.Id });
 };

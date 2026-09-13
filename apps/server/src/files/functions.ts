@@ -40,19 +40,18 @@ export default {
         ? args.Blob.type
         : (mime.lookup(Path) as string);
 
-    const [_, result] = await Promise.all([
-      writeFile({ Path, Blob: args.Blob }),
-      insertFile({
-        Name,
-        Path,
-        Mimetype,
-      }),
-    ]);
+    const { sha256 } = await writeFile({ Path, Blob: args.Blob });
+    const result = await insertFile({
+      Name,
+      Path,
+      Mimetype,
+      SHA256: sha256,
+    });
     const [row] = result;
     if (!row) {
       return asPayload(500, { message: "Failed to create file" });
     }
-    return asPayload(200, { Id: row.Id });
+    return asPayload(200, { Id: row.Id, SHA256: sha256 });
   },
   getById: async (args: InferArgs["getById"]) => {
     const file = await getFileMaybe(args);

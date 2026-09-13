@@ -17,10 +17,11 @@ const getLinkFile = async (args: {
 };
 
 const writeFile = async (args: { Path: string; Blob: Blob | ArrayBuffer }) => {
-  return await privateVault.write(
-    args.Path,
-    args.Blob instanceof Blob ? await args.Blob.arrayBuffer() : args.Blob,
-  );
+  const buffer =
+    args.Blob instanceof Blob ? await args.Blob.arrayBuffer() : args.Blob;
+  const sha256 = Bun.SHA256.hash(buffer, "hex");
+  const bytesWritten = await privateVault.write(args.Path, buffer);
+  return { bytesWritten, sha256 };
 };
 
 const updateFile = async (args: {
