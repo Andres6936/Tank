@@ -390,6 +390,11 @@ const ActionSealDocument = () => {
             type: "success",
             title: "Document sealed",
           });
+        } else if (payload.statusCode === 409) {
+          toast.add({
+            type: "error",
+            title: "Already exist an document with the same subjet and title",
+          });
         } else {
           toast.add({
             type: "error",
