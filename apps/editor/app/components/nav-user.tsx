@@ -57,7 +57,18 @@ export function NavUser() {
   return <Menu user={user} />;
 }
 
-const Menu = (props: { user: typeof authClient.$Infer.Session.user }) => {
+type UserSession = typeof authClient.$Infer.Session.user
+
+const AvatarUser = ({user}: {user: UserSession}) => (
+  <Avatar>
+    {user.image && <AvatarImage src={user.image} alt={user.name} />}
+    <AvatarFallback>
+      {user.name.slice(0, 2).toUpperCase()}
+    </AvatarFallback>
+  </Avatar>
+)
+
+const Menu = (props: { user: UserSession) => {
   const { isMobile } = useSidebar();
   const user = props.user;
 
@@ -70,11 +81,7 @@ const Menu = (props: { user: typeof authClient.$Infer.Session.user }) => {
               <SidebarMenuButton size="lg" className="aria-expanded:bg-muted" />
             }
           >
-            <Avatar>
-              <AvatarFallback>
-                {user.name.slice(0, 2).toUpperCase()}
-              </AvatarFallback>
-            </Avatar>
+            <AvatarUser user={user} />
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-medium">{user.name}</span>
               <span className="truncate text-xs">{user.email}</span>
@@ -90,11 +97,7 @@ const Menu = (props: { user: typeof authClient.$Infer.Session.user }) => {
             <DropdownMenuGroup>
               <DropdownMenuLabel className="p-0 font-normal">
                 <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                  <Avatar>
-                    <AvatarFallback>
-                      {user.name.slice(0, 2).toUpperCase()}
-                    </AvatarFallback>
-                  </Avatar>
+                  <AvatarUser user={user} />
                   <div className="grid flex-1 text-left text-sm leading-tight">
                     <span className="truncate font-medium">{user.name}</span>
                     <span className="truncate text-xs">{user.email}</span>
