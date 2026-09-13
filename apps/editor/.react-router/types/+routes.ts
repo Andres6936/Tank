@@ -42,7 +42,7 @@ type RouteFiles = {
   };
   "routes/dashboard.tsx": {
     id: "routes/dashboard";
-    page: "/dashboard" | "/dashboard/documents" | "/dashboard/documents/view/:id";
+    page: "/dashboard";
   };
   "routes/document-home.tsx": {
     id: "routes/document-home";

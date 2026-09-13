@@ -57,7 +57,7 @@ const data = {
     },
     {
       title: "Invoices",
-      url: "/dasboard/invoices",
+      url: "/dashboard/invoices",
       icon: <BotIcon />,
       items: [
         {
@@ -76,7 +76,7 @@ const data = {
     },
     {
       title: "Documents",
-      url: "/dasboard/documents",
+      url: "/dashboard/documents",
       icon: <BookOpenIcon />,
       items: [],
     },
