@@ -35,6 +35,7 @@ import { ConfirmationReloadModal } from "../modals/confirmation-reload";
 import { useAutosave } from "../hooks/useAutosave";
 import { Spinner } from "~/components/ui/spinner";
 import { asQueryPreview } from "../actions/preview";
+import { is } from "valibot";
 
 const ActionNewDocument = () => {
   const trpc = useTRPC();
@@ -375,7 +376,7 @@ const ActionReloadDocument = () => {
 
 const ActionSealDocument = () => {
   const trpc = useTRPC();
-  const { id, isSealed } = useViewContext();
+  const { id, isSealed, isDirty } = useViewContext();
 
   const mutation = useMutation(
     trpc.documents.seal.mutationOptions({
@@ -409,7 +410,7 @@ const ActionSealDocument = () => {
     mutation.mutate(id);
   };
 
-  const disabled = mutation.isPending || isSealed;
+  const disabled = mutation.isPending || isSealed || isDirty;
 
   return (
     <Tooltip>
