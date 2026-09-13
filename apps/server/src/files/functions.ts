@@ -86,18 +86,17 @@ export default {
         ? args.Blob.type
         : (mime.lookup(Path) as string);
 
-    const [_, result] = await Promise.all([
-      updateFileVault({
-        OldPath,
-        NewPath: Path,
-        Blob: args.Blob,
-      }),
-      updateFile(args.Id, {
-        Name,
-        Path,
-        Mimetype,
-      }),
-    ]);
+    const { sha256 } = await updateFileVault({
+      OldPath,
+      NewPath: Path,
+      Blob: args.Blob,
+    });
+    const result = await updateFile(args.Id, {
+      Name,
+      Path,
+      Mimetype,
+      SHA256: sha256,
+    });
     const [row] = result;
     if (!row) {
       return asPayload(500, { message: "Failed to update file" });

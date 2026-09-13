@@ -78,7 +78,10 @@ const insertFile = async (schema: PartialFileType & { SHA256: string }) => {
     .returning({ Id: FilesTable.Id });
 };
 
-const updateFile = async (id: string, schema: PartialFileType) => {
+const updateFile = async (
+  id: string,
+  schema: PartialFileType & { SHA256: string },
+) => {
   return await sql
     .update(FilesTable)
     .set({
@@ -86,6 +89,9 @@ const updateFile = async (id: string, schema: PartialFileType) => {
       Path: schema.Path,
       Mimetype: schema.Mimetype,
       Bucket: BucketsAvailable.Private,
+      Metadata: {
+        SHA256: schema.SHA256,
+      },
     })
     .where(eq(FilesTable.Id, id))
     .returning({ Id: FilesTable.Id });

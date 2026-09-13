@@ -32,6 +32,7 @@ const updateFile = async (args: {
   const isDifferentPath = args.OldPath !== args.NewPath;
   const buffer =
     args.Blob instanceof Blob ? await args.Blob.arrayBuffer() : args.Blob;
+  const sha256 = Bun.SHA256.hash(buffer, "hex");
   const promiseWrite = privateVault.write(args.NewPath, buffer);
 
   if (isDifferentPath) {
@@ -43,9 +44,10 @@ const updateFile = async (args: {
     // Cannot be inside of Promise.all, must be awaited separately
     await OldFile.delete();
 
-    return result;
+    return { sha256, bytesWritten: result };
   } else {
-    return await promiseWrite;
+    const bytesWritten = await promiseWrite;
+    return { sha256, bytesWritten };
   }
 };
 
