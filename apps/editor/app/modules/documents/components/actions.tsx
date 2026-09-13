@@ -374,14 +374,48 @@ const ActionReloadDocument = () => {
 };
 
 const ActionSealDocument = () => {
-  const { isSealed } = useViewContext();
+  const trpc = useTRPC();
+  const { id, isSealed } = useViewContext();
+
+  const mutation = useMutation(
+    trpc.documents.seal.mutationOptions({
+      onMutate: (_, context) => {
+        context.client.invalidateQueries({
+          queryKey: trpc.documents.getById.queryKey(id),
+        });
+      },
+      onSuccess: (payload) => {
+        if (payload.statusCode === 200) {
+          toast.add({
+            type: "success",
+            title: "Document sealed",
+          });
+        } else {
+          toast.add({
+            type: "error",
+            title: "Failed to seal document",
+          });
+        }
+      },
+    }),
+  );
+
+  const onPress = () => {
+    mutation.mutate(id);
+  };
+
+  const disabled = mutation.isPending || isSealed;
 
   return (
     <Tooltip>
       <TooltipTrigger
         render={
-          <Button className="min-w-20" disabled={isSealed}>
-            <Stamp strokeWidth={1.5} />
+          <Button className="min-w-20" onClick={onPress} disabled={disabled}>
+            {mutation.isPending ? (
+              <Spinner strokeWidth={1} />
+            ) : (
+              <Stamp strokeWidth={1.5} />
+            )}
             {isSealed ? "Already Sealed" : "Seal"}
           </Button>
         }
