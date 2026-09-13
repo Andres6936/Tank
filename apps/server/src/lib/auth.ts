@@ -16,7 +16,8 @@ const { sql } = getSQLClients();
 export const auth = betterAuth({
   baseURL: `http://localhost:${process.env.SERVER_PORT}`,
   trustedOrigins: [
-    process.env.NODE_ENV === "development" ? "http://localhost:5173" : "", // Vite dev server
+    process.env.NODE_ENV === "development" ? "http://localhost:5173" : "", // Vite dev server,
+    "https://editor.andres6936.dev",
   ],
   advanced: {
     database: {
