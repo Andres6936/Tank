@@ -2,8 +2,12 @@ import { sqliteTable, text, index } from "drizzle-orm/sqlite-core";
 import { defaultId, withISODate } from "./default";
 
 const defaultColumns = {
-  Metadata: text().notNull().default("{}"),
+  UpdatedAt: withISODate("UpdatedAt"),
   CreatedAt: withISODate("CreatedAt"),
+};
+
+export type FileTableMetadata = {
+  SHA256: string;
 };
 
 export const FilesTable = sqliteTable("Files", {
@@ -12,6 +16,7 @@ export const FilesTable = sqliteTable("Files", {
   Bucket: text().notNull(),
   Mimetype: text().notNull(),
   Path: text().notNull().unique(),
+  Metadata: text({ mode: "json" }).notNull().$type<FileTableMetadata>(),
   ...defaultColumns,
 });
 
@@ -19,6 +24,8 @@ export const TypeStateDocument = sqliteTable("TypeStateDocument", {
   Type: text().primaryKey().notNull(),
   Metadata: text().notNull().default("{}"),
 });
+
+export type DocumentsTableMetadata = {};
 
 export const DocumentsTable = sqliteTable(
   "Documents",
@@ -31,7 +38,7 @@ export const DocumentsTable = sqliteTable(
       .notNull()
       .references(() => TypeStateDocument.Type),
     FileId: text().references(() => FilesTable.Id, { onDelete: "cascade" }),
-    UpdatedAt: withISODate("UpdatedAt"),
+    Metadata: text({ mode: "json" }).notNull().$type<DocumentsTableMetadata>(),
     ...defaultColumns,
   },
   (table) => [index("Document_FileId").on(table.FileId)],

@@ -77,16 +77,3 @@ CREATE TABLE `Verifications` (
 	`CreatedAt` integer DEFAULT (cast(unixepoch('subsecond') * 1000 as integer)) NOT NULL,
 	`UpdatedAt` integer DEFAULT (cast(unixepoch('subsecond') * 1000 as integer)) NOT NULL
 );
---> statement-breakpoint
-CREATE INDEX `Verifications_identifier_idx` ON `Verifications` (`Identifier`);--> statement-breakpoint
-CREATE TABLE `Files` (
-	`Id` text PRIMARY KEY DEFAULT (uuid7()) NOT NULL,
-	`Name` text NOT NULL,
-	`Bucket` text NOT NULL,
-	`Mimetype` text NOT NULL,
-	`Path` text NOT NULL,
-	`Metadata` text DEFAULT '{}' NOT NULL,
-	`CreatedAt` text DEFAULT (time_fmt_iso(time_now())) NOT NULL
-);
---> statement-breakpoint
-CREATE UNIQUE INDEX `Files_Path_unique` ON `Files` (`Path`);
