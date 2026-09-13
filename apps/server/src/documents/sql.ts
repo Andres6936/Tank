@@ -159,6 +159,7 @@ const create = async (document: InferArgs["create"]) => {
       Subject: document.Subject,
       Content: await formatXML(content),
       TypeState: TypeStateDocumentKeys.Draft,
+      Metadata: {},
     })
     .returning();
 
