@@ -54,7 +54,7 @@ const ActionNewDocument = () => {
             title: "Document created successfully",
           });
           const { Id } = payload.body;
-          navigate(`/documents/view/${Id}`);
+          navigate(`/dashboard/documents/view/${Id}`);
         } else {
           toast.add({
             type: "error",

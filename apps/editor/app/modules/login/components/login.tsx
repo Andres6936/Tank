@@ -57,7 +57,7 @@ export function LoginForm() {
       const response = await authClient.signIn.email({
         email: Email,
         password: Password,
-        callbackURL: "/documents",
+        callbackURL: "/dashboard",
         rememberMe: true,
       });
       if (response.error) throw response.error;
