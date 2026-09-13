@@ -416,18 +416,24 @@ const ActionSealDocument = () => {
     <Tooltip>
       <TooltipTrigger
         render={
-          <Button className="min-w-20" onClick={onPress} disabled={disabled}>
-            {mutation.isPending ? (
-              <Spinner strokeWidth={1} />
-            ) : (
-              <Stamp strokeWidth={1.5} />
-            )}
-            {isSealed ? "Already Sealed" : "Seal"}
-          </Button>
+          <span tabIndex={0}>
+            <Button className="min-w-20" onClick={onPress} disabled={disabled}>
+              {mutation.isPending ? (
+                <Spinner strokeWidth={1} />
+              ) : (
+                <Stamp strokeWidth={1.5} />
+              )}
+              {isSealed ? "Already Sealed" : "Seal"}
+            </Button>
+          </span>
         }
       />
       <TooltipContent>
-        <p>Seal document</p>
+        {isDirty ? (
+          <p>Save the document before sealing</p>
+        ) : (
+          <p>Seal document</p>
+        )}
       </TooltipContent>
     </Tooltip>
   );
