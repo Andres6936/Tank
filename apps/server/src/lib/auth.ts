@@ -19,11 +19,6 @@ export const auth = betterAuth({
     process.env.NODE_ENV === "development" ? "http://localhost:5173" : "", // Vite dev server,
     "https://editor.andres6936.dev",
   ],
-  advanced: {
-    database: {
-      joins: true,
-    },
-  },
   emailAndPassword: { enabled: true },
   database: drizzleAdapter(sql, {
     provider: "sqlite",

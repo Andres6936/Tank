@@ -129,14 +129,14 @@ export const UsersRelations = relations(Users, ({ many }) => ({
 }));
 
 export const SessionsRelations = relations(Sessions, ({ one }) => ({
-  Users: one(Users, {
+  users: one(Users, {
     fields: [Sessions.userId],
     references: [Users.id],
   }),
 }));
 
 export const AccountsRelations = relations(Accounts, ({ one }) => ({
-  Users: one(Users, {
+  users: one(Users, {
     fields: [Accounts.userId],
     references: [Users.id],
   }),
