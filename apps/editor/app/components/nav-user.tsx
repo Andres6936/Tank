@@ -57,18 +57,16 @@ export function NavUser() {
   return <Menu user={user} />;
 }
 
-type UserSession = typeof authClient.$Infer.Session.user
+type UserSession = typeof authClient.$Infer.Session.user;
 
-const AvatarUser = ({user}: {user: UserSession}) => (
+const AvatarUser = ({ user }: { user: UserSession }) => (
   <Avatar>
     {user.image && <AvatarImage src={user.image} alt={user.name} />}
-    <AvatarFallback>
-      {user.name.slice(0, 2).toUpperCase()}
-    </AvatarFallback>
+    <AvatarFallback>{user.name.slice(0, 2).toUpperCase()}</AvatarFallback>
   </Avatar>
-)
+);
 
-const Menu = (props: { user: UserSession) => {
+const Menu = (props: { user: UserSession }) => {
   const { isMobile } = useSidebar();
   const user = props.user;
 
