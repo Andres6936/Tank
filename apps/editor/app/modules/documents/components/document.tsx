@@ -13,7 +13,9 @@ const Options = ({ Id }: { Id: string }) => {
           variant="outline"
           size="icon"
           nativeButton={false}
-          render={(props) => <Link {...props} to={`/documents/view/${Id}`} />}
+          render={(props) => (
+            <Link {...props} to={`/dashboard/documents/view/${Id}`} />
+          )}
         >
           <Play size={18} strokeWidth={1} />
         </Button>
