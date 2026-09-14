@@ -11,11 +11,12 @@
   },
   "types": "./dist/entry.d.ts",
   "scripts": {
-    "dev": "concurrently --names Server,Worker -c green,blue  \"bun run server:hot\" \"bun run worker\"",
+    "dev": "concurrently --names Server,Worker -c green,blue  \"bun run server:hot\" \"bun run worker:hot\"",
     "start": "concurrently --names Server,Worker -c green,blue  \"bun run server\" \"bun run worker\"",
     "server": "bun run index",
     "server:hot": "bun run --hot index",
     "worker": "bunx @openworkflow/cli worker start",
+    "worker:hot": "bunx @openworkflow/cli worker start --watch",
     "build": "bunx rslib build --tsconfig tsconfig.build.json",
     "schema:generate": "drizzle-kit generate && bun run seed"
   },
