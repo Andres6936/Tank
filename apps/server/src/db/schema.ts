@@ -22,7 +22,7 @@ export const FilesTable = sqliteTable("Files", {
 
 export const TypeStateDocument = sqliteTable("TypeStateDocument", {
   Type: text().primaryKey().notNull(),
-  Metadata: text().notNull().default("{}"),
+  Metadata: text({ mode: "json" }).notNull(),
 });
 
 export type DocumentsTableMetadata = {};
@@ -38,8 +38,26 @@ export const DocumentsTable = sqliteTable(
       .notNull()
       .references(() => TypeStateDocument.Type),
     FileId: text().references(() => FilesTable.Id, { onDelete: "cascade" }),
+    ThumbnailId: text().references(() => ThumbnailsTable.Id, {
+      onDelete: "set null",
+    }),
     Metadata: text({ mode: "json" }).notNull().$type<DocumentsTableMetadata>(),
     ...defaultColumns,
   },
   (table) => [index("Document_FileId").on(table.FileId)],
 );
+
+export type ThumbnailsTableMetadata = {};
+
+export const ThumbnailsTable = sqliteTable("Thumbnails", {
+  Id: defaultId,
+  LowFileId: text().references(() => FilesTable.Id, {
+    onDelete: "cascade",
+  }),
+  HighFileId: text().references(() => FilesTable.Id, {
+    onDelete: "cascade",
+  }),
+  PlacelholderHash: text().notNull(),
+  Metadata: text({ mode: "json" }).notNull().$type<ThumbnailsTableMetadata>(),
+  ...defaultColumns,
+});
