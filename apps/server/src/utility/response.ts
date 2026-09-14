@@ -11,6 +11,10 @@ const isError = <P extends ActionResult<number, any>>(
 
 const retrow = <T>(payload: T) => payload;
 
+const unwrap = <P extends ActionResult<number, unknown>>(
+  payload: P,
+): P["body"] => payload.body;
+
 const asPayload = <const T extends number, Q>(status: T, payload: Q) => ({
   statusCode: status,
   body: payload,
@@ -57,4 +61,4 @@ const handle =
     }
   };
 
-export { handle, isError, retrow, asPayload };
+export { handle, isError, retrow, unwrap, asPayload };
