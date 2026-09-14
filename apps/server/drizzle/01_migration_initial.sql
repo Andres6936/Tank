@@ -12,6 +12,17 @@ CREATE TABLE `Files` (
 );
 --> statement-breakpoint
 CREATE UNIQUE INDEX `Files_Path_unique` ON `Files` (`Path`);
+CREATE TABLE `Thumbnails` (
+	`Id` text PRIMARY KEY DEFAULT (uuid7()) NOT NULL,
+	`LowFileId` text,
+	`HighFileId` text,
+	`PlacelholderHash` text NOT NULL,
+	`Metadata` text NOT NULL,
+	`UpdatedAt` text DEFAULT (time_fmt_iso(time_now())) NOT NULL,
+	`CreatedAt` text DEFAULT (time_fmt_iso(time_now())) NOT NULL,
+	FOREIGN KEY (`LowFileId`) REFERENCES `Files`(`Id`) ON UPDATE no action ON DELETE cascade,
+	FOREIGN KEY (`HighFileId`) REFERENCES `Files`(`Id`) ON UPDATE no action ON DELETE cascade
+);
 
 CREATE TABLE `Documents` (
 	`Id` text PRIMARY KEY DEFAULT (uuid7()) NOT NULL,
@@ -20,11 +31,13 @@ CREATE TABLE `Documents` (
 	`Content` text NOT NULL,
 	`TypeState` text NOT NULL,
 	`FileId` text,
+	`ThumbnailId` text,
 	`Metadata` text NOT NULL,
 	`CreatedAt` text DEFAULT (time_fmt_iso(time_now())) NOT NULL,
 	`UpdatedAt` text DEFAULT (time_fmt_iso(time_now())) NOT NULL,
 	FOREIGN KEY (`TypeState`) REFERENCES `TypeStateDocument`(`Type`) ON UPDATE no action ON DELETE no action,
-	FOREIGN KEY (`FileId`) REFERENCES `Files`(`Id`) ON UPDATE no action ON DELETE cascade
+	FOREIGN KEY (`FileId`) REFERENCES `Files`(`Id`) ON UPDATE no action ON DELETE cascade,
+	FOREIGN KEY (`ThumbnailId`) REFERENCES `Thumbnails`(`Id`) ON UPDATE no action ON DELETE set null
 );
 --> statement-breakpoint
 CREATE INDEX `Document_FileId` ON `Documents` (`FileId`);--> statement-breakpoint
