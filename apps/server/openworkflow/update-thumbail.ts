@@ -3,14 +3,11 @@ import { renderPageAsImage } from "unpdf";
 import { defineWorkflow } from "openworkflow";
 
 import { retrow, isError, unwrap } from "~/utility/response";
+import { getVaultsClients } from "~/config/clients-vault";
 
 import thumbnails from "~/thumbnails/functions";
 import documents from "~/documents/functions";
 import files from "~/files/functions";
-
-import { getVaultsClients } from "~/config/clients-vault";
-
-const { privateVault } = getVaultsClients();
 
 export const updateThumbail = defineWorkflow(
   {
@@ -40,6 +37,7 @@ export const updateThumbail = defineWorkflow(
     const file = unwrap(resultFile);
 
     const thumbnailBuffer = await step.run({ name: "get-thumbnail" }, () => {
+      const { privateVault } = getVaultsClients();
       const buffer = await privateVault.file(file.Path).arrayBuffer();
       return await renderPageAsImage(buffer, 1, {
         canvasImport: () => import("@napi-rs/canvas"),
