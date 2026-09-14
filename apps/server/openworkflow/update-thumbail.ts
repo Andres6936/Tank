@@ -17,7 +17,7 @@ export const updateThumbail = defineWorkflow(
     }),
   },
   async ({ input, step }) => {
-    const result = await step.run({ name: "get-document" }, () => {
+    const result = await step.run({ name: "get-document" }, async () => {
       return await documents.getById(input.DocumentId);
     });
     if (isError(result)) return retrow(result);
@@ -30,24 +30,27 @@ export const updateThumbail = defineWorkflow(
       };
     }
 
-    const resultFile = await step.run({ name: "get-file" }, () => {
+    const resultFile = await step.run({ name: "get-file" }, async () => {
       return await files.getById(FileId);
     });
     if (isError(resultFile)) return retrow(resultFile);
     const file = unwrap(resultFile);
 
-    const thumbnailBuffer = await step.run({ name: "get-thumbnail" }, () => {
-      const { privateVault } = getVaultsClients();
-      const buffer = await privateVault.file(file.Path).arrayBuffer();
-      return await renderPageAsImage(buffer, 1, {
-        canvasImport: () => import("@napi-rs/canvas"),
-        scale: 0.5,
-      });
-    });
+    const thumbnailBuffer = await step.run(
+      { name: "get-thumbnail" },
+      async () => {
+        const { privateVault } = getVaultsClients();
+        const buffer = await privateVault.file(file.Path).arrayBuffer();
+        return await renderPageAsImage(buffer, 1, {
+          canvasImport: () => import("@napi-rs/canvas"),
+          scale: 0.5,
+        });
+      },
+    );
 
     const { placeholder, optimize } = await step.run(
       { name: "optimize-thumbnail" },
-      () => {
+      async () => {
         const image = new Bun.Image(thumbnailBuffer);
         const placeholder = await image.placeholder();
         const optimize = await image.webp({ quality: 80 }).buffer();
@@ -61,7 +64,7 @@ export const updateThumbail = defineWorkflow(
 
     const resultThumbnail = await step.run(
       { name: "save-or-update-thumbnail" },
-      () => {
+      async () => {
         return await thumbnails.save({
           placeholder,
         });
@@ -69,7 +72,7 @@ export const updateThumbail = defineWorkflow(
     );
     if (isError(resultThumbnail)) return retrow(resultThumbnail);
 
-    await step.run({ name: "save-or-update-low-image" }, () => {});
+    await step.run({ name: "save-or-update-low-image" }, async () => {});
 
     return {
       statusCode: 200,
