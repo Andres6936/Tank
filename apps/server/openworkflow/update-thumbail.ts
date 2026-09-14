@@ -2,12 +2,15 @@ import { z } from "zod";
 import { renderPageAsImage } from "unpdf";
 import { defineWorkflow } from "openworkflow";
 
-import { retrow, isError, unwrap } from "~/utility/response";
-import { getVaultsClients } from "~/config/clients-vault";
+// Note: OpenWorkflow not allow the path alias, workaround: use realtive imports
+import { retrow, isError, unwrap } from "../src/utility/response";
+import { getVaultsClients } from "../src/config/clients-vault";
+import { optimizerImage } from "../src/utility/optimizer";
 
-import thumbnails from "~/thumbnails/functions";
-import documents from "~/documents/functions";
-import files from "~/files/functions";
+// Note: OpenWorkflow not allow the path alias, workaround: use realtive imports
+import thumbnails from "../src/thumbnails/functions";
+import documents from "../src/documents/functions";
+import files from "../src/files/functions";
 
 export const updateThumbail = defineWorkflow(
   {
@@ -51,14 +54,7 @@ export const updateThumbail = defineWorkflow(
     const { placeholder, optimize } = await step.run(
       { name: "optimize-thumbnail" },
       async () => {
-        const image = new Bun.Image(thumbnailBuffer);
-        const placeholder = await image.placeholder();
-        const optimize = await image.webp({ quality: 80 }).buffer();
-
-        return {
-          placeholder,
-          optimize,
-        };
+        return await optimizerImage(thumbnailBuffer);
       },
     );
 
