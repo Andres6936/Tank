@@ -9,6 +9,7 @@ for (const Type of Object.values(TypeStateDocumentKeys)) {
     .insert(TypeStateDocument)
     .values({
       Type,
+      Metadata: {},
     })
     .onConflictDoNothing();
 }
