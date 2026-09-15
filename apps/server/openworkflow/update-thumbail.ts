@@ -2,15 +2,13 @@ import { z } from "zod";
 import { renderPageAsImage } from "unpdf";
 import { defineWorkflow } from "openworkflow";
 
-// Note: OpenWorkflow not allow the path alias, workaround: use realtive imports
-import { retrow, isError, unwrap } from "../src/utility/response";
-import { getVaultsClients } from "../src/config/clients-vault";
-import { optimizerImage } from "../src/utility/optimizer";
+import { retrow, isError, unwrap } from "~/utility/response";
+import { getVaultsClients } from "~/config/clients-vault";
+import { optimizerImage } from "~/utility/optimizer";
 
-// Note: OpenWorkflow not allow the path alias, workaround: use realtive imports
-import thumbnails from "../src/thumbnails/functions";
-import documents from "../src/documents/functions";
-import files from "../src/files/functions";
+import thumbnails from "~/thumbnails/functions";
+import documents from "~/documents/functions";
+import files from "~/files/functions";
 
 export const updateThumbail = defineWorkflow(
   {
