@@ -329,5 +329,12 @@
         <Text bold="1">Otrosí No. 4</Text> al contrato principal.
       </Paragraph>
     </Section>
+
+    <SignSection hiddenTitle="1">
+      <SignRow>
+        <SignPadLeft signBy="Yomaira Beytar Florez, Representante REAM" />
+        <SignMeRight />
+      </SignRow>
+    </SignSection>
   </Paginate>
 </Document>
