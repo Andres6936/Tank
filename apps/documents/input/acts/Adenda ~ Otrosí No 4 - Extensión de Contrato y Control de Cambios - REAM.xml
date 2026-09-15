@@ -77,16 +77,17 @@
       </Title>
       <Paragraph>
         Se adiciona al alcance del Contrato Principal el desarrollo contenido en
-        el documento anexo "Control de Cambios No. 1". De manera expresa, se
-        establece que las especificaciones funcionales contenidas única y
-        exclusivamente en las
+        el documento anexo "Control de Cambios No. 1" identificado con el serial
+        <Bold>01A0A672-C792E2DC52AF</Bold> referenciado de ahora en adelante
+        como "Control de Cambios No. 1". De manera expresa, se establece que las
+        especificaciones funcionales contenidas única y exclusivamente en las
         <Text bold="1"> Secciones 1, 2 y 3</Text> de dicho documento constituyen
         el alcance total acordado y el único criterio de referencia válido para
         el desarrollo, las pruebas y la aceptación final.
       </Paragraph>
     </Section>
 
-    <Section wrap="1">
+    <Section wrap="0">
       <Title size="xs" textAlign="left">
         CLÁUSULA SEGUNDA - ESQUEMA DE PAGOS CONDICIONADO:
       </Title>
@@ -159,7 +160,7 @@
       </Paragraph>
     </Section>
 
-    <Section wrap="1">
+    <Section wrap="0">
       <Title size="xs" textAlign="left">
         CLÁUSULA CUARTA - VIGENCIA DE LAS DEMÁS CLÁUSULAS:
       </Title>
