@@ -76,8 +76,29 @@ export const updateThumbail = defineWorkflow(
             lowFileId: Id,
           });
         } else {
+          const dirname = path.posix.dirname(file.Path);
+          const name = path.posix.basename(
+            file.Path,
+            path.posix.extname(file.Path),
+          );
+          const pathname = path.posix.join(
+            "/Thumbnails/",
+            dirname,
+            name,
+            "Low.webp",
+          );
+
+          const resultSaveThumbnailVault = await files.public.save({
+            Path: pathname,
+            Blob: optimize,
+          });
+          if (isError(resultSaveThumbnailVault))
+            return retrow(resultSaveThumbnailVault);
+          const thumbnailVaul = unwrap(resultSaveThumbnailVault);
+
           const resultSaveThumbnail = await thumbnails.save({
             placeholder,
+            lowFileId: thumbnailVaul.Id,
           });
           if (isError(resultSaveThumbnail)) return retrow(resultSaveThumbnail);
           const { Id } = unwrap(resultSaveThumbnail);

@@ -4,11 +4,12 @@ import { eq } from "drizzle-orm";
 
 const { sql } = getSQLClients();
 
-const save = async (args: { placeholder: string }) => {
+const save = async (args: { placeholder: string; lowFileId: string }) => {
   const result = await sql
     .insert(ThumbnailsTable)
     .values({
       PlacelholderHash: args.placeholder,
+      LowFileId: args.lowFileId,
       Metadata: {},
     })
     .returning({ Id: ThumbnailsTable.Id });
