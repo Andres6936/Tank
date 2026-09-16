@@ -112,4 +112,9 @@ export default {
     if (!result) return asPayload(500, { message: "Failed to update" });
     return asPayload(200, result);
   },
+  updateThumbail: async (args: InferArgs["updateThumbail"]) => {
+    const result = await sql.updateThumbail(args.Id, args.ThumbnailId);
+    if (!result) return asPayload(500, { message: "Failed to update" });
+    return asPayload(200, result);
+  },
 };

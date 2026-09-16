@@ -22,7 +22,7 @@ export const updateThumbail = defineWorkflow(
       return await documents.getById(input.DocumentId);
     });
     if (isError(result)) return retrow(result);
-    const { FileId } = unwrap(result);
+    const { FileId, ThumbnailId } = unwrap(result);
 
     if (!FileId) {
       return {
@@ -42,14 +42,29 @@ export const updateThumbail = defineWorkflow(
       async () => {
         const { privateVault } = getVaultsClients();
         const buffer = await privateVault.file(file.Path).arrayBuffer();
-        const thumbnailBuffer = await renderPageAsImage(buffer, 1, {
+        const thumbnail = await renderPageAsImage(buffer, 1, {
           canvasImport: () => import("@napi-rs/canvas"),
           scale: 0.5,
         });
-        const { placeholder, optimize } = await optimizerImage(thumbnailBuffer);
-        return await thumbnails.save({
-          placeholder,
-        });
+        const { placeholder, optimize } = await optimizerImage(thumbnail);
+
+        // If exist thumbail, update it, otherwise save a new one
+        if (ThumbnailId) {
+          return await thumbnails.update({
+            id: ThumbnailId,
+            placeholder,
+          });
+        } else {
+          const resultSaveThumbnail = await thumbnails.save({
+            placeholder,
+          });
+          if (isError(resultSaveThumbnail)) return retrow(resultSaveThumbnail);
+          const { Id } = unwrap(resultSaveThumbnail);
+          return await documents.updateThumbail({
+            Id: input.DocumentId,
+            ThumbnailId: Id,
+          });
+        }
       },
     );
     if (isError(resultThumbnail)) return retrow(resultThumbnail);

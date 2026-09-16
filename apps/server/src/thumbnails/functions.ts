@@ -12,4 +12,12 @@ export default {
       });
     return asPayload(200, result);
   },
+  update: async (args: InferArgs["update"]) => {
+    const result = await sql.update(args);
+    if (!result)
+      return asPayload(403, {
+        message: "Cannot update the thumbnail",
+      });
+    return asPayload(200, result);
+  },
 };

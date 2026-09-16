@@ -2,6 +2,7 @@ import { z } from "zod";
 import { PaginateSchema } from "~/schemas/general";
 
 import schemas from "./schemas";
+import { updateThumbail } from "../../openworkflow/update-thumbail";
 
 export const Args = {
   getAll: z.optional(PaginateSchema),
@@ -30,6 +31,10 @@ export const Args = {
       Content: true,
     })
     .required(),
+  updateThumbail: z.object({
+    Id: z.uuid(),
+    ThumbnailId: z.uuid(),
+  }),
 };
 
 export type InferArgs = {

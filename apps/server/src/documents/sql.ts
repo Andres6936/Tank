@@ -195,6 +195,26 @@ const updateContent = async (
   return row;
 };
 
+const updateThumbail = async (id: string, thumbnailId: string) => {
+  const result = await sql
+    .update(DocumentsTable)
+    .set({
+      ThumbnailId: thumbnailId,
+    })
+    .where(eq(DocumentsTable.Id, id))
+    .returning({
+      Id: DocumentsTable.Id,
+      ThumbnailId: DocumentsTable.ThumbnailId,
+    });
+
+  if (result.length === 0) {
+    return null;
+  }
+
+  const [row] = result;
+  return row!;
+};
+
 const updateTitleAndSubjet = async (
   id: string,
   args: {
@@ -238,6 +258,7 @@ export {
   getSubjetAndTitleById,
   create,
   updateContent,
+  updateThumbail,
   updateTitleAndSubjet,
   updateFileLinkAndSeal,
 };
