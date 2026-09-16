@@ -3,7 +3,7 @@ import { z } from "zod";
 import { PaginateSchema } from "~/schemas/general";
 import { SaveFileSchema, UpdateFileSchema } from "~/schemas/validate";
 
-export const Args = {
+export const PrivateArgs = {
   getAll: z.optional(PaginateSchema),
   save: SaveFileSchema,
   getById: z.uuid(),
@@ -15,6 +15,6 @@ export const Args = {
   deleteById: z.uuid(),
 };
 
-export type InferArgs = {
-  [K in keyof typeof Args]: z.infer<(typeof Args)[K]>;
+export type InferPrivateArgs = {
+  [K in keyof typeof PrivateArgs]: z.infer<(typeof PrivateArgs)[K]>;
 };
