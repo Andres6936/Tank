@@ -50,6 +50,10 @@ export default {
       const result = await getAll(args);
       return asPayload(200, result);
     },
+    getBufferByPath: async (args: InferPrivateArgs["getBufferByPath"]) => {
+      const buffer = await privateBucketFn.getBuffer({ Path: args });
+      return asPayload(200, buffer);
+    },
     save: async (args: InferPrivateArgs["save"]) => {
       const Path = path.posix.normalize(args.Path);
       const [exists, id] = await existPath(Path);

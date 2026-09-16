@@ -4,7 +4,6 @@ import { renderPageAsImage } from "unpdf";
 import { defineWorkflow } from "openworkflow";
 
 import { retrow, isError, unwrap } from "~/utility/response";
-import { getVaultsClients } from "~/config/clients-vault";
 import { optimizerImage } from "~/utility/optimizer";
 
 import thumbnails from "~/thumbnails/functions";
@@ -33,7 +32,7 @@ export const updateThumbail = defineWorkflow(
     }
 
     const resultFile = await step.run({ name: "get-file" }, async () => {
-      return await files.getById(FileId);
+      return await files.private.getById(FileId);
     });
     if (isError(resultFile)) return retrow(resultFile);
     const file = unwrap(resultFile);
@@ -41,8 +40,9 @@ export const updateThumbail = defineWorkflow(
     const resultThumbnail = await step.run(
       { name: "get-thumbnail" },
       async () => {
-        const { privateVault, publicVault } = getVaultsClients();
-        const buffer = await privateVault.file(file.Path).arrayBuffer();
+        const resultBuffer = await files.private.getBufferByPath(file.Path);
+        if (isError(resultBuffer)) return retrow(resultBuffer);
+        const buffer = unwrap(resultBuffer);
         const thumbnail = await renderPageAsImage(buffer, 1, {
           canvasImport: () => import("@napi-rs/canvas"),
           scale: 0.5,
@@ -53,12 +53,19 @@ export const updateThumbail = defineWorkflow(
         if (ThumbnailId) {
           const dirname = path.dirname(file.Path);
           const name = path.basename(file.Path, path.extname(file.Path));
-          const pathname = path.join(dirname, ".thumbnails/", name + ".webp");
+          const pathname = path.join("/Thumbnails/", dirname, name, "Low.webp");
 
-          await publicVault.write(pathname, optimize);
+          const resultSaveThumbnail = await files.public.save({
+            Path: pathname,
+            Blob: optimize,
+          });
+          if (isError(resultSaveThumbnail)) return retrow(resultSaveThumbnail);
+          const { Id } = unwrap(resultSaveThumbnail);
+
           return await thumbnails.update({
             id: ThumbnailId,
             placeholder,
+            lowFileId: Id,
           });
         } else {
           const resultSaveThumbnail = await thumbnails.save({

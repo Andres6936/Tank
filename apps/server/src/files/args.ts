@@ -7,6 +7,7 @@ export const PrivateArgs = {
   getAll: z.optional(PaginateSchema),
   save: SaveFileSchema,
   getById: z.uuid(),
+  getBufferByPath: z.string(),
   getLinkById: z.object({
     Id: z.uuid(),
     Download: z.boolean(),

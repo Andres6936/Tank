@@ -18,11 +18,16 @@ const save = async (args: { placeholder: string }) => {
   return row!;
 };
 
-const update = async (args: { id: string; placeholder: string }) => {
+const update = async (args: {
+  id: string;
+  placeholder: string;
+  lowFileId: string;
+}) => {
   const result = await sql
     .update(ThumbnailsTable)
     .set({
       PlacelholderHash: args.placeholder,
+      LowFileId: args.lowFileId,
     })
     .where(eq(ThumbnailsTable.Id, args.id))
     .returning({ Id: ThumbnailsTable.Id });

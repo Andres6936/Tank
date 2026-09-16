@@ -5,8 +5,9 @@ export const Args = {
     placeholder: z.string(),
   }),
   update: z.object({
-    id: z.string(),
+    id: z.uuid(),
     placeholder: z.string(),
+    lowFileId: z.uuid(),
   }),
 };
 

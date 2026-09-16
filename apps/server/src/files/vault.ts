@@ -15,6 +15,9 @@ const writeFile = async (args: {
 };
 
 const privateBucketFn = {
+  getBuffer: async (args: { Path: string }) => {
+    return await getVault(TypeBucketKeys.Private).file(args.Path).arrayBuffer();
+  },
   getLinkFile: async (args: {
     Path: string;
     Name: string;
