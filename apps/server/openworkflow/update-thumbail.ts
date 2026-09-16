@@ -1,4 +1,5 @@
 import { z } from "zod";
+import path from "node:path";
 import { renderPageAsImage } from "unpdf";
 import { defineWorkflow } from "openworkflow";
 
@@ -40,7 +41,7 @@ export const updateThumbail = defineWorkflow(
     const resultThumbnail = await step.run(
       { name: "get-thumbnail" },
       async () => {
-        const { privateVault } = getVaultsClients();
+        const { privateVault, publicVault } = getVaultsClients();
         const buffer = await privateVault.file(file.Path).arrayBuffer();
         const thumbnail = await renderPageAsImage(buffer, 1, {
           canvasImport: () => import("@napi-rs/canvas"),
@@ -50,6 +51,11 @@ export const updateThumbail = defineWorkflow(
 
         // If exist thumbail, update it, otherwise save a new one
         if (ThumbnailId) {
+          const dirname = path.dirname(file.Path);
+          const name = path.basename(file.Path, path.extname(file.Path));
+          const pathname = path.join(dirname, ".thumbnails/", name + ".webp");
+
+          await publicVault.write(pathname, optimize);
           return await thumbnails.update({
             id: ThumbnailId,
             placeholder,
