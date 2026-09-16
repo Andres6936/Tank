@@ -37,36 +37,22 @@ export const updateThumbail = defineWorkflow(
     if (isError(resultFile)) return retrow(resultFile);
     const file = unwrap(resultFile);
 
-    const thumbnailBuffer = await step.run(
+    const resultThumbnail = await step.run(
       { name: "get-thumbnail" },
       async () => {
         const { privateVault } = getVaultsClients();
         const buffer = await privateVault.file(file.Path).arrayBuffer();
-        return await renderPageAsImage(buffer, 1, {
+        const thumbnailBuffer = await renderPageAsImage(buffer, 1, {
           canvasImport: () => import("@napi-rs/canvas"),
           scale: 0.5,
         });
-      },
-    );
-
-    const { placeholder, optimize } = await step.run(
-      { name: "optimize-thumbnail" },
-      async () => {
-        return await optimizerImage(thumbnailBuffer);
-      },
-    );
-
-    const resultThumbnail = await step.run(
-      { name: "save-or-update-thumbnail" },
-      async () => {
+        const { placeholder, optimize } = await optimizerImage(thumbnailBuffer);
         return await thumbnails.save({
           placeholder,
         });
       },
     );
     if (isError(resultThumbnail)) return retrow(resultThumbnail);
-
-    await step.run({ name: "save-or-update-low-image" }, async () => {});
 
     return {
       statusCode: 200,
