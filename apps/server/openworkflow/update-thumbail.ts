@@ -51,9 +51,17 @@ export const updateThumbail = defineWorkflow(
 
         // If exist thumbail, update it, otherwise save a new one
         if (ThumbnailId) {
-          const dirname = path.dirname(file.Path);
-          const name = path.basename(file.Path, path.extname(file.Path));
-          const pathname = path.join("/Thumbnails/", dirname, name, "Low.webp");
+          const dirname = path.posix.dirname(file.Path);
+          const name = path.posix.basename(
+            file.Path,
+            path.posix.extname(file.Path),
+          );
+          const pathname = path.posix.join(
+            "/Thumbnails/",
+            dirname,
+            name,
+            "Low.webp",
+          );
 
           const resultSaveThumbnail = await files.public.save({
             Path: pathname,
