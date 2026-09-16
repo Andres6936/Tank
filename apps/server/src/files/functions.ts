@@ -14,9 +14,37 @@ import {
 import { writeFile, privateBucketFn } from "./vault";
 
 import { TypeBucketKeys } from "~/db/enums";
-import { type InferPrivateArgs } from "./args";
+import { type InferPrivateArgs, type InferPublicArgs } from "./args";
 
 export default {
+  public: {
+    save: async (args: InferPublicArgs["save"]) => {
+      const Path = path.posix.normalize(args.Path);
+      const Name = path.posix.basename(Path);
+      const Mimetype =
+        args.Blob instanceof Blob
+          ? args.Blob.type
+          : (mime.lookup(Path) as string);
+
+      const { sha256 } = await writeFile({
+        Path,
+        Blob: args.Blob,
+        TypeBucket: TypeBucketKeys.Public,
+      });
+      const result = await insertFile({
+        Name,
+        Path,
+        Mimetype,
+        Bucket: TypeBucketKeys.Public,
+        SHA256: sha256,
+      });
+      const [row] = result;
+      if (!row) {
+        return asPayload(500, { message: "Failed to create file" });
+      }
+      return asPayload(200, { Id: row.Id, SHA256: sha256 });
+    },
+  },
   private: {
     getAll: async (args: InferPrivateArgs["getAll"]) => {
       const result = await getAll(args);
@@ -46,6 +74,7 @@ export default {
         Name,
         Path,
         Mimetype,
+        Bucket: TypeBucketKeys.Private,
         SHA256: sha256,
       });
       const [row] = result;
@@ -96,6 +125,7 @@ export default {
         Name,
         Path,
         Mimetype,
+        Bucket: TypeBucketKeys.Private,
         SHA256: sha256,
       });
       const [row] = result;

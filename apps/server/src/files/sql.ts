@@ -1,15 +1,14 @@
 import { desc, eq } from "drizzle-orm";
 
 import { type PaginateType, defaultPagination } from "~/schemas/general";
-import { getSQLClients } from "../config/clients-sql";
-import { FilesTable } from "../db/schema";
-import { TypeBucketKeys } from "~/db/enums";
+import { getSQLClients } from "~/config/clients-sql";
+import { FilesTable } from "~/db/schema";
 
 const { sql } = getSQLClients();
 
 type PartialFileType = Pick<
   typeof FilesTable.$inferInsert,
-  "Name" | "Path" | "Mimetype"
+  "Name" | "Path" | "Mimetype" | "Bucket"
 >;
 
 const existPath = async (
@@ -69,7 +68,7 @@ const insertFile = async (schema: PartialFileType & { SHA256: string }) => {
       Name: schema.Name,
       Path: schema.Path,
       Mimetype: schema.Mimetype,
-      Bucket: TypeBucketKeys.Private,
+      Bucket: schema.Bucket,
       Metadata: {
         SHA256: schema.SHA256,
       },
@@ -87,7 +86,7 @@ const updateFile = async (
       Name: schema.Name,
       Path: schema.Path,
       Mimetype: schema.Mimetype,
-      Bucket: TypeBucketKeys.Private,
+      Bucket: schema.Bucket,
       Metadata: {
         SHA256: schema.SHA256,
       },

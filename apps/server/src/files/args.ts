@@ -18,3 +18,11 @@ export const PrivateArgs = {
 export type InferPrivateArgs = {
   [K in keyof typeof PrivateArgs]: z.infer<(typeof PrivateArgs)[K]>;
 };
+
+export const PublicArgs = {
+  save: SaveFileSchema,
+};
+
+export type InferPublicArgs = {
+  [K in keyof typeof PublicArgs]: z.infer<(typeof PublicArgs)[K]>;
+};
