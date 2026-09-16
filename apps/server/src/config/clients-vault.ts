@@ -1,7 +1,4 @@
-const BucketsAvailable = {
-  Private: "private",
-  Ephemeral: "ephemeral",
-} as const;
+import { TypeBucketKeys, type TypeBucketKeysType } from "~/db/enums";
 
 const getVaultsClients = () => {
   const publicVault = new Bun.S3Client({
@@ -32,4 +29,16 @@ const getVaultsClients = () => {
   };
 };
 
-export { BucketsAvailable, getVaultsClients };
+const getVault = (type: TypeBucketKeysType) => {
+  const { publicVault, privateVault, ephemeralVault } = getVaultsClients();
+  switch (type) {
+    case TypeBucketKeys.Private:
+      return privateVault;
+    case TypeBucketKeys.Ephemeral:
+      return ephemeralVault;
+    case TypeBucketKeys.Public:
+      return publicVault;
+  }
+};
+
+export { getVault };

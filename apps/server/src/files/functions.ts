@@ -11,13 +11,9 @@ import {
   insertFile,
   updateFile,
 } from "./sql";
-import {
-  deleteFile as deleteFileVault,
-  getLinkFile,
-  updateFile as updateFileVault,
-  writeFile,
-} from "./vault";
+import { writeFile, privateBucketFn } from "./vault";
 
+import { TypeBucketKeys } from "~/db/enums";
 import { type InferArgs } from "./args";
 
 export default {
@@ -40,7 +36,11 @@ export default {
         ? args.Blob.type
         : (mime.lookup(Path) as string);
 
-    const { sha256 } = await writeFile({ Path, Blob: args.Blob });
+    const { sha256 } = await writeFile({
+      Path,
+      Blob: args.Blob,
+      TypeBucket: TypeBucketKeys.Private,
+    });
     const result = await insertFile({
       Name,
       Path,
@@ -65,7 +65,7 @@ export default {
     if (!file) {
       return asPayload(404, { message: "Not found" });
     }
-    const link = await getLinkFile({
+    const link = await privateBucketFn.getLinkFile({
       Path: file.Path,
       Name: file.Name,
       Download: args.Download,
@@ -86,7 +86,7 @@ export default {
         ? args.Blob.type
         : (mime.lookup(Path) as string);
 
-    const { sha256 } = await updateFileVault({
+    const { sha256 } = await privateBucketFn.updateFile({
       OldPath,
       NewPath: Path,
       Blob: args.Blob,
@@ -110,7 +110,7 @@ export default {
     }
 
     const [_, result] = await Promise.all([
-      deleteFileVault({ Path: file.Path }),
+      privateBucketFn.deleteFile({ Path: file.Path }),
       deleteFile(args),
     ]);
     if (!result) {

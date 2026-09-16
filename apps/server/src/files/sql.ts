@@ -1,10 +1,9 @@
-import { z } from "zod";
-import { eq, desc } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 
-import { BucketsAvailable } from "../config/clients-vault";
+import { type PaginateType, defaultPagination } from "~/schemas/general";
 import { getSQLClients } from "../config/clients-sql";
 import { FilesTable } from "../db/schema";
-import { type PaginateType, defaultPagination } from "~/schemas/general";
+import { TypeBucketKeys } from "~/db/enums";
 
 const { sql } = getSQLClients();
 
@@ -70,7 +69,7 @@ const insertFile = async (schema: PartialFileType & { SHA256: string }) => {
       Name: schema.Name,
       Path: schema.Path,
       Mimetype: schema.Mimetype,
-      Bucket: BucketsAvailable.Private,
+      Bucket: TypeBucketKeys.Private,
       Metadata: {
         SHA256: schema.SHA256,
       },
@@ -88,7 +87,7 @@ const updateFile = async (
       Name: schema.Name,
       Path: schema.Path,
       Mimetype: schema.Mimetype,
-      Bucket: BucketsAvailable.Private,
+      Bucket: TypeBucketKeys.Private,
       Metadata: {
         SHA256: schema.SHA256,
       },
@@ -112,11 +111,11 @@ const deleteFile = async (id: string) => {
 };
 
 export {
-  existPath,
+  deleteFile,
   existFile,
+  existPath,
   getAll,
   getFileMaybe,
   insertFile,
   updateFile,
-  deleteFile,
 };
