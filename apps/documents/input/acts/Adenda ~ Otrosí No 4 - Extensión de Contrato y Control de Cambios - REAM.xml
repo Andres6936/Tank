@@ -2,7 +2,7 @@
   subject="Otrosí No. 4"
   title="Plataforma Residuos Ambientales"
   author="Joan Andrés Buriticá Salazar"
-  keywords="Otrosí, Extensión, Pago, Contrato, Blindaje, Liquidación"
+  keywords="Otrosí, Extensión, Pago, Contrato, Liquidación, Validación"
   creator="Joan Andrés Buriticá Salazar"
   producer="React PDF with Bun"
   language="es"
@@ -22,7 +22,7 @@
           Fecha de Elaboración:
           <S />
         </Text>
-        15 de septiembre de 2026
+        16 de septiembre de 2026
       </Text>
     </Section>
 
@@ -55,16 +55,11 @@
         "Control de Cambios No. 1", por un valor pactado de $366.618 COP.
       </BulletText>
       <BulletText>
-        <Text bold="1">3.</Text> Que las partes reconocen la existencia de un
-        saldo financiero consolidado a favor de EL CONTRATISTA por valor de
-        $2.788.214 COP, correspondiente a entregables previos y extensiones de
-        la Fase 1 (Otrosí No. 3).
-      </BulletText>
-      <BulletText>
-        <Text bold="1">4.</Text> Que, en aras de conciliar los intereses
-        operativos de EL CONTRATANTE y la seguridad financiera de EL
-        CONTRATISTA, se ha acordado un esquema de flexibilización de pagos
-        (50/50) que permita el cierre definitivo.
+        <Text bold="1">3.</Text> Que las partes reconocen la existencia de
+        valores económicos pendientes a favor de EL CONTRATISTA por valor de
+        $2.788.214 COP asociados a la Fase 1, cuya liquidación y pago, por mutuo
+        acuerdo de flexibilización, se unificará y sujetará a las condiciones de
+        entrega y validación del presente Otrosí.
       </BulletText>
       <Paragraph>
         Con base en lo anterior, las partes acuerdan las siguientes cláusulas:
@@ -78,102 +73,100 @@
       <Paragraph>
         Se adiciona al alcance del Contrato Principal el desarrollo contenido en
         el documento anexo "Control de Cambios No. 1" identificado con el serial
-        <Bold>01A0A672-C792E2DC52AF</Bold> referenciado de ahora en adelante
-        como "Control de Cambios No. 1". De manera expresa, se establece que las
-        especificaciones funcionales contenidas única y exclusivamente en las
-        <Text bold="1"> Secciones 1, 2 y 3</Text> de dicho documento constituyen
+        <Bold>01A0A672-C792E2DC52AF</Bold>. Las especificaciones funcionales
+        contenidas única y exclusivamente en las
+        <Text bold="1">Secciones 1, 2 y 3</Text> de dicho documento constituyen
         el alcance total acordado y el único criterio de referencia válido para
-        el desarrollo, las pruebas y la aceptación final.
+        el desarrollo, las pruebas y la validación de esta adición.
       </Paragraph>
     </Section>
 
     <Section wrap="0">
       <Title size="xs" textAlign="left">
-        CLÁUSULA SEGUNDA - ESQUEMA DE PAGOS CONDICIONADO:
+        CLÁUSULA SEGUNDA - ESQUEMA DE PAGOS Y CONDICIONES:
       </Title>
       <Paragraph>
-        Para garantizar la viabilidad del proyecto, las partes acuerdan unificar
-        la liquidación del saldo de la Fase 1 ($2.788.214 COP) y el valor del
-        Control de Cambios No. 1 ($366.618 COP), sumando una operación total de
-        $3.154.832 COP, la cual se ejecutará bajo el siguiente esquema estricto:
+        Para garantizar el cierre del proyecto, las partes acuerdan unificar el
+        pago pendiente de la Fase 1 ($2.788.214 COP) y el valor del Control de
+        Cambios No. 1 ($366.618 COP), sumando una operación total de $3.154.832
+        COP, la cual se ejecutará bajo el siguiente esquema:
       </Paragraph>
       <BulletText>
         <Text bold="1">HITO 1 (Anticipo Habilitante):</Text> EL CONTRATANTE
-        realizará un pago inmediato por la suma de
+        realizará un pago inicial por la suma de
         <Text bold="1"
           >UN MILLÓN TRESCIENTOS NOVENTA Y CUATRO MIL CIENTO SIETE PESOS M/CTE
           ($1.394.107 COP)</Text
-        >. Este desembolso constituye una
-        <Text bold="1">Condición Suspensiva</Text>; el cronograma de desarrollo
-        no iniciará hasta la confirmación de la recepción de estos fondos.
+        >. El cronograma de desarrollo del Control de Cambios iniciará a partir
+        del día hábil siguiente a la confirmación de este pago.
       </BulletText>
       <BulletText>
         <Text bold="1">HITO 2 (Liquidación Final Contra Entrega):</Text> Una vez
-        culminado el periodo de pruebas y obtenida la validación funcional, EL
-        CONTRATANTE deberá pagar en un plazo máximo e improrrogable de tres (3)
-        días hábiles la suma de
+        alcanzada la Validación Funcional Satisfactoria, y previa presentación
+        de la respectiva cuenta de cobro, EL CONTRATANTE pagará en un plazo
+        máximo de tres (3) días hábiles la suma de
         <Text bold="1"
           >UN MILLÓN SETECIENTOS SESENTA MIL SETECIENTOS VEINTICINCO PESOS M/CTE
           ($1.760.725 COP)</Text
-        >. Con este pago se declarará el cierre integral y definitivo de la Fase
-        1.
+        >, cerrando integralmente esta etapa del proyecto.
       </BulletText>
     </Section>
 
     <Section wrap="1">
       <Title size="xs" textAlign="left">
-        CLÁUSULA TERCERA - CRONOGRAMA, RESTRICCIÓN DE PRUEBAS Y ACEPTACIÓN
-        TÁCITA:
+        CLÁUSULA TERCERA - CRONOGRAMA Y MECANISMO DE VALIDACIÓN FUNCIONAL:
       </Title>
       <Paragraph>
-        El desarrollo y cierre se regirán por los siguientes tiempos y
-        condiciones innegociables:
+        El flujo operativo se regirá por los siguientes tiempos y condiciones:
       </Paragraph>
       <Indent gap="7pt">
         <BulletText>
           <Text bold="1">Desarrollo:</Text> Tres (3) días hábiles contados a
-          partir del día hábil siguiente a la confirmación del pago del HITO 1.
+          partir del día hábil siguiente a la confirmación del HITO 1.
         </BulletText>
         <BulletText>
-          <Text bold="1">Pruebas y Validación (QA):</Text> Dos (2) días hábiles
-          posteriores a la notificación de entrega en el entorno de producción.
+          <Text bold="1">Pruebas (QA):</Text> Dos (2) días hábiles posteriores a
+          la notificación de entrega en el entorno de producción.
         </BulletText>
       </Indent>
       <Paragraph>
-        <Text bold="1">Restricción Estricta de Pruebas:</Text> EL CONTRATANTE
-        acepta que el periodo de pruebas (QA) se aplicará
-        <Text bold="1">exclusiva y limitadamente</Text>
-        a validar el funcionamiento lógico de los estados, notificaciones y
-        bloqueos descritos en las Secciones 1, 2 y 3 del Control de Cambios No.
-        1. Observaciones relacionadas con elementos visuales (UI), módulos
-        previamente entregados, o reglas operativas no estipuladas literalmente
-        en dicho documento, no constituirán causal válida para rechazar la
-        entrega o retener el pago del HITO 2.
+        <Text bold="1">Validación Funcional Satisfactoria:</Text> EL CONTRATANTE
+        ejecutará sus pruebas enfocadas exclusivamente en el funcionamiento
+        lógico de los estados y bloqueos descritos en las Secciones 1, 2 y 3 del
+        Control de Cambios No. 1. Si durante los dos (2) días hábiles de QA se
+        presentan errores o inconsistencias sobre este alcance, EL CONTRATISTA
+        los corregirá sin costo adicional.
       </Paragraph>
       <Paragraph>
-        <Text bold="1">Aceptación Tácita:</Text> Vencidos los dos (2) días
-        hábiles de pruebas sin que EL CONTRATANTE reporte por escrito un fallo
-        lógico demostrable y enmarcado estrictamente en las Secciones 1, 2 y 3
-        del Control de Cambios No. 1, se considerará otorgada la Aceptación
-        Funcional Tácita de manera irrevocable, haciendo inmediatamente exigible
-        la facturación y pago del HITO 2.
+        Se entenderá alcanzada la "Validación Funcional Satisfactoria" una vez
+        superados los dos (2) días hábiles de QA sin que existan fallos
+        pendientes de corrección reportados formalmente sobre el flujo del
+        Control de Cambios No. 1, habilitando la facturación del HITO 2.
       </Paragraph>
     </Section>
 
     <Section wrap="0">
       <Title size="xs" textAlign="left">
-        CLÁUSULA CUARTA - VIGENCIA DE LAS DEMÁS CLÁUSULAS:
+        CLÁUSULA CUARTA - GARANTÍAS PREVIAS Y VIGENCIA CONTRACTUAL:
       </Title>
       <Paragraph>
-        Las demás cláusulas del contrato original de prestación de servicios y
-        sus otrosíes previos que no contraríen lo dispuesto en el presente
-        documento mantienen su plena validez y vigor legal.
+        El presente Otrosí no modifica, sustituye ni limita las garantías
+        previamente pactadas sobre los demás módulos de la Fase 1. Cualquier
+        soporte o inconsistencia identificada en módulos ajenos al Control de
+        Cambios No. 1 será atendida oportunamente bajo las condiciones de
+        garantía del contrato principal, pero no constituirá causal válida para
+        condicionar o retener el pago del HITO 2, cuyo criterio de aceptación se
+        rige exclusivamente por la Cláusula Tercera.
+      </Paragraph>
+      <Paragraph>
+        Las demás cláusulas del contrato original mantienen su plena validez y
+        vigor legal.
       </Paragraph>
     </Section>
 
     <Section wrap="1">
       <Paragraph>
-        Para constancia y en señal de absoluta conformidad, se firma a los 15
+        Para constancia y en señal de absoluta conformidad, se firma a los 16
         días del mes de septiembre de 2026.
       </Paragraph>
     </Section>
