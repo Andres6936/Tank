@@ -40,7 +40,7 @@ export default {
     );
     if (!stream.ok) return asPayload(500, { message: "Failed to generate" });
     const payload = await stream.arrayBuffer();
-    const operation = await files.save({
+    const operation = await files.private.save({
       Path: `/tmp/${document.Subject}-${document.Title}.pdf`,
       Blob: payload,
     });
