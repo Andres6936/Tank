@@ -4,6 +4,18 @@ import { eq } from "drizzle-orm";
 
 const { sql } = getSQLClients();
 
+const getById = async (id: string) => {
+  const result = await sql
+    .select()
+    .from(ThumbnailsTable)
+    .where(eq(ThumbnailsTable.Id, id))
+    .limit(1);
+
+  if (result.length === 0) return null;
+  const [row] = result;
+  return row!;
+};
+
 const save = async (args: { placeholder: string; lowFileId: string }) => {
   const result = await sql
     .insert(ThumbnailsTable)
@@ -38,4 +50,4 @@ const update = async (args: {
   return row!;
 };
 
-export { save, update };
+export { getById, save, update };

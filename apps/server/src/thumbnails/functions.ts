@@ -4,6 +4,14 @@ import * as sql from "./sql";
 import { type InferArgs } from "./args";
 
 export default {
+  getById: async (args: InferArgs["getById"]) => {
+    const result = await sql.getById(args);
+    if (!result)
+      return asPayload(404, {
+        message: "Thumbnail not found",
+      });
+    return asPayload(200, result);
+  },
   save: async (args: InferArgs["save"]) => {
     const result = await sql.save(args);
     if (!result)

@@ -11,13 +11,20 @@ import {
   insertFile,
   updateFile,
 } from "./sql";
-import { writeFile, privateBucketFn } from "./vault";
+import { writeFile, privateBucketFn, publicBucketFn } from "./vault";
 
 import { TypeBucketKeys } from "~/db/enums";
 import { type InferPrivateArgs, type InferPublicArgs } from "./args";
 
 export default {
   public: {
+    getById: async (args: InferPublicArgs["getById"]) => {
+      const file = await getFileMaybe(args);
+      if (!file) {
+        return asPayload(404, { message: "Not found" });
+      }
+      return asPayload(200, file);
+    },
     save: async (args: InferPublicArgs["save"]) => {
       const Path = path.posix.normalize(args.Path);
       const Name = path.posix.basename(Path);
@@ -43,6 +50,37 @@ export default {
         return asPayload(500, { message: "Failed to create file" });
       }
       return asPayload(200, { Id: row.Id, SHA256: sha256 });
+    },
+    updateById: async (args: InferPublicArgs["updateById"]) => {
+      const file = await getFileMaybe(args.Id);
+      if (!file) {
+        return asPayload(404, { message: "Not found" });
+      }
+      const OldPath = file.Path;
+      const Path = path.posix.normalize(args.Path);
+      const Name = path.posix.basename(Path);
+      const Mimetype =
+        args.Blob instanceof Blob
+          ? args.Blob.type
+          : (mime.lookup(Path) as string);
+
+      const { sha256 } = await publicBucketFn.updateFile({
+        OldPath,
+        NewPath: Path,
+        Blob: args.Blob,
+      });
+      const result = await updateFile(args.Id, {
+        Name,
+        Path,
+        Mimetype,
+        Bucket: TypeBucketKeys.Private,
+        SHA256: sha256,
+      });
+      const [row] = result;
+      if (!row) {
+        return asPayload(500, { message: "Failed to update file" });
+      }
+      return asPayload(200, { Id: row.Id });
     },
   },
   private: {

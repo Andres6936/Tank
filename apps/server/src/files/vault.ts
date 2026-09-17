@@ -14,6 +14,38 @@ const writeFile = async (args: {
   return { bytesWritten, sha256 };
 };
 
+const publicBucketFn = {
+  updateFile: async (args: {
+    OldPath: string;
+    NewPath: string;
+    Blob: Blob | ArrayBuffer;
+  }) => {
+    const publicVault = getVault(TypeBucketKeys.Public);
+    const ephemeralVault = getVault(TypeBucketKeys.Ephemeral);
+
+    const isDifferentPath = args.OldPath !== args.NewPath;
+    const buffer =
+      args.Blob instanceof Blob ? await args.Blob.arrayBuffer() : args.Blob;
+    const sha256 = Bun.SHA256.hash(buffer, "hex");
+    const promiseWrite = publicVault.write(args.NewPath, buffer);
+
+    if (isDifferentPath) {
+      const OldFile = publicVault.file(args.OldPath);
+      const [_, result] = await Promise.all([
+        ephemeralVault.write(args.OldPath, OldFile),
+        promiseWrite,
+      ]);
+      // Cannot be inside of Promise.all, must be awaited separately
+      await OldFile.delete();
+
+      return { sha256, bytesWritten: result };
+    } else {
+      const bytesWritten = await promiseWrite;
+      return { sha256, bytesWritten };
+    }
+  },
+};
+
 const privateBucketFn = {
   getBuffer: async (args: { Path: string }) => {
     return await getVault(TypeBucketKeys.Private).file(args.Path).arrayBuffer();
@@ -73,4 +105,4 @@ const privateBucketFn = {
   },
 };
 
-export { writeFile, privateBucketFn };
+export { writeFile, privateBucketFn, publicBucketFn };

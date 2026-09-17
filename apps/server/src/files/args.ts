@@ -22,6 +22,8 @@ export type InferPrivateArgs = {
 
 export const PublicArgs = {
   save: SaveFileSchema,
+  getById: z.uuid(),
+  updateById: UpdateFileSchema,
 };
 
 export type InferPublicArgs = {

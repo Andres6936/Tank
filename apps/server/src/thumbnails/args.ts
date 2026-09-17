@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const Args = {
+  getById: z.uuid(),
   save: z.object({
     placeholder: z.string(),
     lowFileId: z.uuid(),
