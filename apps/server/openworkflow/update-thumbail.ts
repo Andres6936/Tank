@@ -3,7 +3,7 @@ import path from "node:path";
 import { renderPageAsImage } from "unpdf";
 import { defineWorkflow } from "openworkflow";
 
-import { retrow, isError, unwrap } from "~/utility/response";
+import { retrow, isError, unwrap, asPayload } from "~/utility/response";
 import { optimizerImage } from "~/utility/optimizer";
 
 import thumbnails from "~/thumbnails/functions";
@@ -57,20 +57,14 @@ export const updateThumbail = defineWorkflow(
 
           // If the thumbnail has a low file, update it
           if (thumbnail.LowFileId) {
-            const resultFileLow = await files.public.getById(
+            const lowFileId = await updateLowFileAndReturnId(
               thumbnail.LowFileId,
+              optimize,
             );
-            if (isError(resultFileLow)) return retrow(resultFileLow);
-            const fileLow = unwrap(resultFileLow);
+            if (isError(lowFileId)) return retrow(lowFileId);
+            const Id = unwrap(lowFileId);
 
-            const resultSaveThumbnail = await files.public.updateById({
-              Id: fileLow.Id,
-              Path: fileLow.Path,
-              Blob: optimize,
-            });
-            if (isError(resultSaveThumbnail))
-              return retrow(resultSaveThumbnail);
-            const { Id } = unwrap(resultSaveThumbnail);
+            // Update the placeholder and low file
             return await thumbnails.update({
               id: ThumbnailId,
               placeholder,
@@ -78,6 +72,7 @@ export const updateThumbail = defineWorkflow(
             });
           }
 
+          // Update the placeholder only
           return await thumbnails.update({
             id: ThumbnailId,
             placeholder,
@@ -125,3 +120,18 @@ export const updateThumbail = defineWorkflow(
     };
   },
 );
+
+const updateLowFileAndReturnId = async (lowFileId: string, blob: Blob) => {
+  const resultLowFile = await files.public.getById(lowFileId);
+  if (isError(resultLowFile)) return retrow(resultLowFile);
+  const fileLow = unwrap(resultLowFile);
+
+  const resultUpdate = await files.public.updateById({
+    Id: fileLow.Id,
+    Path: fileLow.Path,
+    Blob: blob,
+  });
+  if (isError(resultUpdate)) return retrow(resultUpdate);
+  const { Id } = unwrap(resultUpdate);
+  return asPayload(200, Id);
+};
