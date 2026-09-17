@@ -9,7 +9,7 @@ export const Args = {
   update: z.object({
     id: z.uuid(),
     placeholder: z.string(),
-    lowFileId: z.uuid(),
+    lowFileId: z.uuid().nullish(),
   }),
 };
 

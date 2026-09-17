@@ -54,22 +54,34 @@ export const updateThumbail = defineWorkflow(
           const resultGetThumbnail = await thumbnails.getById(ThumbnailId);
           if (isError(resultGetThumbnail)) return retrow(resultGetThumbnail);
           const thumbnail = unwrap(resultGetThumbnail);
-          const resultFileLow = await files.public.getById(thumbnail.lowFileId);
-          if (isError(resultFileLow)) return retrow(resultFileLow);
-          const fileLow = unwrap(resultFileLow);
 
-          const resultSaveThumbnail = await files.public.updateById({
-            Id: fileLow.Id,
-            Path: fileLow.Path,
-            Blob: optimize,
-          });
-          if (isError(resultSaveThumbnail)) return retrow(resultSaveThumbnail);
-          const { Id } = unwrap(resultSaveThumbnail);
+          // If the thumbnail has a low file, update it
+          if (thumbnail.LowFileId) {
+            const resultFileLow = await files.public.getById(
+              thumbnail.LowFileId,
+            );
+            if (isError(resultFileLow)) return retrow(resultFileLow);
+            const fileLow = unwrap(resultFileLow);
+
+            const resultSaveThumbnail = await files.public.updateById({
+              Id: fileLow.Id,
+              Path: fileLow.Path,
+              Blob: optimize,
+            });
+            if (isError(resultSaveThumbnail))
+              return retrow(resultSaveThumbnail);
+            const { Id } = unwrap(resultSaveThumbnail);
+            return await thumbnails.update({
+              id: ThumbnailId,
+              placeholder,
+              lowFileId: Id,
+            });
+          }
 
           return await thumbnails.update({
             id: ThumbnailId,
             placeholder,
-            lowFileId: Id,
+            lowFileId: null,
           });
         } else {
           const dirname = path.posix.dirname(file.Path);

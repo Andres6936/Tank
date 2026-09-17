@@ -34,7 +34,7 @@ const save = async (args: { placeholder: string; lowFileId: string }) => {
 const update = async (args: {
   id: string;
   placeholder: string;
-  lowFileId: string;
+  lowFileId: string | null;
 }) => {
   const result = await sql
     .update(ThumbnailsTable)
