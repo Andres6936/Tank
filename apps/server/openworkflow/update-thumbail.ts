@@ -38,7 +38,7 @@ export const updateThumbail = defineWorkflow(
     const file = unwrap(resultFile);
 
     const resultThumbnail = await step.run(
-      { name: "get-thumbnail" },
+      { name: "render-thumbnail-and-upsert" },
       async () => {
         const resultBuffer = await files.private.getBufferByPath(file.Path);
         if (isError(resultBuffer)) return retrow(resultBuffer);
