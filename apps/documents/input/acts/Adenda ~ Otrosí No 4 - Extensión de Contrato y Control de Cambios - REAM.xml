@@ -81,7 +81,7 @@
       </Paragraph>
     </Section>
 
-    <Section wrap="0">
+    <Section wrap="1">
       <Title size="xs" textAlign="left">
         CLÁUSULA SEGUNDA - ESQUEMA DE PAGOS Y CONDICIONES:
       </Title>
@@ -171,7 +171,7 @@
       </Paragraph>
     </Section>
 
-    <SignSection hiddenTitle="1">
+    <SignSection hiddenTitle="0">
       <SignRow>
         <SignPadLeft signBy="Yomaira Beytar Florez, Representante REAM" />
         <SignMeRight />
