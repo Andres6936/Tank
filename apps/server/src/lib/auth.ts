@@ -1,4 +1,4 @@
-import { betterAuth } from "better-auth";
+import { betterAuth, type BetterAuthOptions } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { apiKey } from "@better-auth/api-key";
 
@@ -12,6 +12,13 @@ import {
 } from "../db/auth-schema";
 
 const { sql } = getSQLClients();
+
+// I needed this for avoid the error [tsc] src/lib/auth.ts - error TS7056: The inferred
+// type of this node exceeds the maximum length the compiler will serialize.
+//  An explicit type annotation is needed.
+type Plugins = [ReturnType<typeof apiKey>];
+
+const plugins: Plugins = [apiKey()];
 
 const config = {
   baseURL: `http://localhost:${process.env.SERVER_PORT}`,
@@ -31,7 +38,9 @@ const config = {
       apikeys: ApiKeys,
     },
   }),
-  plugins: [apiKey()],
-};
+  plugins,
+} satisfies BetterAuthOptions;
 
-export const auth = betterAuth(config);
+export const auth = betterAuth(config) as ReturnType<
+  typeof betterAuth<typeof config>
+>;
