@@ -380,16 +380,15 @@ const ActionSealDocument = () => {
 
   const mutation = useMutation(
     trpc.documents.seal.mutationOptions({
-      onMutate: (_, context) => {
-        context.client.invalidateQueries({
-          queryKey: trpc.documents.getById.queryKey(id),
-        });
-      },
-      onSuccess: (payload) => {
+      onSuccess: (payload, _, __, context) => {
         if (payload.statusCode === 200) {
           toast.add({
             type: "success",
             title: "Document sealed",
+          });
+          // Update the cache to reflect the sealed state
+          context.client.invalidateQueries({
+            queryKey: trpc.documents.getById.queryKey(id),
           });
         } else if (payload.statusCode === 409) {
           toast.add({
