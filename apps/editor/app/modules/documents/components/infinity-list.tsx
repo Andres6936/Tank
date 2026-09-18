@@ -33,7 +33,12 @@ const InfinityList = () => {
     <div className="flex flex-col flex-1">
       <div className="grid grid-cols-[repeat(auto-fill,10rem)] gap-4 place-content-start ">
         {items.map((item) => (
-          <Document key={item.Id} document={item} />
+          <Document
+            key={item.Document.Id}
+            document={item.Document}
+            thumbnail={item.Thumbnail}
+            lowFile={item.LowFile}
+          />
         ))}
       </div>
       <div className="mt-auto self-center">

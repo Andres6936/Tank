@@ -33,20 +33,65 @@ const Options = ({ Id }: { Id: string }) => {
   );
 };
 
+const getPublicUrl = (path: string) => {
+  return new URL(path, `https://cdn.andres6936.dev/`).href;
+};
+
 type DocumentType = {
   Id: string;
   Title: string;
 };
 
-const Document = ({ document }: { document: DocumentType }) => {
+type ThumbnailType = {
+  Id: string;
+  PlacelholderHash: string;
+};
+
+type LowFileType = {
+  Id: string;
+  Path: string;
+};
+
+const Document = ({
+  document,
+  thumbnail,
+  lowFile,
+}: {
+  document: DocumentType;
+  thumbnail: ThumbnailType | null;
+  lowFile: LowFileType | null;
+}) => {
   const [isHover, setIsHover] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   return (
     <div
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
-      <div className="relative w-[10rem] aspect-16/23 rounded border bg-zinc-200 hover:bg-zinc-300">
+      <div className="relative w-[10rem] aspect-16/23 rounded border bg-zinc-200 hover:bg-zinc-300 overflow-hidden">
+        {thumbnail && !isLoaded && (
+          <img
+            src={thumbnail.PlacelholderHash}
+            alt="placeholder"
+            className="absolute inset-0 w-full h-full object-cover blur-md scale-105"
+          />
+        )}
+
+        {lowFile && (
+          <img
+            src={getPublicUrl(lowFile.Path)}
+            alt={document.Title}
+            onLoad={() => {
+              setIsLoaded(true);
+              console.log("Loaded");
+            }}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+              isLoaded ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        )}
+
         <Options Id={document.Id} />
       </div>
       <p className="text-xs/4 text-balance text-center mt-2 px-2">
