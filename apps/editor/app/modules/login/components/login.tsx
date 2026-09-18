@@ -1,19 +1,12 @@
-import * as v from "valibot";
+import type { FormSchema, SubmitHandler } from "@formisch/react";
+import { Form, useForm } from "@formisch/react";
 import { cn } from "cn";
-import {
-  Form,
-  Field as FormischField,
-  useField,
-  useForm,
-} from "@formisch/react";
-import type {
-  FormSchema,
-  FormStore,
-  RequiredPath,
-  SubmitHandler,
-  ValidPath,
-} from "@formisch/react";
+import * as v from "valibot";
 
+import { useMutation } from "@tanstack/react-query";
+import { useEffect, useId, useState } from "react";
+import { useNavigate } from "react-router";
+import { TextInput } from "~/components/form/text-input";
 import { Button } from "~/components/ui/button";
 import {
   Card,
@@ -22,19 +15,10 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "~/components/ui/field";
-import { Input } from "~/components/ui/input";
-import { useId } from "react";
-import { TextInput } from "~/components/form/text-input";
-import { useMutation } from "@tanstack/react-query";
-import { authClient } from "~/lib/auth-client";
-import { toast } from "~/components/ui/toast";
+import { Field, FieldGroup } from "~/components/ui/field";
 import { Spinner } from "~/components/ui/spinner";
+import { toast } from "~/components/ui/toast";
+import { authClient } from "~/lib/auth-client";
 
 const FormSchema = v.object({
   Email: v.pipe(v.string(), v.email()),
@@ -42,6 +26,7 @@ const FormSchema = v.object({
 });
 
 export function LoginForm() {
+  const navigate = useNavigate();
   const formId = useId();
   const form = useForm({
     schema: FormSchema,
@@ -50,6 +35,26 @@ export function LoginForm() {
       Password: "",
     },
   });
+
+  const [checking, setChecking] = useState(true);
+
+  useEffect(() => {
+    (async function checkIfUserAlreadyLoggedIn() {
+      try {
+        const result = await authClient.getSession();
+        if (result.data) {
+          toast.add({
+            title: "Success",
+            description: "You are already logged in.",
+          });
+          navigate("/dashboard");
+        }
+      } catch (ignored) {
+      } finally {
+        setChecking(false);
+      }
+    })();
+  }, []);
 
   const mutation = useMutation({
     mutationKey: ["/login"],
@@ -113,7 +118,11 @@ export function LoginForm() {
               placeholder="********"
             />
             <Field>
-              <Button type="submit" form={formId} disabled={mutation.isPending}>
+              <Button
+                type="submit"
+                form={formId}
+                disabled={mutation.isPending || checking}
+              >
                 {mutation.isPending ? <Spinner /> : null}
                 {mutation.isPending ? "Loading" : "Login"}
               </Button>
