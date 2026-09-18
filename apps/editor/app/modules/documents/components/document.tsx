@@ -92,7 +92,7 @@ const Document = ({
           />
         )}
 
-        <Options Id={document.Id} />
+        {isHover && <Options Id={document.Id} />}
       </div>
       <p className="text-xs/4 text-balance text-center mt-2 px-2">
         {document.Title}
