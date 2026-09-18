@@ -1,8 +1,8 @@
-import { eq, desc, lt } from "drizzle-orm";
+import { eq, desc, lt, getTableColumns } from "drizzle-orm";
 
 import { formatXML } from "~/utility/formatter";
 import { getSQLClients } from "~/config/clients-sql";
-import { DocumentsTable, FilesTable } from "~/db/schema";
+import { DocumentsTable, ThumbnailsTable, FilesTable } from "~/db/schema";
 import { defaultPagination, type PaginateType } from "~/schemas/general";
 import { TypeStateDocumentKeys } from "~/db/enums";
 
@@ -23,11 +23,31 @@ const getAll = async (args?: PaginateType) => {
 };
 
 const getAllInfinite = async (args: InferArgs["getAllInfinite"]) => {
+  const {
+    Content,
+    FileId,
+    Metadata: documentMetadata,
+    ...documentColumns
+  } = getTableColumns(DocumentsTable);
+  const { Metadata: thumbnailMetadata, ...thumbnailColumns } =
+    getTableColumns(ThumbnailsTable);
+  const { Metadata: fileMetadata, ...filesColumns } =
+    getTableColumns(FilesTable);
+
   const result = await sql
-    .select()
+    .select({
+      Document: documentColumns,
+      Thumbnail: thumbnailColumns,
+      LowFile: filesColumns,
+    })
     .from(DocumentsTable)
     // If the cursor is provided, get documents after it
     .where(args.cursor ? lt(DocumentsTable.Id, args.cursor) : undefined)
+    .leftJoin(
+      ThumbnailsTable,
+      eq(DocumentsTable.ThumbnailId, ThumbnailsTable.Id),
+    )
+    .leftJoin(FilesTable, eq(ThumbnailsTable.LowFileId, FilesTable.Id))
     .orderBy(desc(DocumentsTable.Id))
     .limit(args.limit);
   return result;

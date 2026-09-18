@@ -14,9 +14,10 @@ export default {
   getAllInfinite: async (args: InferArgs["getAllInfinite"]) => {
     const result = await sql.getAllInfinite(args);
     const hasMore = result.length === args.limit;
+    const lastItem = result.at(-1);
     return asPayload(200, {
       items: result,
-      nextCursor: hasMore ? result.at(-1)!.Id : undefined,
+      nextCursor: lastItem && hasMore ? lastItem.Document.Id : undefined,
     });
   },
   seal: async (args: InferArgs["seal"]) => {
