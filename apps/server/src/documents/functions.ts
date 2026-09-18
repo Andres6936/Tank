@@ -1,5 +1,7 @@
-import { asPayload, isError, retrow } from "~/utility/response";
 import { TypeStateDocumentKeys } from "~/db/enums";
+import { ow } from "~/openworkflow/client";
+import { updateThumbail } from "~/openworkflow/update-thumbail";
+import { asPayload, isError, retrow } from "~/utility/response";
 
 import files from "~/files/functions";
 import { type InferArgs } from "./args";
@@ -49,6 +51,10 @@ export default {
     const { Id } = operation.body;
     const updated = await sql.updateFileLinkAndSeal(document.Id, Id);
     if (!updated) return asPayload(500, { message: "Failed to update" });
+    // Dispatch a workflow to update the thumbnail
+    await ow.runWorkflow(updateThumbail.spec, {
+      DocumentId: document.Id,
+    });
     return asPayload(200, { message: "Sealed successfully" });
   },
   getById: async (args: InferArgs["getById"]) => {
@@ -111,6 +117,10 @@ export default {
 
     const result = await sql.updateContent(args.Id, args);
     if (!result) return asPayload(500, { message: "Failed to update" });
+    // Dispatch a workflow to update the thumbnail
+    await ow.runWorkflow(updateThumbail.spec, {
+      DocumentId: args.Id,
+    });
     return asPayload(200, result);
   },
   updateThumbail: async (args: InferArgs["updateThumbail"]) => {

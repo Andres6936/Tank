@@ -28,6 +28,7 @@
     "noPropertyAccessFromIndexSignature": false,
 
     "paths": {
+      "~/openworkflow/*": ["./openworkflow/*"],
       "~/*": ["./src/*"],
     },
   },
