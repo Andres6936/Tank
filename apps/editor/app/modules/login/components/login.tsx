@@ -34,6 +34,7 @@ import { TextInput } from "~/components/form/text-input";
 import { useMutation } from "@tanstack/react-query";
 import { authClient } from "~/lib/auth-client";
 import { toast } from "~/components/ui/toast";
+import { Spinner } from "~/components/ui/spinner";
 
 const FormSchema = v.object({
   Email: v.pipe(v.string(), v.email()),
@@ -108,18 +109,17 @@ export function LoginForm() {
               form={form}
               path={["Password"]}
               label="Password"
+              type="password"
               placeholder="********"
             />
             <Field>
-              <Button type="submit" form={formId}>
-                Login
+              <Button type="submit" form={formId} disabled={mutation.isPending}>
+                {mutation.isPending ? <Spinner /> : null}
+                {mutation.isPending ? "Loading" : "Login"}
               </Button>
               <Button variant="outline" type="button">
                 Login with Google
               </Button>
-              <FieldDescription className="text-center">
-                Don&apos;t have an account? <a href="#">Sign up</a>
-              </FieldDescription>
             </Field>
           </FieldGroup>
         </CardContent>

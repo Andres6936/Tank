@@ -20,6 +20,7 @@ const TextInput = <
   form: FormStore<Schema>;
   path: ValidPath<v.InferInput<Schema>, FieldPath>;
   label: string;
+  type?: "text" | "password";
   placeholder?: string;
 }) => {
   const id = useId();
@@ -33,6 +34,7 @@ const TextInput = <
         id={id}
         name={props.path.join(".")}
         placeholder={props.placeholder}
+        type={props.type ?? "text"}
         value={(field.input as string | number | string[] | undefined) ?? ""}
         aria-invalid={field.errors !== null}
         aria-errormessage={`${id}-error`}
