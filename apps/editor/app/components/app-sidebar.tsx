@@ -2,8 +2,14 @@
 
 import * as React from "react";
 
+import {
+  BookOpenIcon,
+  BotIcon,
+  LifeBuoyIcon,
+  SendIcon,
+  TerminalIcon,
+} from "lucide-react";
 import { NavMain } from "~/components/nav-main";
-import { NavProjects } from "~/components/nav-projects";
 import { NavSecondary } from "~/components/nav-secondary";
 import { NavUser } from "~/components/nav-user";
 import {
@@ -15,56 +21,25 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "~/components/ui/sidebar";
-import {
-  TerminalSquareIcon,
-  BotIcon,
-  BookOpenIcon,
-  Settings2Icon,
-  LifeBuoyIcon,
-  SendIcon,
-  FrameIcon,
-  PieChartIcon,
-  MapIcon,
-  TerminalIcon,
-} from "lucide-react";
 
 const data = {
   navMain: [
     {
-      title: "Playground",
-      url: "#",
-      icon: <TerminalSquareIcon />,
+      title: "Invoices",
+      url: "/dashboard/invoices",
+      icon: <BotIcon />,
       isActive: true,
       items: [
         {
-          title: "History",
+          title: "Providers",
           url: "#",
         },
         {
-          title: "Starred",
+          title: "Templates",
           url: "#",
         },
         {
           title: "Settings",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Invoices",
-      url: "/dashboard/invoices",
-      icon: <BotIcon />,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
           url: "#",
         },
       ],
@@ -88,23 +63,6 @@ const data = {
       icon: <SendIcon />,
     },
   ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: <FrameIcon />,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: <PieChartIcon />,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: <MapIcon />,
-    },
-  ],
 };
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -126,7 +84,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
