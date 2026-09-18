@@ -215,7 +215,7 @@ const updateContent = async (
   return row;
 };
 
-const updateThumbail = async (id: string, thumbnailId: string) => {
+const updateThumbnail = async (id: string, thumbnailId: string) => {
   const result = await sql
     .update(DocumentsTable)
     .set({
@@ -278,7 +278,7 @@ export {
   getSubjetAndTitleById,
   create,
   updateContent,
-  updateThumbail,
+  updateThumbnail,
   updateTitleAndSubjet,
   updateFileLinkAndSeal,
 };

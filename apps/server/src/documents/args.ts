@@ -2,7 +2,7 @@ import { z } from "zod";
 import { PaginateSchema } from "~/schemas/general";
 
 import schemas from "./schemas";
-import { updateThumbail } from "../../openworkflow/update-thumbail";
+import { updateThumbnail } from "~/openworkflow/update-thumbnail";
 
 export const Args = {
   getAll: z.optional(PaginateSchema),
@@ -31,7 +31,7 @@ export const Args = {
       Content: true,
     })
     .required(),
-  updateThumbail: z.object({
+  updateThumbnail: z.object({
     Id: z.uuid(),
     ThumbnailId: z.uuid(),
   }),

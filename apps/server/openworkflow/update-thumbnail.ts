@@ -10,7 +10,7 @@ import thumbnails from "~/thumbnails/functions";
 import documents from "~/documents/functions";
 import files from "~/files/functions";
 
-export const updateThumbail = defineWorkflow(
+export const updateThumbnail = defineWorkflow(
   {
     name: "update-thumbail",
     schema: z.object({
@@ -105,7 +105,7 @@ export const updateThumbail = defineWorkflow(
           });
           if (isError(resultSaveThumbnail)) return retrow(resultSaveThumbnail);
           const { Id } = unwrap(resultSaveThumbnail);
-          return await documents.updateThumbail({
+          return await documents.updateThumbnail({
             Id: input.DocumentId,
             ThumbnailId: Id,
           });

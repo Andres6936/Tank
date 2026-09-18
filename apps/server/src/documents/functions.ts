@@ -1,6 +1,6 @@
 import { TypeStateDocumentKeys } from "~/db/enums";
 import { ow } from "~/openworkflow/client";
-import { updateThumbail } from "~/openworkflow/update-thumbail";
+import { updateThumbnail } from "~/openworkflow/update-thumbnail";
 import { asPayload, isError, retrow } from "~/utility/response";
 
 import files from "~/files/functions";
@@ -52,7 +52,7 @@ export default {
     const updated = await sql.updateFileLinkAndSeal(document.Id, Id);
     if (!updated) return asPayload(500, { message: "Failed to update" });
     // Dispatch a workflow to update the thumbnail
-    await ow.runWorkflow(updateThumbail.spec, {
+    await ow.runWorkflow(updateThumbnail.spec, {
       DocumentId: document.Id,
     });
     return asPayload(200, { message: "Sealed successfully" });
@@ -118,13 +118,13 @@ export default {
     const result = await sql.updateContent(args.Id, args);
     if (!result) return asPayload(500, { message: "Failed to update" });
     // Dispatch a workflow to update the thumbnail
-    await ow.runWorkflow(updateThumbail.spec, {
+    await ow.runWorkflow(updateThumbnail.spec, {
       DocumentId: args.Id,
     });
     return asPayload(200, result);
   },
-  updateThumbail: async (args: InferArgs["updateThumbail"]) => {
-    const result = await sql.updateThumbail(args.Id, args.ThumbnailId);
+  updateThumbnail: async (args: InferArgs["updateThumbnail"]) => {
+    const result = await sql.updateThumbnail(args.Id, args.ThumbnailId);
     if (!result) return asPayload(500, { message: "Failed to update" });
     return asPayload(200, result);
   },
